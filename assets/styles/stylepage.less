@@ -49,3 +49,91 @@
 		}
 	}
 }
+
+.sizeTest
+{
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+	width: min-content;
+
+	.largeFontSize
+	{
+		height: var(--largeFontSize);
+		width: var(--largeFontSize);
+		font-size: var(--largeFontSize);
+		background-color: var(--col_redMain);
+	}
+
+	.bigFontSize
+	{
+		height: var(--bigFontSize);
+		width: var(--bigFontSize);
+		font-size: var(--bigFontSize);
+		background-color: var(--col_yellowMain);
+	}
+
+	.baseFontSize
+	{
+		height: var(--baseFontSize);
+		width: var(--baseFontSize);
+		font-size: var(--baseFontSize);
+		background-color: var(--col_greenMain);
+	}
+
+	.smallFontSize
+	{
+		height: var(--smallFontSize);
+		width: var(--smallFontSize);
+		font-size: var(--smallFontSize);
+		background-color: var(--col_cyanMain);
+	}
+
+	.miniFontSize
+	{
+		height: var(--miniFontSize);
+		width: var(--miniFontSize);
+		font-size: var(--miniFontSize);
+		background-color: var(--col_blueMain);
+	}
+
+	.OLDlargeFontSize
+	{
+		height: 20px;
+		width: 20px;
+		font-size: 20px;
+		background-color: var(--col_redMain);
+	}
+
+	.OLDbigFontSize
+	{
+		height: 17.5px;
+		width: 17.5px;
+		font-size: 17.5px;
+		background-color: var(--col_yellowMain);
+	}
+
+	.OLDbaseFontSize
+	{
+		height: 15px;
+		width: 15px;
+		font-size: 15px;
+		background-color: var(--col_greenMain);
+	}
+
+	.OLDsmallFontSize
+	{
+		height: 12.5px;
+		width: 12.5px;
+		font-size: 12.5px;
+		background-color: var(--col_cyanMain);
+	}
+
+	.OLDminiFontSize
+	{
+		height: 10px;
+		width: 10px;
+		font-size: 10px;
+		background-color: var(--col_blueMain);
+	}
+}

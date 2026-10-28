@@ -39,29 +39,28 @@ iframe {
   border: none;
 }
 /* #region Sizes */
-:root {
+html {
   /* Gaps */
-  /* Gaps */
-  --doubleGap: calc(20px * 2);
-  --hugeGap: calc(20px * 1.75);
-  --largeGap: calc(20px * 1.5);
-  --bigGap: calc(20px * 1.25);
+  --doubleGap: calc(var(--baseGap) * 2);
+  --hugeGap: calc(var(--baseGap) * 1.75);
+  --largeGap: calc(var(--baseGap) * 1.5);
+  --bigGap: calc(var(--baseGap) * 1.25);
   --baseGap: 20px;
-  --thinGap: calc(20px * 0.75);
-  --halfGap: calc(20px * 0.5);
-  --quarterGap: calc(20px * 0.25);
-  --minGap: calc(20px * 0.1);
+  --thinGap: calc(var(--baseGap) * 0.75);
+  --halfGap: calc(var(--baseGap) * 0.5);
+  --quarterGap: calc(var(--baseGap) * 0.25);
+  --minGap: calc(var(--baseGap) * 0.1);
   /* Sizes */
   --pageWidth: 50cqw;
   --headerHeight: 12cqh;
   --newsHeight: 5cqh;
   --sideBarWidth: 13cqw;
   /* FontSize */
-  --largeFontSize: 20px;
-  --bigFontSize: 17.5px;
-  --baseFontSize: 15px;
-  --smallFontSize: 12.5px;
-  --miniFontSize: 10px;
+  --largeFontSize: 2cqh;
+  --bigFontSize: 1.75cqh;
+  --baseFontSize: 1.5cqh;
+  --smallFontSize: 1.25cqh;
+  --miniFontSize: 1cqh;
   /* Borders */
   --baseBorderWidth: var(--minGap);
   --baseBorderStyle: solid;
@@ -566,8 +565,6 @@ html.centerWidth #staticBlock {
   border-top: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   background: linear-gradient(135deg, var(--bcol_primaryDkst) 0%, var(--col_darkBlck) 100%);
   grid-area: news;
-  container-name: newsCrawler;
-  container-type: size;
   bottom: 0;
   display: grid;
   grid-auto-columns: auto;
@@ -3841,6 +3838,72 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
 }
 .colorsAndText > div > div:nth-child(8) {
   background-color: var(--bcol_primaryBlck);
+}
+.sizeTest {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  width: min-content;
+}
+.sizeTest .largeFontSize {
+  height: var(--largeFontSize);
+  width: var(--largeFontSize);
+  font-size: var(--largeFontSize);
+  background-color: var(--col_redMain);
+}
+.sizeTest .bigFontSize {
+  height: var(--bigFontSize);
+  width: var(--bigFontSize);
+  font-size: var(--bigFontSize);
+  background-color: var(--col_yellowMain);
+}
+.sizeTest .baseFontSize {
+  height: var(--baseFontSize);
+  width: var(--baseFontSize);
+  font-size: var(--baseFontSize);
+  background-color: var(--col_greenMain);
+}
+.sizeTest .smallFontSize {
+  height: var(--smallFontSize);
+  width: var(--smallFontSize);
+  font-size: var(--smallFontSize);
+  background-color: var(--col_cyanMain);
+}
+.sizeTest .miniFontSize {
+  height: var(--miniFontSize);
+  width: var(--miniFontSize);
+  font-size: var(--miniFontSize);
+  background-color: var(--col_blueMain);
+}
+.sizeTest .OLDlargeFontSize {
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  background-color: var(--col_redMain);
+}
+.sizeTest .OLDbigFontSize {
+  height: 17.5px;
+  width: 17.5px;
+  font-size: 17.5px;
+  background-color: var(--col_yellowMain);
+}
+.sizeTest .OLDbaseFontSize {
+  height: 15px;
+  width: 15px;
+  font-size: 15px;
+  background-color: var(--col_greenMain);
+}
+.sizeTest .OLDsmallFontSize {
+  height: 12.5px;
+  width: 12.5px;
+  font-size: 12.5px;
+  background-color: var(--col_cyanMain);
+}
+.sizeTest .OLDminiFontSize {
+  height: 10px;
+  width: 10px;
+  font-size: 10px;
+  background-color: var(--col_blueMain);
 }
 html.halloween {
   background-image: url(../../assets/images/site_HalloweenBackground.gif);

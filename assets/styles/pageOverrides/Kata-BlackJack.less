@@ -1,0 +1,81 @@
+//main: "../compiled.less"
+
+#Kata-BlackJack
+{
+	body
+	{
+		background-color: #002D04;
+		background-blend-mode: darken;
+		border-radius: var(--baseBorderRadius);
+		overflow: hidden;
+
+		#page
+		{
+			#plaingCardGameContainer
+			{
+				.verticalTabs;
+				grid-template-columns: 25cqb 1fr;
+				grid-template-rows: 1fr 1fr;
+				grid-template-areas: "dataCenter dealer" "dataCenter player";
+				height: 100cqb;
+				grid-row-gap: var(--doubleGap);
+				padding: var(--baseGap);
+				row-rule: var(--baseBorderWidth) var(--baseBorderStyle) #005b08;
+			}
+
+			#dataCenter
+			{
+				grid-area: dataCenter;
+				grid-template-rows: 1fr 1fr 1fr 1fr min-content;
+			
+				.dataBlock
+				{
+					.block;
+					.verticalTabs;
+					.darkElement;
+					grid-template-rows: min-content 1fr;
+					
+					&.player
+					{
+						.liteElement;
+					}
+
+					h2
+					{
+						.underline;
+					}
+
+					#dealerScore,
+					#playerScore
+					{
+						.centerInDiv;
+					}
+				}
+
+				#gameStateMsg
+				{
+					.block;
+					.azureElement;
+					.verticalTabs;
+					grid-template-rows: min-content min-content 1fr;
+					justify-items: center;
+					align-items: center;
+				}
+			}
+
+			#dealerSpace
+			{
+				padding-top: var(--baseGap);
+				padding-bottom: var(--baseGap);
+				grid-area: dealer;
+			}
+
+			#playerSpace
+			{
+				padding-top: var(--baseGap);
+				padding-bottom: var(--baseGap);
+				grid-area: player;
+			}
+		}
+	}
+}

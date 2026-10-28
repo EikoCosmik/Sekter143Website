@@ -1,0 +1,174 @@
+<pageSettings>
+	title="The BAD"
+	color="redElement badPaint"
+	id="BAD"
+</pageSettings>
+
+<section id="pageContent" class="tabs">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		var brush;
+		var bias;
+		var canvas;
+		var ctx;
+		var fakeX;
+		var fakeY;
+
+		document.addEventListener("DOMContentLoaded", () => {
+			brush = "circle";
+			bias = 1;
+			canvas = document.getElementById("badPaintCanvas");
+			ctx = canvas.getContext("2d");
+			backgroundColorFunc();
+
+			fakeX = 100;
+			fakeY = 100;
+			ctx.fillStyle = $("#brushColor").val();
+			ctx.strokeStyle = $("#brushColor").val();
+
+			$('#badPaintCanvas').on('mousedown', function () {
+
+				$("#badPaintCanvas").mousemove(function (event) {
+					draw(event);
+				});
+				$("#badPaintCanvas").click(function (event) {
+					draw(event);
+				});
+			}).on('mouseup mouseleave', function () {
+				$("#badPaintCanvas").unbind('mousemove');
+			});
+
+			$('#backgroundColor').on('input', function (e) {
+				backgroundColorFunc();
+			});
+		});
+		function draw(event) {
+			var elementOffset = $("#badPaintCanvas").offset();
+			var relativeX = event.pageX - elementOffset.left;
+			var relativeY = event.pageY - elementOffset.top;
+			ctx.fillStyle = $("#brushColor").val();
+			ctx.strokeStyle = $("#brushColor").val();
+			ctx.lineWidth = $("#strokeSizeIn").val();
+			bias = 1;
+
+			switch ($("#brushIn").val()) {
+				case "template":
+					break;
+				case "circle":
+					ctx.beginPath();
+					ctx.arc(relativeX, relativeY, $("#sizeIn").val(), 0, 2 * Math.PI);
+					ctx.fill();
+					break;
+				case "circlehollow":
+					ctx.beginPath();
+					ctx.arc(relativeX, relativeY, $("#sizeIn").val(), 0, 2 * Math.PI);
+					ctx.stroke();
+					break;
+				case "square":
+					var halfSize = parseInt($("#sizeIn").val()) / 2;
+					ctx.fillRect(relativeX - halfSize, relativeY - halfSize, $("#sizeIn").val(), $("#sizeIn").val());
+					break;
+				case "squarehollow":
+					var halfSize = parseInt($("#sizeIn").val()) / 2;
+					ctx.strokeRect(relativeX - halfSize, relativeY - halfSize, $("#sizeIn").val(), $("#sizeIn").val());
+					break;
+				case "star":
+					bias = 0.03;
+					ctx.beginPath();
+					ctx.moveTo(relativeX - (14.621 * bias * $("#sizeIn").val()), relativeY - (20.124 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX, relativeY - (49.749 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX + (14.621 * bias * $("#sizeIn").val()), relativeY - (20.124 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX + (47.314 * bias * $("#sizeIn").val()), relativeY - (15.373 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX + (23.657 * bias * $("#sizeIn").val()), relativeY + (7.687 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX + (29.242 * bias * $("#sizeIn").val()), relativeY + (40.248 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX, relativeY + (24.874 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX - (29.242 * bias * $("#sizeIn").val()), relativeY + (40.248 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX - (23.657 * bias * $("#sizeIn").val()), relativeY + (7.687 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX - (47.314 * bias * $("#sizeIn").val()), relativeY - (15.373 * bias * $("#sizeIn").val()));
+					ctx.closePath();
+					ctx.fill();
+					break;
+				case "starhollow":
+					bias = 0.03;
+					ctx.beginPath();
+					ctx.moveTo(relativeX - (14.621 * bias * $("#sizeIn").val()), relativeY - (20.124 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX, relativeY - (49.749 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX + (14.621 * bias * $("#sizeIn").val()), relativeY - (20.124 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX + (47.314 * bias * $("#sizeIn").val()), relativeY - (15.373 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX + (23.657 * bias * $("#sizeIn").val()), relativeY + (7.687 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX + (29.242 * bias * $("#sizeIn").val()), relativeY + (40.248 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX, relativeY + (24.874 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX - (29.242 * bias * $("#sizeIn").val()), relativeY + (40.248 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX - (23.657 * bias * $("#sizeIn").val()), relativeY + (7.687 * bias * $("#sizeIn").val()));
+					ctx.lineTo(relativeX - (47.314 * bias * $("#sizeIn").val()), relativeY - (15.373 * bias * $("#sizeIn").val()));
+					ctx.closePath();
+					ctx.stroke();
+					break;
+			}
+		}
+
+		function backgroundColorFunc() {
+			ctx.fillStyle = "white";
+			ctx.fillRect(-10, -10, 1000, 1000);
+		}
+
+		function downloadCanvas() {
+			var dataURL = canvas.toDataURL('image/png');
+			var link = document.createElement('a');
+
+			link.download = 'my-canvas.png';
+			link.href = dataURL.replace("image/png", "image/octet-stream");
+			link.click();
+		}
+	</script>
+	<div class="controls">
+		<sktemplate
+			type="inputBlock"
+			id="brushColor"
+			value="#000000"
+			inputType="color"
+			label="Brush Color"
+		></sktemplate>
+
+		<div class="inputBlock ">
+			<label for="brushIn">Brush Type</label>
+			<select id="brushIn" name="brushIn">
+				<option value="circle">Circle</option>
+				<option value="circlehollow">Circle Hollow</option>
+				<option value="square">Square</option>
+				<option value="squarehollow">Square Hollow</option>
+				<option value="star">Star</option>
+				<option value="starhollow">Star Hollow</option>
+			</select>
+		</div>
+
+		<sktemplate
+			type="inputBlock"
+			id="sizeIn"
+			value="10"
+			inputType="number"
+			label="Size In"
+		></sktemplate>
+
+		<sktemplate
+			type="inputBlock"
+			id="strokeSizeIn"
+			value="1"
+			inputType="number"
+			label="Stroke Size In"
+		></sktemplate>
+
+		<button class="button" onclick="downloadCanvas()">Download</button>
+		<button class="button" onclick="backgroundColorFunc()">Clear</button>
+	</div>
+
+	<div id="canvasHolder">
+		<canvas id="badPaintCanvas" width="750" height="500" style="border:1px solid #000000; background-color: white;"></canvas>
+	</div>
+
+	<sktemplate
+		type="simpleContent"
+		title="BAD-Paint"
+		text="This one was fun, i think it was a two day project learning mouse detection in JS.<br/>I can see what i would want to change. I'm happy with how the cursor is detected, but i would redo the drawing to fill between each draw. I think WorldFather would be a good use here."
+	></sktemplate>
+</section>

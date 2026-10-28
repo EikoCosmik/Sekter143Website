@@ -1,0 +1,222 @@
+﻿<pageSettings>
+	title="The BAD"
+	class="redElement badTriSpinner"
+	id="BAD"
+</pageSettings>
+
+<section id="pageContent" class="tabs">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<div id="configs">
+		<sktemplate 
+			type="inputBlock"
+			id="oneSpeed"
+			value="100"
+			inputType="number"
+			label="Speed 1:"
+			max="100"
+		></sktemplate>
+		<sktemplate 
+			type="inputBlock"
+			id="oneLength"
+			value="50"
+			inputType="number"
+			label="Length 1:"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			id="twoSpeed"
+			value="100"
+			inputType="number"
+			label="Speed 2:"
+			max="100"
+		></sktemplate>
+		<sktemplate 
+			type="inputBlock"
+			id="twoLength"
+			value="50"
+			inputType="number"
+			label="Length 2:"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			id="threeSpeed"
+			value="100"
+			inputType="number"
+			label="Speed 3:"
+			max="100"
+		></sktemplate>
+		<sktemplate 
+			type="inputBlock"
+			id="threeLength"
+			value="50"
+			inputType="number"
+			label="Length 3:"
+		></sktemplate>
+
+		<button class="button" onclick="clearPP()">Clear Path Canvas</button>
+		<button class="button" onclick="updateValues()">Start With Values</button>
+	</div>
+	<canvas id="spinnerCanvas" width="500" height="500"></canvas>
+	<canvas id="pathCanvas" width="500" height="500"></canvas>
+	<sktemplate 
+		type="simpleContent"
+		title="BAD-TriSpinner"
+		text="Like a lot of the BAD projects, this one came from an interest in some math thing. In this case, working out points in relation to other points. Looking at the code, it seems similar to what WorldFather does for its relative points, but WorldFather does it much better.<br/>I do still enjoy this project. It needs a rebuild (especially because of the speed limit) but the BAD projects will not be revisited."
+	></sktemplate>
+	<script>
+	var c = document.getElementById("spinnerCanvas");
+	var ctx = c.getContext("2d");
+	var cPP = document.getElementById("pathCanvas");
+	var ctxPP = cPP.getContext("2d");
+
+	ctx.translate(250, 250);
+	ctxPP.translate(250, 250);
+	ctxPP.fillStyle = "black";
+	ctxPP.fillRect(-500, -500, 1000, 1000);
+	ctx.fillStyle = "white";
+
+	var spinnerOneEX = 0;
+	var spinnerOneEY = 0;
+	var spinnerOneLength = 100;
+	var spinnerOneSpeed = 100;
+	var spinnerOneAngle = 0;
+
+	var spinnerTwoSX = 0;
+	var spinnerTwoSY = 0;
+	var spinnerTwoEX = 0;
+	var spinnerTwoEY = 0;
+	var spinnerTwoLength = 100;
+	var spinnerTwoSpeed = 100;
+	var spinnerTwoAngle = 0;
+
+	var spinnerThreeSX = 0;
+	var spinnerThreeSY = 0;
+	var spinnerThreeEX = 0;
+	var spinnerThreeEY = 0;
+	var spinnerThreeLength = 100;
+	var spinnerThreeSpeed = 100;
+	var spinnerThreeAngle = 0;
+
+	function updateValues()
+	{
+		spinnerOneSpeed = $("#oneSpeed").val();
+		spinnerOneLength = $("#oneLength").val();
+		spinnerTwoSpeed = $("#twoSpeed").val();
+		spinnerTwoLength = $("#twoLength").val();
+		spinnerThreeSpeed = $("#threeSpeed").val();
+		spinnerThreeLength = $("#threeLength").val();
+		spinnerOneAngle = 0;
+		spinnerTwoAngle = 0;
+		spinnerThreeAngle = 0;
+		clearPP();
+	}
+
+	updateValues();
+	updateOneSpin();
+	updateTwoSpin();
+	updateThreeSpin();
+	draw();
+
+	function updateOneSpin()
+	{
+		spinnerOneEX = 0 + spinnerOneLength * Math.cos(-spinnerOneAngle * Math.PI / 180);
+		spinnerOneEY = 0 + spinnerOneLength * Math.sin(-spinnerOneAngle * Math.PI / 180);
+		spinnerTwoSX = spinnerOneEX;
+		spinnerTwoSY = spinnerOneEY;
+		spinnerTwoEX = spinnerTwoSX + spinnerTwoLength * Math.cos(-spinnerTwoAngle * Math.PI / 180);
+		spinnerTwoEY = spinnerTwoSY + spinnerTwoLength * Math.sin(-spinnerTwoAngle * Math.PI / 180);
+		spinnerThreeSX = spinnerTwoEX;
+		spinnerThreeSY = spinnerTwoEY;
+		spinnerThreeEX = spinnerThreeSX + spinnerThreeLength * Math.cos(-spinnerThreeAngle * Math.PI / 180);
+		spinnerThreeEY = spinnerThreeSY + spinnerThreeLength * Math.sin(-spinnerThreeAngle * Math.PI / 180);
+		setTimeout(function ()
+		{
+			spinnerOneAngle = (spinnerOneAngle + 1) % 360;
+			updateOneSpin();
+		}, 100 - (spinnerOneSpeed));
+	}
+
+	function updateTwoSpin()
+	{
+		spinnerTwoEX = spinnerTwoSX + spinnerTwoLength * Math.cos(-spinnerTwoAngle * Math.PI / 180);
+		spinnerTwoEY = spinnerTwoSY + spinnerTwoLength * Math.sin(-spinnerTwoAngle * Math.PI / 180);
+		spinnerThreeSX = spinnerTwoEX;
+		spinnerThreeSY = spinnerTwoEY;
+		spinnerThreeEX = spinnerThreeSX + spinnerThreeLength * Math.cos(-spinnerThreeAngle * Math.PI / 180);
+		spinnerThreeEY = spinnerThreeSY + spinnerThreeLength * Math.sin(-spinnerThreeAngle * Math.PI / 180);
+
+		setTimeout(function ()
+		{
+			spinnerTwoAngle = (spinnerTwoAngle + 1) % 360;
+			updateTwoSpin();
+		}, 100 - (spinnerTwoSpeed));
+	}
+
+	function updateThreeSpin()
+	{
+		spinnerThreeEX = spinnerThreeSX + spinnerThreeLength * Math.cos(-spinnerThreeAngle * Math.PI / 180);
+		spinnerThreeEY = spinnerThreeSY + spinnerThreeLength * Math.sin(-spinnerThreeAngle * Math.PI / 180);
+
+		setTimeout(function ()
+		{
+			spinnerThreeAngle = (spinnerThreeAngle + 1) % 360;
+			updateThreeSpin();
+		}, 100 - (spinnerThreeSpeed));
+	}
+
+	function clearPP()
+	{
+		ctxPP.clearRect(-500, -500, 1000, 1000);
+	}
+
+	function draw()
+	{
+		ctx.fillStyle = "grey";
+		ctx.strokeStyle = "white";
+		ctx.clearRect(-500, -500, 1000, 1000);
+
+		var shadeEachStep = true;
+
+		if (shadeEachStep)
+		{
+			ctxPP.fillStyle = "#0000000f";
+			ctxPP.fillRect(-500, -500, 1000, 1000);
+		}
+
+		ctxPP.fillStyle = "white";
+		ctxPP.beginPath();
+		ctxPP.arc(spinnerThreeEX, spinnerThreeEY, 2, 0, 2 * Math.PI);
+		ctxPP.fill();
+
+		ctx.beginPath();
+		ctx.moveTo(0, 0);
+		ctx.lineTo(spinnerOneEX, spinnerOneEY);
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.moveTo(spinnerTwoSX, spinnerTwoSY);
+		ctx.lineTo(spinnerTwoEX, spinnerTwoEY);
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.moveTo(spinnerThreeSX, spinnerThreeSY);
+		ctx.lineTo(spinnerThreeEX, spinnerThreeEY);
+		ctx.stroke();
+
+		setTimeout(function ()
+		{
+			draw();
+		}, 1);
+	}
+
+	$(document).keypress(function (event)
+	{
+		if (event.keyCode == '80')
+		{
+			$("#configs").toggle();
+		}
+	});
+</script>
+</section>
+
+

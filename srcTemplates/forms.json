@@ -1,0 +1,121 @@
+{
+	"guestbook": 
+	{
+		"class": "darkElement",
+		"inputs":
+		[
+			{ 
+				"name": "username",
+				"label": "Username",
+				"type": "text",
+				"class": "cyanElement",
+				"attributes": 
+				{
+					"maxlength": 128,
+					"placeholder": "Anonymous?"
+				}
+			},
+			{ 
+				"name": "website",
+				"label": "Website",
+				"type": "text",
+				"class": "magentaElement",
+				"attributes": 
+				{
+					"maxlength": 128,
+					"placeholder": "If you want to share 🩵"
+				}
+			},
+			{ 
+				"name": "color",
+				"label": "Favourite Color",
+				"type": "select",
+				"class": "rubyElement",
+				"attributes": 
+				{
+					"value": "#d22d80"
+				},
+				"options":
+				[
+					{
+						"value": "red",
+						"text": "red",
+						"class": "redElement"
+					},
+					{
+						"value": "orange",
+						"text": "orange",
+						"class": "orangeElement"
+					},
+					{
+						"value": "yellow",
+						"text": "yellow",
+						"class": "yellowElement"
+					},
+					{
+						"value": "lime",
+						"text": "lime",
+						"class": "limeElement"
+					},
+					{
+						"value": "green",
+						"text": "green",
+						"class": "greenElement"
+					},
+					{
+						"value":"aqua",
+						"text": "aqua",
+						"class": "aquaElement"
+					},
+					{
+						"value": "cyan",
+						"text": "cyan",
+						"class": "cyanElement"
+					},
+					{
+						"value": "azure",
+						"text": "azure",
+						"class": "azureElement"
+					},
+					{
+						"value": "blue",
+						"text": "blue",
+						"class": "blueElement"
+					},
+					{
+						"value": "purple",
+						"text": "purple",
+						"class": "purpleElement"
+					},
+					{
+						"value": "magenta",
+						"text": "magenta",
+						"class": "magentaElement"
+					},
+					{
+						"value": "ruby",
+						"text": "ruby",
+						"class": "rubyElement"
+					}
+				]
+			},
+			{ 
+				"name": "message",
+				"label": "Leave a kind Message",
+				"type": "textarea",
+				"class": "azureElement",
+				"attributes": 
+				{
+					"maxlength": 256,
+					"placeholder": "Its so nice to hear from you!"
+				}
+			}
+		],
+		"button":
+		{
+			"onclick": "db.guestbookAdd('guestbookForm')",
+			"class": "greenElement",
+			"text": "Submit your message 🩵"
+		}
+	}
+}

@@ -1,0 +1,158 @@
+// out: "../styles/chatbox.css", compress: false, sourceMap: true
+@import "./mixins.less";
+@import "./variables.less";
+
+@import "./elements.less";
+
+@import "./tools.less";
+
+*,
+*::before,
+*::after
+{
+	box-sizing: border-box !important;
+	margin: 0;
+	padding: 0;
+}
+
+#main
+{
+	--body-color: #FFF;
+	--textarea-color: #CCC;
+	--dashboard-viewport-width: 300px;
+	--dark-main-color: var(--bcol_primaryDark);
+	--main-color: var(--bcol_primaryMain);
+	--main-gradient: linear-gradient(5deg, var(--main-color), var(--dark-main-color));
+	--secondary-color: #FFF;
+
+	.verticalTabs;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas: 
+		"header config"
+		"back back"
+		"input input"
+	;
+	gap: var(--halfGap);
+		height: 100% !important;
+
+	#top_banner
+	{
+		.block;
+		.greenElement;
+		.useGradient;
+		grid-area: header;
+		height: 100% !important;
+		width: 100% !important;
+	}
+
+	#settings
+	{
+		.block;
+		.darkElement;
+		color: white;
+		grid-area: config;
+		position: relative !important;
+		right: unset !important;
+		top: unset !important;
+		aspect-ratio: 1;
+		background-size: 80% 80%;
+    	object-fit: cover;
+   		background-position: center;
+   		background-repeat: no-repeat;
+		height: 100% !important;
+		width: 100% !important;
+	}
+
+	#background
+	{
+		.verticalTabs;
+		grid-area: back;
+		.block;
+		height: 100% !important;
+
+		.msgWrapper
+		{
+			.block;
+			.greyElement;
+				height: fit-content;
+
+			.allMessages
+			{
+				padding: 0 !important;
+				display: grid;
+				grid-template-columns: fit-content auto;
+				grid-gap: var(--quarterGap);
+				
+				.senderInfo
+				{
+					.underline;
+   					justify-content: start;
+				}
+			}
+		}
+	}
+
+	#textInput
+	{
+		grid-area: input;
+		height: 100% !important;
+		width: 100% !important;
+		
+		#input
+		{
+			width: 100% !important;
+		}
+
+		#emojiTrayToggle
+		{
+			display: none;
+		}
+	}
+
+	#maint
+	{
+		grid-area: maint;
+			display: none;
+	}
+}
+
+#settingsWindow
+{
+	.block;
+	.verticalTabs;
+	grid-template-rows: 1fr auto;
+		backdrop-filter: unset !important;
+
+	#closeSettingsBtn
+	{
+		.block;
+		.redElement;
+	}
+
+	> iframe
+	{
+		backdrop-filter: unset !important;
+	}
+}
+
+:root
+{
+	--settingsMenuWidth: 100%;
+}
+
+#loginBanner
+{
+	.block;
+	.greenElement;
+    margin-bottom: var(--halfGap);
+}
+
+#settingsMenu
+{
+	.verticalTabs;
+	.block;
+	.greyElement;
+	grid-template-rows: 1fr auto;
+}

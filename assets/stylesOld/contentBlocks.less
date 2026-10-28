@@ -1,0 +1,58 @@
+//main: "./compiled.less"
+
+.messageBlock
+{
+	background-color: olivedrab;
+	outline: 2px solid yellow;
+}
+
+.simpleContent
+{
+	.block;
+	.verticalTabs;
+	grid-gap: var(--halfGap);
+	grid-template-rows: min-content 1fr;
+
+	> h2
+	{
+		.underline;
+	}
+}
+
+
+
+.card
+{
+	.block;
+	.verticalTabs;
+	.useGradient;
+	grid-gap: var(--halfGap);
+	display: grid;
+	grid-template-rows: min-content min-content 1fr min-content;
+	grid-template-areas: "image" "title" "text" "button";
+
+	> .image
+	{
+		grid-area: image;
+	}
+
+	> .title
+	{
+		.underline;
+		grid-area: title;
+	}
+
+	> .text
+	{
+		.underline;
+		grid-area: text;
+		display: grid;
+		grid-auto-rows: min-content;
+		grid-gap: var(--halfGap);
+	}
+
+	> .button
+	{
+		grid-area: button;
+	}
+}

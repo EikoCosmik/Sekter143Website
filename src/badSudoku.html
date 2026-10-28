@@ -1,0 +1,446 @@
+﻿<pageSettings>
+	title="The BAD"
+	class="redElement badSudoku"
+	id="BAD"
+</pageSettings>
+
+
+<section id="pageContent" class="tabs">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<div id="numbers">
+		<button class="button number" onclick="changeNum(' ')">Clear</button>
+		<button class="button number" onclick="changeNum(1)">1</button>
+		<button class="button number" onclick="changeNum(2)">2</button>
+		<button class="button number" onclick="changeNum(3)">3</button>
+		<button class="button number" onclick="changeNum(4)">4</button>
+		<button class="button number" onclick="changeNum(5)">5</button>
+		<button class="button number" onclick="changeNum(6)">6</button>
+		<button class="button number" onclick="changeNum(7)">7</button>
+		<button class="button number" onclick="changeNum(8)">8</button>
+		<button class="button number" onclick="changeNum(9)">9</button>
+	</div>
+	<div id="sudokuGrid">
+		<div id="0">
+			<div id="00"></div>
+			<div id="01"></div>
+			<div id="02"></div>
+			<div id="03"></div>
+			<div id="04"></div>
+			<div id="05"></div>
+			<div id="06"></div>
+			<div id="07"></div>
+			<div id="08"></div>
+		</div>
+		<div id="1">
+			<div id="10"></div>
+			<div id="11"></div>
+			<div id="12"></div>
+			<div id="13"></div>
+			<div id="14"></div>
+			<div id="15"></div>
+			<div id="16"></div>
+			<div id="17"></div>
+			<div id="18"></div>
+		</div>
+		<div id="2">
+			<div id="20"></div>
+			<div id="21"></div>
+			<div id="22"></div>
+			<div id="23"></div>
+			<div id="24"></div>
+			<div id="25"></div>
+			<div id="26"></div>
+			<div id="27"></div>
+			<div id="28"></div>
+		</div>
+		<div id="3">
+			<div id="30"></div>
+			<div id="31"></div>
+			<div id="32"></div>
+			<div id="33"></div>
+			<div id="34"></div>
+			<div id="35"></div>
+			<div id="36"></div>
+			<div id="37"></div>
+			<div id="38"></div>
+		</div>
+		<div id="4">
+			<div id="40"></div>
+			<div id="41"></div>
+			<div id="42"></div>
+			<div id="43"></div>
+			<div id="44"></div>
+			<div id="45"></div>
+			<div id="46"></div>
+			<div id="47"></div>
+			<div id="48"></div>
+		</div>
+		<div id="5">
+			<div id="50"></div>
+			<div id="51"></div>
+			<div id="52"></div>
+			<div id="53"></div>
+			<div id="54"></div>
+			<div id="55"></div>
+			<div id="56"></div>
+			<div id="57"></div>
+			<div id="58"></div>
+		</div>
+		<div id="6">
+			<div id="60"></div>
+			<div id="61"></div>
+			<div id="62"></div>
+			<div id="63"></div>
+			<div id="64"></div>
+			<div id="65"></div>
+			<div id="66"></div>
+			<div id="67"></div>
+			<div id="68"></div>
+		</div>
+		<div id="7">
+			<div id="70"></div>
+			<div id="71"></div>
+			<div id="72"></div>
+			<div id="73"></div>
+			<div id="74"></div>
+			<div id="75"></div>
+			<div id="76"></div>
+			<div id="77"></div>
+			<div id="78"></div>
+		</div>
+		<div id="8">
+			<div id="80"></div>
+			<div id="81"></div>
+			<div id="82"></div>
+			<div id="83"></div>
+			<div id="84"></div>
+			<div id="85"></div>
+			<div id="86"></div>
+			<div id="87"></div>
+			<div id="88"></div>
+		</div>
+	</div>
+	<div id="outDisplay">
+		<div>
+			Is Complete: <div id="isErr">Err</div>
+		</div>
+		<div>
+			Current Selected: <div id="currentNum">5</div>
+		</div>
+		<sktemplate 
+			type="simpleContent"
+			title="BAD-Sudoku"
+			text="No this one is bad, not BAD, just bad. I mean it works but i still have no concept of state verification. My guess would be have each placement verify itself in the line/row/square its in. Same with the initial setup. Oh well not overly interested to return, one and done is good enough."
+		></sktemplate>
+	</div>
+	<script>
+		var theGridArr;
+		var currentNum = 5;
+		var setupKey = 1;
+
+		function changeNum(newNum)
+		{
+			currentNum = newNum;
+
+			if (newNum != 0)
+			{
+				$("#currentNum").html(newNum);
+			}
+			else
+			{
+				$("#currentNum").html("Clear");
+			}
+		}
+
+		function updateCell(objID)
+		{
+			var idOne = objID.split("")[0];
+			var idTwo = objID.split("")[1];
+
+			if (!$("#" + objID).hasClass("nonInit"))
+			{
+				var currentHtml = $("#" + objID).html();
+				var modHtml = currentHtml.substring(1, currentHtml.length);
+
+				theGridArr[idOne][idTwo] = currentNum;
+				$("#" + objID).html(currentNum + modHtml);
+
+				runCheck(false);
+			}			
+		}
+
+		function updateHint(objID)
+		{
+			$("#" + objID).html(currentNum);
+		}
+
+		setup();
+
+		function setup()
+		{
+			theGridArr =
+				[
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+				];
+
+			$.each(theGridArr, function (index, value)
+			{
+				$.each(value, function (innerIndex, innerValue)
+				{
+					idVal = "#" + index + innerIndex;
+					$(idVal).removeClass("nonInit");
+				});
+			});
+
+			switch (setupKey)
+			{
+				case 1:
+					var howManyStarters = 28;
+					var looper = 0;
+					while (looper < howManyStarters)
+					{
+						var idOne = getRandomInt(0, 9);
+						var idTwo = getRandomInt(0, 9);
+						var randomCellId = "#" + idOne + idTwo;
+						var randomValue = getRandomInt(1, 10);
+						theGridArr[idOne][idTwo] = randomValue;
+						$(randomCellId).html(randomValue);
+						$(randomCellId).addClass("nonInit");
+						looper++;
+					}
+					break;
+			}
+
+			
+
+			$.each(theGridArr, function (index, value)
+			{
+				$.each(value, function (innerIndex, innerValue)
+				{
+					idVal = "#" + index + innerIndex;
+
+					if ($(idVal).hasClass("nonInit"))
+					{
+						$(idVal).html(
+							innerValue +
+							" <div class='onclickBox' onclick='updateCell(\"" + index + innerIndex + "\")'></div>"
+						);
+					}
+					else
+					{
+						$(idVal).html(
+							innerValue +
+							" <div class='onclickBox' onclick='updateCell(\"" + index + innerIndex + "\")'></div>" +
+							" <div class='hintBox tl' id='" + index + innerIndex + "tl' onclick='updateHint(\"" + index + innerIndex + "tl\")'></div>" +
+							" <div class='hintBox tr' id='" + index + innerIndex + "tr' onclick='updateHint(\"" + index + innerIndex + "tr\")'></div>" +
+							" <div class='hintBox bl' id='" + index + innerIndex + "bl' onclick='updateHint(\"" + index + innerIndex + "bl\")'></div>" +
+							" <div class='hintBox br' id='" + index + innerIndex + "br' onclick='updateHint(\"" + index + innerIndex + "br\")'></div>"
+						);
+					}
+				});
+			});
+
+			if (runCheck(true))
+			{
+				setup();
+			}
+		}
+
+		function getRandomInt(min, max)
+		{
+			const minCeiled = Math.ceil(min);
+			const maxFloored = Math.floor(max);
+			return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+		}
+
+		function runCheck(isSetup)
+		{
+			$.each(theGridArr, function (index, value)
+			{
+				$.each(value, function (innerIndex, innerValue)
+				{
+					idVal = "#" + index + innerIndex;
+					if ($(idVal).hasClass("nonInit"))
+					{
+						$(idVal).css("background-color", "grey");
+					}
+					else
+					{
+						$(idVal).css("background-color", "white");
+					}
+				});
+			});
+			var everyCheckCleared = true;
+			var restartSetup = false;
+
+			$.each(theGridArr, function (index, value)
+			{
+				var allSafe = true;
+				var tested = [];
+				$.each(value, function (innerIndex, innerValue)
+				{
+					if (innerValue == ' ')
+					{
+						everyCheckCleared = false;
+					}
+					else if (jQuery.inArray(innerValue, tested) != -1)
+					{
+						allSafe = false;
+						everyCheckCleared = false;
+						restartSetup = true;
+					}
+					else
+					{
+						tested.push(innerValue);
+					}
+				});
+
+				if (allSafe == false)
+				{
+					$.each(value, function (innerIndex, innerValue)
+					{
+						var currentID = "#" + index + innerIndex;
+						if ($(currentID).hasClass("nonInit"))
+						{
+							$(currentID).css("background-color", "darkRed");
+						}
+						else
+						{
+							$(currentID).css("background-color", "red");
+						}
+					});
+				}
+			});
+
+			var arrTest = [];
+			for (var vv = 0; vv < 3; vv = vv + 1)
+			{
+				for (var n = 0; n < 3; n = n + 1)
+				{
+					for (var aa = (0 + vv); aa < (9 + vv); aa = aa + 3)
+					{
+						for (var i = (0 + n); i < (9 + n); i = i + 3)
+						{
+							arrTest.push(["#"+aa+i,theGridArr[aa][i]]);
+						}
+					}
+					var allSafe = true;
+					var colTested = [];
+					var coltempIDs = [];
+					$.each(arrTest, function (index, value)
+					{
+						if (value[1] == ' ')
+						{
+							coltempIDs.push(value[0]);
+							everyCheckCleared = false;
+						}
+						else if (jQuery.inArray(value[1], colTested) != -1)
+						{
+							allSafe = false;
+							everyCheckCleared = false;
+							restartSetup = true;
+							coltempIDs.push(value[0]);
+						}
+						else
+						{
+							colTested.push(value[1]);
+							coltempIDs.push(value[0]);
+						}
+					});
+					if (allSafe == false)
+					{
+						$.each(coltempIDs, function (index, value)
+						{
+							if ($(value).hasClass("nonInit"))
+							{
+								$(value).css("background-color", "darkRed");
+							}
+							else
+							{
+								$(value).css("background-color", "red");
+							}
+						});
+					}
+					arrTest = [];
+					var innerMod = innerMod + 1;
+				}
+			}
+
+			var arrTest = [];
+			for (var vv = 0; vv < 9; vv = vv + 3)
+			{
+				for (var n = 0; n < 9; n = n + 3)
+				{
+					for (var aa = (0 + vv); aa < (3 + vv); aa = aa + 1)
+					{
+						for (var i = (0 + n); i < (3 + n); i = i + 1)
+						{
+							arrTest.push(["#" + aa + i, theGridArr[aa][i]]);
+						}
+					}
+					var allSafe = true;
+					var colTested = [];
+					var coltempIDs = [];
+					$.each(arrTest, function (index, value)
+					{
+						if (value[1] == ' ')
+						{
+							coltempIDs.push(value[0]);
+							everyCheckCleared = false;
+						}
+						else if (jQuery.inArray(value[1], colTested) != -1)
+						{
+							allSafe = false;
+							everyCheckCleared = false;
+							restartSetup = true;
+							coltempIDs.push(value[0]);
+						}
+						else
+						{
+							colTested.push(value[1]);
+							coltempIDs.push(value[0]);
+						}
+					});
+					if (allSafe == false)
+					{
+						$.each(coltempIDs, function (index, value)
+						{
+							if ($(value).hasClass("nonInit"))
+							{
+								$(value).css("background-color", "darkRed");
+							}
+							else
+							{
+								$(value).css("background-color", "red");
+							}
+						});
+					}
+					arrTest = [];
+					var innerMod = innerMod + 1;
+				}
+			}
+
+			if (everyCheckCleared)
+			{
+				$("#isErr").html("Complete");
+			}
+			else
+			{
+				$("#isErr").html("Err");
+			}
+
+			if (isSetup)
+			{
+				return restartSetup;
+			}
+		}
+	</script>
+</section>

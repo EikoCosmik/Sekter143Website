@@ -1,0 +1,1060 @@
+//main: "../compiled.less"
+
+#BAD
+{
+	.badTabs
+	{
+		grid-template-columns: 1fr 1fr;
+			grid-auto-rows: min-content;
+	}
+
+	&.BADRunner
+	{
+		#pageContent
+		{
+			grid-auto-rows: 1fr
+		}
+	}
+
+	&.badSolver
+	{
+		#pageContent
+		{
+			grid-template-rows: 1fr;
+			grid-template-columns: 1fr;
+			border: none;
+
+			> .standardPost
+			{
+				grid-column: 1;
+			}
+			
+			> .block
+			{
+				grid-column: 1;
+				grid-gap: var(--halfGap);
+
+				> .tabs
+				{
+					grid-template-columns: 2fr 1fr;
+				}
+
+				#out
+				{
+					.centerInDiv;  
+				}
+			}
+		}
+	}
+
+	&.badCollatz
+	{
+	
+		#pageContent
+		{
+			.tabs;
+
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			grid-template-rows: min-content min-content min-content 1fr;
+			border-radius: var(--baseBorderRadius);
+			grid-gap: var(--halfGap);
+			grid-template-areas:
+				"badDesc badDesc desc desc"
+				"odd run runs runs"
+				"even run runs runs"
+				"out out out out"
+			;
+			border: none;
+
+			.badDescription
+			{
+				grid-area: badDesc;
+			}
+
+			.colatzFormOdd
+			{
+				.tabs;
+				.block;
+				.useGradient;
+				grid-gap: var(--halfGap);
+				grid-area: odd;
+				grid-template-columns: 1fr auto 1fr;
+
+				> div
+				{
+					.centerInDiv;
+					font-size: var(--largeFontSize);
+				}
+			}
+
+			.colatzFormEven
+			{
+				.tabs;
+				.block;
+				.useGradient;
+				grid-gap: var(--halfGap);
+				grid-area: even;
+				grid-template-columns: 1fr auto 1fr;
+
+				> div
+				{
+					.centerInDiv;
+					font-size: var(--largeFontSize);
+				}
+			}
+			
+			.colatzFormRuns
+			{
+				.tabs;
+				grid-gap: var(--halfGap);
+				grid-area: runs;
+				grid-template-columns: auto auto;
+				grid-template-rows: auto auto;
+			}
+
+			.colatzFormDesc
+			{
+				.tabs;
+				.block;
+				grid-gap: var(--halfGap);
+				grid-area: desc;
+				grid-template-columns: auto auto;
+
+				.key
+				{
+					.block;
+					.darkElement;
+					display: grid;
+					grid-template-columns: auto auto;
+					grid-template-rows: auto auto;
+					column-rule: 2px solid var(--bcol_primaryDark);
+					row-rule: 2px solid var(--bcol_primaryDark);
+					padding: 0;
+					grid-gap: 0;
+
+					span
+					{
+						.centerInDiv;
+						padding: var(--halfGap);
+
+						&.odd
+						{
+							color: magenta;
+						}
+
+						&.even
+						{
+							color: cyan;
+						}
+
+						&.start
+						{
+							color: red;
+						}
+
+						&.result
+						{
+							color: lime;
+						}
+					}
+				}
+			}
+
+			.colatzFormRun
+			{
+				.verticalTabs;
+				.block;
+				.useGradient;
+				grid-gap: var(--halfGap);
+				grid-area: run;
+				grid-auto-rows: 1fr;
+			}
+
+			#out
+			{
+				.block;
+				.darkElement;
+				grid-area: out;
+			}
+		}
+	}
+
+	&.badPaint
+	{
+		
+
+		#pageContent
+		{
+			grid-template-columns: 1fr var(--pageWidth) 1fr;
+			border: none;
+
+
+			.controls
+			{
+				.block;
+				.verticalTabs;
+			}
+
+			#canvasHolder
+			{
+				display: grid;
+				grid-template-rows: 1fr auto 1fr;
+
+				#badPaintCanvas
+				{
+					margin: auto;
+					width: auto;
+					height: auto;
+					grid-row: 2;
+				}
+			}
+		}
+	}
+
+	&.badHorseRace
+	{
+		
+
+		#imagePlaceholder
+		{
+			display: none;
+		}
+
+		#pageContent
+		{
+			grid-template-columns: 1000px auto;
+			grid-template-rows: 400px 150px 1fr;
+			grid-template-areas: "canvas past" "controls past" "description past";
+			border: none;
+
+			> .standardPost
+			{
+				grid-area: description;
+			}
+
+			#badPaintCanvas
+			{
+				.block;
+				.darkElement;
+				padding: 0;
+				grid-area: canvas;
+			}
+			#bankingBlock
+			{
+				.tabs;
+				grid-area: controls;
+				grid-template-columns: 150px 1fr;
+
+				#checkboxes
+				{
+					.block;
+					.tabs;
+					.darkElement;
+					grid-template-columns: 1fr 1fr;
+					grid-template-rows: 1fr 1fr;
+
+					> div
+					{
+						.block;
+						.liteElement;
+						padding: 0;
+
+						&:has(input:checked+.checkmark)
+						{
+							&.redCheckbox
+							{
+								.redElement;
+							}
+							&.blueCheckbox
+							{
+								.blueElement;
+							}
+							&.greenCheckbox
+							{
+								.greenElement;
+							}
+							&.yellowCheckbox
+							{
+								.yellowElement;
+							}
+						}
+
+						.checkmark
+						{
+							.centerInDiv;
+						}
+
+						input
+						{
+							display: none;
+						}
+					}
+				}
+
+				#money
+				{
+					.block;
+					.tabs;
+					grid-template-columns: 2fr 2fr 2fr 1fr;
+    				grid-gap: var(--halfGap);
+
+					.simpleContent 
+					{
+						.verticalTabs;
+						grid-template-rows: min-content 1fr;
+
+						section
+						{
+							.block;
+							.centerInDiv;
+						}
+					}
+				}
+
+				#runButton
+				{
+					.block;
+				}
+			}
+
+			#pastScroll
+			{
+				.block;
+				.darkElement;
+				.verticalTabs;
+				grid-area: past;
+				
+				#pasts
+				{
+					.verticalTabs;
+					overflow-y: scroll;
+					grid-auto-rows: min-content;
+					grid-gap: var(--halfGap);
+					padding-right: var(--halfGap);
+
+					#goal
+					{
+						.block;
+						text-align: center;
+						.liteElement;
+					}
+
+					> div 
+					{
+						.block;
+						.verticalTabs;
+						grid-template-columns: 1fr 1fr;
+						grid-template-areas: 
+							"pastResult pastResult"
+							"pastBetSelection pastBetAmount"
+							"pastBT pastHT";
+						row-rule: 2px solid var(--bcol_primaryDark);
+						column-rule: 2px solid var(--bcol_primaryDark);
+						grid-gap: 0;
+						padding: 0;
+						.blueElement;
+
+						&.pastWin
+						{
+							grid-template-columns: 1fr 1fr;
+							grid-template-areas: 
+								"pastResult pastResult"
+								"pastBetSelection pastBetAmount"
+								"pastWin pastWin"
+								"pastBA pastHA"
+								"pastBT pastHT";
+							.greenElement;
+						}
+
+						&.pastLost
+						{
+							grid-template-columns: 1fr 1fr;
+							grid-template-areas: 
+								"pastResult pastResult"
+								"pastBetSelection pastBetAmount"
+								"pastWin pastWin"
+								"pastBT pastHT";
+							.redElement;
+						}
+
+						> div {	padding: var(--quarterGap);	}
+						#pastResult { grid-area: pastResult; }
+						#pastBetSelection { grid-area: pastBetSelection; }
+						#pastBetAmount { grid-area: pastBetAmount; }
+						#pastWin { grid-area: pastWin; }
+						#pastBA { grid-area: pastBA; }
+						#pastHA { grid-area: pastHA; }
+						#pastBT { grid-area: pastBT; }
+						#pastHT { grid-area: pastHT; }
+					}
+				}
+			}
+		}
+	}
+
+	&.badSudoku
+	{
+		
+
+		#pageContent
+		{
+			.tabs;
+			grid-template-columns: 1fr max-content 1fr;
+			border: none;
+
+			#numbers
+			{
+				.verticalTabs;
+			}
+
+			#sudokuGrid
+			{
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				grid-template-rows: repeat(3, 1fr);
+				aspect-ratio: 1;
+				color: black;
+				background-color: black;
+				grid-gap: var(--minGap);
+
+				> div
+				{
+					display: grid;
+					grid-template-columns: repeat(3, 1fr);
+					grid-template-rows: repeat(3, 1fr);
+					background-color: grey;
+					grid-gap: var(--minGap);
+
+					> div
+					{
+						.centerInDiv;
+						font-size: var(--largeFontSize);
+						position: relative;
+						background-color: white;
+
+						&.nonInit
+						{
+							background-color: grey;
+							
+							.hintBox
+							{
+								color: grey;
+							}
+						}
+						
+						.onclickBox
+						{
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							height: 100%;
+							width: 100%;
+							transform: translate(-50%, -50%);
+						}
+
+						.hintBox
+						{
+							.centerInDiv;
+							border: 1px solid grey;
+							position: absolute;
+							height: 1rem;
+							width: 1rem;
+							font-size: 0.75rem;
+							font-weight: bold;
+
+							&.tr
+							{
+								top: 0;
+								right: 0;
+								border-top: 0;
+								border-right: 0;
+							}
+				
+							&.bl
+							{
+								bottom: 0;
+								left: 0;
+								border-bottom: 0;
+								border-left: 0;
+							}
+				
+							&.tl {
+								top: 0;
+								left: 0;
+								border-top: 0;
+								border-left: 0;
+							}
+				
+							&.br {
+								bottom: 0;
+								right: 0;
+								border-bottom: 0;
+								border-right: 0;
+							}
+						}
+					}
+				}
+			}
+						
+			#outDisplay
+			{
+				.verticalTabs;
+				grid-template-rows: auto auto 1fr;
+
+				> div
+				{
+					.tabs;
+					.block;
+					.darkElement;
+					.centerInDiv;
+
+					> div
+					{
+						.redElement;
+						.block;
+					}
+				}
+			}
+		}
+	}
+
+	&.badTriSpinner
+	{
+		
+	
+		#pageContent
+		{
+			.tabs;
+			grid-template-rows: auto 1fr;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-areas: 
+			"controls spinner path" 
+			"controls desc desc";
+			border: none;
+
+			#configs, #spinnerCanvas, #pathCanvas
+			{
+				.block;
+			}
+
+			.standardPost
+			{
+				grid-area: desc;
+			}
+
+			#configs
+			{
+				.verticalTabs;
+				grid-template-columns: 1fr 1fr;
+				grid-area: controls;
+				grid-gap: var(--halfGap);
+
+				.inputBlock
+				{
+					grid-column: 1/-1;
+				}
+			}
+			
+			#spinnerCanvas
+			{
+				grid-area: spinner;
+			}
+
+			#pathCanvas
+			{
+				grid-area: path;
+			}
+		
+			#spinnerCanvas,
+			#pathCanvas
+			{
+				padding: 0;
+				aspect-ratio: 1;
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+
+	&.badCollatzLoopCalc
+	{
+		
+		
+		#pageContent
+		{
+			.verticalTabs;
+			grid-template-columns: 1fr auto;
+			border: none;
+			grid-template-rows: auto 1fr;
+
+			#out
+			{
+				grid-row: 2;
+				grid-column: 1/-1;
+				.block;
+				.darkElement;
+			}
+		}
+	}
+
+	&.badLockpick
+	{
+		
+
+		#pageContent
+		{
+			grid-template-columns: 5fr 3fr;
+			grid-template-rows:	1fr min-content auto 1fr;
+			grid-template-areas: ". ." "controls canvas" "desc canvas" ". .";
+			border: none;
+
+			.standardPost
+			{
+				grid-area: desc;
+			}
+
+			#values
+			{
+				.block;
+				.tabs;
+				grid-area: controls;
+				grid-auto-columns: 1fr;
+			}
+
+			#pickCanvas
+			{
+				.block;
+				padding: 0;
+				grid-area: canvas;
+				aspect-ratio: 1;
+				width: 100%;
+			}
+		}
+	}
+
+	&.badCube
+	{
+		
+
+		#page
+		{
+			container-name: page;
+			container-type: size;
+		}
+
+		#pageContent
+		{
+			.tabs;
+			border: none;
+			grid-template-columns: 1fr auto;
+			grid-template-rows: auto 1fr;
+			grid-template-areas:
+				"desc cube"
+				"controls cube";
+
+			.standardPost
+			{
+				grid-area: desc;
+			}
+
+			#cubeCanvas
+			{
+				.block;
+				.darkElement;
+				grid-area: cube;
+				aspect-ratio: 1;
+				
+				@container page
+				{
+					height: 90cqb;
+					width: 90cqb;
+				}
+			}
+
+			#cubeNet
+			{
+				grid-area: net;
+				display: grid;
+				grid-template-columns: min-content min-content min-content min-content;
+				grid-template-rows: 1fr 1fr 1fr;
+				grid-template-areas:
+					". up . ."
+					"left front right back"
+					". down . .";
+
+				#up { grid-area: up; }
+				#left { grid-area: left; }
+				#front { grid-area: front; }
+				#right { grid-area: right; }
+				#back { grid-area: back; }
+				#down { grid-area: down; }
+
+				> div
+				{
+					display: grid;
+					grid-template-columns: auto auto auto;
+					grid-template-rows: auto auto auto;
+
+					> div
+					{
+						aspect-ratio: 1;
+						border: 1px solid black;
+					}
+				}					
+			}
+
+			#controls
+			{
+				.verticalTabs;
+				grid-area: controls;
+				grid-auto-rows: min-content min-content;
+				grid-template-columns: 1fr;
+				grid-gap: var(--halfGap);
+
+				#scrambleText
+				{
+					.tabs;
+					grid-template-rows: 1fr 1fr;
+					grid-gap: var(--halfGap);
+					grid-template-columns: 1fr 1fr;
+				}
+
+				#moves
+				{
+					.verticalTabs;
+					grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+					grid-gap: var(--halfGap);
+				}
+			}
+		}
+	}
+
+	&.badInfRunner
+	{
+		
+		
+		#pageContent
+		{
+			.tabs;
+			border: none;
+			grid-template-columns: 15% 1fr;
+			grid-template-rows: 1fr 3fr;
+			grid-template-areas:
+				"desc score"
+				"desc game";
+			grid-gap: var(--halfGap);
+
+			> .standardPost
+			{
+				grid-area: desc;
+			}
+
+			#scoreSpace
+			{
+				.tabs;
+				grid-template-rows: auto 1fr;
+				grid-area: score;
+				grid-gap: var(--halfGap);
+				grid-auto-columns: 1fr;
+				
+				#mesageBoxHolder
+				{
+					.block;
+					.darkElement;
+				}
+
+				#scoreHolder
+				{
+					.tabs;
+					grid-auto-rows: 1fr;
+					grid-gap: var(--halfGap);
+					grid-auto-columns: 1fr;
+
+					> div
+					{
+						.block;
+						.tabs;
+						.darkElement;
+						grid-template-rows: min-content 1fr;
+						grid-gap: var(--halfGap);
+					}
+				}
+			}
+
+			#gameSpace
+			{
+				grid-area: game;
+				position: relative;
+				.block;
+				padding: 0;
+				background-color: black;
+
+				#startButton
+				{
+					width: 15rem;
+					height: 5rem;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+	}
+
+	&.badChaosGame
+	{
+		
+
+		#page
+		{
+			container-name: page;
+			container-type: size;
+		}
+		
+		#pageContent 
+		{
+			.tabs;
+			border: none;
+			grid-gap: var(--halfGap);
+
+			@container page
+			{
+				//grid-template-columns: 1fr 100cqh 1fr;
+				grid-template-columns: 1fr 1fr auto 1fr;
+				grid-template-rows: min-content 1fr;
+				grid-template-areas: "desc i1 canvas i2" "desc i1 canvas i2";
+
+				#myCanvas
+				{
+					.block;
+					.darkElement;
+					grid-area: canvas;
+					aspect-ratio: 1;
+					height: 90cqh;
+					width: auto;
+					margin: auto
+				}
+			}
+			
+			#inputs
+			{
+				grid-area: i1;
+			}
+			
+			#inputs2
+			{
+				grid-area: i2;
+			}
+			
+			.standardPost
+			{
+				grid-area: desc;
+			}
+
+			#inputs, #inputs2
+			{
+				.block;
+				.verticalTabs;
+				grid-template-columns: 1fr;
+				grid-auto-columns: auto;
+				grid-auto-rows: auto;
+				grid-gap: var(--quarterGap);
+				column-rule: 2px solid var(--bcol_primaryDark);
+				row-rule: 2px solid var(--bcol_primaryDark);
+				padding: 0;
+				font-size: var(--smallFontSize);
+
+				h2, .guide
+				{
+					grid-column: 1/-1;
+					padding: var(--quarterGap);
+					text-align: center;
+				}
+
+				.btn
+				{
+					.small;
+					padding: var(--quarterGap);
+				}
+
+				.inputBlock
+				{
+					grid-template-rows: 1fr;
+					grid-gap: var(--quarterGap);
+					height: auto;
+					border: none;
+					background-color: transparent;
+					background-image: none;
+					padding: var(--quarterGap);
+
+					input
+					{
+						padding: var(--minGap);
+					}
+				}
+			}
+		}
+	}
+
+	&.badWaves
+	{
+		
+
+		#page
+		{
+			container-name: page;
+			container-type: size;
+		}
+
+		#pageContent
+		{
+			.tabs;
+			border: none;
+			grid-template-areas: "desc canvas""controls controls";
+				grid-gap: var(--quarterGap);
+
+			@container page
+			{
+				grid-template-columns: 15cqw 1fr;
+				grid-template-rows: 65cqh auto;
+			}
+
+			#mainCanvas
+			{
+				.block;
+				grid-area: canvas;
+				padding: 0;
+				background-color: black;
+			}
+
+			#controls
+			{
+				.tabs;
+				grid-template-rows: 1fr 1fr 1fr;
+				grid-auto-columns: 1fr;
+				grid-area: controls;
+				grid-gap: var(--quarterGap);
+			}
+
+			.standardPost
+			{
+				grid-area: desc;
+			}
+		}
+	}
+
+	&.badFireworks
+	{
+		
+
+		#pageContent
+		{
+			position: relative;
+			border: none;
+			
+			#controls
+			{
+				.tabs;
+				padding: var(--halfGap);
+				grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: min-content;
+
+				.standardPost
+				{
+					grid-column: 1/-1;
+					grid-row: 2;
+				}
+			}
+		}
+	}
+
+	&.badSubGen
+	{
+		#pageContent
+		{
+			display: grid;
+			grid-template-columns:auto auto auto auto auto;
+			grid-template-rows: min-content min-content 1fr;
+			grid-gap: var(--halfGap);
+			height: min-content;
+			width: 100%;
+			font-size: var(--smallFontSize);
+			border: none;
+
+			hr
+			{
+				height: min-content;
+			}
+
+			> div
+			{
+				.verticalTabs;
+				grid-gap: var(--quarterGap);
+				padding: var(--minGap);
+				grid-auto-rows: min-content;
+
+				&:has(> div:not([class]))
+				{
+					display: block;
+					grid-gap: var(--quarterGap);
+
+					&.out
+					{
+						.darkElement;
+						display: grid;
+						grid-template-columns: auto auto 1fr;
+						height: 100%;
+						grid-column: 1/-1;
+					}
+
+					&.subs,
+					&.sauces
+					{
+						display: grid;
+						grid-template-columns: 1fr 1fr;
+						grid-gap: var(--quarterGap);
+						padding: var(--minGap); 
+						grid-column: auto/span 2; 
+						> div
+						{
+							height: min-content;
+							grid-gap: var(--quarterGap);
+							padding: var(--minGap);
+						}
+					}
+				}
+
+				> div
+				{
+					.verticalTabs;
+					grid-auto-rows: min-content;
+					height: min-content;
+					grid-gap: var(--quarterGap);
+				}
+			}
+
+			
+
+			.standardPost
+			{
+				grid-row: 1/3;
+			}
+			
+
+
+			.inputBlock
+			{
+				grid-gap: var(--quarterGap);
+				padding: var(--minGap);
+				height: min-content;
+				grid-template-columns: 1fr min-content;
+			}
+		}
+	}
+}

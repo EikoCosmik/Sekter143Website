@@ -1,0 +1,1 @@
+check.Contains("<script") || check.Contains("script>") || check.Contains("src=") || check.Contains("javascript:")

@@ -1,0 +1,25 @@
+<pageSettings>
+	title="Guestbook!"
+	id="guestbook"
+	class="azureElement withLeft"
+</pageSettings>
+
+<section id="pageContent">
+	<skModule 
+		type="form"
+		formID="guestbook"
+	></skModule>
+	<div id="guestbookFormResponces"></div>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => { db.guestbookUpdate('guestbookForm') });
+	</script>
+</section>
+
+<aside column="leftColumn" class="sidebar">
+	<sktemplate 
+		type="standardSidebar"
+		imgSrc="/assets/images/site_pfp.gif"
+		links="<a class='button small redElement spanCols' href='/'>Back To Index</a>"
+		text="Welcome to the guestbook! Feel free to leave a comment if you would like, i would love to hear your feedback!<br /><br />If you wish to contact me privately, reach out via the email button in the header 🩵"
+	></sktemplate>
+</aside>

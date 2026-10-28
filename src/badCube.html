@@ -1,0 +1,965 @@
+﻿<pageSettings>
+	title="The BAD"
+	class="redElement badCube"
+	id="BAD"
+</pageSettings>
+
+<section id="pageContent">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<sktemplate   
+			type="simpleContent"
+			title="BAD-Cube"
+			text="Its a functional Rubik's cube. I have a massive love for these puzzles, so once i had the drive to build it myself in JS i knew i had to try. Im happy with the result, its probably not the most sensible way to do it but like all the BADs i will likely never revisit. Its built, I'm happy, That'll do. 9/10 very happy."
+		></sktemplate>
+		<div id="controls">
+			<div id="scrambleText">
+				<sktemplate   
+					type="inputBlock"
+					id="scrambleIn"
+					value="R' U' B' U' R2 B D F U' F B' U2 R2 F2 D F U2 F' D R B' D' B' D2 F'"
+					inputType="text"
+					label="Scramble:"
+				></sktemplate>
+				<div class="button" onclick="scrambleFromInput()">Apply Moves</div>
+				<div class="button" onclick="scramble()">Random Scramble</div>
+				<div class="button" onclick="resetCube()">Reset Cube</div>
+			</div>
+			<div id="moves">
+				<button class="button" onclick="move('u')">U</button>
+				<button class="button" onclick="move('up')">U'</button>
+				<button class="button" onclick="move('f')">F</button>
+				<button class="button" onclick="move('fp')">F'</button>
+				<button class="button" onclick="move('r')">R</button>
+				<button class="button" onclick="move('rp')">R'</button>
+				<button class="button" onclick="move('b')">B</button>
+				<button class="button" onclick="move('bp')">B'</button>
+				<button class="button" onclick="move('l')">L</button>
+				<button class="button" onclick="move('lp')">L'</button>
+				<button class="button" onclick="move('d')">D</button>
+				<button class="button" onclick="move('dp')">D'</button>
+				<button class="button" onclick="move('uw')">Uw/u</button>
+				<button class="button" onclick="move('upw')">Uw'/u'</button>
+				<button class="button" onclick="move('fw')">Fw/f</button>
+				<button class="button" onclick="move('fpw')">Fw'/f'</button>
+				<button class="button" onclick="move('rw')">Rw/r</button>
+				<button class="button" onclick="move('rpw')">Rw'/r'</button>
+				<button class="button" onclick="move('bw')">Bw/b</button>
+				<button class="button" onclick="move('bpw')">Bw'/b'</button>
+				<button class="button" onclick="move('lw')">Lw/l</button>
+				<button class="button" onclick="move('lpw')">Lw'/l'</button>
+				<button class="button" onclick="move('dw')">Dw/d</button>
+				<button class="button" onclick="move('dpw')">Dw'/d'</button>
+				<button class="button" onclick="move('x')">x</button>
+				<button class="button" onclick="move('xp')">x'</button>
+				<button class="button" onclick="move('y')">y</button>
+				<button class="button" onclick="move('yp')">y'</button>
+				<button class="button" onclick="move('z')">z</button>
+				<button class="button" onclick="move('zp')">z'</button>
+				<button class="button" onclick="move('m')">m</button>
+				<button class="button" onclick="move('mp')">m'</button>
+				<button class="button" onclick="move('e')">e</button>
+				<button class="button" onclick="move('ep')">e'</button>
+				<button class="button" onclick="move('s')">s</button>
+				<button class="button" onclick="move('sp')">s'</button>
+			</div>
+		</div>
+		<!-- <div id='cubeNet'>
+			<div id="up">
+				<div class="0" style="background-color:magenta"></div>
+				<div class="1" style="background-color:magenta"></div>
+				<div class="2" style="background-color:magenta"></div>
+				<div class="7" style="background-color:magenta"></div>
+				<div class="8" style="background-color:magenta"></div>
+				<div class="3" style="background-color:magenta"></div>
+				<div class="6" style="background-color:magenta"></div>
+				<div class="5" style="background-color:magenta"></div>
+				<div class="4" style="background-color:magenta"></div>
+			</div>
+			<div id="front">
+				<div class="0" style="background-color:magenta"></div>
+				<div class="1" style="background-color:magenta"></div>
+				<div class="2" style="background-color:magenta"></div>
+				<div class="7" style="background-color:magenta"></div>
+				<div class="8" style="background-color:magenta"></div>
+				<div class="3" style="background-color:magenta"></div>
+				<div class="6" style="background-color:magenta"></div>
+				<div class="5" style="background-color:magenta"></div>
+				<div class="4" style="background-color:magenta"></div>
+			</div>
+			<div id="right">
+				<div class="0" style="background-color:magenta"></div>
+				<div class="1" style="background-color:magenta"></div>
+				<div class="2" style="background-color:magenta"></div>
+				<div class="7" style="background-color:magenta"></div>
+				<div class="8" style="background-color:magenta"></div>
+				<div class="3" style="background-color:magenta"></div>
+				<div class="6" style="background-color:magenta"></div>
+				<div class="5" style="background-color:magenta"></div>
+				<div class="4" style="background-color:magenta"></div>
+			</div>
+			<div id="back">
+				<div class="0" style="background-color:magenta"></div>
+				<div class="1" style="background-color:magenta"></div>
+				<div class="2" style="background-color:magenta"></div>
+				<div class="7" style="background-color:magenta"></div>
+				<div class="8" style="background-color:magenta"></div>
+				<div class="3" style="background-color:magenta"></div>
+				<div class="6" style="background-color:magenta"></div>
+				<div class="5" style="background-color:magenta"></div>
+				<div class="4" style="background-color:magenta"></div>
+			</div>
+			<div id="left">
+				<div class="0" style="background-color:magenta"></div>
+				<div class="1" style="background-color:magenta"></div>
+				<div class="2" style="background-color:magenta"></div>
+				<div class="7" style="background-color:magenta"></div>
+				<div class="8" style="background-color:magenta"></div>
+				<div class="3" style="background-color:magenta"></div>
+				<div class="6" style="background-color:magenta"></div>
+				<div class="5" style="background-color:magenta"></div>
+				<div class="4" style="background-color:magenta"></div>
+			</div>
+			<div id="down">
+				<div class="0" style="background-color:magenta"></div>
+				<div class="1" style="background-color:magenta"></div>
+				<div class="2" style="background-color:magenta"></div>
+				<div class="7" style="background-color:magenta"></div>
+				<div class="8" style="background-color:magenta"></div>
+				<div class="3" style="background-color:magenta"></div>
+				<div class="6" style="background-color:magenta"></div>
+				<div class="5" style="background-color:magenta"></div>
+				<div class="4" style="background-color:magenta"></div>
+			</div>
+		</div>		 -->
+		<canvas id="cubeCanvas" width="1920" height="1920"></canvas>
+		<script>
+
+		var cubeArray = {
+			up: ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"],
+			front: ["#00ff00", "#00ff00", "#00ff00", "#00ff00", "#00ff00", "#00ff00", "#00ff00", "#00ff00", "#00ff00"],
+			right: ["#ff0000", "#ff0000", "#ff0000", "#ff0000", "#ff0000", "#ff0000", "#ff0000", "#ff0000", "#ff0000"],
+			back: ["#0000ff", "#0000ff", "#0000ff", "#0000ff", "#0000ff", "#0000ff", "#0000ff", "#0000ff", "#0000ff"],
+			left: ["#ff6600", "#ff6600", "#ff6600", "#ff6600", "#ff6600", "#ff6600", "#ff6600", "#ff6600", "#ff6600"],
+			down: ["#ffff00", "#ffff00", "#ffff00", "#ffff00", "#ffff00", "#ffff00", "#ffff00", "#ffff00", "#ffff00"]
+		};
+
+		var cubePointsArray = {
+			up: {
+				0: [{ x: 50, y: 20.905 }, { x: 58.399, y: 25.754 }, { x: 50, y: 30.603 }, { x: 41.601, y: 25.754 }],
+				1: [{ x: 58.399, y: 25.754 }, { x: 66.798, y: 30.603 }, { x: 58.399, y: 35.453 }, { x: 50, y: 30.603 }],
+				2: [{ x: 66.798, y: 30.603 }, { x: 75.197, y: 35.453 }, { x: 66.798, y: 40.302 }, { x: 58.399, y: 35.453 }],
+				3: [{ x: 58.399, y: 35.453 }, { x: 66.798, y: 40.302 }, { x: 58.399, y: 45.151 }, { x: 50, y: 40.302 }],
+				4: [{ x: 50, y: 40.302 }, { x: 58.399, y: 45.151 }, { x: 50, y: 50 }, { x: 41.601, y: 45.151 }],
+				5: [{ x: 41.601, y: 35.453 }, { x: 50, y: 40.302 }, { x: 41.601, y: 45.151 }, { x: 33.202, y: 40.302 }],
+				6: [{ x: 33.202, y: 30.603 }, { x: 41.601, y: 35.453 }, { x: 33.202, y: 40.302 }, { x: 24.803, y: 35.453 }],
+				7: [{ x: 41.601, y: 25.754 }, { x: 50, y: 30.603 }, { x: 41.601, y: 35.453 }, { x: 33.202, y: 30.603 }],
+				8: [{ x: 50, y: 30.603 }, { x: 58.399, y: 35.453 }, { x: 50, y: 40.302 }, { x: 41.601, y: 35.453 }]
+			},
+			right: {
+				0: [{ x: 50, y: 50 }, { x: 58.399, y: 45.151 }, { x: 58.399, y: 54.849 }, { x: 50, y: 59.698 }],
+				1: [{ x: 58.399, y: 45.151 }, { x: 66.798, y: 40.302 }, { x: 66.798, y: 50 }, { x: 58.399, y: 54.849 }],
+				2: [{ x: 66.798, y: 40.302 }, { x: 75.197, y: 35.453 }, { x: 75.197, y: 45.151 }, { x: 66.798, y: 50 }],
+				3: [{ x: 66.798, y: 50 }, { x: 75.197, y: 45.151 }, { x: 75.197, y: 54.849 }, { x: 66.798, y: 59.698 }],
+				4: [{ x: 66.796, y: 59.698 }, { x: 75.197, y: 54.849 }, { x: 75.197, y: 64.547 }, { x: 66.798, y: 69.397 }],
+				5: [{ x: 58.399, y: 64.547 }, { x: 66.798, y: 59.689 }, { x: 66.798, y: 69.397 }, { x: 58.399, y: 74.246 }],
+				6: [{ x: 50, y: 69.397 }, { x: 58.399, y: 64.547 }, { x: 58.399, y: 74.246 }, { x: 50, y: 79.095 }],
+				7: [{ x: 50, y: 59.698 }, { x: 58.399, y: 54.849 }, { x: 58.399, y: 64.547 }, { x: 50, y: 69.397 }],
+				8: [{ x: 58.399, y: 54.849 }, { x: 66.798, y: 50 }, { x: 66.798, y: 59.698 }, { x: 58.399, y: 64.547 }]
+			},
+			front: {
+				0: [{ x: 24.803, y: 35.453 }, { x: 33.202, y: 40.302 }, { x: 33.202, y: 50 }, { x: 24.803, y: 45.151 }],
+			 	1: [{ x: 33.202, y: 40.302 }, { x: 41.601, y: 45.151 }, { x: 41.601, y: 54.849 }, { x: 33.202, y: 50 }],
+			 	2: [{ x: 41.601, y: 45.151 }, { x: 50, y: 50 }, { x: 50, y: 59.698 }, { x: 41.601, y: 54.849 }],
+			 	3: [{ x: 41.601, y: 54.849 }, { x: 50, y: 59.698 }, { x: 50, y: 69.397 }, { x: 41.601, y: 64.547 }],
+			 	4: [{ x: 41.601, y: 64.547 }, { x: 50, y: 69.397 }, { x: 50, y: 79.095 }, { x: 41.601, y: 74.246 }],
+			 	5: [{ x: 33.202, y: 59.698 }, { x: 41.601, y: 64.547 }, { x: 41.601, y: 74.247 }, { x: 33.202, y: 69.397 }],
+			 	6: [{ x: 24.803, y: 54.849 }, { x: 33.202, y: 59.698 }, { x: 33.202, y: 69.397 }, { x: 24.803, y: 64.547 }],
+			 	7: [{ x: 24.803, y: 45.151 }, { x: 33.202, y: 50 }, { x: 33.202, y: 59.698 }, { x: 24.803, y: 54.849 }],
+			 	8: [{ x: 33.202, y: 50 }, { x: 41.601, y: 54.849 }, { x: 41.601, y: 64.547 }, { x: 33.202, y: 59.698 }]
+			}
+		};
+
+		var backupArray = structuredClone(cubeArray);
+
+		updateFromArray();
+
+		function updateFromArray()
+		{
+			for (var key in cubeArray)
+			{
+				var subArrayLooper = 0;
+				var kids = $("#" + key).children();
+
+				while (subArrayLooper < 9)
+				{
+					kid = kids.filter("." + subArrayLooper.toString());
+					$(kid).css("background-color", cubeArray[key][subArrayLooper]);
+					subArrayLooper++;
+				}
+			}
+
+			updateCanvas();
+		}
+
+		function updateCanvas()
+		{
+			var c = document.getElementById("cubeCanvas");
+			var ctx = c.getContext("2d");
+			ctx.lineWidth = 10;
+
+			for (var key in cubeArray["up"])
+			{
+				var color = cubeArray["up"][key];
+				ctx.beginPath();		
+				ctx.fillStyle = color;
+				ctx.moveTo(getCoords(cubePointsArray["up"][key][0]).x, getCoords(cubePointsArray["up"][key][0]).y);
+				for (var point in cubePointsArray["up"][key])
+				{
+					var point = getCoords(cubePointsArray["up"][key][point]);
+					ctx.lineTo(point.x, point.y);
+				}
+				ctx.lineTo(getCoords(cubePointsArray["up"][key][0]).x, getCoords(cubePointsArray["up"][key][0]).y);
+				ctx.closePath();
+				ctx.fill();
+				ctx.stroke();
+			}
+			
+			for (var key in cubeArray["right"])
+			{
+				var color = cubeArray["right"][key];
+				ctx.beginPath();		
+				ctx.fillStyle = color;
+				ctx.moveTo(getCoords(cubePointsArray["right"][key][0]).x, getCoords(cubePointsArray["right"][key][0]).y);
+				for (var point in cubePointsArray["right"][key])
+				{
+					var point = getCoords(cubePointsArray["right"][key][point]);
+					ctx.lineTo(point.x, point.y);
+				}
+				ctx.lineTo(getCoords(cubePointsArray["right"][key][0]).x, getCoords(cubePointsArray["right"][key][0]).y);
+				ctx.closePath();
+				ctx.fill();
+				ctx.stroke();
+			}
+
+			for (var key in cubeArray["front"])
+			{
+				var color = cubeArray["front"][key];
+				ctx.beginPath();		
+				ctx.fillStyle = color;
+				ctx.moveTo(getCoords(cubePointsArray["front"][key][0]).x, getCoords(cubePointsArray["front"][key][0]).y);
+				for (var point in cubePointsArray["front"][key])
+				{
+					var point = getCoords(cubePointsArray["front"][key][point]);
+					ctx.lineTo(point.x, point.y);
+				}
+				ctx.lineTo(getCoords(cubePointsArray["front"][key][0]).x, getCoords(cubePointsArray["front"][key][0]).y);
+				ctx.closePath();
+				ctx.fill();
+				ctx.stroke();
+			}
+		}
+
+		function getCoords(coordsIn)
+		{
+			var c = document.getElementById("cubeCanvas");
+			var canvasWidth = c.width;
+			var canvasHeight = c.height;
+			var out = { x: coordsIn.x / 100, y: coordsIn.y / 100 };
+
+			out.x = out.x * canvasWidth;
+			out.y = out.y * canvasHeight;
+
+			return out;
+		}
+
+		function move(moveIn)
+		{
+			switch (moveIn)
+			{
+				case "u":
+					rotateFace(true, "up");
+					moveAttached(true, "up");
+					break;
+				case "u2":
+					rotateFace(true, "up");
+					moveAttached(true, "up");
+					rotateFace(true, "up");
+					moveAttached(true, "up");
+					break;
+				case "up":
+					rotateFace(false, "up");
+					moveAttached(false, "up");
+					break;
+				case "f":
+					rotateFace(true, "front");
+					moveAttached(true, "front");
+					break;
+				case "f2":
+					rotateFace(true, "front");
+					moveAttached(true, "front");
+					rotateFace(true, "front");
+					moveAttached(true, "front");
+					break;
+				case "fp":
+					rotateFace(false, "front");
+					moveAttached(false, "front");
+					break;
+				case "r":
+					rotateFace(true, "right");
+					moveAttached(true, "right");
+					break;
+				case "r2":
+					rotateFace(true, "right");
+					moveAttached(true, "right");
+					rotateFace(true, "right");
+					moveAttached(true, "right");
+					break;
+				case "rp":
+					rotateFace(false, "right");
+					moveAttached(false, "right");
+					break;
+				case "b":
+					rotateFace(true, "back");
+					moveAttached(true, "back");
+					break;
+				case "b2":
+					rotateFace(true, "back");
+					moveAttached(true, "back");
+					rotateFace(true, "back");
+					moveAttached(true, "back");
+					break;
+				case "bp":
+					rotateFace(false, "back");
+					moveAttached(false, "back");
+					break;
+				case "l":
+					rotateFace(true, "left");
+					moveAttached(true, "left");
+					break;
+				case "l2":
+					rotateFace(true, "left");
+					moveAttached(true, "left");
+					rotateFace(true, "left");
+					moveAttached(true, "left");
+					break;
+				case "lp":
+					rotateFace(false, "left");
+					moveAttached(false, "left");
+					break;
+				case "d":
+					rotateFace(true, "down");
+					moveAttached(true, "down");
+					break;
+				case "d2":
+					rotateFace(true, "down");
+					moveAttached(true, "down");
+					rotateFace(true, "down");
+					moveAttached(true, "down");
+					break;
+				case "dp":
+					rotateFace(false, "down");
+					moveAttached(false, "down");
+					break;
+				case "uw":
+					move("u");
+					move("ep");
+					break;
+				case "uw2":
+					move("u");
+					move("ep");
+					move("u");
+					move("ep");
+					break;
+				case "upw":
+					move("up");
+					move("e");
+					break;
+				case "fw":
+					move("f");
+					move("s");
+					break;
+				case "fw2":
+					move("f");
+					move("s");
+					move("f");
+					move("s");
+					break;
+				case "fpw":
+					move("fp");
+					move("sp");
+					break;
+				case "rw":
+					move("r");
+					move("mp");
+					break;
+				case "rw2":
+					move("r");
+					move("mp");
+					move("r");
+					move("mp");
+					break;
+				case "rpw":
+					move("rp");
+					move("m");
+					break;
+				case "bw":
+					move("b");
+					move("sp");
+					break;
+				case "bw2":
+					move("b");
+					move("sp");
+					move("b");
+					move("sp");
+					break;
+				case "bpw":
+					move("bp");
+					move("s");
+					break;
+				case "lw":
+					move("l");
+					move("m");
+					break;
+				case "lw2":
+					move("l");
+					move("m");
+					move("l");
+					move("m");
+					break;
+				case "lpw":
+					move("lp");
+					move("mp");
+					break;
+				case "dw":
+					move("d");
+					move("e");
+					break;
+				case "dw2":
+					move("d");
+					move("e");
+					move("d");
+					move("e");
+					break;
+				case "dpw":
+					move("dp");
+					move("ep");
+					break;
+				case "x":
+					moveAxis(true, "x");
+					break;
+				case "x2":
+					moveAxis(true, "x");
+					moveAxis(true, "x");
+					break;
+				case "xp":
+					moveAxis(false, "x");
+					break;
+				case "y":
+					moveAxis(true, "y");
+					break;
+				case "y2":
+					moveAxis(true, "y");
+					moveAxis(true, "y");
+					break;
+				case "yp":
+					moveAxis(false, "y");
+					break;
+				case "z":
+					moveAxis(true, "z");
+					break;
+				case "z2":
+					moveAxis(true, "z");
+					moveAxis(true, "z");
+					break;
+				case "zp":
+					moveAxis(false, "z");
+					break;
+				case "m":
+					move('xp');
+					move('lp');
+					move('r');
+					break;
+				case "m2":
+					move('xp');
+					move('lp');
+					move('r');
+					move('xp');
+					move('lp');
+					move('r');
+					break;
+				case "mp":
+					move('x');
+					move('l');
+					move('rp');
+					break;
+				case "e":
+					move('yp');
+					move('u');
+					move('dp');
+					break;
+				case "e2":
+					move('yp');
+					move('u');
+					move('dp');
+					move('yp');
+					move('u');
+					move('dp');
+					break;
+				case "ep":
+					move('y');
+					move('up');
+					move('d');
+					break;
+				case "s":
+					move('z');
+					move('fp');
+					move('b');
+					break;
+				case "s2":
+					move('z');
+					move('fp');
+					move('b');
+					move('z');
+					move('fp');
+					move('b');
+					break;
+				case "sp":
+					move('zp');
+					move('f');
+					move('bp');
+					break;
+			}
+			updateFromArray();
+			return true;
+		}
+
+		function moveAxis(clockwise, axis)
+		{
+			var tempCube = Object.assign({}, cubeArray);
+
+			switch (axis)
+			{
+				case "x":
+					if (clockwise)
+					{
+						rotateFace(true, "right");
+						rotateFace(false, "left");
+						rotateFace(false, "up");
+						rotateFace(false, "up");
+						rotateFace(false, "back");
+						rotateFace(false, "back");
+
+						cubeArray["up"] = tempCube["front"];
+						cubeArray["front"] = tempCube["down"];
+						cubeArray["down"] = tempCube["back"];
+						cubeArray["back"] = tempCube["up"];
+					}
+					else
+					{
+						rotateFace(false, "right");
+						rotateFace(true, "left");
+						rotateFace(false, "down");
+						rotateFace(false, "down");
+						rotateFace(false, "back");
+						rotateFace(false, "back");
+
+						cubeArray["up"] = tempCube["back"];
+						cubeArray["front"] = tempCube["up"];
+						cubeArray["down"] = tempCube["front"];
+						cubeArray["back"] = tempCube["down"];
+					}
+					break;
+				case "y":
+					if (clockwise)
+					{
+						rotateFace(true, "up");
+						rotateFace(false, "down");
+
+						cubeArray["front"] = tempCube["right"];
+						cubeArray["right"] = tempCube["back"];
+						cubeArray["back"] = tempCube["left"];
+						cubeArray["left"] = tempCube["front"];
+					}
+					else
+					{
+						rotateFace(false, "up");
+						rotateFace(true, "down");
+
+						cubeArray["front"] = tempCube["left"];
+						cubeArray["right"] = tempCube["front"];
+						cubeArray["back"] = tempCube["right"];
+						cubeArray["left"] = tempCube["back"];
+					}
+					break;
+				case "z":
+					if (clockwise)
+					{
+						rotateFace(true, "front");
+						rotateFace(false, "back");
+
+
+						rotateFace(true, "up");
+						rotateFace(true, "down");
+						rotateFace(true, "left");
+						rotateFace(true, "right");
+
+						cubeArray["up"] = tempCube["left"];
+						cubeArray["right"] = tempCube["up"];
+						cubeArray["down"] = tempCube["right"];
+						cubeArray["left"] = tempCube["down"];
+					}
+					else
+					{
+						rotateFace(false, "front");
+						rotateFace(true, "back");
+
+						rotateFace(false, "up");
+						rotateFace(false, "down");
+						rotateFace(false, "left");
+						rotateFace(false, "right");
+
+						cubeArray["up"] = tempCube["right"];
+						cubeArray["right"] = tempCube["down"];
+						cubeArray["down"] = tempCube["left"];
+						cubeArray["left"] = tempCube["up"];
+					}
+					break;
+			}
+		}
+
+		function moveAttached(clockwise, key)
+		{
+			var f = cubeArray["front"];
+			var u = cubeArray["up"];
+			var r = cubeArray["right"];
+			var d = cubeArray["down"];
+			var l = cubeArray["left"];
+			var b = cubeArray["back"];
+
+			var tempfront = cubeArray["front"].slice(0);
+			var tempup = cubeArray["up"].slice(0);
+			var tempright = cubeArray["right"].slice(0);
+			var tempdown = cubeArray["down"].slice(0);
+			var templeft = cubeArray["left"].slice(0);
+			var tempback = cubeArray["back"].slice(0);
+
+			switch (key)
+			{
+				case "up":
+
+					if (clockwise)
+					{
+						f[0] = tempright[0];
+						f[1] = tempright[1];
+						f[2] = tempright[2];
+
+						r[0] = tempback[0];
+						r[1] = tempback[1];
+						r[2] = tempback[2];
+
+						b[0] = templeft[0];
+						b[1] = templeft[1];
+						b[2] = templeft[2];
+
+						l[0] = tempfront[0];
+						l[1] = tempfront[1];
+						l[2] = tempfront[2];
+					}
+					else
+					{
+						f[0] = templeft[0];
+						f[1] = templeft[1];
+						f[2] = templeft[2];
+
+						r[0] = tempfront[0];
+						r[1] = tempfront[1];
+						r[2] = tempfront[2];
+
+						b[0] = tempright[0];
+						b[1] = tempright[1];
+						b[2] = tempright[2];
+
+						l[0] = tempback[0];
+						l[1] = tempback[1];
+						l[2] = tempback[2];
+					}
+					break;
+				case "front":
+					if (clockwise)
+					{
+						u[4] = templeft[2];
+						u[5] = templeft[3];
+						u[6] = templeft[4];
+
+						r[0] = tempup[6];
+						r[7] = tempup[5];
+						r[6] = tempup[4];
+
+						d[0] = tempright[6];
+						d[1] = tempright[7];
+						d[2] = tempright[0];
+
+						l[2] = tempdown[0];
+						l[3] = tempdown[1];
+						l[4] = tempdown[2];
+					}
+					else
+					{
+						u[4] = tempright[6];
+						u[5] = tempright[7];
+						u[6] = tempright[0];
+
+						r[0] = tempdown[2];
+						r[7] = tempdown[1];
+						r[6] = tempdown[0];
+
+						d[0] = templeft[2];
+						d[1] = templeft[3];
+						d[2] = templeft[4];
+
+						l[2] = tempup[4];
+						l[3] = tempup[5];
+						l[4] = tempup[6];
+					}
+					break;
+				case "right":
+					if (clockwise)
+					{
+						u[2] = tempfront[2];
+						u[3] = tempfront[3];
+						u[4] = tempfront[4];
+
+						b[0] = tempup[4];
+						b[7] = tempup[3];
+						b[6] = tempup[2];
+
+						d[2] = tempback[6];
+						d[3] = tempback[7];
+						d[4] = tempback[0];
+
+						f[2] = tempdown[2];
+						f[3] = tempdown[3];
+						f[4] = tempdown[4];
+					}
+					else
+					{
+						u[2] = tempback[6];
+						u[3] = tempback[7];
+						u[4] = tempback[0];
+
+						b[0] = tempdown[4];
+						b[7] = tempdown[3];
+						b[6] = tempdown[2];
+
+						d[2] = tempfront[2];
+						d[3] = tempfront[3];
+						d[4] = tempfront[4];
+
+						f[2] = tempup[2];
+						f[3] = tempup[3];
+						f[4] = tempup[4];
+					}
+					break;
+				case "back":
+					if (clockwise)
+					{
+						u[0] = tempright[2];
+						u[1] = tempright[3];
+						u[2] = tempright[4];
+
+						r[2] = tempdown[4];
+						r[3] = tempdown[5];
+						r[4] = tempdown[6];
+
+						d[4] = templeft[6];
+						d[5] = templeft[7];
+						d[6] = templeft[0];
+
+						l[6] = tempup[0];
+						l[7] = tempup[1];
+						l[0] = tempup[2];
+					}
+					else
+					{
+						u[0] = templeft[6];
+						u[1] = templeft[7];
+						u[2] = templeft[0];
+
+						r[2] = tempup[0];
+						r[3] = tempup[1];
+						r[4] = tempup[2];
+
+						d[6] = tempright[4];
+						d[5] = tempright[3];
+						d[4] = tempright[2];
+
+						l[0] = tempdown[6];
+						l[7] = tempdown[5];
+						l[6] = tempdown[4];
+					}
+					break;
+				case "left":
+					if (clockwise)
+					{
+						u[0] = tempback[4];
+						u[7] = tempback[3];
+						u[6] = tempback[2];
+
+						f[0] = tempup[0];
+						f[7] = tempup[7];
+						f[6] = tempup[6];
+
+						d[0] = tempfront[0];
+						d[7] = tempfront[7];
+						d[6] = tempfront[6];
+
+						b[2] = tempdown[6];
+						b[3] = tempdown[7];
+						b[4] = tempdown[0];
+					}
+					else
+					{
+						u[0] = tempfront[0];
+						u[7] = tempfront[7];
+						u[6] = tempfront[6];
+
+						f[0] = tempdown[0];
+						f[7] = tempdown[7];
+						f[6] = tempdown[6];
+
+						d[0] = tempback[4];
+						d[7] = tempback[3];
+						d[6] = tempback[2];
+
+						b[2] = tempup[6];
+						b[3] = tempup[7];
+						b[4] = tempup[0];
+					}
+					break;
+				case "down":
+					if (clockwise)
+					{
+						f[6] = templeft[6];
+						f[5] = templeft[5];
+						f[4] = templeft[4];
+
+						r[6] = tempfront[6];
+						r[5] = tempfront[5];
+						r[4] = tempfront[4];
+
+						b[6] = tempright[6];
+						b[5] = tempright[5];
+						b[4] = tempright[4];
+
+						l[6] = tempback[6];
+						l[5] = tempback[5];
+						l[4] = tempback[4];
+					}
+					else
+					{
+						f[6] = tempright[6];
+						f[5] = tempright[5];
+						f[4] = tempright[4];
+
+						r[6] = tempback[6];
+						r[5] = tempback[5];
+						r[4] = tempback[4];
+
+						b[6] = templeft[6];
+						b[5] = templeft[5];
+						b[4] = templeft[4];
+
+						l[6] = tempfront[6];
+						l[5] = tempfront[5];
+						l[4] = tempfront[4];
+					}
+					break;
+			}
+		}
+
+		function rotateFace(clockwise, key)
+		{
+			var moveArray = cubeArray[key];
+
+			if (clockwise)
+			{
+				var holdC = moveArray.pop();
+				var first = moveArray.pop();
+				var seccond = moveArray.pop();
+				moveArray.unshift(first);
+				moveArray.unshift(seccond);
+				moveArray.push(holdC);
+			}
+			else
+			{
+				var holdC = moveArray.pop();
+				var first = moveArray.shift();
+				var seccond = moveArray.shift();
+				moveArray.push(first);
+				moveArray.push(seccond);
+				moveArray.push(holdC);
+			}
+		}
+	
+		function scrambleFromInput()
+        {
+			scrambleFromString($("#scrambleIn").val());
+        }
+
+		function scrambleFromString(inputString)
+        {
+			inputArr = inputString.split(" ");
+
+			for (var moveKey in inputArr)
+			{
+				inputArr[moveKey] = inputArr[moveKey].replace("'", "p").toLowerCase();
+				move(inputArr[moveKey]);
+			}
+        }
+
+		function resetCube()
+		{
+			cubeArray = structuredClone(backupArray);
+			updateFromArray();
+		}
+
+		var possibleMoves = [
+			"u", "u2", "up", "uw", "upw", 
+			"f", "f2", "fp", "fw", "fpw", 
+			"r", "r2", "rp", "rw", "rpw", 
+			"l", "l2", "lp", "lw", "lpw", 
+			"b", "b2", "bp", "bw", "bpw", 
+			"d", "d2", "dp", "dw", "dpw", 
+			"x", "xp", "x2",
+			"y", "yp", "y2",
+			"z", "zp", "z2",
+			"m", "mp", "m2",
+			"s", "sp", "s2",
+			"e", "ep", "e2"
+		];
+
+		function scramble()
+		{
+			length = possibleMoves.length;
+			movesCount = getRandomInt(30, 51);
+			var i = 0;
+			movesString = "";
+
+			while(i < movesCount)
+			{
+				movesString = movesString + " " + possibleMoves[getRandomInt(0, length)];
+				i++
+			}
+			console.log(movesString);
+
+			scrambleFromString(movesString);
+		}
+
+		function getRandomInt(min, max) 
+		{
+			const minCeiled = Math.ceil(min);
+			const maxFloored = Math.floor(max);
+			return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+		}
+	</script>
+</section>

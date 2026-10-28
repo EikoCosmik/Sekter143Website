@@ -1,0 +1,9 @@
+0 & Bases
+
+You probably have learnt at some point we have the numbers: 
+
+1 2 3 4 5 6 7 8 9 and then we go to the next position to the left for 10. The number of fingers we have is the direct reason why. We could easily count to 10 but past that and additional help was required, either by toes or rocks or whatever was available. This “amount of numbers” is referred to as a “base” of a counting system.  
+
+However, before I define that term a bit better, some may be pointing out a glaring omission from those numbers. What about 0? Well luckily, it's not a trick, I did leave it out because I wanted to talk about one interesting misconception. You may have heard that early civilizations didn't use a “Zero” in their math. This is half true and i was surprised to hear this when I heard the actual explanation. It's not that they didn't know about 0, its more 0 was considered as a symbol representing “Nothing” or “Empty” rather than being an actual number. Keep in mind we are still roughly in an age where negative numbers did not exist, but we will revisit that idea too when talking about types of numbers (which is less scary than it sounds I promise). 0 roughly came into formal use in 628 thanks to Brahmagupta an Indian mathematician, with it becoming more known in Europe around 1202 with mathematician Fibonacci. 
+
+So, with that cleared we can now define our number system Base10 as each digit can be represented by the numbers 0 1 2 3 4 5 6 7 8 9 before moving to the next digit. We will come back to bases in a side post later. 

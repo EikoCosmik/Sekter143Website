@@ -1,0 +1,365 @@
+<pageSettings>
+	title="The BAD"
+	color="redElement badWaves"
+	id="BAD"
+</pageSettings>
+
+<section id="pageContent">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<canvas id="mainCanvas" width="2600" height="1200"></canvas>
+	<div id="controls">
+		<div class="inputBlock"><label>Amp</label><input type="number" value="100" id="amps"></div>
+		<div class="inputBlock"><label>Amp 2</label><input type="number" value="100" id="amps2"></div>
+		<div class="inputBlock"><label>Amp 3</label><input type="number" value="100" id="amps3"></div>
+		<div class="inputBlock"><label>Freq</label><input type="number" value="1" step="1" id="freq"></div>
+		<div class="inputBlock"><label>Freq 2</label><input type="number" value="2" step="1" id="freq2"></div>
+		<div class="inputBlock"><label>Freq 3</label><input type="number" value="3" step="1" id="freq3"></div>
+		<div class="inputBlock"><label>Rate</label><input type="number" value="1" step="1" id="rate"></div>
+		<div class="inputBlock"><label>Rate 2</label><input type="number" value="1" step="1" id="rate2"></div>
+		<div class="inputBlock"><label>Rate 3</label><input type="number" value="1" step="1" id="rate3"></div>
+		<div class="inputBlock"><label>Offset</label><input type="number" value="0.01" step="0.01" id="offset"></div>
+		<div class="inputBlock"><label>Offset 2</label><input type="number" value="0.01" step="0.01" id="offset1"></div>
+		<div class="inputBlock"><label>Offset 3</label><input type="number" value="0.1" step="0.01" id="offset2"></div>
+		<div class="inputBlock"><label>Ops 1</label>
+			<select id="ops">
+				<option value="0">Off</option>
+				<option value="1">Sin</option>
+				<option value="2">Cos</option>
+				<option value="3">Tan</option>
+				<option value="4">LDamp Sin</option>
+				<option value="5">LDamp Cos</option>
+				<option value="6">LDamp Tan</option>
+				<option value="18">RDamp Sin</option>
+				<option value="19">RDamp Cos</option>
+				<option value="20">RDamp Tan</option>
+				<option value="7">Saw</option>
+				<option value="8">Triangle</option>
+				<option value="9">Square</option>
+				<option value="10">Noise Like</option>
+				<option value="11">Stepped Sin</option>
+				<option value="12">Tan Clamp</option>
+				<option value="13">Tan Wrapped</option>
+				<option value="14">|Sin|</option>
+				<option value="15">|Cos|</option>
+				<option value="16">|Tan|</option>
+				<option value="17">Random</option>
+			</select>
+		</div>
+		<div class="inputBlock"><label>Ops 2</label>
+			<select id="ops1">
+				<option value="0">Off</option>
+				<option value="1">Sin</option>
+				<option value="2">Cos</option>
+				<option value="3">Tan</option>
+				<option value="4">Damp Sin</option>
+				<option value="5">Damp Cos</option>
+				<option value="6">Damp Tan</option>
+				<option value="18">RDamp Sin</option>
+				<option value="19">RDamp Cos</option>
+				<option value="20">RDamp Tan</option>
+				<option value="7">Saw</option>
+				<option value="8">Triangle</option>
+				<option value="9">Square</option>
+				<option value="10">Noise Like</option>
+				<option value="11">Stepped Sin</option>
+				<option value="12">Tan Clamp</option>
+				<option value="13">Tan Wrapped</option>
+				<option value="14">|Sin|</option>
+				<option value="15">|Cos|</option>
+				<option value="16">|Tan|</option>
+				<option value="17">Random</option>
+			</select>
+		</div>
+		<div class="inputBlock"><label>Ops 3</label>
+			<select id="ops2">
+				<option value="0">Off</option>
+				<option value="1">Sin</option>
+				<option value="2">Cos</option>
+				<option value="3">Tan</option>
+				<option value="4">Damp Sin</option>
+				<option value="5">Damp Cos</option>
+				<option value="6">Damp Tan</option>
+				<option value="18">RDamp Sin</option>
+				<option value="19">RDamp Cos</option>
+				<option value="20">RDamp Tan</option>
+				<option value="7">Saw</option>
+				<option value="8">Triangle</option>
+				<option value="9">Square</option>
+				<option value="10">Noise Like</option>
+				<option value="11">Stepped Sin</option>
+				<option value="12">Tan Clamp</option>
+				<option value="13">Tan Wrapped</option>
+				<option value="14">|Sin|</option>
+				<option value="15">|Cos|</option>
+				<option value="16">|Tan|</option>
+				<option value="17">Random</option>
+			</select>
+		</div>
+		<div class="inputBlock"><label>Count</label><input type="number" value="50" step="1" id="count"></div>
+		<div class="inputBlock"><label>Rate Mod</label><input type="number" value="0.01" step="0.001" id="rateMod"></div>
+		<!-- <div><label>Radius</label><input type="number" value="10" step="0.1" id="radius"></div> -->
+		<div class="inputBlock"><label>Main wave</label><input type="checkbox" id="drawMainLine" checked="checked"></div>
+		<div class="inputBlock"><label>Sub waves</label><input type="checkbox" id="drawSubs"></div>
+		<div class="inputBlock"><label>Mid lines</label><input type="checkbox" id="drawMid"></div>
+		<div class="inputBlock"><label>Reset Phase</label><input type="button" onclick="resetPhase()"></div>
+		<!-- <div><label>Draw Delay</label><input type="number" value="1" step="1" id="drawRate"></div> -->
+	</div>
+	<sktemplate
+		type="simpleContent"
+		title="BAD-Waves"
+		text="This one i kept playing with for like 2 weeks (on and off not total ofc). I had a bigger phase of making visualisers like this. I want to make more, heck ill revisit this likely. BADWaves was a hidden gem for me, i spent so long just marveling at what different settings would do. Highly recomend plugging in weird settings. Have fun!"
+	></sktemplate>
+	<script>
+		const canvas = document.getElementById("mainCanvas");
+		const ctx = canvas.getContext("2d");
+		const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+		let canvasHeight = 1200;
+		let canvasWidth = 2600;
+		let middleLine = canvasHeight / 2;
+		let count = 500;
+		let radius = 5;
+		let dots = [];
+		let dots21 = [];
+		let dots22 = [];
+		let dots33 = [];
+		let amplitude = 100;
+		let frequency = 1;
+		let amplitude2 = 100;
+		let frequency2 = 1;
+		let amplitude3 = 100;
+		let frequency3 = 1;
+		let rate = 1;
+		let rate2 = 1;
+		let rate3 = 1;
+		let rateMod = 0.01;
+		let phase = 0;
+		let phase2 = 0;
+		let phase3 = 0;
+		let operation = 0;
+		let operation1 = 0;
+		let operation2 = 0;
+		let offset = 0;
+		let offset1 = 0;
+		let offset2 = 0;
+		let drawRate = 1;
+		let dotArrays = [];
+
+		let waveFns = [
+			(xNorm, amp, freq, ph, off) => 0,
+			(xNorm, amp, freq, ph, off) => amp * Math.sin((2 * Math.PI * freq * xNorm) + ph + off),
+			(xNorm, amp, freq, ph, off) => amp * Math.cos((2 * Math.PI * freq * xNorm) + ph + off),
+			(xNorm, amp, freq, ph, off) => amp * Math.tan((2 * Math.PI * freq * xNorm) + ph + off),
+
+			(xNorm, amp, freq, ph, off) => ((amp * xNorm)) * Math.sin((2 * Math.PI * freq * xNorm) + ph + off),
+			(xNorm, amp, freq, ph, off) => ((amp * xNorm)) * Math.cos((2 * Math.PI * freq * xNorm) + ph + off),
+			(xNorm, amp, freq, ph, off) => ((amp * xNorm)) * Math.tan((2 * Math.PI * freq * xNorm) + ph + off),
+
+			(xNorm, amp, freq, ph, off) => amp * (((2 * Math.PI * freq * xNorm) + ph + off) % (2 * Math.PI)) - amp * 3,
+			(xNorm, amp, freq, ph, off) => amp * Math.abs((((2 * Math.PI * freq * xNorm) + ph + off) % (2 * Math.PI)) - Math.PI) - amp * 1.5,
+			(xNorm, amp, freq, ph, off) => amp * Math.sign(Math.sin((2 * Math.PI * freq * xNorm) + ph + off)),
+
+			(xNorm, amp, freq, ph, off) => amp * (Math.sin(1000 * Math.sin(((2 * Math.PI * freq * xNorm) + ph + off)))),
+			(xNorm, amp, freq, ph, off) => amp * (Math.round(Math.sin(((2 * Math.PI * freq * xNorm) + ph + off)) * 4) / 4),
+			(xNorm, amp, freq, ph, off) => amp * (Math.max(-1, Math.min(1, Math.tan(((2 * Math.PI * freq * xNorm) + ph + off))))),
+			(xNorm, amp, freq, ph, off) => amp * (Math.sin(Math.tan(((2 * Math.PI * freq * xNorm) + ph + off)))),
+
+			(xNorm, amp, freq, ph, off) => amp * Math.abs(Math.sin(((2 * Math.PI * freq * xNorm) + ph + off))),
+			(xNorm, amp, freq, ph, off) => amp * Math.abs(Math.cos(((2 * Math.PI * freq * xNorm) + ph + off))),
+			(xNorm, amp, freq, ph, off) => amp * Math.abs(Math.tan(((2 * Math.PI * freq * xNorm) + ph + off))),
+
+			(xNorm, amp, freq, ph, off) => amp * Math.random(((2 * Math.PI * freq * xNorm) + ph + off)) - (amp/2),
+
+			(xNorm, amp, freq, ph, off) => ((amp * (1 - xNorm))) * Math.sin((2 * Math.PI * freq * xNorm) + ph + off),
+			(xNorm, amp, freq, ph, off) => ((amp * (1 - xNorm))) * Math.cos((2 * Math.PI * freq * xNorm) + ph + off),
+			(xNorm, amp, freq, ph, off) => ((amp * (1 - xNorm))) * Math.tan((2 * Math.PI * freq * xNorm) + ph + off)
+		];
+
+		$('#amps').on('input', function () {
+			amplitude = $(this).val();
+		});
+		$('#freq').on('input', function () {
+			frequency = $(this).val();
+		});
+		$('#amps2').on('input', function () {
+			amplitude2 = $(this).val();
+		});
+		$('#freq2').on('input', function () {
+			frequency2 = $(this).val();
+		});
+		$('#amps3').on('input', function () {
+			amplitude3 = $(this).val();
+		});
+		$('#freq3').on('input', function () {
+			frequency3 = $(this).val();
+		});
+		$('#rate').on('input', function () {
+			rate = parseFloat($(this).val());
+		});
+		$('#rate2').on('input', function () {
+			rate2 = parseFloat($(this).val());
+		});
+		$('#rate3').on('input', function () {
+			rate3 = parseFloat($(this).val());
+		});
+		$('#rateMod').on('input', function () {
+			rateMod = parseFloat($(this).val());
+		});
+		$('#count').on('input', function () {
+			count = $(this).val();
+			reset();
+		});
+		$('#radius').on('input', function () {
+			radius = $(this).val();
+		});
+		$('#ops').on('input', function () {
+			operation = parseInt($(this).val());
+		});
+		$('#ops1').on('input', function () {
+			operation1 = parseInt($(this).val());
+		});
+		$('#ops2').on('input', function () {
+			operation2 = parseInt($(this).val());
+		});
+		$('#drawRate').on('input', function () {
+			drawRate = parseInt($(this).val());
+		});
+		$('#offset').on('input', function () {
+			offset = parseFloat($(this).val());
+		});
+		$('#offset1').on('input', function () {
+			offset1 = parseFloat($(this).val());
+		});
+		$('#offset2').on('input', function () {
+			offset2 = parseFloat($(this).val());
+		});
+
+		window.addEventListener("DOMContentLoaded", () => {
+			$('#amps').val(amplitude);
+			$('#freq').val(frequency);
+			$('#amps2').val(amplitude2);
+			$('#freq2').val(frequency2);
+			$('#amps3').val(amplitude3);
+			$('#freq3').val(frequency3);
+			$('#rate').val(rate);
+			$('#rate2').val(rate2);
+			$('#rate3').val(rate3);
+			$('#rateMod').val(rateMod);
+			$('#count').val(count);
+			$('#radius').val(radius);
+			$('#ops').val(operation);
+			$('#ops1').val(operation1);
+			$('#ops2').val(operation2);
+			$('#drawRate').val(drawRate);
+			$('#offset').val(offset);
+			$('#offset1').val(offset1);
+			$('#offset2').val(offset2);
+		});
+
+		function resetPhase() {
+			phase = 0;
+			phase2 = 0;
+			phase3 = 0;
+		}
+
+		function setup() {
+			gap = canvasWidth / count;
+			for (let i = 0; i < count + 2; i++) {
+				let newArr = [((i * gap) + (gap / 2)) - gap, middleLine];
+				dots.push(newArr);
+				dots21.push(newArr);
+				dots22.push(newArr);
+				dots33.push(newArr);
+			}
+			dotArrays = [dots, dots21, dots22, dots33];
+			drawFrame();
+		}
+
+		function reset() {
+			gap = canvasWidth / count;
+			dots = [];
+			dots21 = [];
+			dots22 = [];
+			dots33 = [];
+			dotArrays = [];
+			for (let i = 0; i < count + 2; i++) {
+				let newArr = [((i * gap) + (gap / 2)) - gap, middleLine];
+				dots.push(newArr);
+				dots21.push(newArr);
+				dots22.push(newArr);
+				dots33.push(newArr);
+			}
+			dotArrays = [dots, dots21, dots22, dots33];
+		}
+
+		async function drawFrame() {
+			ctx.clearRect(-100, -100, canvasWidth+100, canvasHeight+100);
+			ctx.translate(0, middleLine);
+
+			if ($('#drawMid').prop('checked')) {
+				ctx.beginPath();
+				ctx.moveTo(-100, 0);
+				ctx.lineTo(canvasWidth + 100, 0);
+				ctx.lineWidth = 1;
+				ctx.strokeStyle = "yellow";
+				ctx.stroke();
+			}
+
+			dotArrays.forEach((arrat, index1) => {
+				
+				if(index1 == 0 && $('#drawMainLine').prop('checked'))
+				{
+					arrat.forEach((item, index2) => {
+						let xNorm = item[0] / canvasWidth;
+						item[1] = -waveFns[operation](xNorm, amplitude, frequency, phase, offset) + -waveFns[operation1](xNorm, amplitude2, frequency2, phase2, offset1) + -waveFns[operation2](xNorm, amplitude3, frequency3, phase3, offset2);
+						ctx.beginPath();
+						ctx.arc(item[0], item[1], radius, 0, 2 * Math.PI);
+						ctx.fillStyle = "lime";
+						ctx.fill();
+					});
+				}
+				if(index1 == 1 && $('#drawSubs').prop('checked') && operation != 0)
+				{
+					arrat.forEach((item, index2) => {
+						let xNorm = item[0] / canvasWidth;
+						item[1] = -waveFns[operation](xNorm, amplitude, frequency, phase, offset);
+						ctx.beginPath();
+						ctx.arc(item[0], item[1], radius / 2, 0, 2 * Math.PI);
+						ctx.fillStyle = "red";
+						ctx.fill();
+					});
+				}
+				if (index1 == 2 && $('#drawSubs').prop('checked') && operation1 != 0)
+				{
+					arrat.forEach((item, index2) => {
+						let xNorm = item[0] / canvasWidth;
+						item[1] = -waveFns[operation1](xNorm, amplitude2, frequency2, phase2, offset1);
+						ctx.beginPath();
+						ctx.arc(item[0], item[1], radius / 2, 0, 2 * Math.PI);
+						ctx.fillStyle = "blue";
+						ctx.fill();
+					});
+				}
+				if (index1 == 3 && $('#drawSubs').prop('checked') && operation2 != 0)
+				{
+					arrat.forEach((item, index2) => {
+						let xNorm = item[0] / canvasWidth;
+						item[1] = -waveFns[operation2](xNorm, amplitude3, frequency3, phase3, offset2);
+						ctx.beginPath();
+						ctx.arc(item[0], item[1], radius / 2, 0, 2 * Math.PI);
+						ctx.fillStyle = "magenta";
+						ctx.fill();
+					});
+				}				
+			});
+
+			phase = (phase + (rate * rateMod)) % (2 * Math.PI);
+			phase2 = (phase2 + (rate2 * rateMod)) % (2 * Math.PI);
+			phase3 = (phase3 + (rate3 * rateMod)) % (2 * Math.PI);
+			await sleep(drawRate);
+			ctx.translate(0, -middleLine);
+			drawFrame();
+		}
+
+		setup();
+	</script>
+</section>

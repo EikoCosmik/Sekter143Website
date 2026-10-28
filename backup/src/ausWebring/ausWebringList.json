@@ -1,0 +1,8 @@
+{
+  "sites": [
+	{ "id": "sekter", "link": "https://sekter143.com/" },
+	{ "id": "w3schools", "link": "https://www.w3schools.com/js/js_json_datatypes.asp" },
+	{ "id": "localhost", "link": "http://localhost:3000/" },
+	{ "id": "mozilla", "link": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" }
+  ]
+}

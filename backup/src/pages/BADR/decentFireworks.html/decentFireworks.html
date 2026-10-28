@@ -1,0 +1,128 @@
+<html class="test">
+
+<head>
+    <link rel="stylesheet" href="../../../assets/styles/compiled.css">
+	<script src="dF.js"></script>
+	<title>Decent-Fireworks</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		
+		.isHidden {
+			visibility: hidden !important;
+		}
+
+		#mainCanvas {
+			background-color: #0a0a0a;
+		}
+
+		#mainContainer {
+			position: relative;
+		}
+
+		#notify {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #0a0a0a;
+			border: 0.25rem solid var(--badDark);
+			border-radius: var(--baseBorderRadius);
+			padding: 0.5rem;
+			opacity: 1;
+		}
+
+		#goBack {
+			opacity: 0;
+		}
+
+		#goBack:hover {
+			opacity: 1;
+		}
+
+		#controls {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			display: grid;
+			grid-auto-columns: 1fr;
+			grid-template-rows: 1fr 1fr 1fr;
+			grid-gap: 1rem;
+			grid-auto-flow: column;
+			width: 100%;
+			padding: 2.5rem;
+		}
+
+		#controls div {
+			display: grid;
+			grid-template-columns: auto auto;
+			background-color: #0a0a0a;
+			border: 0.25rem solid var(--badDark);
+			border-radius: var(--baseBorderRadius);
+			padding: 0.5rem;
+			height: 100%;
+			grid-gap: 1rem;
+			justify-items: end;
+			align-items: center;
+			width: 100%;
+		}
+
+		#controls div input{
+			width: 5rem;
+			color: black;
+			height: 100%;
+		}
+
+		#controls div.debug {
+			background-color: #220a0a;
+		}
+
+		#controls div.tall
+		{
+			grid-column: span 2;
+			grid-template-columns: 1fr 1fr;
+			display: grid;
+		}
+	</style>
+</head>
+
+<body class="noSideBar">
+	<div id="goBack">
+		<div onclick="location.href = '../BADIndex.html'">
+			<img src="../../assets/navLeft.svg" />
+		</div>
+	</div>
+	<div id="mainContainer">
+		<div id="notify">Interact to enable sound!<br />Shift + P for controls!</div>
+		<canvas id="mainCanvas" width="2600" height="1400"></canvas>
+		<div id="controls" class="isHidden">
+			<!-- <div><label>volume</label><input type="range" id="volume" name="volume" min="0" max="100" value="50"></div> -->
+			<div><label>Spawn Interval</label><input type="number" value="250" id="spawnIntInput" step="1"></div>
+			<div><label>Part Mod</label><input type="number" value="10" id="partModInput" step="1"></div>
+			<div><label>Show Debug</label><input type="checkbox" id="showDebugCheck"></div>
+			<div class="debug isHidden"><label>C Particle Count</label><input type="checkbox" id="dLogPartContCheck"></div>
+			<div class="debug isHidden"><label>FW Velocity</label><input type="checkbox" id="dFWVelCheck"></div>
+			<div class="debug isHidden"><label>FW Sway</label><input type="checkbox" id="dFWSwayCheck"></div>
+			<div class="debug isHidden"><label>FW Path Colors</label><input type="checkbox" id="dFWPathColCheck"></div>
+			<div class="debug isHidden"><label>PS AsPoint</label><input type="checkbox" id="dPSAsPointCheck"></div>
+			<div class="debug isHidden"><label>PS DisableBack</label><input type="checkbox" id="dPSDisableBackCheck"></div>
+			<div class="debug isHidden"><label>PS DisableRocket</label><input type="checkbox" id="dPSDisableRocketCheck"></div>
+			<div class="debug tall isHidden">
+				<div class="debug isHidden"><label>P ForceCheck</label><input type="checkbox" id="dPForceCheckCheck"></div>
+				<div class="debug isHidden"><label>P ForceType</label><input type="number" value="0" id="dPForceTypeInput" step="1"></div>
+			</div>
+			<div class="debug tall isHidden">
+				<div class="debug isHidden"><label>FW Spawn X</label><input type="number" value="0" id="dFWSpawnXInput"	min="0" max="2" step="1"></div>
+				<div class="debug isHidden"><label>FW Force X</label><input type="number" value="0.5" id="dFWForceXInput" min="0" max="1" step="0.01"></div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

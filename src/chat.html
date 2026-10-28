@@ -1,0 +1,43 @@
+<pageSettings>
+	title="Live Chat!"
+	id="chat"
+	class="yellowElement withLeft"
+</pageSettings>
+
+<section id="pageContent">
+	<ws-widget type="chat" iid="18528" width="100%" height="100%"></ws-widget>
+</section>
+
+<aside column="leftColumn" class="sidebar">
+	<sktemplate 
+		type="standardSidebar" imgSrc="/assets/images/site_chatLogo.gif"
+		links="
+		<div id='serverTime' class='small'></div>
+		<script>
+			window.addEventListener('DOMContentLoaded', () => {
+				displayTime();
+				setInterval(displayTime, 1000);
+				function displayTime()
+				{
+					const el = document.getElementById('serverTime');
+					const date = new Date();
+					const options = {
+						year: 'numeric',
+						month: 'numeric',
+						day: 'numeric',
+						hour: 'numeric',
+						minute: 'numeric',
+						second: 'numeric',
+						hour12: false,
+						timeZone: 'Australia/Sydney',
+						timeZoneName: 'short',
+					};
+					const time = new Intl.DateTimeFormat('en-AU', options).format(date.now);
+					el.innerHTML = `${time.toString()}`;
+				}
+			});
+		</script>
+		<a class='button small redElement spanCols' href='/'>Back To Index</a>"
+		text="Hi there! Welcome to the chat!<br/>Stay a while if you would like, Im sure someone will be around at some point 🩵"
+	></sktemplate>
+</aside>

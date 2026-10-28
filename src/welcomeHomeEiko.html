@@ -1,0 +1,31 @@
+<pageSettings>
+	title="Welcome Home Eiko"
+	id="welcomeHomeEiko"
+	class="liteElement"
+</pageSettings>
+
+<section id="pageContent">
+	<div id="innerAdmin"></div>
+	<div id="welcomeHomeEikoLogin" class="loginBox">
+		<div class="inputBlock username rubyElement">
+			<label for="username">Username:</label>
+			<input 
+			type="text"
+			id="username"
+			minlength="10"
+			maxlength="256"
+			pattern="/[^<>]*/u">
+		</div>
+		<div class="inputBlock password orangeElement">
+			<label for="password">Password:</label>
+			<input 
+			type="text"
+			id="password"
+			minlength="10"
+			maxlength="256"
+			pattern="/[^<>]*/u">
+		</div>
+		<button class="button greenElement" type="button" onclick="db.wheLogin()">🩵 Remember Who You Are 🩵</button>
+	</div>
+	<div class="cf-turnstile" data-sitekey="0x4AAAAAACyqusEj84ppGLGQ"></div>
+</section>

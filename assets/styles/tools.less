@@ -1,0 +1,53 @@
+//main: "./compiled.less"
+
+.useGradient
+{
+	background: linear-gradient(135deg, var(--bcol_primaryDark) 0%, var(--bcol_primaryBlck) 100%);
+    background-blend-mode: normal;
+}
+
+.centerInDiv
+{
+	display: grid;
+	align-items: center;
+	justify-items: center;
+}
+
+.gridToTable
+{
+	.block;
+	background-color: var(--bcol_primaryBlck);
+	column-rule: var(--minGap) var(--bcol_primaryMain) var(--baseBorderStyle);
+	row-rule: var(--minGap) var(--bcol_primaryDark) var(--baseBorderStyle);
+
+	.gTTLayer
+	{
+		row-gap: var(--halfGap);
+		column-rule: var(--minGap) var(--bcol_primaryMain) var(--baseBorderStyle);
+		row-rule: var(--minGap) var(--bcol_primaryDark) var(--baseBorderStyle);
+	}
+}
+
+.small
+{
+	font-size: var(--miniFontSize);
+	padding: var(--quarterGap);
+}
+
+.underline
+{
+	border-bottom: var(--minGap) var(--baseBorderStyle) var(--bcol_primaryDark);
+	padding-bottom: var(--quarterGap);
+}
+
+.spoilerText
+{
+	color: transparent;
+	background-color: grey;
+}
+
+.spoilerText:hover
+{
+	color: inherit;
+	background-color: black;
+}

@@ -1,0 +1,96 @@
+//main: "./compiled.less"
+
+.link
+{
+	color: #4a93f8;
+}
+
+.svgInvert
+{
+	filter: invert(1);
+}
+
+.hideThis
+{
+	visibility: hidden !important;
+}
+
+.removeThis
+{
+	display: none !important;
+}
+
+.spoilerText
+{
+	color: transparent;
+	background-color: grey;
+}
+
+.spoilerText:hover
+{
+	color: inherit;
+	background-color: black;
+}
+
+.useGradient
+{
+	background: linear-gradient(135deg, var(--bcol_primaryDark) 0%, var(--bcol_primaryBlck) 100%);
+}
+
+.spanCols
+{
+	grid-column: 1/-1;
+}
+
+.spanRows
+{
+	grid-row: 1/-1;
+}
+
+.underline
+{
+	border-bottom: var(--minGap) var(--baseBorderStyle) var(--bcol_primaryDark);
+	padding-bottom: var(--quarterGap);
+}
+
+.overline
+{
+	border-top: var(--minGap) var(--baseBorderStyle) var(--bcol_primaryDark);
+	padding-top: var(--halfGap);
+}
+
+.small
+{
+	font-size: var(--miniFontSize);
+	padding: var(--quarterGap);
+}
+
+
+
+.loadingSpinner
+{
+	container-name: loadingSpinner;
+	container-type: size;
+	display: grid;
+	min-height: var(--doubleGap);
+	.centerInDiv;
+
+	@container loadingSpinner
+	{
+		&::after
+		{
+			content: '\00a0';
+			width: var(--doubleGap);
+			aspect-ratio: 1;
+			background-color: magenta;
+			animation: spin 1s linear infinite;
+			.fiveGradient;
+			mask-image: radial-gradient(circle 50cqb at center, transparent 0%, transparent 70%, black 75%, black 95%, transparent 100%);
+		}
+	}
+	
+	@keyframes spin { from { transform: rotate(0deg); }	to { transform: rotate(360deg); } }
+}
+
+
+

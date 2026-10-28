@@ -1,0 +1,58 @@
+<pageSettings>
+	title="The BAD"
+	class="redElement badSolver"
+	id="BAD"
+</pageSettings>
+
+<section id="pageContent" class="verticalTabs">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		function badSolve() {
+			inputArr = $("#in").val().split(" ");
+			inputArr.reverse();
+			outString = "";
+
+			inputArr.forEach((item) => {
+				itemArr = item.split("");
+
+				if (itemArr.length == 2 && itemArr[1] == "'") {
+					outString = outString + itemArr[0] + " ";
+				}
+				else if (itemArr.length == 2) {
+					outString = outString + item + " ";
+				}
+				else {
+					outString = outString + itemArr[0] + "' ";
+				}
+			});
+			$("#out").html(outString)
+		}
+	</script>
+	<sktemplate 
+		type="simpleContent"
+		title="BAD-Solver"
+		text=
+		"
+		BAD-Solver was the first BAD project I made, sure I made small projects before, but this was the first real saved one. <br/>
+		And well yeah, its tiny, its simple, its BAD. Perfect for this series. <br/>
+		<br/>
+		The way this works is quite simple: It takes in the scramble used to make the cube, and then... just spits out the scramble in reverse order swapping primes on each step... <br/>
+		<br/>
+		Yeah not optimized, not good, doesn't calculate anything. <br/>
+		BUT. It does give you a way to solve it! <br/>
+		"
+	></sktemplate>
+	<div class="block verticalTabs">
+		<div class="tabs">
+			<sktemplate 
+				type="inputBlock"
+				id="in"
+				value="R' U D F2 D2 L U' F' R L' B2 U D F L2 D2 L' B' L2 R U2 B' R B' D2"
+				inputType="text"
+				label="Input your Scramble:"
+			></sktemplate>
+			<button class="button" onclick="badSolve()">Calculate Solve</button>
+		</div>
+		<div id="out" class="block darkElement"></div>
+	</div>
+</section>

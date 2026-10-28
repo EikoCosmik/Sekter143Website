@@ -1,0 +1,27 @@
+//main: "./compiled.less"
+
+.sevenGradient(@primaryBlck: var(--bcol_primaryBlck), @primaryDkst: var(--bcol_primaryDkst), @primaryDark: var(--bcol_primaryDark), @primaryMain: var(--bcol_primaryMain), @primaryLite: var(--bcol_primaryLite), @primaryWash: var(--bcol_primaryWash), @primaryWite: var(--bcol_primaryWite))
+{
+	background: linear-gradient(
+		90deg,
+		@primaryBlck 0%,
+		@primaryDkst 16.66666666%,
+		@primaryDark 33.33333333%,
+		@primaryMain 50%,
+		@primaryLite 66.66666666%,
+		@primaryWash 83.33333333%,
+		@primaryWite 100%
+	);
+}
+
+.fiveGradient(@primaryDkst: var(--bcol_primaryDkst), @primaryDark: var(--bcol_primaryDark), @primaryMain: var(--bcol_primaryMain), @primaryLite: var(--bcol_primaryLite), @primaryWash: var(--bcol_primaryWash))
+{
+	background: linear-gradient(
+		90deg, 
+		@primaryDkst 0%,
+		@primaryDark 25%,
+		@primaryMain 50%,
+		@primaryLite 75%,
+		@primaryWash 100%
+	);
+}

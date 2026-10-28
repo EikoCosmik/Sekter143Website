@@ -1,0 +1,44 @@
+//main: "./compiled.less"
+
+.debugTree
+{
+	row-rule: 2px dotted var(--col_liteWite);
+	column-rule: 2px dotted var(--col_liteWite);
+
+	*
+	{
+		outline: 2px dashed var(--col_greenBase);
+		row-rule: 2px dotted var(--col_liteWite);
+		column-rule: 2px dotted var(--col_liteWite);
+	}
+
+	> *
+	{
+		outline-color: var(--col_greenBase);
+
+		> *
+		{
+			outline-color: var(--col_cyanBase);
+	
+			> *
+			{
+				outline-color: var(--col_blueBase);
+	
+				> *
+				{
+					outline-color: var(--col_magentaBase);
+	
+					> *
+					{
+						outline-color: var(--col_redBase);
+	
+						> *
+						{
+							outline-color: var(--col_yellowBase);
+						}
+					}
+				}
+			}
+		}
+	}
+}

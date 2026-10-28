@@ -1,0 +1,509 @@
+//main: "./compiled.less"
+
+/* #region Colors */
+
+:root, select option
+{
+	@satAdjust: 35%;
+
+	@maxStep: 35%;
+	@midStep: 25%;
+	@minStep: 15%;
+
+	@witePercent: @maxStep;
+	@washPercent: @midStep;
+	@litePercent: @minStep;
+	@darkPercent: @minStep;
+	@dkstPercent: @midStep;
+	@blckPercent: @maxStep;
+
+	@colAmt: 15;
+	--colAmt: @colAmt;
+
+	@bcol_textLite: #fefefe;
+	--bcol_textLite: @bcol_textLite;
+	@bcol_textDark: #050505;
+	--bcol_textDark: @bcol_textDark;
+	@col_redBase: #ff0000;
+	--col_redBase: @col_redBase;
+	@col_redWite: lighten(@col_redMain, @witePercent);
+	--col_redWite: @col_redWite;
+	@col_redWash: lighten(@col_redMain, @washPercent);
+	--col_redWash: @col_redWash;
+	@col_redLite: lighten(@col_redMain, @litePercent);
+	--col_redLite: @col_redLite;
+	@col_redMain: desaturate(@col_redBase, @satAdjust);
+	--col_redMain: @col_redMain;
+	@col_redDark: darken(@col_redMain, @darkPercent);
+	--col_redDark: @col_redDark;
+	@col_redDkst: darken(@col_redMain, @dkstPercent);
+	--col_redDkst: @col_redDkst;
+	@col_redBlck: darken(@col_redMain, @blckPercent);
+	--col_redBlck: @col_redBlck;
+
+	@col_orangeBase: #ff8000;
+	--col_orangeBase: @col_orangeBase;
+	@col_orangeWite: lighten(@col_orangeMain, @witePercent);
+	--col_orangeWite: @col_orangeWite;
+	@col_orangeWash: lighten(@col_orangeMain, @washPercent);
+	--col_orangeWash: @col_orangeWash;
+	@col_orangeLite: lighten(@col_orangeMain, @litePercent);
+	--col_orangeLite: @col_orangeLite;
+	@col_orangeMain: desaturate(@col_orangeBase, @satAdjust);
+	--col_orangeMain: @col_orangeMain;
+	@col_orangeDark: darken(@col_orangeMain, @darkPercent);
+	--col_orangeDark: @col_orangeDark;
+	@col_orangeDkst: darken(@col_orangeMain, @dkstPercent);
+	--col_orangeDkst: @col_orangeDkst;
+	@col_orangeBlck: darken(@col_orangeMain, @blckPercent);
+	--col_orangeBlck: @col_orangeBlck;
+
+	@col_yellowBase: #ffff00;
+	--col_yellowBase: @col_yellowBase;
+	@col_yellowWite: lighten(@col_yellowMain, @witePercent);
+	--col_yellowWite: @col_yellowWite;
+	@col_yellowWash: lighten(@col_yellowMain, @washPercent);
+	--col_yellowWash: @col_yellowWash;
+	@col_yellowLite: lighten(@col_yellowMain, @litePercent);
+	--col_yellowLite: @col_yellowLite;
+	@col_yellowMain: desaturate(@col_yellowBase, @satAdjust);
+	--col_yellowMain: @col_yellowMain;
+	@col_yellowDark: darken(@col_yellowMain, @darkPercent);
+	--col_yellowDark: @col_yellowDark;
+	@col_yellowDkst: darken(@col_yellowMain, @dkstPercent);
+	--col_yellowDkst: @col_yellowDkst;
+	@col_yellowBlck: darken(@col_yellowMain, @blckPercent);
+	--col_yellowBlck: @col_yellowBlck;
+
+	@col_limeBase: #80ff00;
+	--col_limeBase: @col_limeBase;
+	@col_limeWite: lighten(@col_limeMain, @witePercent);
+	--col_limeWite: @col_limeWite;
+	@col_limeWash: lighten(@col_limeMain, @washPercent);
+	--col_limeWash: @col_limeWash;
+	@col_limeLite: lighten(@col_limeMain, @litePercent);
+	--col_limeLite: @col_limeLite;
+	@col_limeMain: desaturate(@col_limeBase, @satAdjust);
+	--col_limeMain: @col_limeMain;
+	@col_limeDark: darken(@col_limeMain, @darkPercent);
+	--col_limeDark: @col_limeDark;
+	@col_limeDkst: darken(@col_limeMain, @dkstPercent);
+	--col_limeDkst: @col_limeDkst;
+	@col_limeBlck: darken(@col_limeMain, @blckPercent);
+	--col_limeBlck: @col_limeBlck;
+
+	@col_greenBase: #00ff00;
+	--col_greenBase: @col_greenBase;
+	@col_greenWite: lighten(@col_greenMain, @witePercent);
+	--col_greenWite: @col_greenWite;
+	@col_greenWash: lighten(@col_greenMain, @washPercent);
+	--col_greenWash: @col_greenWash;
+	@col_greenLite: lighten(@col_greenMain, @litePercent);
+	--col_greenLite: @col_greenLite;
+	@col_greenMain: desaturate(@col_greenBase, @satAdjust);
+	--col_greenMain: @col_greenMain;
+	@col_greenDark: darken(@col_greenMain, @darkPercent);
+	--col_greenDark: @col_greenDark;
+	@col_greenDkst: darken(@col_greenMain, @dkstPercent);
+	--col_greenDkst: @col_greenDkst;
+	@col_greenBlck: darken(@col_greenMain, @blckPercent);
+	--col_greenBlck: @col_greenBlck;
+
+	@col_aquaBase: #00ff80;
+	--col_aquaBase: @col_aquaBase;
+	@col_aquaWite: lighten(@col_aquaMain, @witePercent);
+	--col_aquaWite: @col_aquaWite;
+	@col_aquaWash: lighten(@col_aquaMain, @washPercent);
+	--col_aquaWash: @col_aquaWash;
+	@col_aquaLite: lighten(@col_aquaMain, @litePercent);
+	--col_aquaLite: @col_aquaLite;
+	@col_aquaMain: desaturate(@col_aquaBase, @satAdjust);
+	--col_aquaMain: @col_aquaMain;
+	@col_aquaDark: darken(@col_aquaMain, @darkPercent);
+	--col_aquaDark: @col_aquaDark;
+	@col_aquaDkst: darken(@col_aquaMain, @dkstPercent);
+	--col_aquaDkst: @col_aquaDkst;
+	@col_aquaBlck: darken(@col_aquaMain, @blckPercent);
+	--col_aquaBlck: @col_aquaBlck;
+
+	@col_cyanBase: #00ffff;
+	--col_cyanBase: @col_cyanBase;
+	@col_cyanWite: lighten(@col_cyanMain, @witePercent);
+	--col_cyanWite: @col_cyanWite;
+	@col_cyanWash: lighten(@col_cyanMain, @washPercent);
+	--col_cyanWash: @col_cyanWash;
+	@col_cyanLite: lighten(@col_cyanMain, @litePercent);
+	--col_cyanLite: @col_cyanLite;
+	@col_cyanMain: desaturate(@col_cyanBase, @satAdjust);
+	--col_cyanMain: @col_cyanMain;
+	@col_cyanDark: darken(@col_cyanMain, @darkPercent);
+	--col_cyanDark: @col_cyanDark;
+	@col_cyanDkst: darken(@col_cyanMain, @dkstPercent);
+	--col_cyanDkst: @col_cyanDkst;
+	@col_cyanBlck: darken(@col_cyanMain, @blckPercent);
+	--col_cyanBlck: @col_cyanBlck;
+
+	@col_azureBase: #0080ff;
+	--col_azureBase: @col_azureBase;
+	@col_azureWite: lighten(@col_azureMain, @witePercent);
+	--col_azureWite: @col_azureWite;
+	@col_azureWash: lighten(@col_azureMain, @washPercent);
+	--col_azureWash: @col_azureWash;
+	@col_azureLite: lighten(@col_azureMain, @litePercent);
+	--col_azureLite: @col_azureLite;
+	@col_azureMain: desaturate(@col_azureBase, @satAdjust);
+	--col_azureMain: @col_azureMain;
+	@col_azureDark: darken(@col_azureMain, @darkPercent);
+	--col_azureDark: @col_azureDark;
+	@col_azureDkst: darken(@col_azureMain, @dkstPercent);
+	--col_azureDkst: @col_azureDkst;
+	@col_azureBlck: darken(@col_azureMain, @blckPercent);
+	--col_azureBlck: @col_azureBlck;
+
+	@col_blueBase: #0000ff;
+	--col_blueBase: @col_blueBase;
+	@col_blueWite: lighten(@col_blueMain, @witePercent);
+	--col_blueWite: @col_blueWite;
+	@col_blueWash: lighten(@col_blueMain, @washPercent);
+	--col_blueWash: @col_blueWash;
+	@col_blueLite: lighten(@col_blueMain, @litePercent);
+	--col_blueLite: @col_blueLite;
+	@col_blueMain: desaturate(@col_blueBase, @satAdjust);
+	--col_blueMain: @col_blueMain;
+	@col_blueDark: darken(@col_blueMain, @darkPercent);
+	--col_blueDark: @col_blueDark;
+	@col_blueDkst: darken(@col_blueMain, @dkstPercent);
+	--col_blueDkst: @col_blueDkst;
+	@col_blueBlck: darken(@col_blueMain, @blckPercent);
+	--col_blueBlck: @col_blueBlck;
+
+	@col_purpleBase: #8000ff;
+	--col_purpleBase: @col_purpleBase;
+	@col_purpleWite: lighten(@col_purpleMain, @witePercent);
+	--col_purpleWite: @col_purpleWite;
+	@col_purpleWash: lighten(@col_purpleMain, @washPercent);
+	--col_purpleWash: @col_purpleWash;
+	@col_purpleLite: lighten(@col_purpleMain, @litePercent);
+	--col_purpleLite: @col_purpleLite;
+	@col_purpleMain: desaturate(@col_purpleBase, @satAdjust);
+	--col_purpleMain: @col_purpleMain;
+	@col_purpleDark: darken(@col_purpleMain, @darkPercent);
+	--col_purpleDark: @col_purpleDark;
+	@col_purpleDkst: darken(@col_purpleMain, @dkstPercent);
+	--col_purpleDkst: @col_purpleDkst;
+	@col_purpleBlck: darken(@col_purpleMain, @blckPercent);
+	--col_purpleBlck: @col_purpleBlck;
+
+	@col_magentaBase: #ff00ff;
+	--col_magentaBase: @col_magentaBase;
+	@col_magentaWite: lighten(@col_magentaMain, @witePercent);
+	--col_magentaWite: @col_magentaWite;
+	@col_magentaWash: lighten(@col_magentaMain, @washPercent);
+	--col_magentaWash: @col_magentaWash;
+	@col_magentaLite: lighten(@col_magentaMain, @litePercent);
+	--col_magentaLite: @col_magentaLite;
+	@col_magentaMain: desaturate(@col_magentaBase, @satAdjust);
+	--col_magentaMain: @col_magentaMain;
+	@col_magentaDark: darken(@col_magentaMain, @darkPercent);
+	--col_magentaDark: @col_magentaDark;
+	@col_magentaDkst: darken(@col_magentaMain, @dkstPercent);
+	--col_magentaDkst: @col_magentaDkst;
+	@col_magentaBlck: darken(@col_magentaMain, @blckPercent);
+	--col_magentaBlck: @col_magentaBlck;
+
+	@col_rubyBase: #ff0080;
+	--col_rubyBase: @col_rubyBase;
+	@col_rubyWite: lighten(@col_rubyMain, @witePercent);
+	--col_rubyWite: @col_rubyWite;
+	@col_rubyWash: lighten(@col_rubyMain, @washPercent);
+	--col_rubyWash: @col_rubyWash;
+	@col_rubyLite: lighten(@col_rubyMain, @litePercent);
+	--col_rubyLite: @col_rubyLite;
+	@col_rubyMain: desaturate(@col_rubyBase, @satAdjust);
+	--col_rubyMain: @col_rubyMain;
+	@col_rubyDark: darken(@col_rubyMain, @darkPercent);
+	--col_rubyDark: @col_rubyDark;
+	@col_rubyDkst: darken(@col_rubyMain, @dkstPercent);
+	--col_rubyDkst: @col_rubyDkst;
+	@col_rubyBlck: darken(@col_rubyMain, @blckPercent);
+	--col_rubyBlck: @col_rubyBlck;
+
+	@col_greyBase: #888;
+	--col_greyBase: @col_greyBase;
+	@col_greyWite: lighten(@col_greyMain, @witePercent);
+	--col_greyWite: @col_greyWite;
+	@col_greyWash: lighten(@col_greyMain, @washPercent);
+	--col_greyWash: @col_greyWash;
+	@col_greyLite: lighten(@col_greyMain, @litePercent);
+	--col_greyLite: @col_greyLite;
+	@col_greyMain: desaturate(@col_greyBase, @satAdjust);
+	--col_greyMain: @col_greyMain;
+	@col_greyDark: darken(@col_greyMain, @darkPercent);
+	--col_greyDark: @col_greyDark;
+	@col_greyDkst: darken(@col_greyMain, @dkstPercent);
+	--col_greyDkst: @col_greyDkst;
+	@col_greyBlck: darken(@col_greyMain, @blckPercent);
+	--col_greyBlck: @col_greyBlck;
+
+	@col_darkBase: #5a5a5a;
+	--col_darkBase: @col_darkBase;
+	@col_darkWite: lighten(@col_darkMain, @witePercent);
+	--col_darkWite: @col_darkWite;
+	@col_darkWash: lighten(@col_darkMain, @washPercent);
+	--col_darkWash: @col_darkWash;
+	@col_darkLite: lighten(@col_darkMain, @litePercent);
+	--col_darkLite: @col_darkLite;
+	@col_darkMain: desaturate(@col_darkBase, @satAdjust);
+	--col_darkMain: @col_darkMain;
+	@col_darkDark: darken(@col_darkMain, @darkPercent);
+	--col_darkDark: @col_darkDark;
+	@col_darkDkst: darken(@col_darkMain, @dkstPercent);
+	--col_darkDkst: @col_darkDkst;
+	@col_darkBlck: darken(@col_darkMain, @blckPercent);
+	--col_darkBlck: @col_darkBlck;
+	
+	@col_liteBase: #a5a5a5;
+	--col_liteBase: @col_liteBase;
+	@col_liteWite: lighten(@col_liteMain, @witePercent);
+	--col_liteWite: @col_liteWite;
+	@col_liteWash: lighten(@col_liteMain, @washPercent);
+	--col_liteWash: @col_liteWash;
+	@col_liteLite: lighten(@col_liteMain, @litePercent);
+	--col_liteLite: @col_liteLite;
+	@col_liteMain: desaturate(@col_liteBase, @satAdjust);
+	--col_liteMain: @col_liteMain;
+	@col_liteDark: darken(@col_liteMain, @darkPercent);
+	--col_liteDark: @col_liteDark;
+	@col_liteDkst: darken(@col_liteMain, @dkstPercent);
+	--col_liteDkst: @col_liteDkst;
+	@col_liteBlck: darken(@col_liteMain, @blckPercent);
+	--col_liteBlck: @col_liteBlck;
+	
+	@col_beigeBase: #DEB887;
+	--col_beigeBase: @col_beigeBase;
+	@col_beigeWite: lighten(@col_beigeMain, @witePercent);
+	--col_beigeWite: @col_beigeWite;
+	@col_beigeWash: lighten(@col_beigeMain, @washPercent);
+	--col_beigeWash: @col_beigeWash;
+	@col_beigeLite: lighten(@col_beigeMain, @litePercent);
+	--col_beigeLite: @col_beigeLite;
+	@col_beigeMain: desaturate(@col_beigeBase, @satAdjust);
+	--col_beigeMain: @col_beigeMain;
+	@col_beigeDark: darken(@col_beigeMain, @darkPercent);
+	--col_beigeDark: @col_beigeDark;
+	@col_beigeDkst: darken(@col_beigeMain, @dkstPercent);
+	--col_beigeDkst: @col_beigeDkst;
+	@col_beigeBlck: darken(@col_beigeMain, @blckPercent);
+	--col_beigeBlck: @col_beigeBlck;
+	
+	@bcol_primaryBase: var(--col_darkBase);
+	--bcol_primaryBase: @bcol_primaryBase;
+	@bcol_primaryWite: var(--col_darkWite);
+	--bcol_primaryWite: @bcol_primaryWite;
+	@bcol_primaryWash: var(--col_darkWash);
+	--bcol_primaryWash: @bcol_primaryWash;
+	@bcol_primaryLite: var(--col_darkLite);
+	--bcol_primaryLite: @bcol_primaryLite;
+	@bcol_primaryMain: var(--col_darkMain);
+	--bcol_primaryMain: @bcol_primaryMain;
+	@bcol_primaryDark: var(--col_darkDark);
+	--bcol_primaryDark: @bcol_primaryDark;
+	@bcol_primaryDkst: var(--col_darkDkst);
+	--bcol_primaryDkst: @bcol_primaryDkst;
+	@bcol_primaryBlck: var(--col_darkBlck);
+	--bcol_primaryBlck: @bcol_primaryBlck;
+}
+
+.redElement
+{
+	--bcol_primaryBase: var(--col_redBase);
+	--bcol_primaryWite: var(--col_redWite);
+	--bcol_primaryWash: var(--col_redWash);
+	--bcol_primaryLite: var(--col_redLite);
+	--bcol_primaryMain: var(--col_redMain);
+	--bcol_primaryDark: var(--col_redDark);
+	--bcol_primaryDkst: var(--col_redDkst);
+	--bcol_primaryBlck: var(--col_redBlck);
+}
+
+.orangeElement
+{
+--bcol_primaryBase: var(--col_orangeBase);
+--bcol_primaryWite: var(--col_orangeWite);
+--bcol_primaryWash: var(--col_orangeWash);
+--bcol_primaryLite: var(--col_orangeLite);
+--bcol_primaryMain: var(--col_orangeMain);
+--bcol_primaryDark: var(--col_orangeDark);
+--bcol_primaryDkst: var(--col_orangeDkst);
+--bcol_primaryBlck: var(--col_orangeBlck);
+}
+
+.yellowElement
+{
+--bcol_primaryBase: var(--col_yellowBase);
+--bcol_primaryWite: var(--col_yellowWite);
+--bcol_primaryWash: var(--col_yellowWash);
+--bcol_primaryLite: var(--col_yellowLite);
+--bcol_primaryMain: var(--col_yellowMain);
+--bcol_primaryDark: var(--col_yellowDark);
+--bcol_primaryDkst: var(--col_yellowDkst);
+--bcol_primaryBlck: var(--col_yellowBlck);
+}
+
+.limeElement
+{
+--bcol_primaryBase: var(--col_limeBase);
+--bcol_primaryWite: var(--col_limeWite);
+--bcol_primaryWash: var(--col_limeWash);
+--bcol_primaryLite: var(--col_limeLite);
+--bcol_primaryMain: var(--col_limeMain);
+--bcol_primaryDark: var(--col_limeDark);
+--bcol_primaryDkst: var(--col_limeDkst);
+--bcol_primaryBlck: var(--col_limeBlck);
+}
+
+.greenElement
+{
+--bcol_primaryBase: var(--col_greenBase);
+--bcol_primaryWite: var(--col_greenWite);
+--bcol_primaryWash: var(--col_greenWash);
+--bcol_primaryLite: var(--col_greenLite);
+--bcol_primaryMain: var(--col_greenMain);
+--bcol_primaryDark: var(--col_greenDark);
+--bcol_primaryDkst: var(--col_greenDkst);
+--bcol_primaryBlck: var(--col_greenBlck);
+}
+
+.aquaElement
+{
+--bcol_primaryBase: var(--col_aquaBase);
+--bcol_primaryWite: var(--col_aquaWite);
+--bcol_primaryWash: var(--col_aquaWash);
+--bcol_primaryLite: var(--col_aquaLite);
+--bcol_primaryMain: var(--col_aquaMain);
+--bcol_primaryDark: var(--col_aquaDark);
+--bcol_primaryDkst: var(--col_aquaDkst);
+--bcol_primaryBlck: var(--col_aquaBlck);
+}
+
+.cyanElement
+{
+--bcol_primaryBase: var(--col_cyanBase);
+--bcol_primaryWite: var(--col_cyanWite);
+--bcol_primaryWash: var(--col_cyanWash);
+--bcol_primaryLite: var(--col_cyanLite);
+--bcol_primaryMain: var(--col_cyanMain);
+--bcol_primaryDark: var(--col_cyanDark);
+--bcol_primaryDkst: var(--col_cyanDkst);
+--bcol_primaryBlck: var(--col_cyanBlck);
+}
+
+.azureElement
+{
+--bcol_primaryBase: var(--col_azureBase);
+--bcol_primaryWite: var(--col_azureWite);
+--bcol_primaryWash: var(--col_azureWash);
+--bcol_primaryLite: var(--col_azureLite);
+--bcol_primaryMain: var(--col_azureMain);
+--bcol_primaryDark: var(--col_azureDark);
+--bcol_primaryDkst: var(--col_azureDkst);
+--bcol_primaryBlck: var(--col_azureBlck);
+}
+
+.blueElement
+{
+--bcol_primaryBase: var(--col_blueBase);
+--bcol_primaryWite: var(--col_blueWite);
+--bcol_primaryWash: var(--col_blueWash);
+--bcol_primaryLite: var(--col_blueLite);
+--bcol_primaryMain: var(--col_blueMain);
+--bcol_primaryDark: var(--col_blueDark);
+--bcol_primaryDkst: var(--col_blueDkst);
+--bcol_primaryBlck: var(--col_blueBlck);
+}
+
+.purpleElement
+{
+--bcol_primaryBase: var(--col_purpleBase);
+--bcol_primaryWite: var(--col_purpleWite);
+--bcol_primaryWash: var(--col_purpleWash);
+--bcol_primaryLite: var(--col_purpleLite);
+--bcol_primaryMain: var(--col_purpleMain);
+--bcol_primaryDark: var(--col_purpleDark);
+--bcol_primaryDkst: var(--col_purpleDkst);
+--bcol_primaryBlck: var(--col_purpleBlck);
+}
+
+.magentaElement
+{
+--bcol_primaryBase: var(--col_magentaBase);
+--bcol_primaryWite: var(--col_magentaWite);
+--bcol_primaryWash: var(--col_magentaWash);
+--bcol_primaryLite: var(--col_magentaLite);
+--bcol_primaryMain: var(--col_magentaMain);
+--bcol_primaryDark: var(--col_magentaDark);
+--bcol_primaryDkst: var(--col_magentaDkst);
+--bcol_primaryBlck: var(--col_magentaBlck);
+}
+
+.rubyElement
+{
+--bcol_primaryBase: var(--col_rubyBase);
+--bcol_primaryWite: var(--col_rubyWite);
+--bcol_primaryWash: var(--col_rubyWash);
+--bcol_primaryLite: var(--col_rubyLite);
+--bcol_primaryMain: var(--col_rubyMain);
+--bcol_primaryDark: var(--col_rubyDark);
+--bcol_primaryDkst: var(--col_rubyDkst);
+--bcol_primaryBlck: var(--col_rubyBlck);
+}
+
+.greyElement
+{
+--bcol_primaryBase: var(--col_greyBase);
+--bcol_primaryWite: var(--col_greyWite);
+--bcol_primaryWash: var(--col_greyWash);
+--bcol_primaryLite: var(--col_greyLite);
+--bcol_primaryMain: var(--col_greyMain);
+--bcol_primaryDark: var(--col_greyDark);
+--bcol_primaryDkst: var(--col_greyDkst);
+--bcol_primaryBlck: var(--col_greyBlck);
+}
+
+.darkElement
+{
+--bcol_primaryBase: var(--col_darkBase);
+--bcol_primaryWite: var(--col_darkWite);
+--bcol_primaryWash: var(--col_darkWash);
+--bcol_primaryLite: var(--col_darkLite);
+--bcol_primaryMain: var(--col_darkMain);
+--bcol_primaryDark: var(--col_darkDark);
+--bcol_primaryDkst: var(--col_darkDkst);
+--bcol_primaryBlck: var(--col_darkBlck);
+}
+
+.liteElement
+{
+--bcol_primaryBase: var(--col_liteBase);
+--bcol_primaryWite: var(--col_liteWite);
+--bcol_primaryWash: var(--col_liteWash);
+--bcol_primaryLite: var(--col_liteLite);
+--bcol_primaryMain: var(--col_liteMain);
+--bcol_primaryDark: var(--col_liteDark);
+--bcol_primaryDkst: var(--col_liteDkst);
+--bcol_primaryBlck: var(--col_liteBlck);
+}
+
+.beigeElement
+{
+	--bcol_primaryBase: var(--col_beigeBase);
+	--bcol_primaryWite: var(--col_beigeWite);
+	--bcol_primaryWash: var(--col_beigeWash);
+	--bcol_primaryLite: var(--col_beigeLite);
+	--bcol_primaryMain: var(--col_beigeMain);
+	--bcol_primaryDark: var(--col_beigeDark);
+	--bcol_primaryDkst: var(--col_beigeDkst);
+	--bcol_primaryBlck: var(--col_beigeBlck);
+}
+
+/* #endregion */

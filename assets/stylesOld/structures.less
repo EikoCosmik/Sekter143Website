@@ -1,0 +1,108 @@
+//main: "./compiled.less"
+
+.pageGridDefinition
+{
+	display: grid;
+	grid-template-columns: 1fr var(--sideBarWidth) var(--pageWidth) var(--sideBarWidth) 1fr;
+	grid-template-rows: var(--headerHeight) 1fr var(--newsHeight);
+	grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". leftColumn sitePage sitePage ." "news news news news news";
+	grid-gap: var(--baseGap);
+
+}
+
+.centerWidth
+{
+	grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". leftColumn sitePage rightColumn ." "news news news news news";
+}
+
+.fullWidth
+{
+	grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage sitePage ." "news news news news news";
+}
+
+/* #region SideBars */
+
+.sidebar
+{
+	display: none;
+}
+
+#leftColumn, #rightColumn
+{
+	display: none;
+	grid-area: leftColumn;
+	position: relative;
+	z-index: 2000;
+
+	&:has(> .sidebar)
+	{
+		display: grid;
+	}
+
+	.sidebar
+	{
+		.block;
+		.useGradient;
+		.verticalTabs;
+		grid-auto-rows: min-content;
+		grid-template-rows: min-content 1fr auto;
+
+		&.compact
+		{
+			grid-template-rows: min-content;
+		}
+
+		.links
+		{
+			.verticalTabs;
+			grid-auto-rows: min-content;
+			grid-gap: var(--quarterGap);
+
+			h3
+			{
+				.underline;
+    			padding-bottom: var(--quarterGap);
+			}
+
+			> div
+			{
+				text-align: center;
+			}
+		}
+	}
+}
+
+#rightColumn
+{
+	grid-area: rightColumn;
+}
+
+/* #endregion */
+
+
+
+/* #region Body */
+
+body
+{
+	background-color: var(--col_darkDkst);
+	background-image: url(../../assets/images/site_background.gif);
+	background-blend-mode: difference;
+	background-attachment: fixed;
+	.pageGridDefinition;
+
+	grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". leftColumn sitePage sitePage ." ". . sitePage sitePage .";
+	
+	.fullWidth
+	{
+		grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage sitePage ." ". sitePage sitePage sitePage .";
+	}
+
+	.centerWidth
+	{
+		grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". leftColumn sitePage rightColumn ." "news news news news news";
+	}
+}
+
+/* #endregion */
+

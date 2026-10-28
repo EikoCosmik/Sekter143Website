@@ -1,0 +1,251 @@
+//main: "./compiled.less"
+
+// ==========| Spans |==========
+
+#siteNav,
+#crochet.ball,
+// #chat,
+#allPosts,
+#aboutMe,
+#BAD.badSolver,
+#BAD.badCollatz,
+#BAD.badPaint,
+#BAD.badChaosGame,
+#BAD.badHorseRace,
+#BAD.badSudoku,
+#BAD.badTriSpinner,
+#BAD.badCollatzLoopCalc,
+#BAD.badLockpick,
+#BAD.badCube,
+#BAD.badInfRunner,
+#BAD.badWaves,
+#BAD.badFireworks,
+#BAD.badSubGen,
+#credits
+{
+	body, body #staticBlock
+	{
+		.fullWidth;
+	}
+}
+
+#index
+{
+	body, body #staticBlock
+	{
+		.centerWidth;
+	}
+}
+
+
+// ==========| Generic Pages |==========
+
+#siteNav
+{
+	#pageContent
+	{
+		grid-template-rows: min-content min-content;
+
+		.cardPage
+		{
+			grid-auto-rows: 1fr;
+			grid-template-columns: 1fr 1fr 1fr;
+
+			.standardPost
+			{
+				.image
+				{
+					aspect-ratio: 1;
+				}
+
+				&.removeThisXXX
+				{
+					display: grid !important;
+
+					.button
+					{
+						.darkElement;
+						color: red;
+					}
+				}
+			}
+		}
+	}
+
+	#siteHeader
+	{
+		.aquaElement;
+		background: linear-gradient(135deg, var(--col_aquaDkst) 0%, var(--col_darkBlck) 100%);
+	}	
+}
+
+
+
+#guestbook
+{
+	#pageContent
+	{
+
+		#guestbookForm
+		{
+			grid-template-columns: 1fr 2fr 1fr;
+			grid-auto-rows: 1fr;
+			grid-template-areas: 
+				"name message err" 
+				"website message cf"
+				"color message button";
+				
+			.cf-turnstile
+			{
+				grid-area: cf;
+			}
+
+			.responceBlock
+			{
+				grid-area: err;
+				grid-gap: var(--quarterGap);
+				padding: var(--halfGap)
+			}
+
+			.username
+			{
+				grid-area: name;
+			}
+			.website
+			{
+				grid-area: website;
+			}
+			.color
+			{
+				grid-area: color;
+			}
+			.message
+			{
+				grid-area: message;
+				grid-template-columns: 1fr;
+				grid-template-rows: min-content 1fr;
+			}
+			.button
+			{
+				grid-area: button;
+			}
+		}
+	}
+}
+
+#photography
+{
+	#pageContent
+	{
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-auto-rows: min-content;
+
+		.image
+		{
+			position: relative;			
+
+			&:hover > .dateTitle
+			{
+				opacity: 1;
+			}
+
+			img, .dateTitle
+			{
+				width: 100%;
+				height: unset;
+				aspect-ratio: 420/297;
+			}
+
+			.dateTitle
+			{
+				position: absolute;
+				background-color: #000000aa;
+				color: white;
+				opacity: 0;
+				transition: 0.5s;
+				z-index: 100;
+				display: grid;
+				grid-template-rows: 1fr min-content 1fr;
+				padding: var(--doubleGap) var(--baseGap);
+				align-items: center;
+				justify-items: center;
+				text-align: center
+			}
+		}
+	}
+}
+
+#aboutMe
+{
+	#AboutMeTop
+	{
+		.block;
+		.useGradient;
+		.cyanElement;
+
+		display: grid;
+		grid-template-columns: auto auto 250px;
+		grid-template-rows: min-content 1fr;
+		grid-template-areas: 
+		"header header image" 
+		"body personals image";
+
+		h2
+		{
+			.underline;
+			grid-area: header;
+		}
+
+		.profilePic
+		{
+			grid-area: image;
+			aspect-ratio: 1;
+
+			
+		}
+
+		.personals
+		{
+			.block;
+			.rubyElement;
+			display: grid;
+			grid-area: personals;
+			grid-template-columns: auto 1fr;
+			grid-template-rows: repeat(5, min-content);
+			grid-gap: var(--baseGap);
+			align-content: space-between;
+			row-rule: var(--minGap) var(--baseBorderStyle) var(--bcol_primaryMain);
+
+			> *:nth-child(2n)
+			{
+				text-align: end;
+			}
+		}
+
+		.body
+		{
+			grid-area: body;
+		}
+	}
+}
+
+
+// ==========| Specific Pages |==========
+
+// .iFramePage
+// {
+// 	body
+// 	{
+// 		.fullWidth;
+// 		grid-template-columns: 1fr;
+// 		grid-template-rows: 1fr;
+// 		grid-template-areas: "sitePage";
+// 		padding: 0;
+// 		background-image: none;
+// 		background-color: transparent;
+// 	}
+// }
+
+@import "./pageOverrides/kataPages.less";
+@import "./pageOverrides/BADPages.less";
+@import "./pageOverrides/mathPages.less";

@@ -1,0 +1,25 @@
+<pageSettings>
+	title="Forum"
+	id="forum"
+</pageSettings>
+
+<section id="pageContent">
+
+	<div id='discourse-comments'></div>
+
+	<script type="text/javascript">
+		DiscourseEmbed = {
+			discourseUrl: 'https://sekter143.discourse.group/',
+			discourseEmbedUrl: 'http://sekter143.com/pages/forum.html',
+			
+		};
+
+		(function () {
+			var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+			d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+		})();
+	</script>
+
+</section>
+			// className: 'CLASS_NAME',

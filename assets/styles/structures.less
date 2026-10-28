@@ -1,0 +1,98 @@
+//main: "./compiled.less"
+
+
+@container html
+{
+	body,
+	#staticBlock,
+	#siteHeader
+	{
+		grid-template-columns: 1fr var(--sideBarWidth) minmax(600px, var(--pageWidth)) var(--sideBarWidth) 1fr;
+	}
+
+	#siteHeader .headerInternal
+	{
+		grid-template-columns: var(--sideBarWidth) minmax(600px, var(--pageWidth)) var(--sideBarWidth);
+	}
+
+	body,
+	#staticBlock
+	{
+		grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage sitePage ." "news news news news news";
+		display: grid;
+		grid-template-rows: var(--headerHeight) 1fr var(--newsHeight);
+		grid-gap: var(--baseGap);
+	}
+
+	#page
+	{
+		grid-area: sitePage;
+		position: relative;
+		z-index: 1000;
+	
+		#pageContent {
+			.verticalTabs;
+			min-height: 100%;
+			height: fit-content;
+			grid-auto-rows: min-content;
+			border-bottom: calc(var(--baseGap) + var(--newsHeight)) solid transparent;
+		}
+	}
+}
+
+html
+{
+	container-type: size;
+	container-name: html;
+	background-color: var(--col_darkDkst);
+	background-image: url(../../assets/images/site_background.gif);
+	background-blend-mode: difference;
+	background-attachment: fixed;
+
+	&.withLeft 
+	{
+
+		body,
+		#staticBlock
+		{
+			grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". leftColumn sitePage sitePage ." "news news news news news";
+		}
+	}
+
+	&.withRight
+	{
+		body,
+		#staticBlock
+		{
+			grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage rightColumn ." "news news news news news";
+		}
+	}
+
+	&.centerWidth
+	{
+		body,
+		#staticBlock
+		{
+			grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". leftColumn sitePage rightColumn ." "news news news news news";
+		}
+	}
+}
+
+#staticBlock
+{
+	position: fixed;
+	z-index: 2000;
+	pointer-events: none;
+
+	> *
+	{
+		pointer-events: auto;
+	}
+}
+
+/* #endregion */
+
+/* #region Pages */
+
+
+/* #endregion */

@@ -1,0 +1,96 @@
+<pageSettings>
+	title="Welcome!"
+	class="darkElement ball"
+	id="crochet"
+</pageSettings>
+
+<section id="pageContent">
+	<script>
+		function crochetBallCalc(EquatorCount) {
+			const radius = EquatorCount / (2 * Math.PI);
+			const stepAngle = 90 - (((EquatorCount - 2) * 180) / EquatorCount) / 2;
+			const steps = Math.round((EquatorCount * 0.25) + 1);
+
+			let totalheight = 0;
+			let lastCount = 0;
+			let returnArray = [];
+
+			for (let i = 1; i < steps; i++) {
+				totalheight += (radius * 2 * Math.sin((180 / EquatorCount) * (Math.PI / 180))) * Math.sin((stepAngle + (stepAngle * 2 * (i - 1))) * (Math.PI / 180));
+
+				const rounded = Math.ceil(2 * Math.PI * (Math.sqrt((radius * radius) - ((radius - totalheight) * (radius - totalheight)))));
+
+				const neededToAdd = rounded - lastCount;
+				const singlesPerStep = (neededToAdd == 0) ? 0 : Math.floor((lastCount - neededToAdd) / neededToAdd);
+				const startError = Math.ceil((rounded - ((singlesPerStep * neededToAdd) + neededToAdd * 2)) / 2);
+				const endError = Math.floor((rounded - ((singlesPerStep * neededToAdd) + neededToAdd * 2)) / 2);
+
+				let stepString = "";
+				if (i == 1) stepString += `MR${rounded}`;
+				else if (neededToAdd == 0) stepString = `${rounded}Sc`;
+				else if (i % 2 == 0) {
+					if (startError != 0) stepString += `${startError}Sc `;
+					if (neededToAdd != 0) {
+						stepString += `${neededToAdd}[`;
+						if (singlesPerStep != 0) stepString += `${singlesPerStep}Sc `;
+						stepString += `inc]`;
+					}
+					if (endError != 0) stepString += ` ${endError}Sc`;
+				}
+				else {
+					const startSPS = Math.ceil(singlesPerStep / 2);
+					const endSPS = Math.floor(singlesPerStep / 2);
+
+					if (startSPS + startError != 0) stepString += `${startSPS + startError}Sc `;
+					stepString += `inc`;
+					if (neededToAdd - 1 != 0) {
+						stepString += ` ${neededToAdd - 1}[`;
+						if (singlesPerStep != 0) stepString += `${singlesPerStep}Sc`;
+						stepString += ` inc]`;
+					}
+					if (endSPS + endError != 0) stepString += ` ${endSPS + endError}Sc`;
+				}
+				returnArray.push({ steps: steps, startCount: lastCount, endCount: rounded, step: i, stepString: stepString });
+				lastCount = rounded;
+			}
+
+			return returnArray;
+		}
+
+		function run()
+		{
+			const count = document.getElementById("input").value;
+			const rowArray = crochetBallCalc(count);
+			let out = "";
+
+			for (let i = 0; i < rowArray.length; i++) {
+				const row = rowArray[i];
+				out += `<div class="block liteElement">${rowArray[i].step}: [${rowArray[i].startCount}->${rowArray[i].endCount}] ${rowArray[i].stepString}</div>`
+			}
+			let countFix = 0;
+			for (let i = rowArray.length - 1; i > 0; i--) {
+				const row = rowArray[i];
+				out += `<div class="block liteElement">${rowArray[i].steps + countFix++}: [${rowArray[i].endCount}->${rowArray[i].startCount}] ${rowArray[i].stepString.replaceAll("inc", "dec")}</div>`
+			}
+			out += `<div class="block liteElement">${parseInt(rowArray.length) * 2}: [${rowArray[0].endCount}->${rowArray[0].startCount}] Seal off</div>`;
+
+			document.getElementById("outputInner").innerHTML = out;
+		}
+	</script>
+	<div class="inputs">
+		<sktemplate 
+			type="inputBlock"
+			id="input"
+			inputType="number"
+			label="Equator Stitch Count:"
+			value="81"
+		></sktemplate>
+		<a class="button" onclick='run()'>Calclate</a>
+	</div>
+	<sktemplate 
+		type="simpleContent"
+		title="Crochet Ball Calc"
+		text="I will return with a better descrption at some point, the rebuild has taken ages and i just want to crochet my apple."
+	></sktemplate>
+	<div id="output" class="block output"><div id="outputInner"></div></div>
+</section>

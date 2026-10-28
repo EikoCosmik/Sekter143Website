@@ -1,0 +1,81 @@
+//main: "../compiled.less"
+
+#Kata-Fireworks
+{
+	*
+	{
+		box-sizing: border-box;
+		color: white
+	}
+
+	body
+	{
+		padding: 0;
+		margin: 0;
+		display: block;
+		overflow: hidden;
+	}
+
+	.isHidden
+	{
+		visibility: hidden !important;
+	}
+
+	#mainCanvas
+	{
+		background-color: #0a0a0a;
+	}
+
+	#mainContainer
+	{
+		position: relative;
+	}
+
+	#notify
+	{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: #0a0a0a;
+		border: 0.25rem solid var(--bcol_primaryDark);
+		border-radius: var(--baseBorderRadius);
+		padding: 0.5rem;
+		opacity: 1;
+	}
+
+	#controls
+	{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 2fr;
+		grid-template-rows: 1fr;
+		grid-gap: 1rem;
+		grid-auto-flow: column;
+		width: 2%;
+		height: 2%;
+		overflow: hidden;
+		opacity: 0;
+	}
+
+	#controls:hover
+	{
+		opacity: 1;
+		overflow: hidden;
+		width: 100%;
+		height: auto;
+		padding: 2.5rem;
+	}
+
+	#goBack
+	{
+		opacity: 0;
+	}
+
+	#goBack:hover
+	{
+		opacity: 1;
+	}
+}

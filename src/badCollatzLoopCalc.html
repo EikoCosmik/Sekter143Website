@@ -1,0 +1,160 @@
+﻿<pageSettings>
+	title="The BAD"
+	class="redElement badCollatzLoopCalc"
+	id="BAD"
+</pageSettings>
+
+
+<section id="pageContent" class="tabs">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+		var runOn = false;
+		var loopCalcArr = [];
+		var currentTest = 1;
+
+		function startCalc()
+		{
+			if (runOn)
+			{
+				runOn = false;
+			}
+			else
+			{
+				runOn = true;
+				loopInf();
+			}
+		}
+
+		function runColatz()
+		{
+			currentTest = currentTest + 1;
+			var curNum = currentTest;
+			var runLooper = 0;
+			var running = true;
+
+			var outputTo = $("#out");
+			outputTo.html("");
+
+			while (running)
+			{
+				runLooper++;
+
+				try
+				{
+					if (curNum % 2 == 0)
+					{
+						curNum = curNum / 2;
+					}
+					else
+					{
+						curNum = (3 * curNum) + 1;
+					}
+				}
+				catch (err)
+				{
+					console.log('(' + err + ')');
+				}
+
+				if (curNum == 1)
+				{
+					running = false;
+				}
+			}
+
+			var testingIndex;
+
+			loopCalcArr.findIndex(function (entry, i)
+			{
+				if (entry[0] == runLooper)
+				{
+					testingIndex = i;
+					return true;
+				}
+			});
+
+			if (testingIndex == undefined)
+			{
+				loopCalcArr.push([runLooper, 1]);
+				loopCalcArr.sort(sortFunction);
+			}
+			else
+			{
+				loopCalcArr[testingIndex][1] = loopCalcArr[testingIndex][1] + 1;
+			}
+
+			var maxRow = loopCalcArr.map(function (row) { return row[1]; });
+			var maxLoops = loopCalcArr.map(function (row) { return row[0]; });
+			var maxPS = Math.max.apply(null, maxRow);
+			var minPS = Math.min.apply(null, maxRow);
+			console.log(maxPS);
+
+			var outText = "(cur#:" + currentTest + ")(steps:" + loopCalcArr.length + ")(maxL:" + Math.max.apply(Math, maxLoops) + ")(maxI:" + maxPS + ")(#valsMissed:" + (Math.max.apply(Math, maxLoops) - loopCalcArr.length) + ")<br/>";
+			$.each(loopCalcArr, function (key, value)
+			{
+				var hexString;
+				var backCol = "transparent";
+
+				var percentageOfMax = (value[1] / maxPS);
+				if (value[1] == maxPS)
+				{
+					hexString = "#00ffff";
+				}
+				else if (value[1] == minPS)
+				{
+					hexString = "#ff00ff";
+				}
+				else if (percentageOfMax * 100 < 50)
+				{
+					var hexCalc = parseInt(percentageOfMax * 510);
+					var hexDif = hexCalc.toString(16);
+					if (hexDif.length == 1)
+					{
+						hexDif = "0" + hexDif;
+					}
+					hexString = "#ff" + hexDif + "00";
+				}
+				else
+				{
+					var hexCalc = 510 - (parseInt(percentageOfMax * 510));
+					var hexDif = hexCalc.toString(16);
+					if (hexDif.length == 1)
+					{
+						hexDif = "0" + hexDif;
+					}
+					hexString = "#" + hexDif + "ff00";
+				}
+				outText = outText + "<span style='padding: 2px; color:" + hexString + ";'>" + value + "</span>&#8203;";
+			});
+			outputTo.html(outText);
+		}
+
+		function sortFunction(a, b)
+		{
+			if (a[0] === b[0])
+			{
+				return 0;
+			}
+			else
+			{
+				return (a[0] < b[0]) ? -1 : 1;
+			}
+		}
+
+		function loopInf()
+		{
+			if (runOn)
+			{
+				runColatz();
+				setTimeout(loopInf, 0);
+			}
+		}
+	</script>
+	<sktemplate 
+		type="simpleContent"
+		title="BAD-CollatzLoopCalc"
+		text="This is just another look at the Collatz Conjecture. Instead of calculating and displaying the paths, this one shows the [ length of a path, amount of times this length has been used ]. It was just a curiosity, and now its built! Probably not useful really, but its done now!"
+	></sktemplate>
+	<button class="button greenElement" onclick="startCalc()">Run Current</button>
+	<div id="out" class="spanCols">Default..</div>
+	
+</section>

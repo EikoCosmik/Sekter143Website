@@ -1,0 +1,469 @@
+﻿<pageSettings>
+	title="The BAD"
+	color="redElement badInfRunner"
+	id="BAD"
+</pageSettings>
+
+
+<section id="pageContent">
+	<style>
+		.gold
+		{
+			height: 25px;
+			width: 25px;
+			position: absolute;
+			background-color: gold;
+			border: 5px solid darkgoldenrod;
+			border-radius: 50%;
+		}
+
+		.box
+		{
+			height: 50px;
+			width: 50px;
+			position: absolute;
+		}
+
+		.redBox
+		{
+			background-color: red;
+			border: 5px solid darkRed;
+		}
+		.redIBox
+		{
+			background-color: darkRed;
+			border: 5px solid red;
+		}
+
+		.blueBox
+		{
+			background-color: blue;
+			border: 5px solid darkblue;
+		}
+
+		.greenBox
+		{
+			background-color: lime;
+			border: 5px solid green;
+			transform: rotateZ(45deg);
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<sktemplate
+		type="simpleContent"
+		title="BAD-InfRunner"
+		text="It may be in alot more of a broken state since i last fixed it up, But BAD infRunner is still a favourite of mine. I think it was a 2 day sort of project that could of been extended but in the end wasnt. It wont go further now, once i finish WorldFather then ill return to the concept. Actually that should really be an if."
+	></sktemplate>
+	<div id="scoreSpace" style="z-index:100;">
+		<div id="scoreHolder">
+			<div>Section: <span id="section">0</span></div>
+			<div>Score: <span id="score">0</span></div>
+			<div>Time: <span id="time">0</span></div>
+			<div>Dev Time: <span>170.998</span></div>
+			<div>Top Sec: <span id="topSection">0</span></div>
+			<div>Top Score: <span id="topScore">0</span></div>
+			<div>Top Time: <span id="topTime">0</span></div>
+			<div>Dev Score: <span>321</span></div>
+		</div>
+		<div id="mesageBoxHolder">
+			<div id="mesageBox">This is a demo of BadInfRunner. The Max Score is ~315. Try and get the lowest time! <br />
+				Press Start Game</div>
+		</div>
+	</div>
+	<div id="gameSpace">
+		<div id="startButton" class="customButton" style="z-index:100;"><button class="button" onclick="startGame()">Start
+				Game</button></div>
+	</div>
+	<script>
+		goldRLSpawner();
+		$("#gameSpace").mouseleave(function ()
+		{
+			gameOver();
+		});
+		$(document).mousedown(function (event)
+		{
+			switch(event.which)
+			{
+				case 3:
+					gameOver();
+					break;
+			}
+		});
+
+		var timer;
+		var ticks;
+		var runTimer;
+
+		var defaultArr = [[0, 0], [0, 0], [0, 0], [0, 0]];
+		var sectionArr = [[0, 0], [0, 0], [0, 0], [0, 0]];
+		var spawnersArr = [0, 0, 0, 0];
+		var goldRL = false;
+
+		var score = 0;
+		var topScore = 0;
+		var topTime = 0;
+		var section = 0;
+		var topSection = 0;
+		var currentRunTime = 0;
+		var startTime = 0;
+		var curMessage = "Press Start Game";
+
+		var sectionsStart = [
+			5,
+			15, 
+			30, 
+			45, 
+			60, 
+			120,
+			180,
+			240,
+			300,
+			315];
+
+		function startGame()
+		{
+			$("#startButton").toggle(false);
+			section = 1;
+			if(section > topSection)
+			{
+				topSection = section;
+			}
+			curMessage = "Stay within bounds to increase your score!";
+			$("#score").html(score);
+			$("#topScore").html(topScore);
+			$("#section").html(section);
+			$("#topSection").html(topSection);
+			$("#mesageBox").html(curMessage);
+			timer = setInterval(timeScore, 1000);
+			ticks = setInterval(runTicks, 10);
+			startTime = new Date;
+			runTimer = setInterval(dateTimer, 1);
+		}
+
+		function gameOver()
+		{
+			clearInterval(runTimer);
+			clearInterval(timer);
+			clearInterval(ticks);
+			goldRL = false;
+			sectionArr = defaultArr;
+			updateSpawners();
+			$(".box").each(function ()
+			{
+				$(this).remove();
+			});
+			$(".gold").each(function ()
+			{
+				$(this).remove();
+			});
+			score = 0;
+			section = 0;
+			curMessage = "This is a demo of BadInfRunner. The Max Score is ~315. Try and get the lowest time! <br /> Press Start Game";
+			$("#score").html(score);
+			$("#section").html(section);
+			$("#mesageBox").html(curMessage);
+
+
+			$("#startButton").toggle(true);
+		}
+
+		function getCoin(obj)
+		{
+			$(obj).remove();
+			score += 10;
+		}
+
+		function timeScore()
+		{
+			score += 1;
+			updateDisplay();
+		}
+
+		function runTicks()
+		{
+			$(".redRLBox").each(function ()
+			{
+				var adj = parseInt($(this).css("left").replace('px', '')) - 2;
+
+				if(adj <= -55)
+				{
+					$(this).remove();
+				}
+				else
+				{
+					$(this).css("left", adj + "px");
+				}
+			});
+			$(".redLRBox").each(function ()
+			{
+				var adj = parseInt($(this).css("left").replace('px', '')) + 2;
+
+				if(adj >= 1300)
+				{
+					$(this).remove();
+				}
+				else
+				{
+					$(this).css("left", adj + "px");
+				}
+			});
+			$(".goldRL").each(function ()
+			{
+				var adj = parseInt($(this).css("left").replace('px', '')) - 10;
+
+				if(adj <= -55)
+				{
+					$(this).remove();
+				}
+				else
+				{
+					$(this).css("left", adj + "px");
+				}
+			});
+			$(".blueRLBox").each(function ()
+			{
+				var adj = parseInt($(this).css("left").replace('px', '')) - 3;
+
+				if(adj <= -55)
+				{
+					$(this).remove();
+				}
+				else
+				{
+					$(this).css("left", adj + "px");
+				}
+			});
+			$(".greenTRBLBox").each(function ()
+			{
+				var adjL = parseInt($(this).css("left").replace('px', '')) - 2;
+				var adjT = parseInt($(this).css("top").replace('px', '')) + 2;
+
+				if(adjL <= -55 || adjT >= 755)
+				{
+					$(this).remove();
+				}
+				else
+				{
+					$(this).css("left", adjL + "px");
+					$(this).css("top", adjT + "px");
+				}
+			});
+		}
+
+		function dateTimer()
+		{
+			var curTime = (new Date - startTime) / 1000;
+			$('#time').html(curTime);
+
+			if(curTime > topTime)
+			{
+				topTime = curTime;
+			}
+			$('#topTime').html(topTime);
+		}
+
+		function updateSpawners()
+		{
+
+			var sectionCounter = 1;
+
+			$.each(sectionArr, function (key, value)
+			{
+				sectionCounter += 1;
+				if(value[0] == 0)
+				{
+					clearInterval(spawnersArr[key]);
+				}
+				else if(value[0] == 1 || value[0] == 2 && value[1] != 0 && spawnersArr[key] == 0)
+				{
+					clearInterval(spawnersArr[key]);
+					turnOnSpawner(sectionCounter, key, value[1]);
+				}
+			});
+		}
+
+		function turnOnSpawner(spawnerNum, arrKey, timer)
+		{
+			switch(spawnerNum)
+			{
+				case 2:
+					spawnersArr[arrKey] = setInterval(redRLSpawner, timer);
+					break;
+				case 3:
+					spawnersArr[arrKey] = setInterval(blueRLSpawner, timer);
+					break;
+				case 4:
+					spawnersArr[arrKey] = setInterval(greenTRBLSpawner, timer);
+					break;
+				case 5:
+					spawnersArr[arrKey] = setInterval(redLRSpawner, timer);
+					break;
+				default:
+					console.log("SPAWNER ERR");
+					break;
+			}
+		}
+
+		function redRLSpawner()
+		{
+			$('<div/>', {
+				class: 'redBox redRLBox box',
+				style: 'left: 1250px; top: ' + randomIntFromInterval(5, 450) + ';',
+				onmouseover: "gameOver()"
+			}).appendTo('#gameSpace');
+		}
+
+		function redLRSpawner()
+		{
+			$('<div/>', {
+				class: 'redIBox redLRBox box',
+				style: 'left: -100px; top: ' + randomIntFromInterval(5, 450) + ';',
+				onmouseover: "gameOver()"
+			}).appendTo('#gameSpace');
+		}
+
+		function blueRLSpawner()
+		{
+			$('<div/>', {
+				class: 'blueBox blueRLBox box',
+				style: 'left: 1250px; top: ' + randomIntFromInterval(5, 450) + ';',
+				onmouseover: "gameOver()"
+			}).appendTo('#gameSpace');
+		}
+
+		function greenTRBLSpawner()
+		{
+			$('<div/>', {
+				class: 'greenBox greenTRBLBox box',
+				style: 'left: ' + randomIntFromInterval(125, 2000) + '; top: -100px;',
+				onmouseover: "gameOver('greenHit')"
+			}).appendTo('#gameSpace');
+		}
+
+		function goldRLSpawner()
+		{
+			if(goldRL)
+			{
+				$('<div/>', {
+					class: 'gold goldRL',
+					style: 'left: 1250px; top: ' + randomIntFromInterval(5, 450) + ';',
+					onmouseover: "getCoin(this)"
+				}).appendTo('#gameSpace');
+			}
+			setTimeout("goldRLSpawner()", randomIntFromInterval(2000, 5000));
+		}
+
+		function updateDisplay()
+		{
+			if(score > topScore)
+			{
+				topScore = score;
+			}
+
+			switch(true)
+			{
+				case (score > sectionsStart[0] && score < sectionsStart[1] && section != 2):
+					section = 2;
+					curMessage = "Avoid the Red Boxes!";
+					sectionArr = [[1, 1000], [2, 0], [2, 0], [2, 0]];
+					updateSpawners();
+					break;
+				case (score > sectionsStart[1] && score < sectionsStart[2] && section != 3):
+					section = 3;
+					curMessage = "Collect Gold! (+10 score)";
+					goldRL = true;
+					sectionArr = [[2, 1000], [2, 0], [2, 0], [2, 0]];
+					updateSpawners();
+					break;
+				case (score > sectionsStart[2] && score < sectionsStart[3] && section != 4):
+					section = 4;
+					curMessage = "Sections Can Turn off!";
+					sectionArr = [[0, 0], [2, 0], [2, 0], [2, 0]];
+					updateSpawners();
+					break;
+				case (score > sectionsStart[3] && score < sectionsStart[4] && section != 5):
+					section = 5;
+					curMessage = "And they can spawn at different intervals! End of Tutorial - Good Luck!";
+					sectionArr = [[1, 500], [2, 0], [2, 0], [2, 0]];
+					updateSpawners();
+					break;
+				case (score > sectionsStart[4] && score < sectionsStart[5] && section != 6):
+					section = 6;
+					curMessage = "<span style='color:blue;'>That Blue Feeling</span>";
+					sectionArr = [[2, 500], [1, 1000], [2, 0], [2, 0]];
+					updateSpawners();
+					break;
+				case (score > sectionsStart[5] && score < sectionsStart[6] && section != 7):
+					section = 7;
+					curMessage = "<span style='color:lime;'>Acid Rain!</span>";
+					sectionArr = [[0, 0], [0, 0], [1, 500], [2, 0]];
+					updateSpawners();
+					break;
+				case (score > sectionsStart[6] && score < sectionsStart[7] && section != 8):
+					section = 8;
+					curMessage = "<span style='color:red;'>EVERYTHING AT 500</span>";
+					sectionArr = [[1, 500], [1, 500], [1, 500], [2, 0]];
+					updateSpawners();
+					break;
+				case (score > sectionsStart[7] && score < sectionsStart[8] && section != 9):
+					section = 9;
+					curMessage = "<span style='color:red; font-weight:bold;'>EVERYTHING AT 250!!</span>";
+					sectionArr = [[1, 250], [1, 250], [1, 250], [2, 0]];
+					updateSpawners();
+					break;
+				case (score > sectionsStart[8] && score < sectionsStart[9] && section != 10):
+					section = 10;
+					curMessage = "<span style='color:Gold; font-weight:bold;'>End of Demo 260325, Thanks for Playing, Try and get a quicker time!</span>";
+					sectionArr = [[1, 1000], [0, 0], [0, 0], [1, 2000]];
+					updateSpawners();
+					break;
+				case (score > sectionsStart[9]):
+					gameOver();
+					break;
+			}
+			if(section > topSection)
+			{
+				topSection = section;
+			}
+
+			$("#score").html(score);
+			$("#topScore").html(topScore);
+			$("#section").html(section);
+			$("#topSection").html(topSection);
+			$("#mesageBox").html(curMessage);
+		}
+
+		function randomIntFromInterval(min, max)
+		{
+			return Math.floor(Math.random() * (max - min + 1) + min);
+		}
+
+		window.addEventListener("keydown", checkKeyPressed, false);
+
+		function checkKeyPressed(evt)
+		{
+			if(evt.keyCode == "49")
+			{
+				score = sectionsStart[9] - 10;
+				goldRL = true;
+			}
+		}
+
+		document.addEventListener('wheel', function (e)
+		{
+			if(e.ctrlKey || e.metaKey)
+			{
+				e.preventDefault();
+			}
+		}, { passive: false });
+
+		document.addEventListener('keydown', function (e)
+		{
+			if((e.ctrlKey || e.metaKey) &&
+				(e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0'))
+			{
+				e.preventDefault();
+			}
+		});
+	</script>
+</section>

@@ -1,0 +1,634 @@
+﻿<pageSettings>
+	title="The BAD"
+	class="redElement badChaosGame"
+	id="BAD"
+</pageSettings>
+
+<section id="pageContent">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+	<div id="inputs">
+		<h2>Basic Controls</h2>
+		<div class="inputBlock">
+			<label>Shape:</label>
+			<select id="shapeSelect">
+				<!-- 10 -->
+				<option value="0">Line</option>
+				<option value="1">Triangle 1</option>
+				<option value="2">Triangle 2</option>
+				<option value="5">Triangle 3</option>
+				<option value="9">Triangle 4 (disable line)</option>
+				<option value="10">Triangle 5</option>
+				<option value="3">Square 1</option>
+				<option value="4">Square 2</option>
+				<option value="6">Hex 1</option>
+				<option value="7">Hex 2</option>
+				<option value="8">Hex 3 (disable line)</option>
+			</select>
+		</div>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="pointSize"
+			min="0.035"
+			label="Point Size:"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="amt"
+			label="Point Size:"
+			label="Amount:"
+		></sktemplate>
+		
+		<sktemplate 
+			type="inputBlock"
+			inputType="checkbox"
+			id="lineBox"
+			label="Draw Perimeter?"
+		></sktemplate>
+		
+		<sktemplate 
+			type="inputBlock"
+			inputType="checkbox"
+			id="drawBack"
+			label="Draw Fill?"
+		></sktemplate>
+		
+		<sktemplate 
+			type="inputBlock"
+			inputType="checkbox"
+			id="drawFullBack"
+			label="Draw background?"
+		></sktemplate>
+		
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="fFrac"
+			step="0.01"
+			min="0"
+			max="5"
+			label="Forced Fraction:"
+		></sktemplate>
+		
+		<sktemplate 
+			type="inputBlock"
+			inputType="text"
+			id="fColor"
+			label="Dot Color:"
+		></sktemplate>
+		
+		<sktemplate 
+			type="inputBlock"
+			inputType="text"
+			id="sColor"
+			label="Stroke Color:"
+		></sktemplate>
+		
+		<sktemplate 
+			type="inputBlock"
+			inputType="text"
+			id="bColor"
+			label="Fill Color:"
+		></sktemplate>
+		
+		<sktemplate 
+			type="inputBlock"
+			inputType="text"
+			id="fbColor"
+			label="Background Color:"
+		></sktemplate>
+
+		<div class="inputBlock">
+			<label>Rainbow Dots Mode:</label>
+			<select id="rainbowIndex">
+				<option value="0">Off</option>
+				<option value="1">Follow Draw Rate (+1)</option>
+				<option value="2">Follow Draw Rate (Deg)</option>
+				<option value="3">Random Per Dot</option>
+			</select>
+		</div>
+
+		<div class="btn">
+			<button class="button" id="downloadBtn">Download</button>
+		</div>
+	</div>
+	<canvas id="myCanvas" width="1000" height="1000">
+		Your browser does not support the HTML canvas tag.
+	</canvas>
+	<div id="inputs2">
+		<h2>Advanced Controls</h2>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="checkbox"
+			id="clearBox"
+			label="Clear each step?"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="checkbox"
+			id="isLoop"
+			label="Loop Steps?"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="checkbox"
+			id="uFroced"
+			label="Use Forced?"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="minFrac"
+			step="0.01"
+			min="0"
+			max="5"
+			label="Min Fraction:"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="maxFrac"
+			step="0.01"
+			min="0"
+			max="5"
+			label="Max Fraction:"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="scaleFactor"
+			step="0.1"
+			min="0.1"
+			label="Scale Factor:"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="rOC"
+			step="0.001"
+			min="0"
+			label="Unforced Step:"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="drawInt"
+			step="0.001"
+			min="0"
+			label="Draw Interval (ms):"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="rainbowDegree"
+			step="0.01"
+			min="0.12"
+			label="Rainbow Forced (Deg):"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="rAngle"
+			label="Rotation Angle:"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="autoRotate"
+			step="1"
+			label="Auto Rotate Speed:"
+		></sktemplate>
+
+		<sktemplate 
+			type="inputBlock"
+			inputType="number"
+			id="autoRotateA"
+			step="1"
+			label="Auto Rotate Angle:"
+		></sktemplate>
+
+		<div class="btn">
+			<button class="button" onclick="force(0)">Force Draw</button>
+		</div>
+		<div class="btn">
+			<button class="button" onclick="force(1)">Force Clear</button>
+		</div>
+
+		<div class="guide" style="display: none;">
+			Press shift+P to toggle Advanced Controls<br />
+			<span>Current Fraction: <span id="fracOut">?</span></span>
+		</div>
+	</div>
+	<sktemplate 
+		type="simpleContent"
+		title="BAD-ChaosGame"
+		text="Nah, i like this one alot. Ive generated alot of cool screenshots from it.<br/>Basically for the chaos game, start with a polygon, start with a random point on the inside, go to a random vertex, move a fractional amount between the two and draw a point, repeat from that point. "
+	></sktemplate>	<script>
+		var shapeIndex = 1;
+		var rainbowIndex = 0;
+		var minFrac = 0;
+		var maxFrac = 1;
+		var fFrac = 0.5;
+		var amt = 10000;
+		var pSize = 1;
+		var rOC = 0.001;
+		var drawInt = 1;
+		var fColor = "#00ff00ff";
+		var sColor = "#ff0000ff";
+		var bColor = "#000000ff";
+		var fbColor = "#00000010";
+		var drawPerim = false;
+		var clearBack = true;
+		var isLoop = true;
+		var drawBack = false;
+		var uFroced = true;
+		var drawFullBack = false;
+		var rAngle = 0;
+		var scaleFactor = 1;
+		var rainbowDegree = 1;
+		var autoRotateSpeed = 1000;
+		var autoRotateAngle = 0;
+
+		document.getElementById("shapeSelect").addEventListener("change", function () {
+			shapeIndex = parseInt(this.value);
+		});
+		document.getElementById("rainbowIndex").addEventListener("change", function () {
+			rainbowIndex = parseInt(this.value);
+		});
+		document.getElementById("drawBack").addEventListener("change", function () {
+			drawBack = this.checked;
+		});
+		document.getElementById("lineBox").addEventListener("change", function () {
+			drawPerim = this.checked;
+		});
+		document.getElementById("clearBox").addEventListener("change", function () {
+			clearBack = this.checked;
+		});
+		document.getElementById("drawFullBack").addEventListener("change", function () {
+			drawFullBack = this.checked;
+		});
+		document.getElementById("isLoop").addEventListener("change", function () {
+			isLoop = this.checked;
+		});
+		document.getElementById("uFroced").addEventListener("change", function () {
+			uFroced = this.checked;
+		});
+		document.getElementById("pointSize").addEventListener("change", function () {
+			pSize = parseFloat(this.value);
+		});
+		document.getElementById("fFrac").addEventListener("change", function () {
+			fFrac = parseFloat(this.value);
+		});
+		document.getElementById("minFrac").addEventListener("change", function () {
+			minFrac = parseFloat(this.value);
+		});
+		document.getElementById("maxFrac").addEventListener("change", function () {
+			maxFrac = parseFloat(this.value);
+		});
+		document.getElementById("amt").addEventListener("change", function () {
+			amt = parseInt(this.value);
+		});
+		document.getElementById("rOC").addEventListener("change", function () {
+			rOC = parseFloat(this.value);
+		});
+		document.getElementById("drawInt").addEventListener("change", function () {
+			drawInt = parseInt(this.value);
+			if (drawIntervalId) clearInterval(drawIntervalId);
+			drawIntervalId = setInterval(drawFrame, drawInt);
+		});
+		document.getElementById("fColor").addEventListener("change", function () {
+			fColor = this.value;
+		});
+		document.getElementById("bColor").addEventListener("change", function () {
+			bColor = this.value;
+		});
+		document.getElementById("fbColor").addEventListener("change", function () {
+			fbColor = this.value;
+		});
+		document.getElementById("sColor").addEventListener("change", function () {
+			sColor = this.value;
+		});
+		document.getElementById("rAngle").addEventListener("change", function () {
+			rAngle = parseFloat(this.value);
+			needRotate = true;
+		});
+		document.getElementById("scaleFactor").addEventListener("change", function () {
+			scaleFactor = parseFloat(this.value);
+			needScale = true;
+		});
+		document.getElementById("rainbowDegree").addEventListener("change", function () {
+			rainbowDegree = parseFloat(this.value);
+		});
+		document.getElementById("autoRotate").addEventListener("change", function () {
+			autoRotateSpeed = parseFloat(this.value);
+			if (autoRotateId) clearInterval(autoRotateId);
+			autoRotateId = setInterval(autoRotateFunc, autoRotateSpeed);
+		});
+		document.getElementById("autoRotateA").addEventListener("change", function () {
+			autoRotateAngle = parseFloat(this.value);
+			if (autoRotateId) clearInterval(autoRotateId);
+			autoRotateId = setInterval(autoRotateFunc, autoRotateSpeed);
+		});
+
+		window.addEventListener("DOMContentLoaded", () => {
+			document.getElementById("shapeSelect").value = shapeIndex;
+			document.getElementById("rainbowIndex").value = rainbowIndex;
+			document.getElementById("lineBox").checked = drawPerim;
+			document.getElementById("drawBack").checked = drawBack;
+			document.getElementById("clearBox").checked = clearBack;
+			document.getElementById("isLoop").checked = isLoop;
+			document.getElementById("pointSize").value = pSize;
+			document.getElementById("minFrac").value = minFrac;
+			document.getElementById("maxFrac").value = maxFrac;
+			document.getElementById("drawFullBack").value = drawFullBack;
+			document.getElementById("fFrac").value = fFrac;
+			document.getElementById("uFroced").value = uFroced;
+			document.getElementById("amt").value = amt;
+			document.getElementById("rOC").value = rOC;
+			document.getElementById("drawInt").value = drawInt;
+			document.getElementById("fColor").value = fColor;
+			document.getElementById("sColor").value = sColor;
+			document.getElementById("bColor").value = bColor;
+			document.getElementById("fbColor").value = fbColor;
+			document.getElementById("rAngle").value = rAngle;
+			document.getElementById("scaleFactor").value = scaleFactor;
+			document.getElementById("rainbowDegree").value = rainbowDegree;
+			document.getElementById("autoRotate").value = autoRotateSpeed;
+			document.getElementById("autoRotateA").value = autoRotateAngle;
+		});
+
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		var centerX = c.width / 2;
+		var centerY = c.height / 2;
+		var needRotate = true;
+		var needScale = true;
+		var oldAngle = 0;
+		var oldScale = 1;
+		var drawIntervalId = null;
+		var autoRotateId = null;
+		var forceDraw = false;
+		var shapePoints = [
+			[[0.5 * c.width, 0.01 * c.height],
+			[0.5 * c.width, 0.99 * c.height]],
+
+			[[0.5 * c.width, 0.1 * c.height],
+			[0.96 * c.width, 0.9 * c.height],
+			[0.04 * c.width, 0.9 * c.height]],
+
+			[[0.5 * c.width, 0.1 * c.height],
+			[0.729 * c.width, 0.499 * c.height],
+			[0.957 * c.width, 0.898 * c.height],
+			[0.5 * c.width, 0.898 * c.height],
+			[0.043 * c.width, 0.898 * c.height],
+			[0.272 * c.width, 0.499 * c.height]],
+
+			[[0.01 * c.width, 0.01 * c.height],
+			[0.99 * c.width, 0.01 * c.height],
+			[0.99 * c.width, 0.99 * c.height],
+			[0.01 * c.width, 0.99 * c.height]],
+
+			[[0.01 * c.width, 0.01 * c.height],
+			[0.5 * c.width, 0.01 * c.height],
+			[0.99 * c.width, 0.01 * c.height],
+			[0.99 * c.width, 0.5 * c.height],
+			[0.99 * c.width, 0.99 * c.height],
+			[0.5 * c.width, 0.99 * c.height],
+			[0.01 * c.width, 0.99 * c.height],
+			[0.01 * c.width, 0.5 * c.height]],
+
+			[[0.5 * c.width, 0.1 * c.height],
+			[0.957 * c.width, 0.898 * c.height],
+			[0.5 * c.width, 0.898 * c.height]],
+
+			[[0.255 * c.width, 0.075 * c.height],
+			[0.745 * c.width, 0.075 * c.height],
+			[0.99 * c.width, 0.5 * c.height],
+			[0.745 * c.width, 0.924 * c.height],
+			[0.255 * c.width, 0.924 * c.height],
+			[0.01 * c.width, 0.5 * c.height]],
+
+			[[0.255 * c.width, 0.075 * c.height],
+			[0.5 * c.width, 0.075 * c.height],
+			[0.745 * c.width, 0.075 * c.height],
+			[0.868 * c.width, 0.289 * c.height],
+			[0.99 * c.width, 0.5 * c.height],
+			[0.868 * c.width, 0.712 * c.height],
+			[0.745 * c.width, 0.924 * c.height],
+			[0.5 * c.width, 0.924 * c.height],
+			[0.255 * c.width, 0.924 * c.height],
+			[0.133 * c.width, 0.712 * c.height],
+			[0.01 * c.width, 0.5 * c.height],
+			[0.133 * c.width, 0.289 * c.height]],
+
+			[[0.5 * c.width, 0.5 * c.height],
+			[0.255 * c.width, 0.075 * c.height],
+			[0.745 * c.width, 0.075 * c.height],
+			[0.99 * c.width, 0.5 * c.height],
+			[0.745 * c.width, 0.924 * c.height],
+			[0.255 * c.width, 0.924 * c.height],
+			[0.01 * c.width, 0.5 * c.height]],
+
+			[[0.5 * c.width, 0.5 * c.height],
+			[0.5 * c.width, 0.1 * c.height],
+			[0.957 * c.width, 0.898 * c.height],
+			[0.043 * c.width, 0.898 * c.height]],
+
+			[[0.5 * c.width, 0.04656 * c.height],
+			[0.89269 * c.width, 0.72672 * c.height],
+			[0.10731 * c.width, 0.72672 * c.height]],
+		];
+
+		var curPoint = [500, 500];
+		var intPoint = 0;
+
+		if (drawIntervalId) clearInterval(drawIntervalId);
+		drawIntervalId = setInterval(drawFrame, drawInt);
+		function drawFrame() {
+			intPoint += rOC;
+			intPoint = intPoint % 1;
+			draw();
+		}
+
+		if (autoRotateId) clearInterval(autoRotateId);
+		autoRotateId = setInterval(autoRotateFunc, autoRotateSpeed);
+		function autoRotateFunc() {
+			rAngle += autoRotateAngle;
+			rAngle = rAngle % 360;
+			needRotate = true;
+		}
+
+		function force(type) {
+			if (type == 0) {
+				forceDraw = true;
+				draw();
+				forceDraw = false;
+			}
+			else {
+				ctx.clearRect(centerX - (20 * c.width) / 2, centerY - (20 * c.height) / 2, (20 * c.width), (20 * c.height));
+			}
+		}
+
+		function draw() {
+			if (isLoop || forceDraw) {
+				if (rainbowIndex != 0) {
+					switch (rainbowIndex) {
+						case 1:
+							fColor = hueShift(fColor, 1);
+							break;
+						case 2:
+							fColor = hueShift(fColor, rainbowDegree);
+							break;
+					}
+				}
+				if (clearBack) {
+					ctx.clearRect(centerX - (20 * c.width) / 2, centerY - (20 * c.height) / 2, (20 * c.width), (20 * c.height));
+				}
+				if (needRotate) {
+					ctx.translate(centerX, centerY);
+					ctx.rotate(-oldAngle * Math.PI / 180);
+					oldAngle = rAngle;
+					ctx.rotate(rAngle * Math.PI / 180);
+					ctx.translate(-centerX, -centerY);
+					needRotate = false;
+				}
+				if (needScale) {
+					ctx.translate(centerX, centerY);
+					ctx.scale(1 / oldScale, 1 / oldScale);
+					oldScale = scaleFactor;
+					ctx.scale(scaleFactor, scaleFactor);
+					ctx.translate(-centerX, -centerY);
+					needScale = false;
+				}
+				if (drawFullBack) {
+					ctx.translate(-centerX, -centerY);
+					ctx.fillStyle = fbColor;
+					ctx.fillRect(centerX - (20 * c.width) / 2, centerY - (20 * c.height) / 2, (20 * c.width), (20 * c.height));
+					ctx.translate(centerX, centerY);
+				}
+				if (drawPerim || drawBack) {
+					ctx.beginPath();
+					ctx.strokeStyle = sColor;
+					ctx.fillStyle = bColor;
+					ctx.lineWidth = 10;
+					ctx.moveTo(shapePoints[shapeIndex][shapePoints[shapeIndex].length - 1][0], shapePoints[shapeIndex][shapePoints[shapeIndex].length - 1][1]);
+					for (var i = 0; i < shapePoints[shapeIndex].length; i++) {
+						ctx.lineTo(shapePoints[shapeIndex][i][0], shapePoints[shapeIndex][i][1]);
+					}
+					ctx.closePath();
+					if (drawPerim) {
+						ctx.stroke();
+					}
+					if (drawBack) {
+						ctx.fill();
+					}
+				}
+				for (var i = 0; i < amt; i++) {
+					ctx.beginPath();
+					if (rainbowIndex == 3) {
+						var hue = Math.floor(Math.random() * 360);
+						fColor = hslToHex(hue, 100, 50);
+					}
+					ctx.fillStyle = fColor;
+					getNextPoint();
+					ctx.arc(curPoint[0], curPoint[1], pSize, 0, 2 * Math.PI);
+					ctx.fill();
+				}
+			}
+		}
+
+		function getNextPoint() {
+			var random = getRandomInt(shapePoints[shapeIndex].length);
+			var fraction = sineLerp(minFrac, maxFrac, intPoint);
+			if (uFroced) {
+				fraction = fFrac;
+			}
+			document.getElementById("fracOut").innerHTML = Number(fraction.toFixed(6));;
+			curPoint[0] = curPoint[0] + (fraction * (shapePoints[shapeIndex][random][0] - curPoint[0]));
+			curPoint[1] = curPoint[1] + (fraction * (shapePoints[shapeIndex][random][1] - curPoint[1]));
+		}
+		function sineLerp(a, b, t) {
+			const pingPongT = t <= 0.5 ? t * 2 : (1 - t) * 2;
+			return a + (b - a) * pingPongT;
+		}
+		function getRandomInt(max) {
+			return Math.floor(Math.random() * max);
+		}
+		$(document).keypress(function (event) {
+			if (event.keyCode == '81') {
+				$("#inputs").toggle();
+			}
+			if (event.keyCode == '80') {
+				$("#inputs2").toggle();
+			}
+		});
+		document.getElementById("downloadBtn").addEventListener("click", function () {
+			const link = document.createElement("a");
+			link.download = "canvas-image.png";
+			link.href = c.toDataURL("image/png");
+			link.click();
+		});
+		function hueShift(hex, deg) {
+			let [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16) / 255);
+			let mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+			let h = mx === mn ? 0 :
+				mx === r ? 60 * (((g - b) / d) % 6) :
+					mx === g ? 60 * ((b - r) / d + 2) :
+						60 * ((r - g) / d + 4);
+			let l = (mx + mn) / 2;
+			let s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
+			h = (h + deg + 360) % 360;
+
+			let c = (1 - Math.abs(2 * l - 1)) * s;
+			let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+			let m = l - c / 2;
+			let [r1, g1, b1] =
+				h < 60 ? [c, x, 0] :
+					h < 120 ? [x, c, 0] :
+						h < 180 ? [0, c, x] :
+							h < 240 ? [0, x, c] :
+								h < 300 ? [x, 0, c] :
+									[c, 0, x];
+
+			return "#" + [r1, g1, b1].map(v =>
+				Math.round((v + m) * 255).toString(16).padStart(2, "0")
+			).join("");
+		}
+		function hslToHex(h, s, l) {
+			s /= 100;
+			l /= 100;
+			let c = (1 - Math.abs(2 * l - 1)) * s;
+			let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+			let m = l - c / 2;
+			let r = 0, g = 0, b = 0;
+
+			if (h < 60) { r = c; g = x; b = 0; }
+			else if (h < 120) { r = x; g = c; b = 0; }
+			else if (h < 180) { r = 0; g = c; b = x; }
+			else if (h < 240) { r = 0; g = x; b = c; }
+			else if (h < 300) { r = x; g = 0; b = c; }
+			else { r = c; g = 0; b = x; }
+
+			r = Math.round((r + m) * 255);
+			g = Math.round((g + m) * 255);
+			b = Math.round((b + m) * 255);
+
+			return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1) + "ff";
+		}
+	</script>
+</section>

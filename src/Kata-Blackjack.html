@@ -1,0 +1,48 @@
+<pageSettings>
+	title="KataBlackJack"
+	class="redElement"
+	id="Kata-BlackJack"
+</pageSettings>
+
+<section id="pageContent">
+	<div id="plaingCardGameContainer">
+		<div id="dataCenter" class="verticalTabs">
+			<div class="dataBlock dealer">
+				<h2>Dealer Score</h2>
+				<div id="dealerScore"></div>
+			</div>
+			<div class="dataBlock player">
+				<h2>Player Score</h2>
+				<div id="playerScore"></div>
+			</div>
+			<div class="controls verticalTabs">
+				<a class="button small greenElement" onclick="Game.hit()">HIT</a>
+				<a class="button small yellowElement" onclick="Game.stand()">STAND</a>
+			</div>
+			<div id="gameStateMsg">
+				
+			</div>
+			<a class="button small redElement" onclick="Game.setup()">Reset</a>
+		</div>
+
+		<div id="dealerSpace" class="playArea autoSpaceH">
+			<div class="hand" id="dealerHand"></div>
+		</div>
+
+		<div id="playerSpace" class="playArea autoSpaceH">
+			<div class="hand" id="playerHand"></div>
+		</div>
+
+		<div id="plaingCardGamePopup">
+			<div class="block">
+				<h2 id="pcgPopupTitle"></h2>
+				<div id="pcgPopupContent"></div>
+				<div id="pcgPopupButton" class="button" onclick="Game.curPopupButtonAction()">Next</div>
+			</div>
+		</div>
+	</div>
+	<script type="module">
+		import { BlackJack } from "./assets/scripts/Kata-BlackJack.js"; 
+		window.Game = new BlackJack();
+	</script>
+</section>

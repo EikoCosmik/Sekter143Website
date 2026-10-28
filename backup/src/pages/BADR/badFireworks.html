@@ -1,0 +1,200 @@
+<pageSettings>
+	title="The BAD"
+	color="redElement badFireworks"
+	id="BAD"
+</pageSettings>
+
+<body>
+	<main id="page">
+		<section id="pageContent">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+			<canvas id="mainCanvas" width="2600" height="1400"></canvas>
+			<div id="controls">
+				<div class="inputBlock"><label>Spawn Interval</label><input type="number" value="500" id="spawnInt"></div>
+				<div class="inputBlock"><label>Min Velocity</label><input type="number" value="6" id="minVel"></div>
+				<div class="inputBlock"><label>Max Velocity</label><input type="number" value="13" id="maxVel"></div>
+				<div class="inputBlock"><label>Sway Amount</label><input type="number" value="6" id="swayAmt"></div>
+				<div class="block useGradient">shift+P To hide controls</div>
+				<sktemplate
+					type="simpleContent"
+					title="BAD-Fireworks"
+					text=""
+				></sktemplate>
+			</div>
+		</section>
+	</main>
+	<script>
+		let c = document.getElementById("mainCanvas");
+		let ctx = c.getContext("2d");
+		let centerX = c.width / 2;
+		let centerY = c.height / 2;
+		let particles = [];
+		let gravity = 0.1;
+
+		function drawFrame()
+		{
+			ctx.fillStyle = "#00000060"
+			ctx.fillRect(-100, -100, c.width + 100, c.height + 100);	
+			particles.forEach((part, index) =>
+			{
+				part.runUpdate(index);
+			});
+			requestAnimationFrame(drawFrame);
+		}
+
+		function spawnFirework()
+		{
+			particles.push(new rocket())
+			setTimeout(spawnFirework, $("#spawnInt").val());
+		}
+
+		class rocket
+		{
+			constructor ()
+			{
+				this.size = getRndInteger(1, 6);
+				this.drawSize = this.size * 5;
+				this.posX = getRndInteger(centerX,c.width) - (centerX/2);
+				this.posY = c.height;
+				this.velocity = getRndInteger($("#minVel").val(), $("#maxVel").val());
+				this.burstTime = getRndInteger(100, 500);
+				this.liveTime = 0;
+				this.halfSize = parseInt(this.drawSize) / 2;
+				this.sway = getRndInteger(-$("#swayAmt").val(), $("#swayAmt").val());
+				this.oldY = -99999;
+			}
+
+			runUpdate(i)
+			{
+				this.velocity -= gravity;
+				this.posY -= this.velocity;
+				this.posX -= this.sway;
+				this.liveTime += 1
+				if (this.liveTime == this.burstTime || (this.posY > this.oldY - 1 && this.posY < this.oldY + 1))
+				{
+					particles.splice(i, 1);
+					playABoom(this.size);
+					let randCol = getRandMaxCol();
+					let isRainbow = getRndInteger(0, 99);
+					for(i = 0; i != this.size*10; i++)
+					{
+						particles.push(new burst(this.size, this.posX, this.posY, randCol, isRainbow))
+					}
+				}
+				else
+				{
+					this.oldY = this.posY;
+					ctx.fillStyle = "#444444";
+					ctx.fillRect(this.posX - this.halfSize, this.posY-this.halfSize, this.drawSize, this.drawSize);
+				}
+			}
+		}
+
+		class burst
+		{
+			constructor (inSize, inX, inY, inCol, isRainbow)
+			{
+				this.size = inSize;
+				this.drawSize = this.size * 2;
+				this.posX = inX;
+				this.posY = inY;
+
+				if(isRainbow == 1)
+				{
+					this.col = getRandMaxCol();
+				}
+				else
+				{
+					this.col = inCol;
+				}
+
+				this.velocity = getRandomArbitrary(-1, 2) * inSize;
+				this.sway = getRandomArbitrary(-2, 2) * inSize;
+
+				this.liveTime = 0;
+				this.halfSize = parseInt(this.drawSize) / 2;
+			}
+
+			runUpdate(i)
+			{
+				this.velocity -= gravity;
+				this.posY -= this.velocity;
+				this.posX -= this.sway;
+				this.drawSize = this.drawSize - (gravity*this.size/2);
+				if (this.drawSize < 0)
+				{
+					particles.splice(i, 1);
+				}
+				else
+				{
+					this.oldY = this.posY;
+					ctx.fillStyle = this.col;
+					ctx.fillRect(this.posX - this.halfSize, this.posY - this.halfSize, this.drawSize, this.drawSize);
+				}
+			}
+		}
+
+		drawFrame();
+		setTimeout(spawnFirework, 1000);
+
+		function playABoom(fWSize)
+		{
+		}
+
+		function getRandMaxCol()
+		{
+			outcol = "#";
+			tempArr = ["ff", "00"]
+			var num = Math.floor(Math.random() * 256);
+			tempArr.push(num.toString(16).padStart(2, '0'));
+			while(tempArr.length > 0)
+			{
+				outcol += tempArr.splice(getRndInteger(0, tempArr.length-1),1)
+			}
+			return outcol
+		}
+
+		function getRndInteger(min, max) 
+		{
+			const minCeiled = Math.ceil(min);
+			const maxFloored = Math.floor(max);
+			return Math.floor(Math.random() * (maxFloored - minCeiled + 1)) + minCeiled;
+		}
+
+		function getRandomArbitrary(min, max)
+		{
+			return Math.random() * (max - min) + min;
+		}
+		function resize()
+		{
+			$("#mainCanvas").css("width", window.innerWidth);
+			$("#mainCanvas").css("height", window.innerHeight);
+			c.width = window.innerWidth;
+			c.height = window.innerHeight;
+		}
+		window.addEventListener('resize', resize);
+		resize();
+		$(document).keypress(function (event)
+		{
+			if (event.keyCode == '80')
+			{
+				$("#controls").toggle();
+				$("#goBack").toggle();
+				$("#toggleTulyn").toggle();
+			}
+		});
+		function hideNotif()
+		{
+			curOpac = parseFloat($("#notify").css("opacity"))
+
+			if(curOpac > 0)
+			{
+				$("#notify").css("opacity", "" + (curOpac - 0.01));
+				setTimeout(hideNotif, 0);
+			}
+		}
+		setTimeout(hideNotif, 2000);
+	</script>
+</body>
+
+</html>

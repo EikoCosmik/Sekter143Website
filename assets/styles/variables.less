@@ -1,0 +1,50 @@
+//main: "./compiled.less"
+
+/* #region Sizes */
+
+:root
+{
+	/* Gaps */	
+	@doubleGap: calc(@baseGap * 2);
+	@hugeGap: calc(@baseGap * 1.75);
+	@largeGap: calc(@baseGap * 1.5);
+	@bigGap: calc(@baseGap * 1.25);
+	@baseGap: 20px;
+	@thinGap: calc(@baseGap * 0.75);
+	@halfGap: calc(@baseGap * 0.5);
+	@quarterGap: calc(@baseGap * 0.25);
+	@minGap: calc(@baseGap * 0.1);
+
+	/* Gaps */	
+	--doubleGap: @doubleGap;
+	--hugeGap: @hugeGap;
+	--largeGap: @largeGap;
+	--bigGap: @bigGap;
+	--baseGap: @baseGap;
+	--thinGap: @thinGap;
+	--halfGap: @halfGap;
+	--quarterGap: @quarterGap;
+	--minGap: @minGap;
+
+	/* Sizes */
+	--pageWidth: 50cqw; //@container html
+	--headerHeight: 12cqh; //@container html
+	--newsHeight: 5cqh; //@container html
+	--sideBarWidth: 13cqw; //@container html
+
+	/* FontSize */
+	--largeFontSize: 20px;
+	--bigFontSize: 17.5px;
+	--baseFontSize: 15px;
+	--smallFontSize: 12.5px;
+	--miniFontSize: 10px;
+
+	/* Borders */
+	--baseBorderWidth: var(--minGap);
+	--baseBorderStyle: solid;
+	--baseBorderRadius: var(--halfGap);
+
+	--mobileKickinWidth: 650px;
+}
+
+/* #endregion */

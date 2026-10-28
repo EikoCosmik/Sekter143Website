@@ -1,0 +1,53 @@
+//main: "./compiled.less"
+
+html.halloween
+{
+	background-image: url(../../assets/images/site_HalloweenBackground.gif);
+
+	#siteHeader .headerInternal .logo img
+	{
+		filter: sepia(1) saturate(4) hue-rotate(-10deg);
+	}
+
+	#staticBlock #halloweenBucket
+	{
+		position: fixed;
+		bottom: var(--newsHeight);
+		right: 25px;
+		height: 175px;
+		width: 100px;
+		z-index: 999999999999999999;
+		display: grid;
+		grid-template-rows: 1fr 1fr;
+		grid-template-areas: "candy" "bucket";
+    	justify-items: center;
+
+		.candy
+		{
+			grid-area: candy;
+			height: 75px;
+			width: 75px;
+   			justify-items: center;
+			display: none;
+			background-size: contain;
+			background-repeat: no-repeat;
+			
+			&.common { background-image: url("../images/site_commonCandy.gif") ;}
+			&.uncommon { background-image: url("../images/site_uncommonCandy.gif") ;}
+			&.rare { background-image: url("../images/site_rareCandy.gif") ;}
+			&.epic { background-image: url("../images/site_epicCandy.gif") ;}
+			&.legendary { background-image: url("../images/site_legendaryCandy.gif") ;}
+		}
+
+		.bucket
+		{
+			grid-area: bucket;
+			height: 100px;
+			width: 100px;
+			background-image: url("../images/site_halloweenBucket.gif");
+			background-size: contain;
+			background-repeat: no-repeat;
+			cursor: pointer;
+		}
+	}
+}

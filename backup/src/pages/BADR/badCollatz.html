@@ -1,0 +1,163 @@
+<pageSettings>
+	title="The BAD"
+	color="redElement badCollatz"
+	id="BAD"
+</pageSettings>
+
+<section id="pageContent">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		var runOn = false;
+
+		function nextColatz() {
+			var one = parseInt($("#n").val());
+			var speed = parseInt($("#speedIn").val());
+			$("#n").val(one + 1);
+			runColatz();
+		}
+
+		function toggleLoop() {
+			if (runOn) {
+				$("#loopButton a").html("Start Loop");
+				runOn = false;
+			}
+			else {
+				$("#loopButton a").html("Stop Loop");
+				runOn = true;
+				loopInf();
+			}
+		}
+
+		function loopInf() {
+			if (runOn) {
+				var one = parseInt($("#n").val());
+				var speed = parseInt($("#speedIn").val());
+				$("#n").val(one + 1);
+				runColatz();
+
+				setTimeout(loopInf, speed);
+			}
+		}
+
+		function runColatz() {
+			var one = parseInt($("#oneIn").val());
+			var two = parseInt($("#twoIn").val());
+			var three = parseInt($("#threeIn").val());
+			var curNum = $("#n").val();
+			var maxRuns = $("#runsIn").val();
+			var runLooper = 0;
+			var running = true;
+
+			var outputTo = $("#out");
+			outputTo.html("");
+
+			while (running) {
+				runLooper++;
+
+				try {
+					if (curNum % 2 == 0) {
+						outputTo.append("<span style='color:cyan'>(<span style='color:red'>" + curNum + "</span>/" + two + "</span>");
+						curNum = curNum / two;
+						outputTo.append("<span style='color:cyan'>=<span style='color:lime'>" + curNum + "</span>)</span> ");
+					}
+					else {
+						outputTo.append("<span style='color:magenta'>(" + three + "*<span style='color:red'>" + curNum + "</span>+" + one + "</span>");
+						curNum = (three * curNum) + one;
+						outputTo.append("<span style='color:magenta'>=<span style='color:lime'>" + curNum + "</span>)</span> ");
+					}
+				}
+				catch (err) {
+					console.log('(' + err + ')');
+				}
+
+
+				if (runLooper == maxRuns && maxRuns != 0) {
+					outputTo.append("<span style='color: green;'>(" + runLooper + " loops)</span> (MAX RUNS REACHED)");
+					running = false;
+
+					if ($('#stopAtMax').is(':checked')) {
+						$("#loopButton a").html("Start Loop");
+						runOn = false;
+					}
+				}
+
+				if (curNum == 1) {
+					outputTo.append("<span style='color: green;'>(" + runLooper + " loops)</span> (Loop from 1)");
+					running = false;
+				}
+			}
+		}
+	</script>
+	<sktemplate
+		type="simpleContent"
+		title="BAD-Collatz"
+		text="I am fascinated by the Collatz Conjecture, I also think its a decent tool for learning a new programing language. Break it down into separate functions, mess around with string manipulation, basic mathematical operations, and looping logic. This version is more primitive than what i might make now, but its still a nice lookback."
+		class="badDescription"
+	></sktemplate>
+
+	<div class="colatzFormOdd">
+		<input type="number" step="1" id="threeIn" class="inputItem" value="3" />
+		<div>n +</div>
+		<input type="number" step="1" id="oneIn" class="inputItem" value="1" />
+	</div>
+
+	<div class="colatzFormEven">
+		<div></div>
+		<div>n /</div>
+		<input type="number" step="1" id="twoIn" class="inputItem" value="2" />
+	</div>
+
+	<div class="colatzFormRuns">
+		<sktemplate
+			type="inputBlock"
+			id="n"
+			value="3"
+			inputType="number"
+			label="N to Test:"
+			step="1"
+		></sktemplate>
+		<sktemplate
+			type="inputBlock"
+			id="runsIn"
+			value="100"
+			inputType="number"
+			label="Max Loops:"
+			step="1"
+		></sktemplate>
+		<sktemplate
+			type="inputBlock"
+			id="speedIn"
+			value="100"
+			inputType="number"
+			label="Loop Speed (ms):"
+			step="1"
+		></sktemplate>
+		<sktemplate
+			type="inputBlock"
+			id="stopAtMax"
+			inputType="checkbox"
+			label="Stop if Max Reached:"
+			step="1"
+			checked="checked"
+		></sktemplate>
+	</div>
+
+	<div class="colatzFormDesc">
+		<div>Integers only. Tests one case of N.<br/>Put 0 in 'Max Loops' for infinite loops.<br/>Click Start loop to start and stop. (Old code, dosent swap text/color.)</div>
+		<div class="key">
+			<span class="odd">Odd Step</span>
+			<span class="even">Even Step</span>
+			<span class="start">Start N</span>
+			<span class="result">Result N</span>
+		</div>
+	</div>
+
+	<div class="colatzFormRun">
+		<button class="button greenElement" onclick="runColatz()">Run Current</button>
+		<button class="button cyanElement" onclick="nextColatz()" id="nextButton">Run Next</button>
+		<button class="button blueElement" onclick="toggleLoop()" id="loopButton">Start Loop</button>
+	</div>
+	
+	<div id="out">Default..</div>
+
+</section>

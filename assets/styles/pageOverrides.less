@@ -1,0 +1,1003 @@
+//main: "./compiled.less"
+
+/* #region siteNav */
+
+#siteNav
+{
+	#pageContent
+	{
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+/* #endregion */
+
+/* #region index */
+
+#index
+{
+	#leftColumn .sidebar
+	{
+		grid-template-rows: min-content min-content min-content 1fr min-content;
+		grid-template-areas: 
+		"title"
+		"siteBadge"
+		"rss"
+		"."
+		"statusBlock";
+
+		h2
+		{
+			grid-area: title;
+		}
+
+		.sitebadge
+		{
+			grid-area: siteBadge;
+			.magentaElement;
+		}
+
+		.statusBlock
+		{
+			.block;
+			.rubyElement;
+			grid-auto-rows: min-content;
+			grid-area: statusBlock;
+			padding-top: 0;
+			padding-bottom: 0;
+			grid-gap: 0;
+    		grid-template-rows: min-content min-content 70px;
+			row-rule: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+
+			.imood
+			{
+				image-rendering: pixelated;
+				padding-bottom: var(--quarterGap);
+			}
+
+			.cozyTalk
+			{
+   				width: 130%;
+   				transform: scale(0.77);
+   				margin-left: -26px;
+			}
+
+			#statuscafe
+			{
+				.verticalTabs;
+				font-size: var(--smallFontSize);
+				grid-gap: var(--minGap);
+				padding: var(--halfGap) 0;
+				grid-auto-rows: min-content;
+
+				#statuscafe-username
+				{
+					.tabs;
+					grid-gap: var(--minGap);
+					grid-auto-rows: min-content;
+					grid-auto-columns: auto;
+				}
+			}
+		}
+
+		.rss
+		{
+			.verticalTabs;
+			.minRows;
+			.small;
+			font-size: var(--smallFontSize);
+			grid-area: rss;
+
+			a
+			{
+				text-align: center;
+			}
+		}
+	}
+	
+	#pageContent
+	{
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-areas: 
+		"title title title" 
+		"recent recent recent"
+		"poll toDo toDo"
+		"photography photography photography"
+		"badges badges badges"
+		;
+
+		#indexTitle
+		{
+			.block;
+			.greenElement;
+			.useGradient;
+			grid-area: title;
+			display: grid;
+			align-items: center;
+			justify-items: center;
+		}
+
+		.badges
+		{
+			grid-area: badges;
+			display: grid;
+			grid-template-columns: repeat(11, 88px);
+			grid-auto-rows: 31px;
+			grid-gap: var(--minGap);
+			justify-content: center;
+		}
+
+		.poll
+		{
+			grid-area: poll;
+			min-height: 200px;
+		}
+
+		.blob
+		{
+			grid-area: blob;
+			display: none;
+		}
+
+		.photography
+		{
+			.block;
+			.verticalTabs;
+			.limeElement;
+			grid-area: photography;
+			display: grid;
+   			align-items: center;
+   			justify-items: center;
+			color: white;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto min-content;
+
+			> h3
+			{
+				grid-column: 1/3;
+			}
+
+			> .image
+			{
+				width: auto;
+				height: 100%;
+				aspect-ratio: 1.414;
+			}
+		}
+
+		.toDo
+		{
+			.block;
+			.useGradient;
+			.blueElement;
+			grid-area: toDo;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-rows: min-content 1fr;
+			grid-template-areas: "todoListHeader worksListHeader recentListHeader" "todoList worksList recentList";
+			grid-gap: var(--minGap);
+			column-rule: var(--minGap) var(--baseBorderStyle) var(--bcol_primaryDark);
+
+			h3
+			{
+				.underline;
+				padding-left: var(--quarterGap);
+			}
+
+			.recentListHeader
+			{
+				grid-area: recentListHeader;
+			}
+
+			.recentList
+			{
+				grid-area: recentList;
+			}
+
+			.todoListHeader
+			{
+				grid-area: todoListHeader;
+			}
+
+			.worksListHeader
+			{
+				grid-area: worksListHeader;
+			}
+
+			.todoList
+			{
+				grid-area: todoList;
+			}
+
+			.worksList
+			{
+				grid-area: worksList;
+			}
+		}
+
+		.recent
+		{
+			.block;
+			.useGradient;
+			grid-area: recent;
+			grid-template-areas: 
+				"title title date"
+				"text text text"
+				"links links links";
+
+			.date
+			{
+    			align-content: start;
+			}
+		}
+
+		.devMsg
+		{
+			grid-area: devMsg;
+			display: none;
+		}
+	}
+
+	#rightColumn .sidebar
+	{
+		.verticalTabs;
+		grid-template-rows: min-content;
+		grid-auto-rows: min-content;
+
+		> .rewild
+		{
+			height: min-content;
+
+			> div
+			{						
+				display: grid !important;
+				grid-template-columns: 17fr 88fr 17fr;
+				grid-template-rows: 1fr;
+			}
+		}
+
+		> .transingTheInternet div
+		{
+			.verticalTabs;
+			grid-auto-rows: min-content;
+		}
+					
+		> .transfemWebring div
+		{
+			.verticalTabs;
+			grid-auto-rows: min-content;
+		}
+
+		> .photochemistryWebring
+		{
+			.tabs;
+			grid-template-columns: 17fr 88fr 17fr;
+		}
+
+		// .badgesBlock
+		// {
+		// 	.minRows;
+
+		// 	.badgesList
+		// 	{
+		// 		display: grid;
+		// 		grid-template-columns: 1fr 1fr;
+		// 		grid-auto-rows: min-content;
+		// 		grid-gap: var(--minGap);
+		// 		justify-content: space-evenly;
+		// 		justify-items: center;
+				
+		// 		> a
+		// 		{
+		// 			aspect-ratio: 88/31;
+		// 			width: 88px;
+		// 		}
+		// 	}
+		// }
+	}
+}
+
+/* #endregion */
+
+/* #region chat */
+
+#chat #pageContent
+{
+	grid-template-rows: 1fr;
+	border-bottom: none;
+}
+
+/* #endregion */
+
+/* #region AboutMeTop */
+
+#AboutMeTop
+{
+	.block;
+	.useGradient;
+	.cyanElement;
+	.verticalTabs;
+	grid-template-columns: auto auto 250px;
+	grid-template-rows: min-content 1fr;
+	grid-template-areas:
+		"header header image" 
+		"body personals image" 
+		"cozyTalk personals image";
+	
+	.cozyTalk
+	{
+		grid-area: cozyTalk;
+		height: 60px;
+		width: 240px;
+    	align-self: end;
+	}
+
+	h2
+	{
+		grid-area: header;
+	}
+	
+	.profilePic
+	{
+		grid-area: image;
+		aspect-ratio: 1;
+	}
+
+	.personals
+	{
+		.block;
+		.rubyElement;
+		grid-area: personals;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: repeat(5, min-content);
+		grid-gap: var(--baseGap);
+		align-content: space-between;
+		row-rule: var(--minGap) var(--baseBorderStyle) var(--bcol_primaryMain);
+
+		> *:nth-child(2n)
+		{
+			text-align: end;
+		}
+	}
+	
+	.body
+	{
+		grid-area: body;
+	}
+}
+
+/* #endregion */
+
+/* #region photography */
+
+#photography #pageContent
+{
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* #endregion */
+
+/* #region crochet */
+
+#crochet
+{
+	&.ball
+	{
+		#page
+		{
+			container-name: page;
+			container-type: size;
+		}
+
+		#pageContent
+		{
+			.tabs;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: min-content 1fr;
+			grid-template-areas: "desc input" "desc output";
+			border: none;
+
+			@container page
+			{
+				height: 100cqh;
+			}
+
+			> .standardPost
+			{
+				grid-area: desc;
+			}
+
+			> .inputs
+			{
+				.tabs;
+				grid-template-columns: 1fr auto;
+				grid-area: input;
+			}
+
+			> .output
+			{
+				.darkElement;
+				grid-area: output;
+				padding: var(--halfGap);
+				container-name: output;
+				container-type: size;
+
+				#outputInner
+				{
+					.verticalTabs;
+					overflow-y: scroll;
+					grid-auto-rows: min-content;
+					grid-gap: var(--halfGap);
+					padding-right: var(--halfGap);
+				}
+			}
+		}
+	}
+}
+
+/* #endregion */
+
+/* #region hobbyCards */
+
+#hobbyCards
+{
+	#pageContent
+	{
+		grid-template-rows: 1fr;
+	}
+
+	.deckSidebar
+	{
+		.verticalTabs;
+		grid-auto-rows: min-content;
+		grid-template-rows: min-content min-content;
+	}
+
+	.sidebar .text
+	{
+		.verticalTabs;
+		grid-auto-rows: min-content;
+		grid-gap: var(--quarterGap);
+
+		> div
+		{
+			.verticalTabs;
+			grid-auto-rows: min-content;
+			grid-gap: var(--quarterGap);
+		}
+	}
+
+	.decklist
+	{
+		grid-template-columns: auto auto auto auto;
+
+		> .verticalTabs
+		{
+			border-bottom: none;
+			grid-template-rows: min-content ;
+
+			&.descriptives
+			{
+				grid-template-columns: 1fr 1fr;
+			}
+
+			h2
+			{
+				grid-template-columns: 1/-1;
+				padding: var(--quarterGap);
+			}
+
+			ol
+			{
+				grid-auto-rows: 1fr;
+				font-size: var(--smallFontSize);
+				
+				li
+				{
+					white-space: nowrap;
+				}
+			}
+		}
+	}
+}
+
+/* #endregion */
+
+/* #region credits */
+
+#credits
+{
+	#pageContent
+	{
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+
+		.creditsHeader
+		{
+			grid-column: 1/-1;
+		}
+	}
+}
+
+.Zerock
+{
+	--bcol_primaryMain: #000000;
+	--bcol_primaryDark: #000000;
+	--bcol_primaryDkst: #fcdde9;
+	--bcol_primaryBlck: #000000;
+	font-family: "RocknRollOne";
+	background-image: linear-gradient(#00000099, #00000099), url('../images/credits_ZerockBack.gif');
+
+	h2
+	{
+		font-family: ReggaeOne;
+		color: #e0e191;
+		text-shadow: 1px 1px 2px black, 1px -1px 2px black, -1px 1px 2px black, -1px -1px 2px black;
+	}
+
+	.text
+	{
+		font-size: 13px;
+	}
+
+	.button
+	{
+		background: #000000aa;
+		border-color: var(--bcol_primaryBlck);
+
+		&:hover
+		{
+			background: #00000044;
+		}
+	}
+}
+
+.starbreaker
+{
+	--bcol_primaryMain: #ffffff;
+	--bcol_primaryDark: #ffffff;
+	--bcol_primaryDkst: #16161d;
+	--bcol_primaryBlck: #ffffff;
+	--bcol_textLite: #ffffff;
+	font-family: 'atkinson hyperlegible', system-ui, -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'segoe ui', 'helvetica neue', noto, 'noto sans', roboto, cantarell, ubuntu, helvetica, 'trebuchet ms', verdana, calibri, arial, sans-serif, 'apple color emoji', 'segoe ui emoji', 'segoe ui symbol';
+	
+	h2
+	{
+		color: #ffa500;
+		border-color: #ffa500;
+	}
+
+	.button
+	{
+		background: var(--bcol_primaryDkst);
+		border-color: var(--bcol_primaryBlck);
+
+		&:hover
+		{
+			//background: #c0c0ff;
+			border-color: #ff6347;
+			color: #ff6347;
+		}
+	}
+}
+
+.renard
+{
+	--bcol_primaryMain: #000000;
+	--bcol_primaryDark: #000000;
+	--bcol_primaryDkst: #fcdde9;
+	--bcol_primaryBlck: #000000;
+	--bcol_textLite: #000000;
+	color: var(--bcol_textLite);
+	font-family: nintendoDS;
+
+	h2
+	{
+		font-family: alagard;
+	}
+
+	.text
+	{
+		font-size: 20px;
+	}
+	
+	.button
+	{
+		background: var(--bcol_primaryDkst);
+		border-color: var(--bcol_primaryBlck);
+
+		&:hover
+		{
+			background: #c0c0ff;
+		}
+	}
+}
+
+.goodnamehere
+{
+	--bcol_primaryMain: brown;
+	--bcol_primaryDark: brown;
+	--bcol_primaryDkst: #F5DEB3;
+	--bcol_primaryBlck: brown;
+	--bcol_textLite: #000000;
+	color: var(--bcol_textLite);
+	font-family: "Comic Sans MS", "sans-serif";
+	
+	.button
+	{
+		background: var(--bcol_primaryDkst);
+		border-color: var(--bcol_primaryBlck);
+		text-decoration: 1px underline wavy red;
+
+		&:hover
+		{
+			background: rgba(255, 255, 0, 0.5);
+		}
+	}
+}
+
+.yuna2k
+{
+	--bcol_primaryMain: #333333;
+	--bcol_primaryDark: #333333;
+	--bcol_primaryDkst: #000000;
+	--bcol_primaryBlck: #000000;
+	--bcol_textLite: #ff00aa;
+	font-family: monospace;
+	
+	.button
+	{
+		background: var(--bcol_primaryDkst);
+		border-color: var(--bcol_textLite);
+
+		&:hover
+		{
+			background: var(--bcol_textLite);
+			color: var(--bcol_primaryBlck);
+		}
+	}
+}
+
+/* #endregion */
+
+/* #region mediaReviews */
+
+#mediaReviews
+{
+	.cardPage
+	{
+		grid-template-columns: 1fr 1fr;
+		grid-auto-rows: min-content;
+	}
+}
+
+/* #endregion */
+
+/* #region math */
+
+.mathInteractionBlock 
+{
+	.block;
+	grid-template-columns: 1/-1;
+	.tabs;
+	.azureElement;
+	.useGradient;
+	padding: var(--halfGap);
+	gap: var(--quarterGap);
+	grid-template-columns: 3fr 1fr;
+
+	> .inputElements
+	{
+		.tabs;
+		gap: var(--quarterGap);
+
+		> span
+		{
+			display: grid;
+    		align-items: center;
+    		justify-items: center;
+    		align-content: center;
+    		justify-content: center;
+		}
+	}
+
+	.output
+	{
+		font-family: var(--monoFont);
+	}
+}
+
+#math.formulaSheet #pageContent
+{
+	.verticalTabs;
+	.minRows;
+	grid-auto-rows: min-content;
+	
+	> .sheetSection
+	{
+		.block;
+		.verticalTabs;
+		.useGradient;
+		grid-gap: var(--baseGap);
+		grid-auto-rows: auto;
+		row-rule: var(--baseBorderWidth) var(--bcol_primaryMain) var(--baseBorderStyle);
+		column-rule: var(--baseBorderWidth) var(--bcol_primaryMain) var(--baseBorderStyle);
+		grid-template-columns: 1fr 1fr;
+
+		.breakdown
+		{
+			.verticalTabs;
+			grid-template-rows: min-content min-content;
+			row-gap: var(--quarterGap);
+			grid-auto-rows:  min-content;
+
+			&:has(.mathInteractionBlock)
+			{
+				grid-template-rows: min-content min-content 1fr;
+   				align-items: end;
+			}
+
+			.exampleSVGs
+			{
+				> svg
+				{
+					.block;
+					background-color: var(--bcol_primaryBlck);
+				}
+			}
+
+			h3
+			{
+				grid-template-columns: 1/-1;
+				border-bottom: var(--baseBorderWidth) var(--bcol_primaryDkst) var(--baseBorderStyle);
+				padding-bottom: var(--quarterGap);
+			}
+		}
+	}
+
+	.sheetSection.neededWhilstWorking
+	{
+		.purpleElement;
+	}
+
+	.sheetSection.workingOn
+	{
+		display: none;
+	}
+
+	&.devMode
+	{
+		.sheetSection
+		{
+			display: none;
+		}
+
+		.sheetSection.workingOn
+		{
+			display: grid;
+		}
+
+		.sheetSection.neededWhilstWorking
+		{
+			display: none;
+		}
+
+		div.orangeElement,
+		h2:has(+ div[class*="sheetSection"])
+		{
+			display: none !important;
+		}
+
+		h2:has(+ div[class="sheetSection workingOn"])
+		{
+			display: grid !important;
+		}
+	}
+}
+
+/* #endregion */
+
+/* #region kata143 */
+
+#kata143 #pageContent, #KataCardGames #pageContent
+{
+	grid-template-columns: 1fr 1fr;
+}
+
+/* #endregion */
+
+/* #region kata143.ideas */
+
+#kata143.ideas
+{
+	#pageContent
+	{
+		.verticalTabs;
+		grid-auto-rows: min-content;
+	}
+
+	.ideasSection
+	{
+		.verticalTabs;
+		grid-auto-rows: min-content;
+		grid-template-columns: 1fr 1fr 1fr;
+
+		> h2
+		{
+			grid-column: 1/-1;
+			.block;
+			.useGradient;
+		}
+	}
+}
+
+/* #endregion */
+
+/* #region postPage */
+
+html.postPage #pageContent
+{
+	.standardPost
+	{
+		.fullPostButton
+		{
+			display: none;
+		}
+	}
+	
+	.photographyImg:hover>.dateTitle
+	{
+		opacity: 0;
+		display: none;
+	}
+}
+	
+
+
+/* #endregion */
+
+
+/* #region Imports */
+
+@import "./pageOverrides/BADPages.less";
+@import "./pageOverrides/Kata-BlackJack.less";
+@import "./pageOverrides/Kata-Fireworks.less";
+
+/* #endregion */
+
+/* #region standardPost */
+/* #endregion */
+
+#welcomeHomeEiko
+{
+	#adminControls
+	{
+		.tabs;
+	}
+
+	#pageContent:has(#welcomeHomeEikoLogin)
+	{
+		align-content: center;
+		grid-template-columns: auto;
+		justify-content: center;
+	}
+
+	#innerAdmin
+	{
+		.verticalTabs;
+		grid-auto-rows: min-content;
+	}
+
+	#welcomeHomeEikoLogin
+	{
+		.block;
+		.verticalTabs;
+		grid-auto-rows: min-content;
+
+		> *
+		{
+			.useGradient;
+		}
+	}
+
+
+	#refreshButton
+	{
+		.redElement;
+	}
+
+	h1
+	{
+		.block;
+		.cyanElement;
+	}
+
+	#recentGuestbookResponces, #commentsALLWHE
+	{
+		.tabs;
+		grid-auto-columns: minmax(300px, 1fr);
+		overflow-x: scroll;
+		padding-bottom: var(--halfGap);
+	}
+
+	#recentGuestbookResponces .ADMINGUESTBOOK .adminBox
+	{
+		.block;
+		.rubyElement;
+		.tabs;
+		grid-row: 6;
+	}
+
+	#commentsALLWHE .ADMINCOMMENTS
+	{
+		.username
+		{
+			grid-template-columns: min-content auto 1fr;
+		}
+
+		.adminBox
+		{
+			.block;
+			.rubyElement;
+			.tabs;
+			grid-row: 4;
+		}
+	}
+
+	#adminResponceBlock
+{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #000000aa;
+    z-index: 99999999;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	align-items: center;
+	justify-items: center;
+	
+	.adminResponceContainer
+	{
+		.block;
+		.verticalTabs;
+		width: 50%;
+		height: auto;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 2fr 1fr;
+		grid-template-areas: "responce responce" "submit cancel";
+
+		.adminResponce
+		{
+			grid-area: responce;
+			grid-template-columns: 1fr;
+			grid-template-rows: min-content min-content;
+			grid-template-areas: "label" "input";
+		}
+
+		.cf-turnstile
+		{
+			grid-area: cf;
+		}
+		
+		.submit
+		{
+			grid-area: submit;
+		}
+
+		.cancel
+		{
+			grid-area: cancel;
+		}
+
+		&.adminDeleteBlock
+		{
+			grid-template-rows: 1fr;
+			grid-template-areas: "submit cancel";
+		}
+	}
+}
+}

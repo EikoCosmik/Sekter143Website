@@ -1,0 +1,69 @@
+//main: "./compiled.less"
+
+/* #region Fonts */
+
+@font-face
+{
+	font-family: "Nova Mono";
+	src: url("../fonts/NovaMono-Regular.ttf") format("opentype");
+}
+
+@font-face
+{
+	font-family: "Nova Square";
+	src: url("../fonts/NovaSquare-Regular.ttf") format("opentype");
+}
+
+@font-face
+{
+	font-family: "TulynScript";
+	src: url("../fonts/TulynScript.ttf") format("opentype");
+}
+
+@font-face
+{
+	font-family: "alagard";
+	src: url("../fonts/alagard.ttf") format("opentype");
+}
+
+@font-face
+{
+	font-family: "nintendoDS";
+	src: url("../fonts/Nintendo-DS-BIOS.ttf") format("opentype");
+}
+
+@font-face
+{
+	font-family: "ReggaeOne";
+	src: url("../fonts/ReggaeOne-Regular.ttf") format("opentype");
+}
+
+@font-face
+{
+	font-family: "RocknRollOne";
+	src: url("../fonts/RocknRollOne-Regular.ttf") format("opentype");
+}
+
+:root
+{
+	--baseFont: Nova Square;
+	--monoFont: Nova Mono;
+	--tulynFont: TulynScript;
+}
+
+.makeMono
+{
+	font-family: var(--monoFont);
+}
+
+html
+{	
+	font-family: var(--baseFont);
+}
+
+.makeTulyn
+{
+	font-family: var(--tulynFont) !important;
+}
+
+/* #endregion */

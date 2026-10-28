@@ -1,0 +1,39 @@
+//main: "./compiled.less"
+
+.yScroll
+{
+    overflow-y: scroll;
+    padding-right: var(--baseGap);
+}
+
+/* width */
+::-webkit-scrollbar
+{
+    width: var(--baseGap);
+}
+
+/* Track */
+::-webkit-scrollbar-track
+{
+    background: var(--col_darkDkst); 
+    border-radius: var(--baseBorderRadius);
+    border: 2px var(--baseBorderStyle) var(--bcol_primaryMain);
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb
+{
+    border-radius: var(--baseBorderRadius);
+    border: calc(var(--baseBorderWidth)* 1.5) solid transparent;
+    background-clip: content-box;
+    background-color: var(--col_darkDkst);
+    box-shadow: inset 0 0 2px 3px var(--bcol_primaryMain);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover
+{
+    background: var(--bcol_primaryDark);
+    border: calc(var(--baseBorderWidth)* 1.5) solid transparent;
+    background-clip: content-box; 
+}

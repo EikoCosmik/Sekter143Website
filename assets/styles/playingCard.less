@@ -1,0 +1,316 @@
+//main: "./compiled.less"
+
+.cardVariables
+{
+	--cardRatioCQB: 71.42857143cqb;
+}
+
+#Kata-BlackJack
+{
+	.PCS_4SuitBlock;
+}
+
+#plaingCardGameContainer
+{
+	#plaingCardGamePopup
+	{
+		position: absolute;
+		background-color: #000000aa;
+		z-index: 200;
+		top: 0;
+		left: 0;
+
+		> .block
+		{
+			.useGradient;
+			.verticalTabs;
+			.minRows;
+			height: fit-content;
+			width: fit-content;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
+.playArea
+{
+	.cardVariables;
+	.verticalTabs;
+	container-type: size;
+	container-name: playArea;
+	justify-content: center;
+
+	&.autoSpaceH
+	{
+		@container playArea
+		{
+			.hand
+			{
+				.tabs;
+				grid-template-columns: var(--cardRatioCQB);
+
+				&.hasMultipleCards
+				{
+					--cardCount: attr(cardcount type(<integer>));
+					--cardIndexCount: calc(var(--cardCount) - 1);
+					grid-template-columns: repeat(var(--cardIndexCount), minmax(0, var(--cardRatioCQB))) var(--cardRatioCQB);
+				}
+			}
+		}
+	}
+}
+
+.playingCard
+{
+	container-type: size;
+	container-name: playingCard;
+
+	@container playingCard
+	{
+		.innerCard
+		{
+			height: 100cqb;
+			width: auto;
+			aspect-ratio: 5/7;
+
+			.tlSuit,
+			.brSuit,
+			.centerImage > div
+			{
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-origin: content-box;
+				padding: var(--quarterGap);
+			}
+
+			&.suitH
+			{
+				.tlSuit,
+				.brSuit,
+				.centerImage > div
+				{
+					background-image: url("../images/cards_heart.webp");
+					filter: brightness(0) saturate(100%) invert(17%) sepia(83%) saturate(2877%) hue-rotate(347deg) brightness(107%) contrast(95%);
+				}
+			}
+
+			&.suitS
+			{
+				.tlSuit,
+				.brSuit,
+				.centerImage > div
+				{
+					background-image: url("../images/cards_spade.webp");
+					filter: brightness(0) saturate(100%) invert(34%) sepia(21%) saturate(0%) hue-rotate(303deg) brightness(92%) contrast(83%);
+				}
+			}
+
+			&.suitC
+			{
+				.tlSuit,
+				.brSuit,
+				.centerImage > div
+				{
+					background-image: url("../images/cards_club.webp");
+					filter: brightness(0) saturate(100%) invert(51%) sepia(96%) saturate(942%) hue-rotate(78deg) brightness(110%) contrast(90%);
+				}
+			}
+
+			&.suitD
+			{
+				.tlSuit,
+				.brSuit,
+				.centerImage > div
+				{
+					background-image: url("../images/cards_diamond.webp");
+					filter: brightness(0) saturate(100%) invert(10%) sepia(85%) saturate(4499%) hue-rotate(243deg) brightness(122%) contrast(109%);
+				}
+			}
+		}
+	}
+}
+
+.PCS_4SuitBlock
+{
+	.playingCard
+	{
+		@container playingCard
+		{						
+			.innerCard
+			{
+				height: 100cqb;
+			}
+		}
+
+		&.faceDown
+		{
+			.block;
+			.rubyElement;
+			background-image: url(../../assets/images/site_background.gif);
+			background-blend-mode: difference;
+		}
+
+		.innerCard
+		{
+			.block;
+			.useGradient;
+			width: auto;
+			aspect-ratio: 5/7;
+			display: grid;
+			grid-template-columns: 20% 1fr 20%;
+			grid-template-rows: auto auto 1fr auto auto;
+			grid-template-areas: 
+			"tlRank . ."
+			"tlSuit centerImage ."
+			". centerImage ."
+			". centerImage brSuit"
+			". . brRank";
+			container-type: size;
+			container-name: innerCard;
+
+			@container innerCard
+			{			
+				.tlSuit,
+				.brSuit,
+				.tlRank,
+				.brRank
+				{
+					.centerInDiv;
+					aspect-ratio: 1;
+					font-size: clamp(1cqb, 20cqi, 20cqi);
+				}
+			}
+		}
+
+		.tlSuit
+		{
+			grid-area: tlSuit;
+		}
+
+		.brSuit
+		{
+			grid-area: brSuit;
+		}
+
+		.tlRank
+		{
+			grid-area: tlRank;
+		}
+
+		.brRank
+		{
+			grid-area: brRank;
+		}
+
+		.centerImage
+		{
+			grid-area: centerImage;
+			display: grid;
+			grid-auto-rows: 1fr;
+			container-type: size;
+			container-name: centerImage;
+
+			@container centerImage
+			{			
+				> div
+				{
+					.centerInDiv;
+					font-size: clamp(1cqb, 30cqi, 30cqi);
+				}
+			}		
+		}
+
+		.suitS
+		{
+			.darkElement;
+		}
+		
+		.suitH
+		{
+			.redElement;
+		}
+
+		.suitD
+		{
+			.blueElement;
+		}
+
+		.suitC
+		{
+			.greenElement;
+		}
+
+		.rankA .centerImage,
+		.rank2 .centerImage,
+		.rank3 .centerImage
+		{			
+			grid-template-columns: 1fr;
+		}
+		
+		.rank4 .centerImage,
+		.rank6 .centerImage,
+		.rank8 .centerImage
+		{
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.rank5 .centerImage
+		{
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-areas: "a1 . a2" ". a3 ." "a4 . a0";
+			.img0 { grid-area: a0; }
+			.img1 { grid-area: a1; }
+			.img2 { grid-area: a2; }
+			.img3 { grid-area: a3; }
+			.img4 { grid-area: a4; }
+		}
+
+		.rank7 .centerImage
+		{
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-areas: "a1 . a2" ". a3 ." "a4 . a0" ". . ." "a5 . a6";
+			.img0 { grid-area: a0; }
+			.img1 { grid-area: a1; }
+			.img2 { grid-area: a2; }
+			.img3 { grid-area: a3; }
+			.img4 { grid-area: a4; }
+			.img5 { grid-area: a5; }
+			.img6 { grid-area: a6; }
+		}
+
+		.rank9 .centerImage
+		{
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-areas: "a1 . a2" "a3 . a4" ". a5 ." "a6 . a7" "a8 . a0";
+			.img0 { grid-area: a0; }
+			.img1 { grid-area: a1; }
+			.img2 { grid-area: a2; }
+			.img3 { grid-area: a3; }
+			.img4 { grid-area: a4; }
+			.img5 { grid-area: a5; }
+			.img6 { grid-area: a6; }
+			.img7 { grid-area: a7; }
+			.img8 { grid-area: a8; }
+		}
+
+		.rank10 .centerImage
+		{
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-areas: "a1 . a2" ". a5 ." "a3 . a4" "a6 . a7" ". a9 ." "a8 . a0";
+			.img0 { grid-area: a0; }
+			.img1 { grid-area: a1; }
+			.img2 { grid-area: a2; }
+			.img3 { grid-area: a3; }
+			.img4 { grid-area: a4; }
+			.img5 { grid-area: a5; }
+			.img6 { grid-area: a6; }
+			.img7 { grid-area: a7; }
+			.img8 { grid-area: a8; }
+			.img9 { grid-area: a9; }
+		}
+	}
+}

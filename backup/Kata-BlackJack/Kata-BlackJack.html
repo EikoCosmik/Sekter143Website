@@ -1,0 +1,55 @@
+<html id="kata143" class="Kata-BlackJack iFramePage">
+
+<head>
+    <link rel="stylesheet" href="../../../assets/styles/compiled.css">
+    <script src="./Kata-BlackJack.js"></script>
+	<script type="module">
+		import { replaceModules } from "/assets/scripts/pageManager.js";
+		document.addEventListener("DOMContentLoaded", () =>
+		{
+			replaceModules();
+		});
+		import { BlackJack } from "/assets/scripts/Kata-BlackJack.js";
+		window.Game = new BlackJack();
+	</script>
+	<title>Kata-BlackJack</title>
+</head>
+
+<body>
+	<main id="page">
+		<section id="pageContent">
+			<div id="gameContainer">
+				<div id="dataCenter" class="verticalTabs">
+					<div class="dataBlock dealer">
+						<h2>Dealer Score</h2>
+						<div id="dealerScore"></div>
+					</div>
+					<div class="dataBlock player">
+						<h2>Player Score</h2>
+						<div id="playerScore"></div>
+					</div>
+					<div class="controls verticalTabs">
+						<a class="button small redElement" onclick="Game.hit()">HIT</a>
+						<a class="button small redElement" onclick="Game.stand()">STAND</a>
+					</div>
+				</div>
+
+				<div id="dealerSpace" class="playArea autoSpaceH">
+					<div class="hand" id="dealerHand"></div>
+				</div>
+
+				<div id="playerSpace" class="playArea autoSpaceH">
+					<div class="hand" id="playerHand"></div>
+				</div>
+
+				<div id="gamePopup">
+					<div id="popupText">
+					
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

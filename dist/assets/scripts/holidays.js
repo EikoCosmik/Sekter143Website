@@ -1,5 +1,5 @@
 import * as KT from "./KataToolKit_Single.js";
-export const holidays = halloween();
+export const holidays = {};
 
 function none() {}
 

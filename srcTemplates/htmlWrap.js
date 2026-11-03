@@ -6,7 +6,6 @@ export function htmlWrap(siteHeader, rightColumn, leftColumn, pageContent, setti
 	return `
 	<html id="${settings.id ?? "sk143"}" class="${settings.class ?? "darkElement"}">
 		<head>
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 			<meta name="kicya-site-verification" content="c44800c1e0856c6e93126c151fe00864043c6a71343d35634398f2b7388dee9d">
 			<script src="https://u.widget.st/ar.js"></script>
@@ -41,14 +40,16 @@ export function htmlWrap(siteHeader, rightColumn, leftColumn, pageContent, setti
 		</head>
 
 		<body>
-			<div class="h-card" style="display:none"><img class="u-photo" src="/assets/images/site_pfp.gif"><a class="u-url p-name" href="https://sekter143.com/">EikoCosmik</a></div>
+			<div id="siteContainer">
+				<div class="h-card" style="display:none"><img class="u-photo" src="/assets/images/site_pfp.gif"><a class="u-url p-name" href="https://sekter143.com/">EikoCosmik</a></div>
+				<main id="page">${pageContent ?? ""}</main>
+			</div>
 			<div id="staticBlock">
 				<header id="siteHeader">${siteHeader ?? ""}</header>
 				<aside id="leftColumn">${leftColumn ?? ""}</aside>
 				<aside id="rightColumn">${rightColumn ?? ""}</aside>
 				<div id="newsTicker"></div>
 			</div>
-			<main id="page">${pageContent ?? ""}</main>
 		</body>
 	</html>`
 }

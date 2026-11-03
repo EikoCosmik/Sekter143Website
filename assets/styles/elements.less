@@ -330,8 +330,9 @@ label
 
 	.leftIcon, .rightIcon
 	{
-		height: var(--bigFontSize);
-		width: var(--bigFontSize);
+		display: grid;
+		align-items: center;
+		align-content: center;
 	}
 
 	&.small:hover
@@ -346,7 +347,6 @@ label
 		border-color: var(--bcol_primaryDark);
 		background: linear-gradient(135deg, var(--bcol_primaryDkst) 0%, var(--bcol_primaryBlck) 100%);
 		box-shadow: 0 0 5px 1px var(--bcol_primaryLite);
-		color: var(--bcol_primaryDark);
 		text-shadow:
 		-1px -1px 1px var(--bcol_primaryLite),
 		1px 1px 1px var(--bcol_primaryLite),
@@ -385,6 +385,7 @@ label
 .image
 {
 	.block;
+	scrollbar-gutter: auto;
 }
 
 .image, .icon
@@ -463,15 +464,6 @@ h4
 	font-size: var(--baseFontSize);
 }
 
-h1,
-h2,
-h3,
-h4
-{
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-
 .headerMain
 {
     text-align: center;
@@ -507,5 +499,65 @@ a[href]
 
 /* #endregion */
 
+/* #region gridTable */
+
+.gridTable
+{
+	border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+	border-radius: var(--baseBorderRadius);
+	background-color: var(--bcol_primaryDkst);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	overflow: hidden;
+	
+	.gtRow
+	{
+		display: grid;
+		grid-template-columns: subgrid;
+		grid-auto-flow: column;
+		grid-column: 1/-1;
+		border-bottom: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+
+		&:last-child
+		{
+			border-bottom: none;
+		}
+
+		.gtHead
+		{
+			background-color: var(--bcol_primaryBlck);
+			justify-items: center;
+			justify-content: center;
+		}
+
+		.gtHead, 
+		.gtData
+		{
+			border-right: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+			display: grid;
+			align-content: center;
+			align-items: center;
+			padding: var(--quarterGap);
+			
+			&:last-child
+			{
+				border-right: none;
+			}
+		}
+	}
+}
+
+/* #endregion */
+
+
+
+
+
+
+
+
 /* #region standardPost */
 /* #endregion */
+
+
+		

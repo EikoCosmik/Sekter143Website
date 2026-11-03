@@ -1,0 +1,124 @@
+
+Name:
+---
+Hierarchy:
+Status:
+Birth Era:
+Birth Reality:
+Home Reality:
+
+
+
+
+Gender:
+Species:
+Height:
+
+Alignment:
+Occupation:
+Marital Status:
+
+Theme Song:
+
+
+
+---
+Nicknames:
+Titles:
+Moodboard:
+
+//Relationships
+Family:
+Pets:
+Love Interest(s):
+
+Eyes:
+Age:
+Abilities:
+
+About:
+Trivia:
+Hobbies:
+Hypercain User:
+Extremely skilled at:
+Extremely unskilled at:
+Goals:
+Most Treasured Possession:
+Languages Spoken
+Personality Type:
+Interests:
+Beliefs:
+Darkest Secret:
+
+Str
+Dex
+Con
+Wis
+Intelligence:
+Cha
+
+//Likes / Dislikes
+Colour:
+Food:
+Fruit:
+Ice cream:
+Desserts:  
+Tea:
+Coffee:
+Season:
+Flower:
+Time of day:
+Book:
+Prized possession:
+Entertainment:
+Activities:  
+Music:
+Sport (that he/she does play):
+Sport (that he/she doesn't play):
+Fears:
+Character’s greatest fear:
+Character’s greatest joy in life:
+Character’s soft spot:
+Greatest strength:
+Greatest vulnerability or weakness:
+Deepest fear
+
+
+
+
+// Physical Attributes
+Hair:
+Weight:
+Hair Color:
+Hairstyle:
+Facial Hair:
+Eyelashes:
+Eyebrows:
+Face Shape:
+Ears:
+Cheekbones:
+Jawline:
+Chin:
+Neck:
+Marks:
+Scars:
+Specific Features:
+Complexion:
+Eye color:
+Skin Tone:
+Facial Features:
+Health (disabilities, illnesses, conditions):
+Other Characteristics:
+
+//Self-Perception
+One word the character would use to describe self:
+best personality trait?:
+worst personality trait?:
+best physical characteristic?:  
+worst physical characteristic?:  
+How does the character think others perceive them:
+What would the character most like to change about themself:
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="rss block orangeElement">
-		Did you know Sekter143.com has an RSS feed?<br/>Here's the link if your interested!
+		Did you know Sekter143 has an RSS feed?<br/>Here's the link if your interested!
 		<a class="small block darkElement" style="overflow: hidden;" href="https://sekter143.com/rss.xml">https://sekter143.com/rss.xml</a>
 	</div>
 
@@ -33,7 +33,13 @@
 		</div>
 		<script src="https://status.cafe/current-status.js?name=eiko_cosmik" defer></script>
 		<a class="imood " href="https://www.imood.com/users/EikoCosmik"><img src="https://moods.imood.com/display/uname-EikoCosmik/fg-FFFFFF/trans-1/imood.gif" alt="The current mood of EikoCosmik at www.imood.com" border="0"></a>
-		<iframe class="cozyTalk" src="https://cozy.talk/widget/EikoCosmik?style=lightsoff&layout=compact" scrolling="no" title="EikoCosmik on CozyTalk"></iframe>
+	</div>
+
+	<div id="cozyTalkContainer" class="block">
+		<script type="module">
+			import { generateCozyTalkIframe } from "./assets/scripts/cozyTalkIFrameGenerator.js";
+			document.getElementById("cozyTalkContainer").outerHTML = await generateCozyTalkIframe("https://cozy.talk/widget/EikoCosmik?pet=1", "compactBar");
+		</script>
 	</div>
 </aside>
 
@@ -57,12 +63,6 @@
 		<a href="https://photochemistry-webring.neocities.org/"><img src="/assets/images/photochemistry.png"></a>
 		<a href="https://photochemistry-webring.neocities.org/index?action=next"><img src="/assets/images/photochemistry-next.png"></a>
 	</div>
-	<hr>
-
-	<!-- <div class='verticalTabs badgesBlock'>
-		<h3 class="underline">Sites I like!</h3>
-		<sktemplate type="badges" count="10"></sktemplate>
-	</div> -->
 </aside>
 
 <section id="pageContent">
@@ -76,11 +76,6 @@
 		<div class="image photographyImg limeElement " id="261008_PebbleSummoningABraincell"><div class="dateTitle">"Pebble Summoning A Braincell"<hr>2026-10-08<hr><a class="button small fullPostButton" href="/261008_PebbleSummoningABraincell">Full Post</a></div><img src="/assets/images/photography/261008_PebbleSummoningABraincell.gif"></div>
 		<div class="image photographyImg limeElement " id="261008_PlottingThievery"><div class="dateTitle">"Plotting Thievery"<hr>2026-10-08<hr><a class="button small fullPostButton" href="/261008_PlottingThievery">Full Post</a></div><img src="/assets/images/photography/261008_PlottingThievery.gif"></div>
 	</div>
-	
-
-	<!-- <div class='badges block small useGradient'>
-		<div><img src="/assets/images/badges_transflagbutton.jpg"></div>
-	</div> -->
 
 	<skModule type="posts" category="siteUpdates"></skModule>
 
@@ -114,10 +109,6 @@
 		<!-- <ws-widget type="polls" iid="18531" width="100%" height="100%"></ws-widget> -->
 		<h2>Poll Closed!</h2>
 		<div>Winner: Estrogen!<br/>Poll will be back when I build a custom widget!</div>
-	</div>
-	
-	<div class="blob block aquaElement useGradient">
-		This blob is here, I keep rearanging the Index. Maybe I'll make a cool front page toy but for now here is some text.
 	</div>
 
 </section>

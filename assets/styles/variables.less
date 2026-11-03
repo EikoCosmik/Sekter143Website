@@ -2,55 +2,47 @@
 
 /* #region Sizes */
 
-html
+body
 {
-	/* Gaps */	
-	--doubleGap: calc(var(--baseGap) * 2);
-	--hugeGap: calc(var(--baseGap) * 1.75);
-	--largeGap: calc(var(--baseGap) * 1.5);
-	--bigGap: calc(var(--baseGap) * 1.25);
-	--baseGap: 2cqh;
-	--thinGap: calc(var(--baseGap) * 0.75);
-	--halfGap: calc(var(--baseGap) * 0.5);
-	--quarterGap: calc(var(--baseGap) * 0.25);
-	--minGap: calc(var(--baseGap) * 0.1);
-
-	// /* Gaps */	
-	// --doubleGap: calc(var(--baseGap) * 2);
-	// --hugeGap: calc(var(--baseGap) * 1.75);
-	// --largeGap: calc(var(--baseGap) * 1.5);
-	// --bigGap: calc(var(--baseGap) * 1.25);
-	// --baseGap: 20px;
-	// --thinGap: calc(var(--baseGap) * 0.75);
-	// --halfGap: calc(var(--baseGap) * 0.5);
-	// --quarterGap: calc(var(--baseGap) * 0.25);
-	// --minGap: calc(var(--baseGap) * 0.1);
-
-	/* Sizes */
-	--pageWidth: 50cqw; //@container html
-	--headerHeight: 12cqh; //@container html
-	--newsHeight: 5cqh; //@container html
-	--sideBarWidth: 13cqw; //@container html
-
-	/* FontSize */
-	--largeFontSize: 2cqh; //15.9425
-	--bigFontSize: 1.75cqh; //15.9425
-	--baseFontSize: 1.5cqh; //13.665
-	--smallFontSize: 1.25cqh; //11.3875
-	--miniFontSize: 1cqh; //9.11
-
-   // --largeFontSize: 20px;
-   // --bigFontSize: 17.5px;
-   // --baseFontSize: 15px;
-   // --smallFontSize: 12.5px;
-   // --miniFontSize: 10px;
-
-	/* Borders */
-	--baseBorderWidth: var(--minGap);
-	--baseBorderStyle: solid;
-	--baseBorderRadius: var(--halfGap);
-
-	--mobileKickinWidth: 650px;
+	#siteContainer,
+	#staticBlock
+	{
+		/* Gaps */
+		--doubleGap: 2.2cqmax;
+		--hugeGap: 1.925cqmax;
+		--largeGap: 1.65cqmax;
+		--bigGap: 1.375cqmax;
+		--baseGap: 1.1cqmax;
+		--thinGap: 0.825cqmax;
+		--halfGap: 0.55cqmax;
+		--quarterGap: 0.275cqmax;
+		--minGap: 0.11cqmax;
+	
+		/* Sizes */
+		--pageWidth: 50cqmax;
+		--sidebarWidth: 11cqmax;
+		--sidebarHeight: calc(100cqh - var(--headerHeight) - var(--newsHeight) - var(--doubleGap));
+		--headerHeight: calc(var(--sidebarWidth) * 0.4 + var(--baseGap) + var(--minGap));
+		--newsHeight: var(--doubleGap);
+	
+		--scrollbarWidth: 0.41884816753927cqmax;
+		--scrollbarGutterHalfFix: calc(var(--halfGap) - var(--scrollbarWidth));
+		--scrollbarGutterQuarterFix: calc(var(--halfGap) - var(--scrollbarWidth));
+	
+		/* FontSize */
+		--largeFontSize: 1.1cqmax; //15.9425
+		--bigFontSize: 0.95cqmax; //15.9425
+		--baseFontSize: 0.8cqmax; //13.665
+		--smallFontSize: 0.65cqmax; //11.3875
+		--miniFontSize: 0.5cqmax; //9.11
+	
+		/* Borders */
+		--baseBorderWidth: var(--minGap);
+		--baseBorderStyle: solid;
+		--baseBorderRadius: var(--halfGap);
+	
+		--mobileKickinWidth: 650px;
+	}
 }
 
 /* #endregion */

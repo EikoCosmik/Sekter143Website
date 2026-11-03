@@ -226,3 +226,11 @@ app.post('/api/adminDelete', async (req, res) =>
 		color: "yellowElement"
 	});
 });
+
+app.post('/api/cozyTalkWidget', async (req, res) =>
+{
+	const receivedData = req.body;
+	const response = await fetch(receivedData.url);
+	const htmlText = await response.text();
+	return res.status(200).json({ htmlText: htmlText });
+});

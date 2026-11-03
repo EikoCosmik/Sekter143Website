@@ -1,27 +1,30 @@
 //main: "./compiled.less"
 
 
-@container html
+@container body
 {
-	body,
+	#siteContainer,
 	#staticBlock,
 	#siteHeader
 	{
-		grid-template-columns: 1fr var(--sideBarWidth) minmax(600px, var(--pageWidth)) var(--sideBarWidth) 1fr;
+		grid-template-columns: 1fr var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth) 1fr;
 	}
 
 	#siteHeader .headerInternal
 	{
-		grid-template-columns: var(--sideBarWidth) minmax(600px, var(--pageWidth)) var(--sideBarWidth);
+		grid-template-columns: var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth);
 	}
 
-	body,
+	#siteContainer,
 	#staticBlock
 	{
 		grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage sitePage ." "news news news news news";
 		display: grid;
-		grid-template-rows: var(--headerHeight) 1fr var(--newsHeight);
+		grid-template-rows: var(--headerHeight) var(--sidebarHeight) var(--newsHeight);
 		grid-gap: var(--baseGap);
+		justify-content: center;
+		color: var(--bcol_textLite);
+		font-size: var(--baseFontSize);
 	}
 
 	#page
@@ -41,19 +44,26 @@
 	}
 }
 
-html
+body
 {
 	container-type: size;
-	container-name: html;
+	container-name: body;
+	max-width: 1920px;
+	margin: auto;
+}
+
+html
+{
 	background-color: var(--col_darkDkst);
 	background-image: url(../../assets/images/site_background.gif);
 	background-blend-mode: difference;
 	background-attachment: fixed;
+	display: grid;
 
 	&.withLeft 
 	{
 
-		body,
+		#siteContainer,
 		#staticBlock
 		{
 			grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". leftColumn sitePage sitePage ." "news news news news news";
@@ -62,7 +72,7 @@ html
 
 	&.withRight
 	{
-		body,
+		#siteContainer,
 		#staticBlock
 		{
 			grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage rightColumn ." "news news news news news";
@@ -71,7 +81,7 @@ html
 
 	&.centerWidth
 	{
-		body,
+		#siteContainer,
 		#staticBlock
 		{
 			grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". leftColumn sitePage rightColumn ." "news news news news news";
@@ -84,6 +94,8 @@ html
 	position: fixed;
 	z-index: 2000;
 	pointer-events: none;
+	top: 0;
+	left: 0;
 
 	> *
 	{

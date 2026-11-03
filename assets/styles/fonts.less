@@ -44,11 +44,18 @@
 	src: url("../fonts/RocknRollOne-Regular.ttf") format("opentype");
 }
 
+@font-face
+{
+	font-family: "NerdFont";
+	src: url("../fonts/SymbolsNerdFontMono-Regular.ttf") format("opentype");
+}
+
 :root
 {
 	--baseFont: Nova Square;
 	--monoFont: Nova Mono;
 	--tulynFont: TulynScript;
+	--symbolFont: NerdFont;
 }
 
 .makeMono
@@ -64,6 +71,11 @@ html
 .makeTulyn
 {
 	font-family: var(--tulynFont) !important;
+}
+
+.asIcon
+{
+	font-family: var(--symbolFont) !important;
 }
 
 /* #endregion */

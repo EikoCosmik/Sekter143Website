@@ -1,9 +1,78 @@
 //main: "./compiled.less"
 
-@container body (width < 1920px)
+
+@container body (width >= 1920px)
 {
-	#siteContainer
+}
+
+#mobileWarning
+{
+	display: none;
+}
+
+.mobileWarning
+{
+	display: grid;
+}
+
+@container body (width < 600px)
+{
+	#siteHeader
 	{
-		background-color: red !important;
+		background: red !important;
+	}
+
+	#siteContainer, #staticBlock
+	{
+		display: none !important;
+	}
+
+	#mobileWarning
+	{
+		.redElement;
+		display: grid;
+		grid-auto-rows: min-content;
+        align-content: center;
+        justify-content: center;
+
+		.mobileWarning
+		{
+			.block;
+			.useGradient;
+			display: grid;
+			grid-auto-rows: min-content;
+			padding: 5cqw;
+			grid-gap: 5cqw;
+			width: 75cqw;
+			border-width: 0.5cqw;
+			text-align: center;
+
+			h1
+			{
+				font-size: 5cqw;
+			}
+
+			div
+			{
+				font-size: 4cqw;
+			}
+
+			.asIcon
+			{
+				border-bottom: none;
+				display: grid;
+				justify-content: center;
+
+				div
+				{
+					.block;
+					font-size: 10cqw;
+					border-bottom: none;
+					padding: 5cqw;
+					border: 1cqw var(--baseBorderStyle) var(--bcol_primaryMain);
+					border-radius: 50%;
+				}
+			}
+		}
 	}
 }

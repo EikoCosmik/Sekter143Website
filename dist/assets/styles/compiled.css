@@ -37,33 +37,32 @@ hr {
   border: var(--baseBorderStyle) calc(var(--minGap)/2) var(--bcol_primaryMain);
 }
 /* #region Sizes */
-body #siteContainer,
-body #staticBlock {
+body {
   /* Gaps */
-  --doubleGap: 2.2cqmax;
-  --hugeGap: 1.925cqmax;
-  --largeGap: 1.65cqmax;
-  --bigGap: 1.375cqmax;
-  --baseGap: 1.1cqmax;
-  --thinGap: 0.825cqmax;
-  --halfGap: 0.55cqmax;
-  --quarterGap: 0.275cqmax;
-  --minGap: 0.11cqmax;
+  --doubleGap: 2cqw;
+  --hugeGap: 1.75cqw;
+  --largeGap: 1.5cqw;
+  --bigGap: 1.25cqw;
+  --baseGap: 1cqw;
+  --thinGap: 0.75cqw;
+  --halfGap: 0.5cqw;
+  --quarterGap: 0.25cqw;
+  --minGap: 0.1cqw;
   /* Sizes */
-  --pageWidth: 50cqmax;
-  --sidebarWidth: 11cqmax;
+  --pageWidth: 64cqw;
+  --sidebarWidth: 16cqw;
   --sidebarHeight: calc(100cqh - var(--headerHeight) - var(--newsHeight) - var(--doubleGap));
   --headerHeight: calc(var(--sidebarWidth) * 0.4 + var(--baseGap) + var(--minGap));
   --newsHeight: var(--doubleGap);
-  --scrollbarWidth: 0.41884817cqmax;
+  --scrollbarWidth: 0.41884817cqw;
   --scrollbarGutterHalfFix: calc(var(--halfGap) - var(--scrollbarWidth));
   --scrollbarGutterQuarterFix: calc(var(--halfGap) - var(--scrollbarWidth));
   /* FontSize */
-  --largeFontSize: 1.1cqmax;
-  --bigFontSize: 0.95cqmax;
-  --baseFontSize: 0.8cqmax;
-  --smallFontSize: 0.65cqmax;
-  --miniFontSize: 0.5cqmax;
+  --largeFontSize: 1.4cqw;
+  --bigFontSize: 1.2cqw;
+  --baseFontSize: 1cqw;
+  --smallFontSize: 0.8cqw;
+  --miniFontSize: 0.6cqw;
   /* Borders */
   --baseBorderWidth: var(--minGap);
   --baseBorderStyle: solid;
@@ -428,30 +427,34 @@ html {
 }
 /* #endregion */
 @container body {
-  #siteContainer,
-  #staticBlock,
-  #siteHeader {
+  #siteBody #siteContainer,
+  #siteBody #staticBlock,
+  #siteBody #siteHeader {
     grid-template-columns: 1fr var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth) 1fr;
   }
-  #siteHeader .headerInternal {
+  #siteBody #siteHeader .headerInternal {
     grid-template-columns: var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth);
   }
-  #siteContainer,
-  #staticBlock {
+  #siteBody #siteContainer,
+  #siteBody #staticBlock,
+  #siteBody #mobileWarning {
+    color: var(--bcol_textLite);
+    font-size: var(--baseFontSize);
+  }
+  #siteBody #siteContainer,
+  #siteBody #staticBlock {
     grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage sitePage ." "news news news news news";
     display: grid;
     grid-template-rows: var(--headerHeight) var(--sidebarHeight) var(--newsHeight);
     grid-gap: var(--baseGap);
     justify-content: center;
-    color: var(--bcol_textLite);
-    font-size: var(--baseFontSize);
   }
-  #page {
+  #siteBody #page {
     grid-area: sitePage;
     position: relative;
     z-index: 1000;
   }
-  #page #pageContent {
+  #siteBody #page #pageContent {
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: 1fr;
@@ -462,14 +465,14 @@ html {
     grid-auto-rows: min-content;
     border-bottom: calc(var(--baseGap) + var(--newsHeight)) solid transparent;
   }
-  #page #pageContent.minRows {
+  #siteBody #page #pageContent.minRows {
     grid-auto-rows: min-content;
   }
 }
 body {
   container-type: size;
   container-name: body;
-  max-width: 1920px;
+  max-width: 1500px;
   margin: auto;
 }
 html {
@@ -479,16 +482,16 @@ html {
   background-attachment: fixed;
   display: grid;
 }
-html.withLeft #siteContainer,
-html.withLeft #staticBlock {
+html.withLeft #siteBody #siteContainer,
+html.withLeft #siteBody #staticBlock {
   grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". leftColumn sitePage sitePage ." "news news news news news";
 }
-html.withRight #siteContainer,
-html.withRight #staticBlock {
+html.withRight #siteBody #siteContainer,
+html.withRight #siteBody #staticBlock {
   grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage rightColumn ." "news news news news news";
 }
-html.centerWidth #siteContainer,
-html.centerWidth #staticBlock {
+html.centerWidth #siteBody #siteContainer,
+html.centerWidth #siteBody #staticBlock {
   grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". leftColumn sitePage rightColumn ." "news news news news news";
 }
 #staticBlock {
@@ -612,8 +615,6 @@ html.centerWidth #staticBlock {
   overflow-y: auto;
   height: fit-content;
   max-height: 100%;
-  padding-right: var(--scrollbarGutterHalfFix);
-  scrollbar-gutter: stable;
 }
 #leftColumn .sidebar .links,
 #rightColumn .sidebar .links {
@@ -1034,6 +1035,7 @@ html.centerWidth #staticBlock {
   padding: var(--minGap);
   grid-template-rows: 1fr auto;
   text-align: center;
+  text-transform: capitalize;
 }
 #customCozyTalkWidget .content .data .status .statNum,
 #customCozyTalkWidget .content .data .posts .statNum,
@@ -1505,7 +1507,7 @@ a[href].image:hover {
 /* #region standardPost */
 /* #endregion */
 /* #region siteNav */
-#siteNav #pageContent {
+#siteNav #siteBody #page #pageContent {
   grid-template-columns: 1fr 1fr 1fr;
 }
 /* #endregion */
@@ -1876,7 +1878,7 @@ a[href].image:hover {
 }
 /* #endregion */
 /* #region photography */
-#photography #pageContent {
+#photography #siteContainer #page #pageContent {
   grid-template-columns: 1fr 1fr 1fr;
 }
 /* #endregion */
@@ -2011,11 +2013,11 @@ a[href].image:hover {
 }
 /* #endregion */
 /* #region credits */
-#credits #pageContent {
+#credits #siteBody #page #pageContent {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-#credits #pageContent .creditsHeader {
+#credits #siteBody #page #pageContent .creditsHeader {
   grid-column: 1/-1;
 }
 .Zerock {
@@ -2517,30 +2519,30 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: min-content;
 }
-#BAD.BADRunner #pageContent {
+#BAD.BADRunner #siteBody #page #pageContent {
   grid-auto-rows: 1fr;
 }
-#BAD.badSolver #pageContent {
+#BAD.badSolver #siteBody #page #pageContent {
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
   border: none;
 }
-#BAD.badSolver #pageContent > .standardPost {
+#BAD.badSolver #siteBody #page #pageContent > .standardPost {
   grid-column: 1;
 }
-#BAD.badSolver #pageContent > .block {
+#BAD.badSolver #siteBody #page #pageContent > .block {
   grid-column: 1;
   grid-gap: var(--halfGap);
 }
-#BAD.badSolver #pageContent > .block > .tabs {
+#BAD.badSolver #siteBody #page #pageContent > .block > .tabs {
   grid-template-columns: 2fr 1fr;
 }
-#BAD.badSolver #pageContent > .block #out {
+#BAD.badSolver #siteBody #page #pageContent > .block #out {
   display: grid;
   align-items: center;
   justify-items: center;
 }
-#BAD.badCollatz #pageContent {
+#BAD.badCollatz #siteBody #page #pageContent {
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
   grid-auto-flow: column;
@@ -2553,13 +2555,13 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-areas: "badDesc badDesc desc desc" "odd run runs runs" "even run runs runs" "out out out out";
   border: none;
 }
-#BAD.badCollatz #pageContent.minCols {
+#BAD.badCollatz #siteBody #page #pageContent.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badCollatz #pageContent .badDescription {
+#BAD.badCollatz #siteBody #page #pageContent .badDescription {
   grid-area: badDesc;
 }
-#BAD.badCollatz #pageContent .colatzFormOdd {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormOdd {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -2575,16 +2577,16 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-area: odd;
   grid-template-columns: 1fr auto 1fr;
 }
-#BAD.badCollatz #pageContent .colatzFormOdd.minCols {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormOdd.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badCollatz #pageContent .colatzFormOdd > div {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormOdd > div {
   display: grid;
   align-items: center;
   justify-items: center;
   font-size: var(--largeFontSize);
 }
-#BAD.badCollatz #pageContent .colatzFormEven {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormEven {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -2600,16 +2602,16 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-area: even;
   grid-template-columns: 1fr auto 1fr;
 }
-#BAD.badCollatz #pageContent .colatzFormEven.minCols {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormEven.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badCollatz #pageContent .colatzFormEven > div {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormEven > div {
   display: grid;
   align-items: center;
   justify-items: center;
   font-size: var(--largeFontSize);
 }
-#BAD.badCollatz #pageContent .colatzFormRuns {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormRuns {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -2620,10 +2622,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
 }
-#BAD.badCollatz #pageContent .colatzFormRuns.minCols {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormRuns.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badCollatz #pageContent .colatzFormDesc {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormDesc {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -2637,10 +2639,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-area: desc;
   grid-template-columns: auto auto;
 }
-#BAD.badCollatz #pageContent .colatzFormDesc.minCols {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormDesc.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badCollatz #pageContent .colatzFormDesc .key {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormDesc .key {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2661,25 +2663,25 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   padding: 0;
   grid-gap: 0;
 }
-#BAD.badCollatz #pageContent .colatzFormDesc .key span {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormDesc .key span {
   display: grid;
   align-items: center;
   justify-items: center;
   padding: var(--halfGap);
 }
-#BAD.badCollatz #pageContent .colatzFormDesc .key span.odd {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormDesc .key span.odd {
   color: magenta;
 }
-#BAD.badCollatz #pageContent .colatzFormDesc .key span.even {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormDesc .key span.even {
   color: cyan;
 }
-#BAD.badCollatz #pageContent .colatzFormDesc .key span.start {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormDesc .key span.start {
   color: red;
 }
-#BAD.badCollatz #pageContent .colatzFormDesc .key span.result {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormDesc .key span.result {
   color: lime;
 }
-#BAD.badCollatz #pageContent .colatzFormRun {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormRun {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-flow: row;
@@ -2694,10 +2696,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-area: run;
   grid-auto-rows: 1fr;
 }
-#BAD.badCollatz #pageContent .colatzFormRun.minRows {
+#BAD.badCollatz #siteBody #page #pageContent .colatzFormRun.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badCollatz #pageContent #out {
+#BAD.badCollatz #siteBody #page #pageContent #out {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2712,11 +2714,11 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryBlck: var(--col_darkBlck);
   grid-area: out;
 }
-#BAD.badPaint #pageContent {
+#BAD.badPaint #siteBody #page #pageContent {
   grid-template-columns: 1fr var(--pageWidth) 1fr;
   border: none;
 }
-#BAD.badPaint #pageContent .controls {
+#BAD.badPaint #siteBody #page #pageContent .controls {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2727,14 +2729,14 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-auto-flow: row;
   gap: var(--halfGap);
 }
-#BAD.badPaint #pageContent .controls.minRows {
+#BAD.badPaint #siteBody #page #pageContent .controls.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badPaint #pageContent #canvasHolder {
+#BAD.badPaint #siteBody #page #pageContent #canvasHolder {
   display: grid;
   grid-template-rows: 1fr auto 1fr;
 }
-#BAD.badPaint #pageContent #canvasHolder #badPaintCanvas {
+#BAD.badPaint #siteBody #page #pageContent #canvasHolder #badPaintCanvas {
   margin: auto;
   width: auto;
   height: auto;
@@ -2743,16 +2745,16 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
 #BAD.badHorseRace #imagePlaceholder {
   display: none;
 }
-#BAD.badHorseRace #pageContent {
+#BAD.badHorseRace #siteBody #page #pageContent {
   grid-template-columns: 1000px auto;
   grid-template-rows: 400px 150px 1fr;
   grid-template-areas: "canvas past" "controls past" "description past";
   border: none;
 }
-#BAD.badHorseRace #pageContent > .standardPost {
+#BAD.badHorseRace #siteBody #page #pageContent > .standardPost {
   grid-area: description;
 }
-#BAD.badHorseRace #pageContent #badPaintCanvas {
+#BAD.badHorseRace #siteBody #page #pageContent #badPaintCanvas {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2768,7 +2770,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   padding: 0;
   grid-area: canvas;
 }
-#BAD.badHorseRace #pageContent #bankingBlock {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -2777,10 +2779,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-area: controls;
   grid-template-columns: 150px 1fr;
 }
-#BAD.badHorseRace #pageContent #bankingBlock.minCols {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badHorseRace #pageContent #bankingBlock #checkboxes {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #checkboxes {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2801,10 +2803,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
-#BAD.badHorseRace #pageContent #bankingBlock #checkboxes.minCols {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #checkboxes.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badHorseRace #pageContent #bankingBlock #checkboxes > div {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #checkboxes > div {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2819,7 +2821,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryBlck: var(--col_liteBlck);
   padding: 0;
 }
-#BAD.badHorseRace #pageContent #bankingBlock #checkboxes > div:has(input:checked+.checkmark).redCheckbox {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #checkboxes > div:has(input:checked+.checkmark).redCheckbox {
   --bcol_primaryBase: var(--col_redBase);
   --bcol_primaryWite: var(--col_redWite);
   --bcol_primaryWash: var(--col_redWash);
@@ -2829,7 +2831,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryDkst: var(--col_redDkst);
   --bcol_primaryBlck: var(--col_redBlck);
 }
-#BAD.badHorseRace #pageContent #bankingBlock #checkboxes > div:has(input:checked+.checkmark).blueCheckbox {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #checkboxes > div:has(input:checked+.checkmark).blueCheckbox {
   --bcol_primaryBase: var(--col_blueBase);
   --bcol_primaryWite: var(--col_blueWite);
   --bcol_primaryWash: var(--col_blueWash);
@@ -2839,7 +2841,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryDkst: var(--col_blueDkst);
   --bcol_primaryBlck: var(--col_blueBlck);
 }
-#BAD.badHorseRace #pageContent #bankingBlock #checkboxes > div:has(input:checked+.checkmark).greenCheckbox {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #checkboxes > div:has(input:checked+.checkmark).greenCheckbox {
   --bcol_primaryBase: var(--col_greenBase);
   --bcol_primaryWite: var(--col_greenWite);
   --bcol_primaryWash: var(--col_greenWash);
@@ -2849,7 +2851,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryDkst: var(--col_greenDkst);
   --bcol_primaryBlck: var(--col_greenBlck);
 }
-#BAD.badHorseRace #pageContent #bankingBlock #checkboxes > div:has(input:checked+.checkmark).yellowCheckbox {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #checkboxes > div:has(input:checked+.checkmark).yellowCheckbox {
   --bcol_primaryBase: var(--col_yellowBase);
   --bcol_primaryWite: var(--col_yellowWite);
   --bcol_primaryWash: var(--col_yellowWash);
@@ -2859,15 +2861,15 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryDkst: var(--col_yellowDkst);
   --bcol_primaryBlck: var(--col_yellowBlck);
 }
-#BAD.badHorseRace #pageContent #bankingBlock #checkboxes > div .checkmark {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #checkboxes > div .checkmark {
   display: grid;
   align-items: center;
   justify-items: center;
 }
-#BAD.badHorseRace #pageContent #bankingBlock #checkboxes > div input {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #checkboxes > div input {
   display: none;
 }
-#BAD.badHorseRace #pageContent #bankingBlock #money {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #money {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2880,10 +2882,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-columns: 2fr 2fr 2fr 1fr;
   grid-gap: var(--halfGap);
 }
-#BAD.badHorseRace #pageContent #bankingBlock #money.minCols {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #money.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badHorseRace #pageContent #bankingBlock #money .simpleContent {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #money .simpleContent {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -2891,10 +2893,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   gap: var(--halfGap);
   grid-template-rows: min-content 1fr;
 }
-#BAD.badHorseRace #pageContent #bankingBlock #money .simpleContent.minRows {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #money .simpleContent.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badHorseRace #pageContent #bankingBlock #money .simpleContent section {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #money .simpleContent section {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2903,13 +2905,13 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   align-items: center;
   justify-items: center;
 }
-#BAD.badHorseRace #pageContent #bankingBlock #runButton {
+#BAD.badHorseRace #siteBody #page #pageContent #bankingBlock #runButton {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
   padding: var(--halfGap);
 }
-#BAD.badHorseRace #pageContent #pastScroll {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2929,10 +2931,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   gap: var(--halfGap);
   grid-area: past;
 }
-#BAD.badHorseRace #pageContent #pastScroll.minRows {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -2943,10 +2945,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-gap: var(--halfGap);
   padding-right: var(--halfGap);
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts.minRows {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts #goal {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts #goal {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2961,7 +2963,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryDkst: var(--col_liteDkst);
   --bcol_primaryBlck: var(--col_liteBlck);
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -2986,10 +2988,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryDkst: var(--col_blueDkst);
   --bcol_primaryBlck: var(--col_blueBlck);
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div.minRows {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div.pastWin {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div.pastWin {
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "pastResult pastResult" "pastBetSelection pastBetAmount" "pastWin pastWin" "pastBA pastHA" "pastBT pastHT";
   --bcol_primaryBase: var(--col_greenBase);
@@ -3001,7 +3003,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryDkst: var(--col_greenDkst);
   --bcol_primaryBlck: var(--col_greenBlck);
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div.pastLost {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div.pastLost {
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "pastResult pastResult" "pastBetSelection pastBetAmount" "pastWin pastWin" "pastBT pastHT";
   --bcol_primaryBase: var(--col_redBase);
@@ -3013,34 +3015,34 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryDkst: var(--col_redDkst);
   --bcol_primaryBlck: var(--col_redBlck);
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div > div {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div > div {
   padding: var(--quarterGap);
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div #pastResult {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div #pastResult {
   grid-area: pastResult;
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div #pastBetSelection {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div #pastBetSelection {
   grid-area: pastBetSelection;
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div #pastBetAmount {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div #pastBetAmount {
   grid-area: pastBetAmount;
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div #pastWin {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div #pastWin {
   grid-area: pastWin;
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div #pastBA {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div #pastBA {
   grid-area: pastBA;
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div #pastHA {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div #pastHA {
   grid-area: pastHA;
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div #pastBT {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div #pastBT {
   grid-area: pastBT;
 }
-#BAD.badHorseRace #pageContent #pastScroll #pasts > div #pastHT {
+#BAD.badHorseRace #siteBody #page #pageContent #pastScroll #pasts > div #pastHT {
   grid-area: pastHT;
 }
-#BAD.badSudoku #pageContent {
+#BAD.badSudoku #siteBody #page #pageContent {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -3049,20 +3051,20 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-columns: 1fr max-content 1fr;
   border: none;
 }
-#BAD.badSudoku #pageContent.minCols {
+#BAD.badSudoku #siteBody #page #pageContent.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badSudoku #pageContent #numbers {
+#BAD.badSudoku #siteBody #page #pageContent #numbers {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
   grid-auto-flow: row;
   gap: var(--halfGap);
 }
-#BAD.badSudoku #pageContent #numbers.minRows {
+#BAD.badSudoku #siteBody #page #pageContent #numbers.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badSudoku #pageContent #sudokuGrid {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -3071,14 +3073,14 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   background-color: black;
   grid-gap: var(--minGap);
 }
-#BAD.badSudoku #pageContent #sudokuGrid > div {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid > div {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   background-color: grey;
   grid-gap: var(--minGap);
 }
-#BAD.badSudoku #pageContent #sudokuGrid > div > div {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid > div > div {
   display: grid;
   align-items: center;
   justify-items: center;
@@ -3086,13 +3088,13 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   position: relative;
   background-color: white;
 }
-#BAD.badSudoku #pageContent #sudokuGrid > div > div.nonInit {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid > div > div.nonInit {
   background-color: grey;
 }
-#BAD.badSudoku #pageContent #sudokuGrid > div > div.nonInit .hintBox {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid > div > div.nonInit .hintBox {
   color: grey;
 }
-#BAD.badSudoku #pageContent #sudokuGrid > div > div .onclickBox {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid > div > div .onclickBox {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -3100,7 +3102,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   width: 100%;
   transform: translate(-50%, -50%);
 }
-#BAD.badSudoku #pageContent #sudokuGrid > div > div .hintBox {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid > div > div .hintBox {
   display: grid;
   align-items: center;
   justify-items: center;
@@ -3111,31 +3113,31 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   font-size: 0.75rem;
   font-weight: bold;
 }
-#BAD.badSudoku #pageContent #sudokuGrid > div > div .hintBox.tr {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid > div > div .hintBox.tr {
   top: 0;
   right: 0;
   border-top: 0;
   border-right: 0;
 }
-#BAD.badSudoku #pageContent #sudokuGrid > div > div .hintBox.bl {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid > div > div .hintBox.bl {
   bottom: 0;
   left: 0;
   border-bottom: 0;
   border-left: 0;
 }
-#BAD.badSudoku #pageContent #sudokuGrid > div > div .hintBox.tl {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid > div > div .hintBox.tl {
   top: 0;
   left: 0;
   border-top: 0;
   border-left: 0;
 }
-#BAD.badSudoku #pageContent #sudokuGrid > div > div .hintBox.br {
+#BAD.badSudoku #siteBody #page #pageContent #sudokuGrid > div > div .hintBox.br {
   bottom: 0;
   right: 0;
   border-bottom: 0;
   border-right: 0;
 }
-#BAD.badSudoku #pageContent #outDisplay {
+#BAD.badSudoku #siteBody #page #pageContent #outDisplay {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -3143,10 +3145,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   gap: var(--halfGap);
   grid-template-rows: auto auto 1fr;
 }
-#BAD.badSudoku #pageContent #outDisplay.minRows {
+#BAD.badSudoku #siteBody #page #pageContent #outDisplay.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badSudoku #pageContent #outDisplay > div {
+#BAD.badSudoku #siteBody #page #pageContent #outDisplay > div {
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
   grid-auto-flow: column;
@@ -3167,10 +3169,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   align-items: center;
   justify-items: center;
 }
-#BAD.badSudoku #pageContent #outDisplay > div.minCols {
+#BAD.badSudoku #siteBody #page #pageContent #outDisplay > div.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badSudoku #pageContent #outDisplay > div > div {
+#BAD.badSudoku #siteBody #page #pageContent #outDisplay > div > div {
   --bcol_primaryBase: var(--col_redBase);
   --bcol_primaryWite: var(--col_redWite);
   --bcol_primaryWash: var(--col_redWash);
@@ -3184,7 +3186,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   border-radius: var(--baseBorderRadius);
   padding: var(--halfGap);
 }
-#BAD.badTriSpinner #pageContent {
+#BAD.badTriSpinner #siteBody #page #pageContent {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -3195,21 +3197,21 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-areas: "controls spinner path" "controls desc desc";
   border: none;
 }
-#BAD.badTriSpinner #pageContent.minCols {
+#BAD.badTriSpinner #siteBody #page #pageContent.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badTriSpinner #pageContent #configs,
-#BAD.badTriSpinner #pageContent #spinnerCanvas,
-#BAD.badTriSpinner #pageContent #pathCanvas {
+#BAD.badTriSpinner #siteBody #page #pageContent #configs,
+#BAD.badTriSpinner #siteBody #page #pageContent #spinnerCanvas,
+#BAD.badTriSpinner #siteBody #page #pageContent #pathCanvas {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
   padding: var(--halfGap);
 }
-#BAD.badTriSpinner #pageContent .standardPost {
+#BAD.badTriSpinner #siteBody #page #pageContent .standardPost {
   grid-area: desc;
 }
-#BAD.badTriSpinner #pageContent #configs {
+#BAD.badTriSpinner #siteBody #page #pageContent #configs {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -3219,26 +3221,26 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-area: controls;
   grid-gap: var(--halfGap);
 }
-#BAD.badTriSpinner #pageContent #configs.minRows {
+#BAD.badTriSpinner #siteBody #page #pageContent #configs.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badTriSpinner #pageContent #configs .inputBlock {
+#BAD.badTriSpinner #siteBody #page #pageContent #configs .inputBlock {
   grid-column: 1/-1;
 }
-#BAD.badTriSpinner #pageContent #spinnerCanvas {
+#BAD.badTriSpinner #siteBody #page #pageContent #spinnerCanvas {
   grid-area: spinner;
 }
-#BAD.badTriSpinner #pageContent #pathCanvas {
+#BAD.badTriSpinner #siteBody #page #pageContent #pathCanvas {
   grid-area: path;
 }
-#BAD.badTriSpinner #pageContent #spinnerCanvas,
-#BAD.badTriSpinner #pageContent #pathCanvas {
+#BAD.badTriSpinner #siteBody #page #pageContent #spinnerCanvas,
+#BAD.badTriSpinner #siteBody #page #pageContent #pathCanvas {
   padding: 0;
   aspect-ratio: 1;
   width: 100%;
   height: auto;
 }
-#BAD.badCollatzLoopCalc #pageContent {
+#BAD.badCollatzLoopCalc #siteBody #page #pageContent {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -3248,10 +3250,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   border: none;
   grid-template-rows: auto 1fr;
 }
-#BAD.badCollatzLoopCalc #pageContent.minRows {
+#BAD.badCollatzLoopCalc #siteBody #page #pageContent.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badCollatzLoopCalc #pageContent #out {
+#BAD.badCollatzLoopCalc #siteBody #page #pageContent #out {
   grid-row: 2;
   grid-column: 1/-1;
   background-color: var(--bcol_primaryDkst);
@@ -3267,16 +3269,16 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryDkst: var(--col_darkDkst);
   --bcol_primaryBlck: var(--col_darkBlck);
 }
-#BAD.badLockpick #pageContent {
+#BAD.badLockpick #siteBody #page #pageContent {
   grid-template-columns: 5fr 3fr;
   grid-template-rows: 1fr min-content auto 1fr;
   grid-template-areas: ". ." "controls canvas" "desc canvas" ". .";
   border: none;
 }
-#BAD.badLockpick #pageContent .standardPost {
+#BAD.badLockpick #siteBody #page #pageContent .standardPost {
   grid-area: desc;
 }
-#BAD.badLockpick #pageContent #values {
+#BAD.badLockpick #siteBody #page #pageContent #values {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -3288,10 +3290,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-area: controls;
   grid-auto-columns: 1fr;
 }
-#BAD.badLockpick #pageContent #values.minCols {
+#BAD.badLockpick #siteBody #page #pageContent #values.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badLockpick #pageContent #pickCanvas {
+#BAD.badLockpick #siteBody #page #pageContent #pickCanvas {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -3305,7 +3307,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   container-name: page;
   container-type: size;
 }
-#BAD.badCube #pageContent {
+#BAD.badCube #siteBody #page #pageContent {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -3316,13 +3318,13 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-rows: auto 1fr;
   grid-template-areas: "desc cube" "controls cube";
 }
-#BAD.badCube #pageContent.minCols {
+#BAD.badCube #siteBody #page #pageContent.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badCube #pageContent .standardPost {
+#BAD.badCube #siteBody #page #pageContent .standardPost {
   grid-area: desc;
 }
-#BAD.badCube #pageContent #cubeCanvas {
+#BAD.badCube #siteBody #page #pageContent #cubeCanvas {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -3339,46 +3341,46 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   aspect-ratio: 1;
 }
 @container page {
-  #BAD.badCube #pageContent #cubeCanvas {
+  #BAD.badCube #siteBody #page #pageContent #cubeCanvas {
     height: 90cqb;
     width: 90cqb;
   }
 }
-#BAD.badCube #pageContent #cubeNet {
+#BAD.badCube #siteBody #page #pageContent #cubeNet {
   grid-area: net;
   display: grid;
   grid-template-columns: min-content min-content min-content min-content;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas: ". up . ." "left front right back" ". down . .";
 }
-#BAD.badCube #pageContent #cubeNet #up {
+#BAD.badCube #siteBody #page #pageContent #cubeNet #up {
   grid-area: up;
 }
-#BAD.badCube #pageContent #cubeNet #left {
+#BAD.badCube #siteBody #page #pageContent #cubeNet #left {
   grid-area: left;
 }
-#BAD.badCube #pageContent #cubeNet #front {
+#BAD.badCube #siteBody #page #pageContent #cubeNet #front {
   grid-area: front;
 }
-#BAD.badCube #pageContent #cubeNet #right {
+#BAD.badCube #siteBody #page #pageContent #cubeNet #right {
   grid-area: right;
 }
-#BAD.badCube #pageContent #cubeNet #back {
+#BAD.badCube #siteBody #page #pageContent #cubeNet #back {
   grid-area: back;
 }
-#BAD.badCube #pageContent #cubeNet #down {
+#BAD.badCube #siteBody #page #pageContent #cubeNet #down {
   grid-area: down;
 }
-#BAD.badCube #pageContent #cubeNet > div {
+#BAD.badCube #siteBody #page #pageContent #cubeNet > div {
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto;
 }
-#BAD.badCube #pageContent #cubeNet > div > div {
+#BAD.badCube #siteBody #page #pageContent #cubeNet > div > div {
   aspect-ratio: 1;
   border: 1px solid black;
 }
-#BAD.badCube #pageContent #controls {
+#BAD.badCube #siteBody #page #pageContent #controls {
   display: grid;
   grid-auto-rows: 1fr;
   grid-auto-flow: row;
@@ -3388,10 +3390,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-columns: 1fr;
   grid-gap: var(--halfGap);
 }
-#BAD.badCube #pageContent #controls.minRows {
+#BAD.badCube #siteBody #page #pageContent #controls.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badCube #pageContent #controls #scrambleText {
+#BAD.badCube #siteBody #page #pageContent #controls #scrambleText {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -3401,10 +3403,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-gap: var(--halfGap);
   grid-template-columns: 1fr 1fr;
 }
-#BAD.badCube #pageContent #controls #scrambleText.minCols {
+#BAD.badCube #siteBody #page #pageContent #controls #scrambleText.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badCube #pageContent #controls #moves {
+#BAD.badCube #siteBody #page #pageContent #controls #moves {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -3413,10 +3415,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: var(--halfGap);
 }
-#BAD.badCube #pageContent #controls #moves.minRows {
+#BAD.badCube #siteBody #page #pageContent #controls #moves.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badInfRunner #pageContent {
+#BAD.badInfRunner #siteBody #page #pageContent {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -3428,13 +3430,13 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-areas: "desc score" "desc game";
   grid-gap: var(--halfGap);
 }
-#BAD.badInfRunner #pageContent.minCols {
+#BAD.badInfRunner #siteBody #page #pageContent.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badInfRunner #pageContent > .standardPost {
+#BAD.badInfRunner #siteBody #page #pageContent > .standardPost {
   grid-area: desc;
 }
-#BAD.badInfRunner #pageContent #scoreSpace {
+#BAD.badInfRunner #siteBody #page #pageContent #scoreSpace {
   display: grid;
   grid-template-rows: 1fr;
   grid-auto-flow: column;
@@ -3444,10 +3446,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-gap: var(--halfGap);
   grid-auto-columns: 1fr;
 }
-#BAD.badInfRunner #pageContent #scoreSpace.minCols {
+#BAD.badInfRunner #siteBody #page #pageContent #scoreSpace.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badInfRunner #pageContent #scoreSpace #mesageBoxHolder {
+#BAD.badInfRunner #siteBody #page #pageContent #scoreSpace #mesageBoxHolder {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -3461,7 +3463,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   --bcol_primaryDkst: var(--col_darkDkst);
   --bcol_primaryBlck: var(--col_darkBlck);
 }
-#BAD.badInfRunner #pageContent #scoreSpace #scoreHolder {
+#BAD.badInfRunner #siteBody #page #pageContent #scoreSpace #scoreHolder {
   display: grid;
   grid-template-rows: 1fr;
   grid-auto-flow: column;
@@ -3470,10 +3472,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-gap: var(--halfGap);
   grid-auto-columns: 1fr;
 }
-#BAD.badInfRunner #pageContent #scoreSpace #scoreHolder.minCols {
+#BAD.badInfRunner #siteBody #page #pageContent #scoreSpace #scoreHolder.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badInfRunner #pageContent #scoreSpace #scoreHolder > div {
+#BAD.badInfRunner #siteBody #page #pageContent #scoreSpace #scoreHolder > div {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -3494,10 +3496,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-rows: min-content 1fr;
   grid-gap: var(--halfGap);
 }
-#BAD.badInfRunner #pageContent #scoreSpace #scoreHolder > div.minCols {
+#BAD.badInfRunner #siteBody #page #pageContent #scoreSpace #scoreHolder > div.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badInfRunner #pageContent #gameSpace {
+#BAD.badInfRunner #siteBody #page #pageContent #gameSpace {
   grid-area: game;
   position: relative;
   background-color: var(--bcol_primaryDkst);
@@ -3507,7 +3509,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   padding: 0;
   background-color: black;
 }
-#BAD.badInfRunner #pageContent #gameSpace #startButton {
+#BAD.badInfRunner #siteBody #page #pageContent #gameSpace #startButton {
   width: 15rem;
   height: 5rem;
   position: absolute;
@@ -3519,7 +3521,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   container-name: page;
   container-type: size;
 }
-#BAD.badChaosGame #pageContent {
+#BAD.badChaosGame #siteBody #page #pageContent {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -3528,16 +3530,16 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   border: none;
   grid-gap: var(--halfGap);
 }
-#BAD.badChaosGame #pageContent.minCols {
+#BAD.badChaosGame #siteBody #page #pageContent.minCols {
   grid-auto-columns: min-content;
 }
 @container page {
-  #BAD.badChaosGame #pageContent {
+  #BAD.badChaosGame #siteBody #page #pageContent {
     grid-template-columns: 1fr 1fr auto 1fr;
     grid-template-rows: min-content 1fr;
     grid-template-areas: "desc i1 canvas i2" "desc i1 canvas i2";
   }
-  #BAD.badChaosGame #pageContent #myCanvas {
+  #BAD.badChaosGame #siteBody #page #pageContent #myCanvas {
     background-color: var(--bcol_primaryDkst);
     border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
     border-radius: var(--baseBorderRadius);
@@ -3557,17 +3559,17 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
     margin: auto;
   }
 }
-#BAD.badChaosGame #pageContent #inputs {
+#BAD.badChaosGame #siteBody #page #pageContent #inputs {
   grid-area: i1;
 }
-#BAD.badChaosGame #pageContent #inputs2 {
+#BAD.badChaosGame #siteBody #page #pageContent #inputs2 {
   grid-area: i2;
 }
-#BAD.badChaosGame #pageContent .standardPost {
+#BAD.badChaosGame #siteBody #page #pageContent .standardPost {
   grid-area: desc;
 }
-#BAD.badChaosGame #pageContent #inputs,
-#BAD.badChaosGame #pageContent #inputs2 {
+#BAD.badChaosGame #siteBody #page #pageContent #inputs,
+#BAD.badChaosGame #siteBody #page #pageContent #inputs2 {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -3585,25 +3587,25 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   padding: 0;
   font-size: var(--smallFontSize);
 }
-#BAD.badChaosGame #pageContent #inputs.minRows,
-#BAD.badChaosGame #pageContent #inputs2.minRows {
+#BAD.badChaosGame #siteBody #page #pageContent #inputs.minRows,
+#BAD.badChaosGame #siteBody #page #pageContent #inputs2.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badChaosGame #pageContent #inputs h2,
-#BAD.badChaosGame #pageContent #inputs2 h2,
-#BAD.badChaosGame #pageContent #inputs .guide,
-#BAD.badChaosGame #pageContent #inputs2 .guide {
+#BAD.badChaosGame #siteBody #page #pageContent #inputs h2,
+#BAD.badChaosGame #siteBody #page #pageContent #inputs2 h2,
+#BAD.badChaosGame #siteBody #page #pageContent #inputs .guide,
+#BAD.badChaosGame #siteBody #page #pageContent #inputs2 .guide {
   grid-column: 1/-1;
   padding: var(--quarterGap);
   text-align: center;
 }
-#BAD.badChaosGame #pageContent #inputs .btn,
-#BAD.badChaosGame #pageContent #inputs2 .btn {
+#BAD.badChaosGame #siteBody #page #pageContent #inputs .btn,
+#BAD.badChaosGame #siteBody #page #pageContent #inputs2 .btn {
   font-size: var(--miniFontSize);
   padding: var(--quarterGap);
 }
-#BAD.badChaosGame #pageContent #inputs .inputBlock,
-#BAD.badChaosGame #pageContent #inputs2 .inputBlock {
+#BAD.badChaosGame #siteBody #page #pageContent #inputs .inputBlock,
+#BAD.badChaosGame #siteBody #page #pageContent #inputs2 .inputBlock {
   grid-template-rows: 1fr;
   grid-gap: var(--quarterGap);
   height: auto;
@@ -3612,15 +3614,15 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   background-image: none;
   padding: var(--quarterGap);
 }
-#BAD.badChaosGame #pageContent #inputs .inputBlock input,
-#BAD.badChaosGame #pageContent #inputs2 .inputBlock input {
+#BAD.badChaosGame #siteBody #page #pageContent #inputs .inputBlock input,
+#BAD.badChaosGame #siteBody #page #pageContent #inputs2 .inputBlock input {
   padding: var(--minGap);
 }
 #BAD.badWaves #page {
   container-name: page;
   container-type: size;
 }
-#BAD.badWaves #pageContent {
+#BAD.badWaves #siteBody #page #pageContent {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -3630,16 +3632,16 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-template-areas: "desc canvas" "controls controls";
   grid-gap: var(--quarterGap);
 }
-#BAD.badWaves #pageContent.minCols {
+#BAD.badWaves #siteBody #page #pageContent.minCols {
   grid-auto-columns: min-content;
 }
 @container page {
-  #BAD.badWaves #pageContent {
+  #BAD.badWaves #siteBody #page #pageContent {
     grid-template-columns: 15cqw 1fr;
     grid-template-rows: 65cqh auto;
   }
 }
-#BAD.badWaves #pageContent #mainCanvas {
+#BAD.badWaves #siteBody #page #pageContent #mainCanvas {
   background-color: var(--bcol_primaryDkst);
   border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
   border-radius: var(--baseBorderRadius);
@@ -3648,7 +3650,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   padding: 0;
   background-color: black;
 }
-#BAD.badWaves #pageContent #controls {
+#BAD.badWaves #siteBody #page #pageContent #controls {
   display: grid;
   grid-template-rows: 1fr;
   grid-auto-flow: column;
@@ -3658,17 +3660,17 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-area: controls;
   grid-gap: var(--quarterGap);
 }
-#BAD.badWaves #pageContent #controls.minCols {
+#BAD.badWaves #siteBody #page #pageContent #controls.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badWaves #pageContent .standardPost {
+#BAD.badWaves #siteBody #page #pageContent .standardPost {
   grid-area: desc;
 }
-#BAD.badFireworks #pageContent {
+#BAD.badFireworks #siteBody #page #pageContent {
   position: relative;
   border: none;
 }
-#BAD.badFireworks #pageContent #controls {
+#BAD.badFireworks #siteBody #page #pageContent #controls {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: 1fr;
@@ -3682,14 +3684,14 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   width: 100%;
   height: min-content;
 }
-#BAD.badFireworks #pageContent #controls.minCols {
+#BAD.badFireworks #siteBody #page #pageContent #controls.minCols {
   grid-auto-columns: min-content;
 }
-#BAD.badFireworks #pageContent #controls .standardPost {
+#BAD.badFireworks #siteBody #page #pageContent #controls .standardPost {
   grid-column: 1/-1;
   grid-row: 2;
 }
-#BAD.badSubGen #pageContent {
+#BAD.badSubGen #siteBody #page #pageContent {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   grid-template-rows: min-content min-content 1fr;
@@ -3699,10 +3701,10 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   font-size: var(--smallFontSize);
   border: none;
 }
-#BAD.badSubGen #pageContent hr {
+#BAD.badSubGen #siteBody #page #pageContent hr {
   height: min-content;
 }
-#BAD.badSubGen #pageContent > div {
+#BAD.badSubGen #siteBody #page #pageContent > div {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -3712,14 +3714,14 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   padding: var(--minGap);
   grid-auto-rows: min-content;
 }
-#BAD.badSubGen #pageContent > div.minRows {
+#BAD.badSubGen #siteBody #page #pageContent > div.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badSubGen #pageContent > div:has( > div:not([class])) {
+#BAD.badSubGen #siteBody #page #pageContent > div:has( > div:not([class])) {
   display: block;
   grid-gap: var(--quarterGap);
 }
-#BAD.badSubGen #pageContent > div:has( > div:not([class])).out {
+#BAD.badSubGen #siteBody #page #pageContent > div:has( > div:not([class])).out {
   --bcol_primaryBase: var(--col_darkBase);
   --bcol_primaryWite: var(--col_darkWite);
   --bcol_primaryWash: var(--col_darkWash);
@@ -3733,21 +3735,21 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   height: 100%;
   grid-column: 1/-1;
 }
-#BAD.badSubGen #pageContent > div:has( > div:not([class])).subs,
-#BAD.badSubGen #pageContent > div:has( > div:not([class])).sauces {
+#BAD.badSubGen #siteBody #page #pageContent > div:has( > div:not([class])).subs,
+#BAD.badSubGen #siteBody #page #pageContent > div:has( > div:not([class])).sauces {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: var(--quarterGap);
   padding: var(--minGap);
   grid-column: auto / span 2;
 }
-#BAD.badSubGen #pageContent > div:has( > div:not([class])).subs > div,
-#BAD.badSubGen #pageContent > div:has( > div:not([class])).sauces > div {
+#BAD.badSubGen #siteBody #page #pageContent > div:has( > div:not([class])).subs > div,
+#BAD.badSubGen #siteBody #page #pageContent > div:has( > div:not([class])).sauces > div {
   height: min-content;
   grid-gap: var(--quarterGap);
   padding: var(--minGap);
 }
-#BAD.badSubGen #pageContent > div > div {
+#BAD.badSubGen #siteBody #page #pageContent > div > div {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -3757,23 +3759,33 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   height: min-content;
   grid-gap: var(--quarterGap);
 }
-#BAD.badSubGen #pageContent > div > div.minRows {
+#BAD.badSubGen #siteBody #page #pageContent > div > div.minRows {
   grid-auto-rows: min-content;
 }
-#BAD.badSubGen #pageContent .standardPost {
+#BAD.badSubGen #siteBody #page #pageContent .standardPost {
   grid-row: 1/3;
 }
-#BAD.badSubGen #pageContent .inputBlock {
+#BAD.badSubGen #siteBody #page #pageContent .inputBlock {
   grid-gap: var(--quarterGap);
   padding: var(--minGap);
   height: min-content;
   grid-template-columns: 1fr min-content;
 }
-#Kata-BlackJack #siteContainer {
+#Kata-BlackJack {
   background-color: #002D04;
   background-blend-mode: darken;
+}
+#Kata-BlackJack #siteContainer {
   border-radius: var(--baseBorderRadius);
   overflow: hidden;
+}
+#Kata-BlackJack #siteContainer #page #pageContent {
+  height: 100%;
+  max-height: 35cqw;
+  align-content: center;
+  align-items: center;
+  border-bottom: none;
+  grid-auto-rows: 1fr;
 }
 #Kata-BlackJack #siteContainer #page #plaingCardGameContainer {
   display: grid;
@@ -3781,10 +3793,12 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   grid-auto-rows: 1fr;
   grid-auto-flow: row;
   gap: var(--halfGap);
-  grid-template-columns: 25cqb 1fr;
+  grid-template-columns: 10cqw 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas: "dataCenter dealer" "dataCenter player";
-  height: 100cqb;
+  height: 100%;
+  min-height: auto;
+  max-height: 50cqw;
   grid-row-gap: var(--doubleGap);
   padding: var(--baseGap);
   row-rule: var(--baseBorderWidth) var(--baseBorderStyle) #005b08;
@@ -3894,6 +3908,7 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
   position: relative;
 }
 #Kata-Fireworks #notify {
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -4141,9 +4156,647 @@ html {
   scrollbar-color: var(--bcol_primaryMain) var(--bcol_primaryBlck);
   scrollbar-gutter: auto;
 }
-@container body (width < 1920px) {
-  #siteContainer {
-    background-color: red !important;
+.cardVariables {
+  --cardRatioCQB: 71.42857143cqb;
+}
+@container playingCard {
+  #Kata-BlackJack .playingCard .innerCard {
+    height: 100cqb;
+  }
+}
+#Kata-BlackJack .playingCard.faceDown {
+  background-color: var(--bcol_primaryDkst);
+  border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+  border-radius: var(--baseBorderRadius);
+  padding: var(--halfGap);
+  --bcol_primaryBase: var(--col_rubyBase);
+  --bcol_primaryWite: var(--col_rubyWite);
+  --bcol_primaryWash: var(--col_rubyWash);
+  --bcol_primaryLite: var(--col_rubyLite);
+  --bcol_primaryMain: var(--col_rubyMain);
+  --bcol_primaryDark: var(--col_rubyDark);
+  --bcol_primaryDkst: var(--col_rubyDkst);
+  --bcol_primaryBlck: var(--col_rubyBlck);
+  background-image: url(../../assets/images/site_background.gif);
+  background-blend-mode: difference;
+}
+#Kata-BlackJack .playingCard .innerCard {
+  background-color: var(--bcol_primaryDkst);
+  border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+  border-radius: var(--baseBorderRadius);
+  padding: var(--halfGap);
+  background: linear-gradient(135deg, var(--bcol_primaryDark) 0%, var(--bcol_primaryBlck) 100%);
+  background-blend-mode: normal;
+  width: auto;
+  aspect-ratio: 5/7;
+  display: grid;
+  grid-template-columns: 20% 1fr 20%;
+  grid-template-rows: auto auto 1fr auto auto;
+  grid-template-areas: "tlRank . ." "tlSuit centerImage ." ". centerImage ." ". centerImage brSuit" ". . brRank";
+  container-type: size;
+  container-name: innerCard;
+}
+@container innerCard {
+  #Kata-BlackJack .playingCard .innerCard .tlSuit,
+  #Kata-BlackJack .playingCard .innerCard .brSuit,
+  #Kata-BlackJack .playingCard .innerCard .tlRank,
+  #Kata-BlackJack .playingCard .innerCard .brRank {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    aspect-ratio: 1;
+    font-size: clamp(1cqb, 20cqi, 20cqi);
+  }
+}
+#Kata-BlackJack .playingCard .tlSuit {
+  grid-area: tlSuit;
+}
+#Kata-BlackJack .playingCard .brSuit {
+  grid-area: brSuit;
+}
+#Kata-BlackJack .playingCard .tlRank {
+  grid-area: tlRank;
+}
+#Kata-BlackJack .playingCard .brRank {
+  grid-area: brRank;
+}
+#Kata-BlackJack .playingCard .centerImage {
+  grid-area: centerImage;
+  display: grid;
+  grid-auto-rows: 1fr;
+  container-type: size;
+  container-name: centerImage;
+}
+@container centerImage {
+  #Kata-BlackJack .playingCard .centerImage > div {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: clamp(1cqb, 30cqi, 30cqi);
+  }
+}
+#Kata-BlackJack .playingCard .suitS {
+  --bcol_primaryBase: var(--col_darkBase);
+  --bcol_primaryWite: var(--col_darkWite);
+  --bcol_primaryWash: var(--col_darkWash);
+  --bcol_primaryLite: var(--col_darkLite);
+  --bcol_primaryMain: var(--col_darkMain);
+  --bcol_primaryDark: var(--col_darkDark);
+  --bcol_primaryDkst: var(--col_darkDkst);
+  --bcol_primaryBlck: var(--col_darkBlck);
+}
+#Kata-BlackJack .playingCard .suitH {
+  --bcol_primaryBase: var(--col_redBase);
+  --bcol_primaryWite: var(--col_redWite);
+  --bcol_primaryWash: var(--col_redWash);
+  --bcol_primaryLite: var(--col_redLite);
+  --bcol_primaryMain: var(--col_redMain);
+  --bcol_primaryDark: var(--col_redDark);
+  --bcol_primaryDkst: var(--col_redDkst);
+  --bcol_primaryBlck: var(--col_redBlck);
+}
+#Kata-BlackJack .playingCard .suitD {
+  --bcol_primaryBase: var(--col_blueBase);
+  --bcol_primaryWite: var(--col_blueWite);
+  --bcol_primaryWash: var(--col_blueWash);
+  --bcol_primaryLite: var(--col_blueLite);
+  --bcol_primaryMain: var(--col_blueMain);
+  --bcol_primaryDark: var(--col_blueDark);
+  --bcol_primaryDkst: var(--col_blueDkst);
+  --bcol_primaryBlck: var(--col_blueBlck);
+}
+#Kata-BlackJack .playingCard .suitC {
+  --bcol_primaryBase: var(--col_greenBase);
+  --bcol_primaryWite: var(--col_greenWite);
+  --bcol_primaryWash: var(--col_greenWash);
+  --bcol_primaryLite: var(--col_greenLite);
+  --bcol_primaryMain: var(--col_greenMain);
+  --bcol_primaryDark: var(--col_greenDark);
+  --bcol_primaryDkst: var(--col_greenDkst);
+  --bcol_primaryBlck: var(--col_greenBlck);
+}
+#Kata-BlackJack .playingCard .rankA .centerImage,
+#Kata-BlackJack .playingCard .rank2 .centerImage,
+#Kata-BlackJack .playingCard .rank3 .centerImage {
+  grid-template-columns: 1fr;
+}
+#Kata-BlackJack .playingCard .rank4 .centerImage,
+#Kata-BlackJack .playingCard .rank6 .centerImage,
+#Kata-BlackJack .playingCard .rank8 .centerImage {
+  grid-template-columns: 1fr 1fr;
+}
+#Kata-BlackJack .playingCard .rank5 .centerImage {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "a1 . a2" ". a3 ." "a4 . a0";
+}
+#Kata-BlackJack .playingCard .rank5 .centerImage .img0 {
+  grid-area: a0;
+}
+#Kata-BlackJack .playingCard .rank5 .centerImage .img1 {
+  grid-area: a1;
+}
+#Kata-BlackJack .playingCard .rank5 .centerImage .img2 {
+  grid-area: a2;
+}
+#Kata-BlackJack .playingCard .rank5 .centerImage .img3 {
+  grid-area: a3;
+}
+#Kata-BlackJack .playingCard .rank5 .centerImage .img4 {
+  grid-area: a4;
+}
+#Kata-BlackJack .playingCard .rank7 .centerImage {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "a1 . a2" ". a3 ." "a4 . a0" ". . ." "a5 . a6";
+}
+#Kata-BlackJack .playingCard .rank7 .centerImage .img0 {
+  grid-area: a0;
+}
+#Kata-BlackJack .playingCard .rank7 .centerImage .img1 {
+  grid-area: a1;
+}
+#Kata-BlackJack .playingCard .rank7 .centerImage .img2 {
+  grid-area: a2;
+}
+#Kata-BlackJack .playingCard .rank7 .centerImage .img3 {
+  grid-area: a3;
+}
+#Kata-BlackJack .playingCard .rank7 .centerImage .img4 {
+  grid-area: a4;
+}
+#Kata-BlackJack .playingCard .rank7 .centerImage .img5 {
+  grid-area: a5;
+}
+#Kata-BlackJack .playingCard .rank7 .centerImage .img6 {
+  grid-area: a6;
+}
+#Kata-BlackJack .playingCard .rank9 .centerImage {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "a1 . a2" "a3 . a4" ". a5 ." "a6 . a7" "a8 . a0";
+}
+#Kata-BlackJack .playingCard .rank9 .centerImage .img0 {
+  grid-area: a0;
+}
+#Kata-BlackJack .playingCard .rank9 .centerImage .img1 {
+  grid-area: a1;
+}
+#Kata-BlackJack .playingCard .rank9 .centerImage .img2 {
+  grid-area: a2;
+}
+#Kata-BlackJack .playingCard .rank9 .centerImage .img3 {
+  grid-area: a3;
+}
+#Kata-BlackJack .playingCard .rank9 .centerImage .img4 {
+  grid-area: a4;
+}
+#Kata-BlackJack .playingCard .rank9 .centerImage .img5 {
+  grid-area: a5;
+}
+#Kata-BlackJack .playingCard .rank9 .centerImage .img6 {
+  grid-area: a6;
+}
+#Kata-BlackJack .playingCard .rank9 .centerImage .img7 {
+  grid-area: a7;
+}
+#Kata-BlackJack .playingCard .rank9 .centerImage .img8 {
+  grid-area: a8;
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "a1 . a2" ". a5 ." "a3 . a4" "a6 . a7" ". a9 ." "a8 . a0";
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage .img0 {
+  grid-area: a0;
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage .img1 {
+  grid-area: a1;
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage .img2 {
+  grid-area: a2;
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage .img3 {
+  grid-area: a3;
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage .img4 {
+  grid-area: a4;
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage .img5 {
+  grid-area: a5;
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage .img6 {
+  grid-area: a6;
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage .img7 {
+  grid-area: a7;
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage .img8 {
+  grid-area: a8;
+}
+#Kata-BlackJack .playingCard .rank10 .centerImage .img9 {
+  grid-area: a9;
+}
+#plaingCardGameContainer #plaingCardGamePopup {
+  position: absolute;
+  background-color: #000000aa;
+  z-index: 200;
+  top: 0;
+  left: 0;
+}
+#plaingCardGameContainer #plaingCardGamePopup > .block {
+  background: linear-gradient(135deg, var(--bcol_primaryDark) 0%, var(--bcol_primaryBlck) 100%);
+  background-blend-mode: normal;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-auto-flow: row;
+  gap: var(--halfGap);
+  grid-auto-rows: min-content;
+  height: fit-content;
+  width: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#plaingCardGameContainer #plaingCardGamePopup > .block.minRows {
+  grid-auto-rows: min-content;
+}
+.playArea {
+  --cardRatioCQB: 71.42857143cqb;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-auto-flow: row;
+  gap: var(--halfGap);
+  container-type: size;
+  container-name: playArea;
+  justify-content: center;
+}
+.playArea.minRows {
+  grid-auto-rows: min-content;
+}
+@container playArea {
+  .playArea.autoSpaceH .hand {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-auto-flow: column;
+    gap: var(--halfGap);
+    grid-template-columns: var(--cardRatioCQB);
+  }
+  .playArea.autoSpaceH .hand.minCols {
+    grid-auto-columns: min-content;
+  }
+  .playArea.autoSpaceH .hand.hasMultipleCards {
+    --cardCount: attr(cardcount type(<integer>));
+    --cardIndexCount: calc(var(--cardCount) - 1);
+    grid-template-columns: repeat(var(--cardIndexCount), minmax(0, var(--cardRatioCQB))) var(--cardRatioCQB);
+  }
+}
+.playingCard {
+  container-type: size;
+  container-name: playingCard;
+}
+@container playingCard {
+  .playingCard .innerCard {
+    height: 100cqb;
+    width: auto;
+    aspect-ratio: 5/7;
+  }
+  .playingCard .innerCard .tlSuit,
+  .playingCard .innerCard .brSuit,
+  .playingCard .innerCard .centerImage > div {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    padding: var(--quarterGap);
+  }
+  .playingCard .innerCard.suitH .tlSuit,
+  .playingCard .innerCard.suitH .brSuit,
+  .playingCard .innerCard.suitH .centerImage > div {
+    background-image: url("../images/cards_heart.webp");
+    filter: brightness(0) saturate(100%) invert(17%) sepia(83%) saturate(2877%) hue-rotate(347deg) brightness(107%) contrast(95%);
+  }
+  .playingCard .innerCard.suitS .tlSuit,
+  .playingCard .innerCard.suitS .brSuit,
+  .playingCard .innerCard.suitS .centerImage > div {
+    background-image: url("../images/cards_spade.webp");
+    filter: brightness(0) saturate(100%) invert(34%) sepia(21%) saturate(0%) hue-rotate(303deg) brightness(92%) contrast(83%);
+  }
+  .playingCard .innerCard.suitC .tlSuit,
+  .playingCard .innerCard.suitC .brSuit,
+  .playingCard .innerCard.suitC .centerImage > div {
+    background-image: url("../images/cards_club.webp");
+    filter: brightness(0) saturate(100%) invert(51%) sepia(96%) saturate(942%) hue-rotate(78deg) brightness(110%) contrast(90%);
+  }
+  .playingCard .innerCard.suitD .tlSuit,
+  .playingCard .innerCard.suitD .brSuit,
+  .playingCard .innerCard.suitD .centerImage > div {
+    background-image: url("../images/cards_diamond.webp");
+    filter: brightness(0) saturate(100%) invert(10%) sepia(85%) saturate(4499%) hue-rotate(243deg) brightness(122%) contrast(109%);
+  }
+}
+@container playingCard {
+  .PCS_4SuitBlock .playingCard .innerCard {
+    height: 100cqb;
+  }
+}
+.PCS_4SuitBlock .playingCard.faceDown {
+  background-color: var(--bcol_primaryDkst);
+  border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+  border-radius: var(--baseBorderRadius);
+  padding: var(--halfGap);
+  --bcol_primaryBase: var(--col_rubyBase);
+  --bcol_primaryWite: var(--col_rubyWite);
+  --bcol_primaryWash: var(--col_rubyWash);
+  --bcol_primaryLite: var(--col_rubyLite);
+  --bcol_primaryMain: var(--col_rubyMain);
+  --bcol_primaryDark: var(--col_rubyDark);
+  --bcol_primaryDkst: var(--col_rubyDkst);
+  --bcol_primaryBlck: var(--col_rubyBlck);
+  background-image: url(../../assets/images/site_background.gif);
+  background-blend-mode: difference;
+}
+.PCS_4SuitBlock .playingCard .innerCard {
+  background-color: var(--bcol_primaryDkst);
+  border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+  border-radius: var(--baseBorderRadius);
+  padding: var(--halfGap);
+  background: linear-gradient(135deg, var(--bcol_primaryDark) 0%, var(--bcol_primaryBlck) 100%);
+  background-blend-mode: normal;
+  width: auto;
+  aspect-ratio: 5/7;
+  display: grid;
+  grid-template-columns: 20% 1fr 20%;
+  grid-template-rows: auto auto 1fr auto auto;
+  grid-template-areas: "tlRank . ." "tlSuit centerImage ." ". centerImage ." ". centerImage brSuit" ". . brRank";
+  container-type: size;
+  container-name: innerCard;
+}
+@container innerCard {
+  .PCS_4SuitBlock .playingCard .innerCard .tlSuit,
+  .PCS_4SuitBlock .playingCard .innerCard .brSuit,
+  .PCS_4SuitBlock .playingCard .innerCard .tlRank,
+  .PCS_4SuitBlock .playingCard .innerCard .brRank {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    aspect-ratio: 1;
+    font-size: clamp(1cqb, 20cqi, 20cqi);
+  }
+}
+.PCS_4SuitBlock .playingCard .tlSuit {
+  grid-area: tlSuit;
+}
+.PCS_4SuitBlock .playingCard .brSuit {
+  grid-area: brSuit;
+}
+.PCS_4SuitBlock .playingCard .tlRank {
+  grid-area: tlRank;
+}
+.PCS_4SuitBlock .playingCard .brRank {
+  grid-area: brRank;
+}
+.PCS_4SuitBlock .playingCard .centerImage {
+  grid-area: centerImage;
+  display: grid;
+  grid-auto-rows: 1fr;
+  container-type: size;
+  container-name: centerImage;
+}
+@container centerImage {
+  .PCS_4SuitBlock .playingCard .centerImage > div {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: clamp(1cqb, 30cqi, 30cqi);
+  }
+}
+.PCS_4SuitBlock .playingCard .suitS {
+  --bcol_primaryBase: var(--col_darkBase);
+  --bcol_primaryWite: var(--col_darkWite);
+  --bcol_primaryWash: var(--col_darkWash);
+  --bcol_primaryLite: var(--col_darkLite);
+  --bcol_primaryMain: var(--col_darkMain);
+  --bcol_primaryDark: var(--col_darkDark);
+  --bcol_primaryDkst: var(--col_darkDkst);
+  --bcol_primaryBlck: var(--col_darkBlck);
+}
+.PCS_4SuitBlock .playingCard .suitH {
+  --bcol_primaryBase: var(--col_redBase);
+  --bcol_primaryWite: var(--col_redWite);
+  --bcol_primaryWash: var(--col_redWash);
+  --bcol_primaryLite: var(--col_redLite);
+  --bcol_primaryMain: var(--col_redMain);
+  --bcol_primaryDark: var(--col_redDark);
+  --bcol_primaryDkst: var(--col_redDkst);
+  --bcol_primaryBlck: var(--col_redBlck);
+}
+.PCS_4SuitBlock .playingCard .suitD {
+  --bcol_primaryBase: var(--col_blueBase);
+  --bcol_primaryWite: var(--col_blueWite);
+  --bcol_primaryWash: var(--col_blueWash);
+  --bcol_primaryLite: var(--col_blueLite);
+  --bcol_primaryMain: var(--col_blueMain);
+  --bcol_primaryDark: var(--col_blueDark);
+  --bcol_primaryDkst: var(--col_blueDkst);
+  --bcol_primaryBlck: var(--col_blueBlck);
+}
+.PCS_4SuitBlock .playingCard .suitC {
+  --bcol_primaryBase: var(--col_greenBase);
+  --bcol_primaryWite: var(--col_greenWite);
+  --bcol_primaryWash: var(--col_greenWash);
+  --bcol_primaryLite: var(--col_greenLite);
+  --bcol_primaryMain: var(--col_greenMain);
+  --bcol_primaryDark: var(--col_greenDark);
+  --bcol_primaryDkst: var(--col_greenDkst);
+  --bcol_primaryBlck: var(--col_greenBlck);
+}
+.PCS_4SuitBlock .playingCard .rankA .centerImage,
+.PCS_4SuitBlock .playingCard .rank2 .centerImage,
+.PCS_4SuitBlock .playingCard .rank3 .centerImage {
+  grid-template-columns: 1fr;
+}
+.PCS_4SuitBlock .playingCard .rank4 .centerImage,
+.PCS_4SuitBlock .playingCard .rank6 .centerImage,
+.PCS_4SuitBlock .playingCard .rank8 .centerImage {
+  grid-template-columns: 1fr 1fr;
+}
+.PCS_4SuitBlock .playingCard .rank5 .centerImage {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "a1 . a2" ". a3 ." "a4 . a0";
+}
+.PCS_4SuitBlock .playingCard .rank5 .centerImage .img0 {
+  grid-area: a0;
+}
+.PCS_4SuitBlock .playingCard .rank5 .centerImage .img1 {
+  grid-area: a1;
+}
+.PCS_4SuitBlock .playingCard .rank5 .centerImage .img2 {
+  grid-area: a2;
+}
+.PCS_4SuitBlock .playingCard .rank5 .centerImage .img3 {
+  grid-area: a3;
+}
+.PCS_4SuitBlock .playingCard .rank5 .centerImage .img4 {
+  grid-area: a4;
+}
+.PCS_4SuitBlock .playingCard .rank7 .centerImage {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "a1 . a2" ". a3 ." "a4 . a0" ". . ." "a5 . a6";
+}
+.PCS_4SuitBlock .playingCard .rank7 .centerImage .img0 {
+  grid-area: a0;
+}
+.PCS_4SuitBlock .playingCard .rank7 .centerImage .img1 {
+  grid-area: a1;
+}
+.PCS_4SuitBlock .playingCard .rank7 .centerImage .img2 {
+  grid-area: a2;
+}
+.PCS_4SuitBlock .playingCard .rank7 .centerImage .img3 {
+  grid-area: a3;
+}
+.PCS_4SuitBlock .playingCard .rank7 .centerImage .img4 {
+  grid-area: a4;
+}
+.PCS_4SuitBlock .playingCard .rank7 .centerImage .img5 {
+  grid-area: a5;
+}
+.PCS_4SuitBlock .playingCard .rank7 .centerImage .img6 {
+  grid-area: a6;
+}
+.PCS_4SuitBlock .playingCard .rank9 .centerImage {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "a1 . a2" "a3 . a4" ". a5 ." "a6 . a7" "a8 . a0";
+}
+.PCS_4SuitBlock .playingCard .rank9 .centerImage .img0 {
+  grid-area: a0;
+}
+.PCS_4SuitBlock .playingCard .rank9 .centerImage .img1 {
+  grid-area: a1;
+}
+.PCS_4SuitBlock .playingCard .rank9 .centerImage .img2 {
+  grid-area: a2;
+}
+.PCS_4SuitBlock .playingCard .rank9 .centerImage .img3 {
+  grid-area: a3;
+}
+.PCS_4SuitBlock .playingCard .rank9 .centerImage .img4 {
+  grid-area: a4;
+}
+.PCS_4SuitBlock .playingCard .rank9 .centerImage .img5 {
+  grid-area: a5;
+}
+.PCS_4SuitBlock .playingCard .rank9 .centerImage .img6 {
+  grid-area: a6;
+}
+.PCS_4SuitBlock .playingCard .rank9 .centerImage .img7 {
+  grid-area: a7;
+}
+.PCS_4SuitBlock .playingCard .rank9 .centerImage .img8 {
+  grid-area: a8;
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "a1 . a2" ". a5 ." "a3 . a4" "a6 . a7" ". a9 ." "a8 . a0";
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage .img0 {
+  grid-area: a0;
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage .img1 {
+  grid-area: a1;
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage .img2 {
+  grid-area: a2;
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage .img3 {
+  grid-area: a3;
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage .img4 {
+  grid-area: a4;
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage .img5 {
+  grid-area: a5;
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage .img6 {
+  grid-area: a6;
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage .img7 {
+  grid-area: a7;
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage .img8 {
+  grid-area: a8;
+}
+.PCS_4SuitBlock .playingCard .rank10 .centerImage .img9 {
+  grid-area: a9;
+}
+@container body (width >= 1920px) {
+}
+#mobileWarning {
+  display: none;
+}
+.mobileWarning {
+  display: grid;
+}
+@container body (width < 600px) {
+  #siteHeader {
+    background: red !important;
+  }
+  #siteContainer,
+  #staticBlock {
+    display: none !important;
+  }
+  #mobileWarning {
+    --bcol_primaryBase: var(--col_redBase);
+    --bcol_primaryWite: var(--col_redWite);
+    --bcol_primaryWash: var(--col_redWash);
+    --bcol_primaryLite: var(--col_redLite);
+    --bcol_primaryMain: var(--col_redMain);
+    --bcol_primaryDark: var(--col_redDark);
+    --bcol_primaryDkst: var(--col_redDkst);
+    --bcol_primaryBlck: var(--col_redBlck);
+    display: grid;
+    grid-auto-rows: min-content;
+    align-content: center;
+    justify-content: center;
+  }
+  #mobileWarning .mobileWarning {
+    background-color: var(--bcol_primaryDkst);
+    border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+    border-radius: var(--baseBorderRadius);
+    padding: var(--halfGap);
+    background: linear-gradient(135deg, var(--bcol_primaryDark) 0%, var(--bcol_primaryBlck) 100%);
+    background-blend-mode: normal;
+    display: grid;
+    grid-auto-rows: min-content;
+    padding: 5cqw;
+    grid-gap: 5cqw;
+    width: 75cqw;
+    border-width: 0.5cqw;
+    text-align: center;
+  }
+  #mobileWarning .mobileWarning h1 {
+    font-size: 5cqw;
+  }
+  #mobileWarning .mobileWarning div {
+    font-size: 4cqw;
+  }
+  #mobileWarning .mobileWarning .asIcon {
+    border-bottom: none;
+    display: grid;
+    justify-content: center;
+  }
+  #mobileWarning .mobileWarning .asIcon div {
+    background-color: var(--bcol_primaryDkst);
+    border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+    border-radius: var(--baseBorderRadius);
+    padding: var(--halfGap);
+    font-size: 10cqw;
+    border-bottom: none;
+    padding: 5cqw;
+    border: 1cqw var(--baseBorderStyle) var(--bcol_primaryMain);
+    border-radius: 50%;
   }
 }
 /*# sourceMappingURL=./compiled.css.map */

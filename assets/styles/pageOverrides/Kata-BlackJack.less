@@ -2,22 +2,36 @@
 
 #Kata-BlackJack
 {
+	
+	background-color: #002D04;
+	background-blend-mode: darken;
+
 	#siteContainer
 	{
-		background-color: #002D04;
-		background-blend-mode: darken;
 		border-radius: var(--baseBorderRadius);
 		overflow: hidden;
 
 		#page
 		{
+			#pageContent
+			{
+				height: 100%;
+				max-height: 35cqw;
+				align-content: center;
+       			align-items: center;
+				border-bottom: none;
+				grid-auto-rows: 1fr;
+			}
+
 			#plaingCardGameContainer
 			{
 				.verticalTabs;
-				grid-template-columns: 25cqb 1fr;
+				grid-template-columns: 10cqw 1fr;
 				grid-template-rows: 1fr 1fr;
 				grid-template-areas: "dataCenter dealer" "dataCenter player";
-				height: 100cqb;
+				height: 100%;
+				min-height: auto;
+				max-height: 50cqw;
 				grid-row-gap: var(--doubleGap);
 				padding: var(--baseGap);
 				row-rule: var(--baseBorderWidth) var(--baseBorderStyle) #005b08;

@@ -3,43 +3,52 @@
 
 @container body
 {
-	#siteContainer,
-	#staticBlock,
-	#siteHeader
+	#siteBody
 	{
-		grid-template-columns: 1fr var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth) 1fr;
-	}
-
-	#siteHeader .headerInternal
-	{
-		grid-template-columns: var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth);
-	}
-
-	#siteContainer,
-	#staticBlock
-	{
-		grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage sitePage ." "news news news news news";
-		display: grid;
-		grid-template-rows: var(--headerHeight) var(--sidebarHeight) var(--newsHeight);
-		grid-gap: var(--baseGap);
-		justify-content: center;
-		color: var(--bcol_textLite);
-		font-size: var(--baseFontSize);
-	}
-
-	#page
-	{
-		grid-area: sitePage;
-		position: relative;
-		z-index: 1000;
-	
-		#pageContent
+		#siteContainer,
+		#staticBlock,
+		#siteHeader
 		{
-			.verticalTabs;
-			min-height: 100%;
-			height: fit-content;
-			grid-auto-rows: min-content;
-			border-bottom: calc(var(--baseGap) + var(--newsHeight)) solid transparent;
+			grid-template-columns: 1fr var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth) 1fr;
+		}
+
+		#siteHeader .headerInternal
+		{
+			grid-template-columns: var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth);
+		}
+
+		#siteContainer,
+		#staticBlock,
+		#mobileWarning
+		{
+			color: var(--bcol_textLite);
+			font-size: var(--baseFontSize);
+		}
+
+		#siteContainer,
+		#staticBlock
+		{
+			grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage sitePage ." "news news news news news";
+			display: grid;
+			grid-template-rows: var(--headerHeight) var(--sidebarHeight) var(--newsHeight);
+			grid-gap: var(--baseGap);
+			justify-content: center;
+		}
+
+		#page
+		{
+			grid-area: sitePage;
+			position: relative;
+			z-index: 1000;
+
+			#pageContent
+			{
+				.verticalTabs;
+				min-height: 100%;
+				height: fit-content;
+				grid-auto-rows: min-content;
+				border-bottom: calc(var(--baseGap) + var(--newsHeight)) solid transparent;
+			}
 		}
 	}
 }
@@ -48,8 +57,8 @@ body
 {
 	container-type: size;
 	container-name: body;
-	max-width: 1920px;
-	margin: auto;
+		max-width: 1500px;
+		margin: auto;
 }
 
 html
@@ -60,7 +69,7 @@ html
 	background-attachment: fixed;
 	display: grid;
 
-	&.withLeft 
+	&.withLeft #siteBody
 	{
 
 		#siteContainer,
@@ -70,7 +79,7 @@ html
 		}
 	}
 
-	&.withRight
+	&.withRight #siteBody
 	{
 		#siteContainer,
 		#staticBlock
@@ -79,7 +88,7 @@ html
 		}
 	}
 
-	&.centerWidth
+	&.centerWidth #siteBody
 	{
 		#siteContainer,
 		#staticBlock

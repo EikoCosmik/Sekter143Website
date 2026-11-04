@@ -1,5 +1,16 @@
 [
 	{
+		"category": "siteUpdates",
+		"title": "Recent Updates!: No more Spoopy, And... Dynamic Styles!",
+		"class": "cyanElement recent",
+		"image": "",
+		"permalink": "https://sekter143.com",
+		"description": "No full mobile does not work still, I really do not want to do it right now, this took so long.",
+		"content": "I do so many updates to the site that i truely did not plan as i start. Dynamic styles and some custom widgets were not on the list to be done next. But this is good enough for now. No full mobile does not work still, I really do not want to do it right now, this took so long. Have a try at the phone sizes, anything under 600px is dissabled but if your in landscape it should work!",
+		"date": "2026-11-04",
+		"links": "<a class='button aquaElement small' href='/allPosts'>All Posts</a>"
+	},
+	{
 		"category": "blog",
 		"title": "No this time its the actual tired not the metaphorical one.",
 		"class": "rubyElement",

@@ -4,45 +4,43 @@
 
 body
 {
-	#siteContainer,
-	#staticBlock
-	{
-		/* Gaps */
-		--doubleGap: 2.2cqmax;
-		--hugeGap: 1.925cqmax;
-		--largeGap: 1.65cqmax;
-		--bigGap: 1.375cqmax;
-		--baseGap: 1.1cqmax;
-		--thinGap: 0.825cqmax;
-		--halfGap: 0.55cqmax;
-		--quarterGap: 0.275cqmax;
-		--minGap: 0.11cqmax;
-	
-		/* Sizes */
-		--pageWidth: 50cqmax;
-		--sidebarWidth: 11cqmax;
-		--sidebarHeight: calc(100cqh - var(--headerHeight) - var(--newsHeight) - var(--doubleGap));
-		--headerHeight: calc(var(--sidebarWidth) * 0.4 + var(--baseGap) + var(--minGap));
-		--newsHeight: var(--doubleGap);
-	
-		--scrollbarWidth: 0.41884816753927cqmax;
-		--scrollbarGutterHalfFix: calc(var(--halfGap) - var(--scrollbarWidth));
-		--scrollbarGutterQuarterFix: calc(var(--halfGap) - var(--scrollbarWidth));
-	
-		/* FontSize */
-		--largeFontSize: 1.1cqmax; //15.9425
-		--bigFontSize: 0.95cqmax; //15.9425
-		--baseFontSize: 0.8cqmax; //13.665
-		--smallFontSize: 0.65cqmax; //11.3875
-		--miniFontSize: 0.5cqmax; //9.11
-	
-		/* Borders */
-		--baseBorderWidth: var(--minGap);
-		--baseBorderStyle: solid;
-		--baseBorderRadius: var(--halfGap);
-	
-		--mobileKickinWidth: 650px;
-	}
+	/* Gaps */
+	--doubleGap: 2cqw;
+	--hugeGap: 1.75cqw;
+	--largeGap: 1.5cqw;
+	--bigGap: 1.25cqw;
+	--baseGap: 1cqw;
+	--thinGap: 0.75cqw;
+	--halfGap: 0.5cqw;
+	--quarterGap: 0.25cqw;
+	--minGap: 0.1cqw;
+
+	/* Sizes */
+	--pageWidth: 64cqw;
+	--sidebarWidth: 16cqw;
+
+
+	--sidebarHeight: calc(100cqh - var(--headerHeight) - var(--newsHeight) - var(--doubleGap));
+	--headerHeight: calc(var(--sidebarWidth) * 0.4 + var(--baseGap) + var(--minGap));
+	--newsHeight: var(--doubleGap);
+
+	--scrollbarWidth: 0.41884816753927cqw;
+	--scrollbarGutterHalfFix: calc(var(--halfGap) - var(--scrollbarWidth));
+	--scrollbarGutterQuarterFix: calc(var(--halfGap) - var(--scrollbarWidth));
+
+	/* FontSize */
+	--largeFontSize: 1.4cqw; //15.9425
+	--bigFontSize: 1.2cqw; //15.9425
+	--baseFontSize: 1cqw; //13.665
+	--smallFontSize: 0.8cqw; //11.3875
+	--miniFontSize: 0.6cqw; //9.11
+
+	/* Borders */
+	--baseBorderWidth: var(--minGap);
+	--baseBorderStyle: solid;
+	--baseBorderRadius: var(--halfGap);
+
+	--mobileKickinWidth: 650px;
 }
 
 /* #endregion */

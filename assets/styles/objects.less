@@ -449,98 +449,215 @@
 
 #customCozyTalkWidget
 {
-
-	&.compactBar {}
-
-	.rubyElement;
-	padding: 0;
-	grid-gap: 0;
-	grid-template-columns: 1fr min-content;
-	text-decoration: none;
-
-	.content .data, .content .data .header, .content .data .posts, .content .data .friends, .content .imageContainer .image
+	&.compactBar
 	{
-		transition: 0.25s;
-	}
-	
-	&:hover
-	{
-		.content .data, .content .data .header, .content .data .posts, .content .data .friends, .content .imageContainer .image
-		{
-			border-color: var(--bcol_primaryDark);
-		}
-	}
-
-	.rightIcon
-	{
-		padding: 0 var(--minGap);
-		font-size: var(--smallFontSize);
-	}
-
-	.content
-	{
-		display: grid;
-		grid-template-columns: min-content 1fr;
+		.rubyElement;
 		padding: 0;
 		grid-gap: 0;
-		color: var(--bcol_textLite);
+		grid-template-columns: 1fr min-content;
+		text-decoration: none;
 
-		.imageContainer
+		.content .data, .content .data .header, .content .data .posts, .content .data .friends, .content .imageContainer .image
 		{
-			padding: var(--minGap);
-			aspect-ratio: 1;
-			height: auto;
-			width: auto;
+			transition: 0.25s;
+		}
+		
+		&:hover
+		{
+			.content .data, .content .data .header, .content .data .posts, .content .data .friends, .content .imageContainer .image
+			{
+				border-color: var(--bcol_primaryDark);
+			}
 		}
 
-		.data
+		.rightIcon
 		{
-			grid-template-areas: 
-			"header header header"
-			"status posts friends";
+			padding: 0 var(--minGap);
+			font-size: var(--smallFontSize);
+		}
+
+		.content
+		{
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-			grid-template-rows: min-content min-content;
-			border-left: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
-			border-right: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+			grid-template-columns: min-content 1fr;
+			padding: 0;
+			grid-gap: 0;
+			color: var(--bcol_textLite);
 
-			.header { grid-area: header; }
-			.status { grid-area: status; }
-			.posts { grid-area: posts; }
-			.friends { grid-area: friends; }
-			.replies { display: none; }
-
-			.header
+			.imageContainer
 			{
-				font-size: var(--miniFontSize);
-				white-space: nowrap;
-				border-bottom: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
 				padding: var(--minGap);
-				text-align: center;
+				aspect-ratio: 1;
+				height: auto;
+				width: auto;
 			}
 
-			.posts, .friends
+			.data
 			{
-				border-left: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
-			}
-
-			.status, .posts, .friends
-			{
+				grid-template-areas: 
+				"header header header"
+				"status posts friends";
 				display: grid;
-				font-size: var(--miniFontSize);
-				grid-gap: var(--minGap);
-				padding: var(--minGap);
-				grid-template-rows: 1fr auto;
-				text-align: center;
-				text-transform: capitalize;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: min-content min-content;
+				border-left: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+				border-right: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
 
-				.statNum, .statusIcon
+				.header { grid-area: header; }
+				.status { grid-area: status; }
+				.posts { grid-area: posts; }
+				.friends { grid-area: friends; }
+				.replies { display: none; }
+
+				.header
 				{
-					color: var(--bcol_primaryWash);
-					font-weight: bold;
-					font-size: var(--smallFontSize);
+					font-size: var(--miniFontSize);
+					white-space: nowrap;
+					border-bottom: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+					padding: var(--minGap);
+					text-align: center;
+				}
+
+				.posts, .friends
+				{
+					border-left: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+				}
+
+				.status, .posts, .friends
+				{
 					display: grid;
-					align-content: center;
+					font-size: var(--miniFontSize);
+					grid-gap: var(--minGap);
+					padding: var(--minGap);
+					grid-template-rows: 1fr auto;
+					text-align: center;
+					text-transform: capitalize;
+
+					.statNum, .statusIcon
+					{
+						color: var(--bcol_primaryWash);
+						font-weight: bold;
+						font-size: var(--smallFontSize);
+						display: grid;
+						align-content: center;
+					}
+				}
+			}
+		}
+	}
+
+	&.aboutMe
+	{	
+		.block;
+		.rubyElement;
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		padding: 0;
+		overflow: hidden;
+
+		.goToContainer
+		{
+			padding: var(--halfGap);
+					.cyanElement;
+
+			a
+			{
+				grid-template-columns: 1fr min-content;
+				text-decoration: none;
+
+				span
+				{
+					text-decoration: underline;
+				}
+			}
+		}
+
+		.content
+		{
+			.useGradient;
+			display: grid;
+			grid-template-columns: min-content 1fr;
+			padding: 0;
+			grid-gap: 0;
+			color: var(--bcol_textLite);
+			border-bottom: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+
+			.imageContainer
+			{
+				padding: var(--quarterGap);
+				aspect-ratio: 1;
+				height: auto;
+				width: auto;
+			}
+
+			.data
+			{
+				grid-template-areas: 
+				"header header header"
+				"status posts friends";
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: min-content min-content;
+				border-left: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+
+				.header { grid-area: header; }
+				.status { grid-area: status; }
+				.posts { grid-area: posts; }
+				.friends { grid-area: friends; }
+				.replies { display: none; }
+
+				.header
+				{
+					font-size: var(--miniFontSize);
+					white-space: nowrap;
+					border-bottom: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+					padding: var(--quarterGap);
+					text-align: center;
+				}
+
+				.posts, .friends
+				{
+					border-left: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+				}
+
+				.status, .posts, .friends
+				{
+					display: grid;
+					font-size: var(--miniFontSize);
+					grid-gap: var(--minGap);
+					padding: var(--quarterGap);
+					grid-template-rows: 1fr auto;
+					text-align: center;
+					text-transform: capitalize;
+
+					.statNum, .statusIcon
+					{
+						color: var(--bcol_primaryWash);
+						font-weight: bold;
+						font-size: var(--smallFontSize);
+						display: grid;
+						align-content: center;
+					}
+				}
+			}
+		}
+
+		.center
+		{
+			.verticalTabs;
+			padding: var(--quarterGap);
+			grid-auto-rows: min-content;
+
+			.recentPosts
+			{
+				.verticalTabs;
+				grid-auto-rows: min-content;
+
+				.post
+				{
+					.block;
+					.small;
+					.cyanElement;
 				}
 			}
 		}

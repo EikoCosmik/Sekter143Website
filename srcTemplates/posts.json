@@ -1,5 +1,27 @@
 [
 	{
+		"category": "kataIdeas_preDev",
+		"title": "Kata-Potchkee",
+		"class": "",
+		"image": "",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "Name could change, old concept I'm not certain I have the old code for, so rebuild time!",
+		"content": "Name could change, old concept I'm not certain I have the old code for, so rebuild time!",
+		"date": "2026-11-04",
+		"links": ""
+	},
+	{
+		"category": "kataIdeas_preDev",
+		"title": "Kata-Klicker / Kata-Idle",
+		"class": "",
+		"image": "",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "Is it a clicker or idle? idk im just throwing ideas around at the moment.",
+		"content": "Is it a clicker or idle? idk im just throwing ideas around at the moment.",
+		"date": "2026-11-04",
+		"links": ""
+	},
+	{
 		"category": "siteUpdates",
 		"title": "Recent Updates!: No more Spoopy, And... Dynamic Styles!",
 		"class": "cyanElement recent",
@@ -638,14 +660,14 @@
 		"links": ""
 	},
 	{
-		"category": "kataIdeas_inDev",
+		"category": "kataIdeas_onHold",
 		"title": "Kata-Sorts",
 		"class": "",
 		"image": "",
 		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "I dont want to say 'on hold', but its not being done for a bit. Site Rebuild / WorldFather / university, come first.",
-		"content": "I dont want to say 'on hold', but its not being done for a bit. Site Rebuild / WorldFather / university, come first.",
-		"date": "2026-08-10",
+		"description": "On Hold, struggling with motivation.",
+		"content": "On Hold, struggling with motivation.",
+		"date": "2026-11-04",
 		"links": ""
 	},
 	{

@@ -1,0 +1,42 @@
+//main: "../compiled.less"
+
+//DEFAULT
+#kPotchkee
+{
+	background-color: red;
+	aspect-ratio: 4/3;
+	display: grid;
+	container-type: size;
+	container-name: kPotchkee;
+}
+
+#Kata-Potchkee #siteContainer #page #pageContent
+{
+	border: none;
+	align-content: center;
+	justify-items: center;
+
+	#kPotchkee
+	{
+		width: auto;
+		height: var(--pageHeight);
+	}
+}
+
+.kP_Sekter143
+{
+
+}
+
+@container kPotchkee
+{
+	#kpContainer
+	{
+		width: 100cqw;
+		height: 100cqh;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+		grid-template-rows: auto 1fr auto;
+		grid-template-areas: "header header header header header" ". . stack buttons ." "footer footer footer footer footer";
+	}
+}

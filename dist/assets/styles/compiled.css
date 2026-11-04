@@ -51,6 +51,7 @@ body {
   /* Sizes */
   --pageWidth: 64cqw;
   --sidebarWidth: 16cqw;
+  --pageHeight: calc(100cqh - var(--headerHeight) - var(--newsHeight) - var(--doubleGap));
   --sidebarHeight: calc(100cqh - var(--headerHeight) - var(--newsHeight) - var(--doubleGap));
   --headerHeight: calc(var(--sidebarWidth) * 0.4 + var(--baseGap) + var(--minGap));
   --newsHeight: var(--doubleGap);
@@ -947,7 +948,7 @@ html.centerWidth #siteBody #staticBlock {
 }
 /* #endregion */
 /* #region customCozyTalkWidget */
-#customCozyTalkWidget {
+#customCozyTalkWidget.compactBar {
   --bcol_primaryBase: var(--col_rubyBase);
   --bcol_primaryWite: var(--col_rubyWite);
   --bcol_primaryWash: var(--col_rubyWash);
@@ -961,38 +962,38 @@ html.centerWidth #siteBody #staticBlock {
   grid-template-columns: 1fr min-content;
   text-decoration: none;
 }
-#customCozyTalkWidget .content .data,
-#customCozyTalkWidget .content .data .header,
-#customCozyTalkWidget .content .data .posts,
-#customCozyTalkWidget .content .data .friends,
-#customCozyTalkWidget .content .imageContainer .image {
+#customCozyTalkWidget.compactBar .content .data,
+#customCozyTalkWidget.compactBar .content .data .header,
+#customCozyTalkWidget.compactBar .content .data .posts,
+#customCozyTalkWidget.compactBar .content .data .friends,
+#customCozyTalkWidget.compactBar .content .imageContainer .image {
   transition: 0.25s;
 }
-#customCozyTalkWidget:hover .content .data,
-#customCozyTalkWidget:hover .content .data .header,
-#customCozyTalkWidget:hover .content .data .posts,
-#customCozyTalkWidget:hover .content .data .friends,
-#customCozyTalkWidget:hover .content .imageContainer .image {
+#customCozyTalkWidget.compactBar:hover .content .data,
+#customCozyTalkWidget.compactBar:hover .content .data .header,
+#customCozyTalkWidget.compactBar:hover .content .data .posts,
+#customCozyTalkWidget.compactBar:hover .content .data .friends,
+#customCozyTalkWidget.compactBar:hover .content .imageContainer .image {
   border-color: var(--bcol_primaryDark);
 }
-#customCozyTalkWidget .rightIcon {
+#customCozyTalkWidget.compactBar .rightIcon {
   padding: 0 var(--minGap);
   font-size: var(--smallFontSize);
 }
-#customCozyTalkWidget .content {
+#customCozyTalkWidget.compactBar .content {
   display: grid;
   grid-template-columns: min-content 1fr;
   padding: 0;
   grid-gap: 0;
   color: var(--bcol_textLite);
 }
-#customCozyTalkWidget .content .imageContainer {
+#customCozyTalkWidget.compactBar .content .imageContainer {
   padding: var(--minGap);
   aspect-ratio: 1;
   height: auto;
   width: auto;
 }
-#customCozyTalkWidget .content .data {
+#customCozyTalkWidget.compactBar .content .data {
   grid-template-areas: "header header header" "status posts friends";
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1000,35 +1001,35 @@ html.centerWidth #siteBody #staticBlock {
   border-left: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
   border-right: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
 }
-#customCozyTalkWidget .content .data .header {
+#customCozyTalkWidget.compactBar .content .data .header {
   grid-area: header;
 }
-#customCozyTalkWidget .content .data .status {
+#customCozyTalkWidget.compactBar .content .data .status {
   grid-area: status;
 }
-#customCozyTalkWidget .content .data .posts {
+#customCozyTalkWidget.compactBar .content .data .posts {
   grid-area: posts;
 }
-#customCozyTalkWidget .content .data .friends {
+#customCozyTalkWidget.compactBar .content .data .friends {
   grid-area: friends;
 }
-#customCozyTalkWidget .content .data .replies {
+#customCozyTalkWidget.compactBar .content .data .replies {
   display: none;
 }
-#customCozyTalkWidget .content .data .header {
+#customCozyTalkWidget.compactBar .content .data .header {
   font-size: var(--miniFontSize);
   white-space: nowrap;
   border-bottom: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
   padding: var(--minGap);
   text-align: center;
 }
-#customCozyTalkWidget .content .data .posts,
-#customCozyTalkWidget .content .data .friends {
+#customCozyTalkWidget.compactBar .content .data .posts,
+#customCozyTalkWidget.compactBar .content .data .friends {
   border-left: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
 }
-#customCozyTalkWidget .content .data .status,
-#customCozyTalkWidget .content .data .posts,
-#customCozyTalkWidget .content .data .friends {
+#customCozyTalkWidget.compactBar .content .data .status,
+#customCozyTalkWidget.compactBar .content .data .posts,
+#customCozyTalkWidget.compactBar .content .data .friends {
   display: grid;
   font-size: var(--miniFontSize);
   grid-gap: var(--minGap);
@@ -1037,17 +1038,164 @@ html.centerWidth #siteBody #staticBlock {
   text-align: center;
   text-transform: capitalize;
 }
-#customCozyTalkWidget .content .data .status .statNum,
-#customCozyTalkWidget .content .data .posts .statNum,
-#customCozyTalkWidget .content .data .friends .statNum,
-#customCozyTalkWidget .content .data .status .statusIcon,
-#customCozyTalkWidget .content .data .posts .statusIcon,
-#customCozyTalkWidget .content .data .friends .statusIcon {
+#customCozyTalkWidget.compactBar .content .data .status .statNum,
+#customCozyTalkWidget.compactBar .content .data .posts .statNum,
+#customCozyTalkWidget.compactBar .content .data .friends .statNum,
+#customCozyTalkWidget.compactBar .content .data .status .statusIcon,
+#customCozyTalkWidget.compactBar .content .data .posts .statusIcon,
+#customCozyTalkWidget.compactBar .content .data .friends .statusIcon {
   color: var(--bcol_primaryWash);
   font-weight: bold;
   font-size: var(--smallFontSize);
   display: grid;
   align-content: center;
+}
+#customCozyTalkWidget.aboutMe {
+  background-color: var(--bcol_primaryDkst);
+  border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+  border-radius: var(--baseBorderRadius);
+  padding: var(--halfGap);
+  --bcol_primaryBase: var(--col_rubyBase);
+  --bcol_primaryWite: var(--col_rubyWite);
+  --bcol_primaryWash: var(--col_rubyWash);
+  --bcol_primaryLite: var(--col_rubyLite);
+  --bcol_primaryMain: var(--col_rubyMain);
+  --bcol_primaryDark: var(--col_rubyDark);
+  --bcol_primaryDkst: var(--col_rubyDkst);
+  --bcol_primaryBlck: var(--col_rubyBlck);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 0;
+  overflow: hidden;
+}
+#customCozyTalkWidget.aboutMe .goToContainer {
+  padding: var(--halfGap);
+  --bcol_primaryBase: var(--col_cyanBase);
+  --bcol_primaryWite: var(--col_cyanWite);
+  --bcol_primaryWash: var(--col_cyanWash);
+  --bcol_primaryLite: var(--col_cyanLite);
+  --bcol_primaryMain: var(--col_cyanMain);
+  --bcol_primaryDark: var(--col_cyanDark);
+  --bcol_primaryDkst: var(--col_cyanDkst);
+  --bcol_primaryBlck: var(--col_cyanBlck);
+}
+#customCozyTalkWidget.aboutMe .goToContainer a {
+  grid-template-columns: 1fr min-content;
+  text-decoration: none;
+}
+#customCozyTalkWidget.aboutMe .goToContainer a span {
+  text-decoration: underline;
+}
+#customCozyTalkWidget.aboutMe .content {
+  background: linear-gradient(135deg, var(--bcol_primaryDark) 0%, var(--bcol_primaryBlck) 100%);
+  background-blend-mode: normal;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  padding: 0;
+  grid-gap: 0;
+  color: var(--bcol_textLite);
+  border-bottom: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+}
+#customCozyTalkWidget.aboutMe .content .imageContainer {
+  padding: var(--quarterGap);
+  aspect-ratio: 1;
+  height: auto;
+  width: auto;
+}
+#customCozyTalkWidget.aboutMe .content .data {
+  grid-template-areas: "header header header" "status posts friends";
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: min-content min-content;
+  border-left: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+}
+#customCozyTalkWidget.aboutMe .content .data .header {
+  grid-area: header;
+}
+#customCozyTalkWidget.aboutMe .content .data .status {
+  grid-area: status;
+}
+#customCozyTalkWidget.aboutMe .content .data .posts {
+  grid-area: posts;
+}
+#customCozyTalkWidget.aboutMe .content .data .friends {
+  grid-area: friends;
+}
+#customCozyTalkWidget.aboutMe .content .data .replies {
+  display: none;
+}
+#customCozyTalkWidget.aboutMe .content .data .header {
+  font-size: var(--miniFontSize);
+  white-space: nowrap;
+  border-bottom: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+  padding: var(--quarterGap);
+  text-align: center;
+}
+#customCozyTalkWidget.aboutMe .content .data .posts,
+#customCozyTalkWidget.aboutMe .content .data .friends {
+  border-left: var(--baseBorderStyle) var(--baseBorderWidth) var(--bcol_primaryMain);
+}
+#customCozyTalkWidget.aboutMe .content .data .status,
+#customCozyTalkWidget.aboutMe .content .data .posts,
+#customCozyTalkWidget.aboutMe .content .data .friends {
+  display: grid;
+  font-size: var(--miniFontSize);
+  grid-gap: var(--minGap);
+  padding: var(--quarterGap);
+  grid-template-rows: 1fr auto;
+  text-align: center;
+  text-transform: capitalize;
+}
+#customCozyTalkWidget.aboutMe .content .data .status .statNum,
+#customCozyTalkWidget.aboutMe .content .data .posts .statNum,
+#customCozyTalkWidget.aboutMe .content .data .friends .statNum,
+#customCozyTalkWidget.aboutMe .content .data .status .statusIcon,
+#customCozyTalkWidget.aboutMe .content .data .posts .statusIcon,
+#customCozyTalkWidget.aboutMe .content .data .friends .statusIcon {
+  color: var(--bcol_primaryWash);
+  font-weight: bold;
+  font-size: var(--smallFontSize);
+  display: grid;
+  align-content: center;
+}
+#customCozyTalkWidget.aboutMe .center {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-auto-flow: row;
+  gap: var(--halfGap);
+  padding: var(--quarterGap);
+  grid-auto-rows: min-content;
+}
+#customCozyTalkWidget.aboutMe .center.minRows {
+  grid-auto-rows: min-content;
+}
+#customCozyTalkWidget.aboutMe .center .recentPosts {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-auto-flow: row;
+  gap: var(--halfGap);
+  grid-auto-rows: min-content;
+}
+#customCozyTalkWidget.aboutMe .center .recentPosts.minRows {
+  grid-auto-rows: min-content;
+}
+#customCozyTalkWidget.aboutMe .center .recentPosts .post {
+  background-color: var(--bcol_primaryDkst);
+  border: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+  border-radius: var(--baseBorderRadius);
+  padding: var(--halfGap);
+  font-size: var(--miniFontSize);
+  padding: var(--quarterGap);
+  --bcol_primaryBase: var(--col_cyanBase);
+  --bcol_primaryWite: var(--col_cyanWite);
+  --bcol_primaryWash: var(--col_cyanWash);
+  --bcol_primaryLite: var(--col_cyanLite);
+  --bcol_primaryMain: var(--col_cyanMain);
+  --bcol_primaryDark: var(--col_cyanDark);
+  --bcol_primaryDkst: var(--col_cyanDkst);
+  --bcol_primaryBlck: var(--col_cyanBlck);
 }
 /* #endregion */
 /* #region standardPost */
@@ -1829,18 +1977,25 @@ a[href].image:hover {
   grid-auto-rows: 1fr;
   grid-auto-flow: row;
   gap: var(--halfGap);
-  grid-template-columns: auto auto 250px;
+  grid-template-columns: auto 15cqw 15cqw 20cqw;
   grid-template-rows: min-content 1fr;
-  grid-template-areas: "header header image" "body personals image" "cozyTalk personals image";
+  grid-template-areas: "header header header image" "body cozyTalk personals image" "body cozyTalk personals image";
 }
 #AboutMeTop.minRows {
   grid-auto-rows: min-content;
 }
-#AboutMeTop .cozyTalk {
+#AboutMeTop #customCozyTalkWidget,
+#AboutMeTop #cozyTalkContainer {
   grid-area: cozyTalk;
-  height: 60px;
-  width: 240px;
-  align-self: end;
+  height: 100%;
+  --bcol_primaryBase: var(--col_rubyBase);
+  --bcol_primaryWite: var(--col_rubyWite);
+  --bcol_primaryWash: var(--col_rubyWash);
+  --bcol_primaryLite: var(--col_rubyLite);
+  --bcol_primaryMain: var(--col_rubyMain);
+  --bcol_primaryDark: var(--col_rubyDark);
+  --bcol_primaryDkst: var(--col_rubyDkst);
+  --bcol_primaryBlck: var(--col_rubyBlck);
 }
 #AboutMeTop h2 {
   grid-area: header;
@@ -3945,6 +4100,32 @@ html.postPage #pageContent .photographyImg:hover > .dateTitle {
 }
 #Kata-Fireworks #goBack:hover {
   opacity: 1;
+}
+#kPotchkee {
+  background-color: red;
+  aspect-ratio: 4/3;
+  display: grid;
+  container-type: size;
+  container-name: kPotchkee;
+}
+#Kata-Potchkee #siteContainer #page #pageContent {
+  border: none;
+  align-content: center;
+  justify-items: center;
+}
+#Kata-Potchkee #siteContainer #page #pageContent #kPotchkee {
+  width: auto;
+  height: var(--pageHeight);
+}
+@container kPotchkee {
+  #kpContainer {
+    width: 100cqw;
+    height: 100cqh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "header header header header header" ". . stack buttons ." "footer footer footer footer footer";
+  }
 }
 /* #endregion */
 /* #region standardPost */

@@ -21,7 +21,12 @@
 			Away from the screen, I enjoy a wide variety of games, Twenty ∅ne Piløts, and getting to know myself better.<br />
 			Hope to see you around, and to meet people with similar interests 🩵
 		</div>
-		<iframe class="cozyTalk" src="https://cozy.talk/widget/EikoCosmik?style=lightsoff&layout=compact" scrolling="no" title="EikoCosmik on CozyTalk"></iframe>
+		<div id="cozyTalkContainer" class="block">
+			<script type="module">
+				import { generateCozyTalkIframe } from "./assets/scripts/cozyTalkIFrameGenerator.js";
+				document.getElementById("cozyTalkContainer").outerHTML = await generateCozyTalkIframe("https://cozy.talk/widget/EikoCosmik?pet=1", "aboutMe");
+			</script>
+		</div>
 	</div>
 	<skModule type="posts" category="blog"></skModule>
 </section>

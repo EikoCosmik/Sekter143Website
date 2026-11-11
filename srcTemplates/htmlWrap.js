@@ -43,7 +43,7 @@ export function htmlWrap(siteHeader, rightColumn, leftColumn, pageContent, setti
 		<body>
 			<div id="siteBody">
 				<div id="siteContainer">
-					<div class="h-card" style="display:none"><img class="u-photo" src="/assets/images/site_pfp.gif"><a class="u-url p-name" href="https://sekter143.com/">EikoCosmik</a><p class="p-note">Hi, Im Eiko ૮⁠₍⁠ ⁠˶⁠ᵔ⁠ ⁠ᵕ⁠ ⁠ᵔ⁠˶⁠ ⁠₎⁠ა</p></div>
+					<div class="h-card" style="display:none"><img class="u-photo" src="/assets/images/site_pfp.gif"><a class="u-url p-name" href="https://sekter143.com/">EikoCosmik</a><p class="p-note">Hi, Im Eiko ૮⁠₍⁠ ⁠˶⁠ᵔ⁠ ⁠ᵕ⁠ ⁠ᵔ⁠˶⁠ ⁠₎⁠ა a transfem web developer from Australia.</p></div>
 					<main id="page">${pageContent ?? ""}</main>
 				</div>
 				<div id="staticBlock">

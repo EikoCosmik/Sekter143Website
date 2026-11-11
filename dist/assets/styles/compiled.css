@@ -5146,19 +5146,6 @@ html {
   --bcol_primaryBlck: var(--col_darkBlck);
   background-image: url(../images/webrings_outsideBackground.gif);
 }
-.outsideWebring:hover {
-  position: relative;
-  text-align: center;
-}
-.outsideWebring:hover::before {
-  display: grid;
-  align-items: center;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: #000000dd;
-  content: "Not added yet, but soon!";
-}
 .outsideWebring a {
   color: #57ff6a;
 }

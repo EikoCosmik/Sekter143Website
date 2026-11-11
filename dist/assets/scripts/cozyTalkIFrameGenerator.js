@@ -93,10 +93,6 @@ function aboutMe(widget)
 	const fandom = widget.querySelector(".fandom-grid");
 	const posts = widget.querySelector(".posts-block .post-snippet").innerHTML;
 
-	console.log(fandom);
-	console.log(posts);
-
-
 	let statString = "";
 	for (let i = 0; i < stats.length; i++)
 	{
@@ -144,13 +140,21 @@ function aboutMe(widget)
 			<div class="center">
 				<div class="recentPosts">
 					<h4>Recent Posts:</h4>
-					<div class="post">${posts}</div>
+					<div class="post">${truncateToNearestWord(posts, 500)}</div>
 				</div>
 			</div>
 			<div class="goToContainer"><a class="button small" href="${href}"><span>Go To Profile</span><div class="rightIcon asIcon"></div></a></div>			
 		</a>`;
 }
 
+function truncateToNearestWord(str, length)
+{
+	if (str.length <= length) return str;
+	const regex = new RegExp(`^.{0,${length}}\\b`);
+	const match = str.match(regex);
+	const ret = match ? match[0] : str.slice(0, length);
+	return ret + "...<br/>[view full post on my profile]";
+}
 /* Other Data
 - 
 */

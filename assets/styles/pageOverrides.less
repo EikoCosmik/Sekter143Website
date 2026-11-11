@@ -7,6 +7,12 @@
 	#siteBody #page #pageContent
 	{
 		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr 1fr min-content 1fr;
+	}
+
+	hr
+	{
+		grid-column: 1/-1;
 	}
 }
 
@@ -47,7 +53,6 @@
 			grid-template-rows: 1fr min-content;
 			grid-gap: 0;
 			padding: var(--minGap);
-			min-height: 6.25cqmax;
 
 			.imood
 			{
@@ -76,7 +81,6 @@
 		#cozyTalkContainer
 		{
 			.rubyElement;
-			min-height: 2.75cqmax;
 		}
 
 		.rss
@@ -99,50 +103,9 @@
 	{
 		display: grid;
 		grid-template-rows: repeat(5, auto);
-
-		> .rewild
-		{
-			min-height: 2.4cqmax;
-
-			> div
-			{						
-				display: grid !important;
-				grid-template-columns: 17fr 88fr 17fr;
-				grid-template-rows: 1fr;
-			}
-		}
-
-		> .transingTheInternet
-		{
-			min-height: 4cqmax;
-
-			div
-			{
-				.verticalTabs;
-				grid-auto-rows: min-content;
-			}
-		}
-
-		> .transfemWebring
-		{
-			min-height: 6cqmax;
-
-			div
-			{
-				.verticalTabs;
-				grid-auto-rows: min-content;
-			}
-		}
-
-		> .photochemistryWebring
-		{
-			min-height: 2cqmax;
-			.tabs;
-			grid-template-columns: 17fr 88fr 17fr;
-		}
 	}
 	
-	#pageContent
+	#siteBody #pageContent
 	{
 		grid-template-columns: 1fr 1fr 1fr;
 		grid-template-areas: 
@@ -176,7 +139,6 @@
 		.poll
 		{
 			grid-area: poll;
-			min-height: 12cqmax;
 		}
 
 		.photography
@@ -217,7 +179,6 @@
 			grid-template-areas: "todoListHeader worksListHeader recentListHeader" "todoList worksList recentList";
 			grid-gap: var(--minGap);
 			column-rule: var(--minGap) var(--baseBorderStyle) var(--bcol_primaryDark);
-			min-height: 12cqmax;
 
 			h3
 			{
@@ -300,7 +261,7 @@
 	.useGradient;
 	.cyanElement;
 	.verticalTabs;
-	grid-template-columns: auto 15cqw 15cqw 20cqw;
+	grid-template-columns: auto 15dvw 15dvw 15dvw;
 	grid-template-rows: min-content 1fr;
 	grid-template-areas:
 		"header header header image" 
@@ -325,22 +286,11 @@
 		aspect-ratio: 1;
 	}
 
-	.personals
+	.gridTable
 	{
-		.block;
 		.rubyElement;
 		grid-area: personals;
-		display: grid;
 		grid-template-columns: auto 1fr;
-		grid-template-rows: repeat(5, min-content);
-		grid-gap: var(--baseGap);
-		align-content: space-between;
-		row-rule: var(--minGap) var(--baseBorderStyle) var(--bcol_primaryMain);
-
-		> *:nth-child(2n)
-		{
-			text-align: end;
-		}
 	}
 	
 	.body
@@ -382,7 +332,7 @@
 
 			@container page
 			{
-				height: 100cqh;
+				height: 100dvh;
 			}
 
 			> .standardPost
@@ -498,6 +448,53 @@
 		.creditsHeader
 		{
 			grid-column: 1/-1;
+		}
+	}
+}
+
+.SquaredPancake
+{
+	--bcol_primaryWite: #7095d0;
+	--bcol_primaryWash: #7095d0;
+	--bcol_primaryLite: #7095d0;
+	--bcol_primaryMain: #7095d0;
+	--bcol_primaryDark: #7095d0;
+	--bcol_primaryDkst: #192142;
+	--bcol_primaryBlck: #192142;
+	--clr-bg-strong: rgba(255, 255, 255, 0.027);
+	--clr-bg-weak: rgba(255, 255, 255, 0.013);
+	background-color: #192142;
+	background-image:repeating-linear-gradient(var(--clr-bg-strong) 0px, var(--clr-bg-strong) 1px,
+			transparent 1px, transparent 11px,
+			var(--clr-bg-weak) 11px, var(--clr-bg-weak) 13px,
+			transparent 13px, transparent 23px,
+			var(--clr-bg-weak) 23px, var(--clr-bg-weak) 25px,
+			transparent 25px, transparent 35px,
+			var(--clr-bg-weak) 35px, var(--clr-bg-weak) 37px,
+			transparent 37px, transparent 47px,
+			var(--clr-bg-strong) 47px, var(--clr-bg-strong) 48px),
+		repeating-linear-gradient(90deg,
+			var(--clr-bg-strong) 0px, var(--clr-bg-strong) 1px,
+			transparent 1px, transparent 11px,
+			var(--clr-bg-weak) 11px, var(--clr-bg-weak) 13px,
+			transparent 13px, transparent 23px,
+			var(--clr-bg-weak) 23px, var(--clr-bg-weak) 25px,
+			transparent 25px, transparent 35px,
+			var(--clr-bg-weak) 35px, var(--clr-bg-weak) 37px,
+			transparent 37px, transparent 47px,
+			var(--clr-bg-strong) 47px, var(--clr-bg-strong) 48px);
+	.button
+	{
+		background: transparent;
+		border-style: dashed;
+		text-transform: uppercase;
+		color: var(--bcol_primaryMain);
+
+		&:hover
+		{
+			background: transparent;
+			border-color: var(--bcol_lightText);
+			color: var(--bcol_lightText);
 		}
 	}
 }
@@ -635,11 +632,10 @@
 /* #region mediaReviews */
 
 #mediaReviews
-{
-	.cardPage
+{	
+	#siteBody #page #pageContent
 	{
 		grid-template-columns: 1fr 1fr;
-		grid-auto-rows: min-content;
 	}
 }
 
@@ -963,7 +959,7 @@ html.postPage #pageContent
 
 /* #endregion */
 
-/* #region standardPost */
+/* #region sekterCharacter */
 
 #sekterCharacter
 {
@@ -985,22 +981,233 @@ html.postPage #pageContent
 			height: 350px;
 			padding: var(--minGap);
 		}
+	}
+}
 
-		.gridTable
+/* #endregion */
+
+/* #region mediaReviews */
+
+#mediaReviews
+{
+	#siteBody
+	{
+		#leftColumn
 		{
-			grid-template-columns: 1fr 2fr;
+			.text
+			{
+				display: grid;
+				grid-gap: var(--halfGap);
+				grid-template-rows: min-content;
+
+				.gridTable
+				{
+					grid-template-columns: 1fr 1fr 1fr;
+					font-size: var(--smallFontSize);
+					text-align: center;
+
+					.gtRow
+					{
+						.gtData
+						{
+							font-size: var(--baseFontSize);
+    						justify-content: center;
+						}
+
+						.gtHead, .gtData
+						{
+							padding: var(--minGap);
+							font-size: var(--smallFontSize);
+						}
+
+						&:last-child
+						{
+							.gtData
+							{
+								grid-column: 2/-1
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.bestOverallAward
+		{
+			background: linear-gradient(135deg, #c3973c 20%, #e0c97b 50%, #c3973c 80%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			color: transparent;
+			display: inline-block;
+			width: min-content;
+		}
+
+		.bestSectionAward
+		{
+			background: linear-gradient(135deg, #7d7d7d 20%, #fefefe 50%, #7d7d7d 80%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			color: transparent;
+			display: inline-block;
+			width: min-content;
+		}
+
+		.otherAward
+		{
+			background: linear-gradient(135deg, var(--bcol_primaryMain) 20%, var(--bcol_primaryWash) 50%, var(--bcol_primaryMain) 80%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			color: transparent;
+			display: inline-block;
+			width: min-content;
+		}
+	}
+
+	&.MR #siteBody #page #pageContent
+	{
+		grid-template-columns: 1fr;
+	}
+
+	&.MRTwentyOnePilots
+	{
+		.breach
+		{
+			background: linear-gradient(135deg, var(--col_darkBlck) 0%, var(--col_redBlck) 50%, var(--col_darkBlck) 100%);
 		}
 	}
 }
 
 /* #endregion */
 
+/* #region links */
 
+#links
+{
+	// .buttons
+	// {
+	// 	display: grid;
+	// 	grid-auto-rows: min-content;
+	// 	grid-gap: var(--halfGap);
+	// }
 
+	.myWorks .centerTabs
+	{
+		grid-template-columns: repeat(auto-fit, 15%);
+	}
 
+	.webrings .centerTabs
+	{
+		grid-template-columns: repeat(auto-fit, 15%);
 
+		> div
+		{
+			height: auto;
+		}
+	}
 
+	.teenyTower
+	{
+		display: grid;
+		grid-gap: var(--halfGap);
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: min-content min-content;
 
+		h1
+		{
+			grid-column: 1/-1;
+		}
+
+		.myRooms
+		{
+			.verticalTabs;
+		}
+
+		.tower
+		{
+			display: grid;
+			grid-template-rows: auto;
+			grid-auto-rows: 1fr;
+			grid-template-columns: 2fr 2fr 2fr 1fr 2fr 2fr 2fr;
+			padding: var(--baseGap) var(--baseGap) var(--baseGap) var(--baseGap);
+			
+			.roof
+			{
+				display: grid;
+				grid-column: 3/-3;
+				justify-items: center;
+
+				img
+				{
+					width: 50%;
+				}
+			}
+
+			.building
+			{
+				display: grid;
+				grid-template-columns: subgrid;
+				grid-column: 1/-1;
+
+				.floor
+				{
+					grid-column: 1/-1;
+					display: grid;
+					grid-template-columns: subgrid;
+
+					.garage
+					{
+						grid-column: span 2;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* #endregion */
+
+/* #region landingPage */
+
+#landingPage
+{
+	#staticBlock
+	{
+		display: none;
+	}
+	
+	#siteBody #page #pageContent
+	{
+		justify-items: center;
+		align-content: center;
+	}
+
+	#welcomeWarings
+	{
+		grid-auto-rows: min-content;
+		width: 50%;
+		
+		h1
+		{
+			.useGradient;
+			text-align: center;
+		}
+
+		> div
+		{
+			grid-auto-rows: min-content;
+		}
+
+		.small
+		{
+			text-align: end;
+		}
+	}
+}
+
+/* #endregion */
 
 /* #region Imports */
 
@@ -1009,7 +1216,4 @@ html.postPage #pageContent
 @import "./pageOverrides/Kata-Fireworks.less";
 @import "./pageOverrides/Kata-Potchkee.less";
 
-/* #endregion */
-
-/* #region standardPost */
 /* #endregion */

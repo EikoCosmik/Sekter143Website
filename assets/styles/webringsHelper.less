@@ -1,0 +1,172 @@
+//main: "./compiled.less"
+
+.webrings_notYetAdded
+{
+	&:hover
+	{
+		position: relative;
+		text-align: center;
+
+		&::before {
+			display: grid;
+			align-items: center;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			background-color: #000000dd;
+			content: "Not added yet, but soon!";
+		}
+	}
+}
+
+.rewild
+{
+	aspect-ratio: 122/31;
+
+	> div
+	{						
+		display: grid !important;
+		grid-template-columns: 17fr 88fr 17fr;
+		grid-template-rows: 1fr;
+	}
+}
+
+.transingTheInternet
+{
+	.webrings_notYetAdded;
+
+	div
+	{
+		.verticalTabs;
+		grid-auto-rows: min-content;
+	}
+}
+
+.transfemWebring
+{
+	.webrings_notYetAdded;
+
+	div
+	{
+		.verticalTabs;
+		grid-auto-rows: min-content;
+	}
+}
+
+.photochemistryWebring
+{
+	.tabs;
+	grid-template-columns: 17fr 88fr 17fr;
+}
+
+.outsideWebring, .gradientWebring
+{
+	.tabs;
+	.block;
+	aspect-ratio: 122/31;
+	grid-template-columns: 17fr 88fr 17fr;
+    text-align: center;
+	vertical-align: middle;
+	padding: 0;
+	grid-gap: 0;
+	overflow: hidden;
+
+	> *
+	{
+		display: grid;
+   		align-items: center;
+	}
+
+	a
+	{
+		background-color: #000000aa;
+	}
+
+	a:nth-child(2)
+	{
+		border-left: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+		border-right: var(--baseBorderWidth) var(--baseBorderStyle) var(--bcol_primaryMain);
+		background-color: transparent;
+		font-size: var(--bigFontSize);
+	}
+}
+
+.outsideWebring
+{
+	.darkElement;
+	.webrings_notYetAdded;
+	background-image: url(../images/webrings_outsideBackground.gif);
+
+	a
+	{
+		color: #57ff6a;
+	}
+
+	a:nth-child(2)
+	{
+		color: var(--bcol_lightText);
+	}
+}
+
+.gradientWebring
+{
+	.purpleElement;
+	.webrings_notYetAdded;
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) -10%, rgba(0, 0, 0, 0.9) 50%, rgba(0, 0, 0, 0.25) 110%), linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(217, 38, 128, 1) 30%, rgba(38, 217, 217, 1) 50%, rgba(217, 38, 128, 1) 70%, rgba(0, 0, 0, 1) 100%);
+}
+
+.onlineWebring
+{
+	.webrings_notYetAdded;
+	position: relative;
+
+	img, map
+	{
+		aspect-ratio: 200/40;
+		width: 100% !important;
+		height: auto !important;
+	}
+
+	map
+	{	
+		display: block;
+		position: absolute;
+
+		area
+		{
+			display: block;
+			position: absolute;
+
+			&[title="The online webring"]
+			{
+				top: 35%;
+				left: 10%;
+				width: 73.5%;
+				height: 25%;
+			}
+
+			&[title="Previous"], &[title="Random"], &[title="Next"]
+			{
+				top: 67.5%;
+				height: 22.5%;
+				width: 26.5%;
+
+			}
+
+			&[title="Previous"]
+			{
+				left: 3.5%;
+			}
+
+			&[title="Random"]
+			{
+				left: 37%;
+			}
+
+			&[title="Next"]
+			{
+				left: 69.5%;
+			}
+		}
+	}
+}

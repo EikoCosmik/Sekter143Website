@@ -1,10 +1,5 @@
 //main: "./compiled.less"
 
-
-@container body (width >= 1920px)
-{
-}
-
 #mobileWarning
 {
 	display: none;
@@ -15,7 +10,7 @@
 	display: grid;
 }
 
-@container body (width < 600px)
+@media screen and (max-width: 767px)
 {
 	#siteHeader
 	{
@@ -41,20 +36,20 @@
 			.useGradient;
 			display: grid;
 			grid-auto-rows: min-content;
-			padding: 5cqw;
-			grid-gap: 5cqw;
-			width: 75cqw;
-			border-width: 0.5cqw;
+			padding: 5dvw;
+			grid-gap: 5dvw;
+			width: 75dvw;
+			border-width: 0.5dvw;
 			text-align: center;
 
 			h1
 			{
-				font-size: 5cqw;
+				font-size: 5dvw;
 			}
 
 			div
 			{
-				font-size: 4cqw;
+				font-size: 4dvw;
 			}
 
 			.asIcon
@@ -66,13 +61,40 @@
 				div
 				{
 					.block;
-					font-size: 10cqw;
+					font-size: 10dvw;
 					border-bottom: none;
-					padding: 5cqw;
-					border: 1cqw var(--baseBorderStyle) var(--bcol_primaryMain);
+					padding: 5dvw;
+					border: 1dvw var(--baseBorderStyle) var(--bcol_primaryMain);
 					border-radius: 50%;
 				}
 			}
 		}
 	}
 }
+
+// /* 輕 Tablet Devices (768px to 1023px wide) */
+// @media screen and (min-width: 768px) and (max-width: 1023px) {
+//   body {
+//     background-color: lightgreen;
+//   }
+// }
+
+/* 💻 Desktop Screens (1024px wide and up) */
+@media screen and (min-width: 1024px)
+{
+	body
+	{
+		/* Sizes */
+		--pageWidth: 50dvw;
+		--sidebarWidth: 13dvw;
+
+		/* FontSize */
+		--largeFontSize: 1.1dvw; //15.9425
+		--bigFontSize: 0.95dvw; //15.9425
+		--baseFontSize: 0.8dvw; //13.665
+		--smallFontSize: 0.65dvw; //11.3875
+		--miniFontSize: 0.5dvw; //9.11
+	}
+}
+
+	

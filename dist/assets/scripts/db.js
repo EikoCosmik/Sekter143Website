@@ -2,7 +2,6 @@ class database
 {
 	constructor()
 	{
-		// this.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 		this.responceBlockTemplate = (title, message) => `<h2 class="underline">${title}</h2><div>${message}<div>`
 	}
 
@@ -12,6 +11,27 @@ class database
 		responceBlock.innerHTML = this.responceBlockTemplate(title, message);
 		responceBlock.style.display = "grid";
 	}
+
+	convertDateTime(dbString)
+	{
+		const date = new Date(dbString);
+		const options = {
+			year: "numeric",
+			month: "numeric",
+			day: "numeric",
+			hour: "numeric",
+			minute: "numeric",
+			second: "numeric",
+			hour12: false,
+			timeZone: "Australia/Sydney",
+			timeZoneName: "short",
+		};
+		return new Intl.DateTimeFormat("en-AU", options).format(date);
+	}
+
+	// #region =======================================================
+	// #region =================| GuestBook |=========================
+	// #region =======================================================
 
 	async guestbookAdd(id)
 	{
@@ -45,7 +65,7 @@ class database
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(sendData),
 		});
-		
+
 		const localResponce = await response.json();
 
 		this.updateResponceBlock(responceBlock, localResponce.title, localResponce.message, localResponce.color);
@@ -57,10 +77,10 @@ class database
 	{
 		const el = document.getElementById(id + "Responces");
 
-		const response = await fetch('/api/guestbookGet', {	method: 'GET' });
+		const response = await fetch('/api/guestbookGet', { method: 'GET' });
 		const data = await response.json();
 		const arr = JSON.parse(data.responces.data).data.sort((a, b) => b.id - a.id);
-		
+
 		let outstring = "";
 
 		for (let i = 0; i < arr.length; i++)
@@ -71,22 +91,11 @@ class database
 		el.innerHTML = outstring;
 	}
 
-	convertDateTime(dbString)
-	{
-		const date = new Date(dbString);
-		const options = {
-			year: "numeric",
-			month: "numeric",
-			day: "numeric",
-			hour: "numeric",
-			minute: "numeric",
-			second: "numeric",
-			hour12: false,
-			timeZone: "Australia/Sydney",
-			timeZoneName: "short",
-		};
-		return new Intl.DateTimeFormat("en-AU", options).format(date);
-	}
+	// #endregion ==============! GuestBook !=========================
+
+	// #region ======================================================
+	// #region =================| Comments |=========================
+	// #region ======================================================
 
 	async commentAdd(id)
 	{
@@ -152,6 +161,12 @@ class database
 		}
 		el.innerHTML = outstring;
 	}
+
+	// #endregion ==============! Comments !=========================
+
+	// #region ===================================================
+	// #region =================| Admin |=========================
+	// #region ===================================================
 
 	async wheLogin()
 	{
@@ -267,6 +282,8 @@ class database
 		`
 		body.appendChild(AdminDeleteBlock);
 	}
+
+	// #endregion ==============! Admin !=========================
 }
 
 export const db = new database();

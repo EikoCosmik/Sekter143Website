@@ -1,24 +1,13 @@
 [
 	{
-		"category": "kataIdeas_preDev",
-		"title": "Kata-Potchkee",
-		"class": "",
+		"category": "siteUpdates",
+		"title": "Recent Updates!: 2! 2! 2!",
+		"class": "cyanElement recent",
 		"image": "",
-		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "Name could change, old concept I'm not certain I have the old code for, so rebuild time!",
-		"content": "Name could change, old concept I'm not certain I have the old code for, so rebuild time!",
-		"date": "2026-11-04",
-		"links": ""
-	},
-	{
-		"category": "kataIdeas_preDev",
-		"title": "Kata-Klicker / Kata-Idle",
-		"class": "",
-		"image": "",
-		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "Is it a clicker or idle? idk im just throwing ideas around at the moment.",
-		"content": "Is it a clicker or idle? idk im just throwing ideas around at the moment.",
-		"date": "2026-11-04",
+		"permalink": "https://sekter143.com",
+		"description": "New Update! Lots of 2s!",
+		"content": "Dynamic Updates 2, 2 New Sections, 2 Reserved Sections! The new sections are “Links & Cliques” and “Plain CSS”, neither of which was planned to be done next! The new reserved sections are “CosmikHysteria”, which was on the site ages ago and is almost back, and media reviews, which is mostly set up; I just need to write stuff. Also, a couple of new webrings were added, and the sitemap links have new uniform images 🩵",
+		"date": "2026-11-11",
 		"links": ""
 	},
 	{
@@ -30,7 +19,56 @@
 		"description": "No full mobile does not work still, I really do not want to do it right now, this took so long.",
 		"content": "I do so many updates to the site that i truely did not plan as i start. Dynamic styles and some custom widgets were not on the list to be done next. But this is good enough for now. No full mobile does not work still, I really do not want to do it right now, this took so long. Have a try at the phone sizes, anything under 600px is dissabled but if your in landscape it should work!",
 		"date": "2026-11-04",
-		"links": "<a class='button aquaElement small' href='/allPosts'>All Posts</a>"
+		"links": ""
+	},
+	{
+		"category": "siteUpdates",
+		"title": "Recent Updates!: Halloween and more content!",
+		"class": "cyanElement recent",
+		"image": "",
+		"permalink": "https://sekter143.com",
+		"description": "A massive behind the scenes clean and the immediate redundancy thereof.",
+		"content": "A massive behind the scenes clean and the immediate redundancy thereof. A lot was a style rebuild in preperation for the mobile layout. But! So far everything is working. New Kata143 section, new sponsor, layout updates. More to come, but i wanted to get an update out. Also, Halloween!",
+		"date": "2026-10-20",
+		"links": ""
+	},
+	{
+		"category": "siteUpdates",
+		"title": "Recent Updates!: Very Tired",
+		"class": "cyanElement recent",
+		"image": "",
+		"permalink": "https://sekter143.com",
+		"description": "Very Tired, but very happy now that i'm here.",
+		"content": "Very Tired, but very happy now that i'm here. The amount of behind the scenes work that took place was just insane and ill likely make a blog post about it. But for now, no more azure, welcome Vultr. DB connected so hello new custom guestbook. And massive clean of backend compile crap. Mostly all internal stuff... but its back!",
+		"date": "2026-10-13",
+		"links": ""
+	},
+	{
+		"category": "siteUpdates",
+		"title": "Recent Updates!:",
+		"class": "cyanElement recent",
+		"image": "",
+		"permalink": "https://sekter143.com",
+		"description": "A MASSIVE update has just gone out, im not kidding.",
+		"content": "A MASSIVE update has just gone out, im not kidding. All the BAD Projects are back, a few webring widgets waiting to be verified, a new widget service coming, a photography section... oh and the structure rebuild underneath! Soon hopefully my motivation and joy comes back better, with this i think its in for a good chance now! <br/> Upcoming plans: The mobile friendly layout ive been putting off...",
+		"date": "2026-10-06",
+		"links": ""
+	},
+
+
+
+
+
+	{
+		"category": "blog",
+		"title": "My body doesn't respond to my brain.",
+		"class": "rubyElement",
+		"image": "",
+		"permalink": "https://sekter143.com/aboutMe",
+		"description": "My body doesn't respond to my brain; my brain doesn't process well.",
+		"content": "Just a quick one: I'm not feeling great; being social is really hard… even this low-effort form of social is incredibly difficult.<br/>My body doesn't respond to my brain; my brain doesn't process well. Doctors have failed me for 10 years, and now I get to suffer the downfall.<br/>I want to be social, cozy.talk is good for that, but I'm struggling there too. I promise I'll reply; I know it's been 5 days since that post.",
+		"date": "2026-11-11",
+		"links": ""
 	},
 	{
 		"category": "blog",
@@ -43,6 +81,44 @@
 		"date": "2026-10-27",
 		"links": ""
 	},
+	{
+		"category": "blog",
+		"title": "I'm still 'tired'.",
+		"class": "rubyElement",
+		"image": "",
+		"permalink": "https://sekter143.com/aboutMe",
+		"description": "It really is an accomplishment to still be trying.",
+		"content": "I made it, i think this site will be good for me once I'm able to be social again. But right now, I'm still tired. Something has gone horribly wrong and there's nowhere to turn to. I shouldn't feel nothing after 1 coffee, 20mg Dex, and 2 monsters. This is a new all time low.<br/>But, I'm here, I'm still trying. I need to be proud of myself for that, it really is an accomplishment to still be trying.",
+		"date": "2026-10-21",
+		"links": ""
+	},
+	{
+		"category": "blog",
+		"title": "Do you know of any good widgets? Pls help.",
+		"class": "rubyElement",
+		"image": "",
+		"permalink": "https://sekter143.com/aboutMe",
+		"description": "If you know any good recomendations of chatrooms or forms or whatever...",
+		"content": "I am struggling to find good widgets for this site. I want to add a chatroom and a forum but cant figure out where at all. All the resource lists i found dont give what i need or link to items that are down now :(.<br/>If you know any good recomendations of chatrooms or forms or whatever fun (especially just lists), i would love to know about them! let me know either by the email button or the guest room :3<br/>But for now, no more delay, time to get the site out there!",
+		"date": "2026-09-26",
+		"links": ""
+	},
+	{
+		"category": "blog",
+		"title": "Do I retreive the past?",
+		"class": "rubyElement",
+		"image": "",
+		"permalink": "https://sekter143.com/aboutMe",
+		"description": "Not in a metaphorical way for once. But of course, the rebuild and stuff.",
+		"content": "Not in a metaphorical way for once. But of course, the rebuild and stuff and... Well, anyway let's catch up first.<br/><br />First, what happened, where was I? Simple, therapy and breakdowns got bad. That's as much as i need to say because there is not much more truth than that.<br />Growth and healing are the only reasons I'm back. Maybe I'll talk more, but for now, that's enough.<br /><br />Why the rebuild? Because the site was fine, but I've learnt a lot. More build, more context, strip the DB, setup dynamic JS.<br/>It's nice to rebuild and use improvement.<br/><br/>So, what is the plan? Rebuild, explore, and upgrade. So, I want to add in Math education, Programing Education, Art will be upgraded, Crochet to be added, and CosmikHysteria will be rebuilt once I am able to go back to it.<br/><br/>That's it really. A rebuild has happened and I'm slowly getting better. Very Slowly.<br/>As for retrieve the past? Nah, I think it's better off dead.",
+		"date": "2026-08-13",
+		"links": ""
+	},
+
+
+
+
+
 	{
 		"category": "photography",
 		"title": "Pebble Summoning A Braincell",
@@ -329,49 +405,20 @@
 		"withWarning": false,
 		"warningText": ""
 	},
+
+
+
+
 	{
-		"category": "blog",
-		"title": "I'm still 'tired'.",
-		"class": "rubyElement",
+		"category": "credits",
+		"title": "SquaredPancake",
+		"class": "SquaredPancake",
 		"image": "",
-		"permalink": "https://sekter143.com/aboutMe",
-		"description": "It really is an accomplishment to still be trying.",
-		"content": "I made it, i think this site will be good for me once I'm able to be social again. But right now, I'm still tired. Something has gone horribly wrong and there's nowhere to turn to. I shouldn't feel nothing after 1 coffee, 20mg Dex, and 2 monsters. This is a new all time low.<br/>But, I'm here, I'm still trying. I need to be proud of myself for that, it really is an accomplishment to still be trying.",
-		"date": "2026-10-21",
-		"links": ""
-	},
-	{
-		"category": "siteUpdates",
-		"title": "Recent Updates!: Halloween and more content!",
-		"class": "cyanElement recent",
-		"image": "",
-		"permalink": "https://sekter143.com",
-		"description": "A massive behind the scenes clean and the immediate redundancy thereof.",
-		"content": "A massive behind the scenes clean and the immediate redundancy thereof. A lot was a style rebuild in preperation for the mobile layout. But! So far everything is working. New Kata143 section, new sponsor, layout updates. More to come, but i wanted to get an update out. Also, Halloween!",
-		"date": "2026-10-20",
-		"links": "<a class='button aquaElement small' href='/allPosts'>All Posts</a>"
-	},
-	{
-		"category": "kataCardGames",
-		"title": "Kata-Blackjack",
-		"class": "orangeElement",
-		"image": "/assets/images/kata143_Blackjack.gif",
-		"permalink": "https://sekter143.com/Kata-CardGames",
-		"description": "Kata-Blackjack has been added to Kata-CardGames!",
-		"content": "Blackjack is one of the easier card games to make and implement, it made sense to be the first testing ground for the Kata-CardGames Setup.",
-		"date": "2026-10-20",
-		"links": "<a class='button small' href='/Kata-Blackjack'>Go To Table</a>"
-	},
-	{
-		"category": "kata",
-		"title": "Kata-CardGames",
-		"class": "purpleElement",
-		"image": "/assets/images/kata143_CardGames.gif",
-		"permalink": "https://sekter143.com/kata143",
-		"description": "Kata-CardGames!",
-		"content": "I got into solitare for a bit... so of course i can build card games now right? right??",
-		"date": "2026-10-20",
-		"links": "<a class='button small' href='/Kata-CardGames'>Go To Kata</a>"
+		"permalink": "https://sekter143.com/credits",
+		"description": "Thank you SquaredPancake for sharing your Teeny Tower.",
+		"content": "Thank you, SquaredPancake, for sharing your Teeny Tower. It was a while ago that I saw it, so unfortunately I can't remember exactly where. It made me want to join in and make my own tower!",
+		"date": "2026-11-11",
+		"links": "<a class='button small' href='https://squaredpancake.neocities.org/'>Check out their site!</a><a href='https://squaredpancake.neocities.org/' target='_blank'><img style='width: 88px; height: 31px' src='./assets/images/button_squaredPancake.gif' /></a>"
 	},
 	{
 		"category": "credits",
@@ -428,17 +475,108 @@
 		"date": "2026-10-14",
 		"links": "<a class='button small' href='https://goodnamehere.neocities.org/'>Check out their site!</a><a href='https://goodnamehere.neocities.org/' target='_blank'><img src='https://file.garden/Zq0WT36Iv3i3b1WZ/neocities/mybuttons/newsitebutton.png' alt='GoodNameHere's Site'></a>"
 	},
+
+
+
+
+
 	{
-		"category": "siteUpdates",
-		"title": "Recent Updates!: Very Tired",
-		"class": "cyanElement recent",
+		"category": "sekter",
+		"title": "Where should they start? - EKCO",
+		"class": "purpleElement",
 		"image": "",
-		"permalink": "https://sekter143.com",
-		"description": "Very Tired, but very happy now that i'm here.",
-		"content": "Very Tired, but very happy now that i'm here. The amount of behind the scenes work that took place was just insane and ill likely make a blog post about it. But for now, no more azure, welcome Vultr. DB connected so hello new custom guestbook. And massive clean of backend compile crap. Mostly all internal stuff... but its back!",
-		"date": "2026-10-13",
-		"links": "<a class='button aquaElement small' href='/allPosts'>All Posts</a>"
+		"permalink": "https://sekter143.com/sekter143",
+		"description": "Does it make sense to even ask?",
+		"content": "<div class='verticalTabs minRows'>Does it make sense to even ask? I mean how many points make sense? Does it even make sense again to ask about is it worth starting from a point that makes sense?<br /><br />Ok let's see where would work:<br /><ol><li>How about the literal beginning. Before Dawn?<br/>No, that's not a great choice, too esoteric with context best explained after some time with the regular events.</li><li>What about just after Dawn?<br/>No, the beginning of Aelveyris requires Dawn context.</li><li>Then start in Dawn?<br/>No, too many characters are better shown later on.</li><li>Skip it all and start with Dusk?<br/>No, starting with the end just doesn't feel right. Plus, Dusk holds too much.</li><li>TLS was kind of the beginning to them, why not there?<br/>If they did, we would still need to narrow further, and it does also feel more disconnected now.</li><li>Would anywhere be satisfying for everyone?<br/>Of course not, everyone is different.</li><li>Then why does it matter?<br/>It truly didn't matter; all that mattered was some start.</li></ol>Even if the start was from a character, no one will hear from for a long time. Even if this won't make sense for a long time. Even if no one cares.<br />It's at least started now.</div>",
+		"date": "2026-08-13",
+		"links": ""
 	},
+	{
+		"category": "sekter",
+		"title": "How could i ever explain?",
+		"class": "greyElement",
+		"image": "",
+		"permalink": "https://sekter143.com/sekter143",
+		"description": "To tell it in a way im capeable of, it will feel very scattered.",
+		"content": "The sun rises, we try again. Darkest before the Dawn. How do I eplain this creation I myself derive from. They were my parts, My Exiles, My Managers, My Firefighters.<br/>That wasent the plan, i didnt know what i was doing purely by accident. Whilst helpful now... the story exists and i must tell it.<br/>I know the story, but to tell it in a way im capeable of, it will feel very scattered.",
+		"date": "2026-08-13",
+		"links": ""
+	},
+
+
+
+
+	
+	{
+		"category": "kata",
+		"title": "Kata-CardGames",
+		"class": "purpleElement",
+		"image": "/assets/images/kata143_CardGames.gif",
+		"permalink": "https://sekter143.com/kata143",
+		"description": "Kata-CardGames!",
+		"content": "I got into solitare for a bit... so of course i can build card games now right? right??",
+		"date": "2026-10-20",
+		"links": "<a class='button small' href='/Kata-CardGames'>Go To Kata</a>"
+	},
+	{
+		"category": "kata",
+		"title": "KataFireworks",
+		"class": "greenElement",
+		"image": "/assets/images/kata143_fireworks.gif",
+		"permalink": "https://sekter143.com/kata143",
+		"description": "KataFireworks is one of my favourites!",
+		"content": "The killer of the BAD projects!<br/><br />KataFireworks is one of my favourite projects i have done, im so happy with how it turned out!",
+		"date": "2026-04-13",
+		"links": "<a class='button small' href='/Kata-Fireworks.html'>Go To Kata</a>"
+	},
+	{
+		"category": "kata",
+		"title": "The BAD Projects",
+		"class": "darkElement",
+		"image": "/assets/images/bad_logo.gif",
+		"permalink": "https://sekter143.com/kata143",
+		"description": "The BAD Projects live on!",
+		"content": "The BAD Projects live on!",
+		"date": "2026-04-13",
+		"links": "<a class='button small' href='/bad'>Go To The BAD</a>"
+	},
+
+
+
+
+
+	{
+		"category": "kataCardGames",
+		"title": "Kata-Blackjack",
+		"class": "orangeElement",
+		"image": "/assets/images/kata143_Blackjack.gif",
+		"permalink": "https://sekter143.com/Kata-CardGames",
+		"description": "Kata-Blackjack has been added to Kata-CardGames!",
+		"content": "Blackjack is one of the easier card games to make and implement, it made sense to be the first testing ground for the Kata-CardGames Setup.",
+		"date": "2026-10-20",
+		"links": "<a class='button small' href='/Kata-Blackjack'>Go To Table</a>"
+	},
+
+
+
+
+
+	{
+		"category": "kataIdeas",
+		"title": "Random Thoughts:",
+		"class": "darkElement",
+		"image": "",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "Alot has changed since ive had a look at this list. Life is strance. But we will return soon. WorldFather Awaits!",
+		"content": "Alot has changed since ive had a look at this list. Life is strance. But we will return soon. WorldFather Awaits!",
+		"date": "2026-08-10",
+		"links": ""
+	},
+
+
+
+
+
 	{
 		"category": "kataIdeas_completed",
 		"title": "Kata-Fireworks",
@@ -461,39 +599,121 @@
 		"date": "2026-03-30",
 		"links": ""
 	},
+
+
+
+
+
 	{
-		"category": "kataIdeas",
-		"title": "Random Thoughts:",
-		"class": "darkElement",
-		"image": "",
-		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "Alot has changed since ive had a look at this list. Life is strance. But we will return soon. WorldFather Awaits!",
-		"content": "Alot has changed since ive had a look at this list. Life is strance. But we will return soon. WorldFather Awaits!",
-		"date": "2026-08-10",
-		"links": ""
-	},
-	{
-		"category": "kataIdeas_onHold",
-		"title": "Kata-Tools",
+		"category": "kataIdeas_inDev",
+		"title": "Kata-CardGames",
 		"class": "",
 		"image": "",
 		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "This will be worked on again soon. Will be usefull for university, but i need to know what life is doing and how i can better implement. Likely npm fixing with home deployment only.",
-		"content": "This will be worked on again soon. Will be usefull for university, but i need to know what life is doing and how i can better implement. Likely npm fixing with home deployment only.",
+		"description": "CardGames",
+		"content": "CardGames",
+		"date": "2026-09-19",
+		"links": ""
+	},
+	{
+		"category": "kataIdeas_inDev",
+		"title": "WorldFather",
+		"class": "",
+		"image": "",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "A JS/TS game engine.<br/>Is it great? Of course not!<br/>Am I having fun? Hell Yeah!",
+		"content": "A JS/TS game engine.<br/>Is it great? Of course not!<br/>Am I having fun? Hell Yeah!",
+		"date": "2026-08-10",
+		"links": ""
+	},
+
+
+
+
+
+	{
+		"category": "kataIdeas_preDev",
+		"title": "Kata-Potchkee",
+		"class": "",
+		"image": "",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "Name could change, old concept I'm not certain I have the old code for, so rebuild time!",
+		"content": "Name could change, old concept I'm not certain I have the old code for, so rebuild time!",
+		"date": "2026-11-04",
+		"links": ""
+	},
+	{
+		"category": "kataIdeas_preDev",
+		"title": "Kata-Klicker / Kata-Idle",
+		"class": "",
+		"image": "",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "Is it a clicker or idle? idk im just throwing ideas around at the moment.",
+		"content": "Is it a clicker or idle? idk im just throwing ideas around at the moment.",
+		"date": "2026-11-04",
+		"links": ""
+	},
+	{
+		"category": "kataIdeas_preDev",
+		"title": "Kata-CantorsDiagonal",
+		"class": "",
+		"image": "",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "I have an idea for a small play thing. Input some numbers, split and make new.",
+		"content": "I have an idea for a small play thing. Input some numbers, split and make new.",
+		"date": "2026-04-13",
+		"links": ""
+	},
+	{
+		"category": "kataIdeas_preDev",
+		"title": "Kata-Music",
+		"class": "",
+		"image": "",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "Going to hurt, but could be fun. Code Music.",
+		"content": "Going to hurt, but could be fun. Code Music.",
+		"date": "2026-03-30",
+		"links": ""
+	},
+
+	{
+		"category": "kataIdeas_futureIdeas",
+		"title": "Kata-InfRunner",
+		"class": "",
+		"image": "",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "I want to finish this off, will revisit with WorldFather.",
+		"content": "I want to finish this off, will revisit with WorldFather.",
 		"date": "2026-08-10",
 		"links": ""
 	},
 	{
-		"category": "kataIdeas_onHold",
-		"title": "Kata-Bot",
+		"category": "kataIdeas_futureIdeas",
+		"title": "Kata-Chess",
 		"class": "",
 		"image": "",
 		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "Permanent Hold. Fun project and i will revisit, but for now and likely until I own a private API server, it will be kept on hold.",
-		"content": "Permanent Hold. Fun project and i will revisit, but for now and likely until I own a private API server, it will be kept on hold.",
+		"description": "How hard can it be? Probably not as bad with WorldFather!",
+		"content": "How hard can it be? Probably not as bad with WorldFather!",
 		"date": "2026-08-10",
 		"links": ""
 	},
+	{
+		"category": "kataIdeas_futureIdeas",
+		"title": "Kata-Dino",
+		"class": "",
+		"image": "",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "I have built the offline dino game once, but a better one would be fun. Will revisit with WorldFather.",
+		"content": "I have built the offline dino game once, but a better one would be fun. Will revisit with WorldFather.",
+		"date": "2026-08-10",
+		"links": ""
+	},
+
+
+
+
+
 	{
 		"category": "kataIdeas_abnd",
 		"title": "Kata-Particles",
@@ -582,83 +802,11 @@
 		"date": "2026-03-30",
 		"links": ""
 	},
-	{
-		"category": "kataIdeas_futureIdeas",
-		"title": "Kata-InfRunner",
-		"class": "",
-		"image": "",
-		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "I want to finish this off, will revisit with WorldFather.",
-		"content": "I want to finish this off, will revisit with WorldFather.",
-		"date": "2026-08-10",
-		"links": ""
-	},
-	{
-		"category": "kataIdeas_futureIdeas",
-		"title": "Kata-Chess",
-		"class": "",
-		"image": "",
-		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "How hard can it be? Probably not as bad with WorldFather!",
-		"content": "How hard can it be? Probably not as bad with WorldFather!",
-		"date": "2026-08-10",
-		"links": ""
-	},
-	{
-		"category": "kataIdeas_futureIdeas",
-		"title": "Kata-Dino",
-		"class": "",
-		"image": "",
-		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "I have built the offline dino game once, but a better one would be fun. Will revisit with WorldFather.",
-		"content": "I have built the offline dino game once, but a better one would be fun. Will revisit with WorldFather.",
-		"date": "2026-08-10",
-		"links": ""
-	},
-	{
-		"category": "kataIdeas_preDev",
-		"title": "Kata-CantorsDiagonal",
-		"class": "",
-		"image": "",
-		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "I have an idea for a small play thing. Input some numbers, split and make new.",
-		"content": "I have an idea for a small play thing. Input some numbers, split and make new.",
-		"date": "2026-04-13",
-		"links": ""
-	},
-	{
-		"category": "kataIdeas_preDev",
-		"title": "Kata-Music",
-		"class": "",
-		"image": "",
-		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "Going to hurt, but could be fun. Code Music.",
-		"content": "Going to hurt, but could be fun. Code Music.",
-		"date": "2026-03-30",
-		"links": ""
-	},
-	{
-		"category": "kataIdeas_inDev",
-		"title": "Kata-CardGames",
-		"class": "",
-		"image": "",
-		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "CardGames",
-		"content": "CardGames",
-		"date": "2026-09-19",
-		"links": ""
-	},
-	{
-		"category": "kataIdeas_inDev",
-		"title": "WorldFather",
-		"class": "",
-		"image": "",
-		"permalink": "https://sekter143.com/kataIdeas",
-		"description": "A JS/TS game engine.<br/>Is it great? Of course not!<br/>Am I having fun? Hell Yeah!",
-		"content": "A JS/TS game engine.<br/>Is it great? Of course not!<br/>Am I having fun? Hell Yeah!",
-		"date": "2026-08-10",
-		"links": ""
-	},
+
+
+
+
+
 	{
 		"category": "kataIdeas_onHold",
 		"title": "Kata-Sorts",
@@ -671,80 +819,25 @@
 		"links": ""
 	},
 	{
-		"category": "siteUpdates",
-		"title": "Recent Updates!:",
-		"class": "cyanElement recent",
+		"category": "kataIdeas_onHold",
+		"title": "Kata-Tools",
+		"class": "",
 		"image": "",
-		"permalink": "https://sekter143.com",
-		"description": "A MASSIVE update has just gone out, im not kidding.",
-		"content": "A MASSIVE update has just gone out, im not kidding. All the BAD Projects are back, a few webring widgets waiting to be verified, a new widget service coming, a photography section... oh and the structure rebuild underneath! Soon hopefully my motivation and joy comes back better, with this i think its in for a good chance now! <br/> Upcoming plans: The mobile friendly layout ive been putting off...",
-		"date": "2026-10-06",
-		"links": "<a class='button aquaElement small' href='/allPosts'>All Posts</a>"
-	},
-	{
-		"category": "kata",
-		"title": "KataFireworks",
-		"class": "greenElement",
-		"image": "/assets/images/kata143_fireworks.gif",
-		"permalink": "https://sekter143.com/kata143",
-		"description": "KataFireworks is one of my favourites!",
-		"content": "The killer of the BAD projects!<br/><br />KataFireworks is one of my favourite projects i have done, im so happy with how it turned out!",
-		"date": "2026-04-13",
-		"links": "<a class='button small' href='/Kata-Fireworks.html'>Go To Kata</a>"
-	},
-	{
-		"category": "kata",
-		"title": "The BAD Projects",
-		"class": "darkElement",
-		"image": "/assets/images/bad_logo.gif",
-		"permalink": "https://sekter143.com/kata143",
-		"description": "The BAD Projects live on!",
-		"content": "The BAD Projects live on!",
-		"date": "2026-04-13",
-		"links": "<a class='button small' href='/bad'>Go To The BAD</a>"
-	},
-	{
-		"category": "blog",
-		"title": "Do you know of any good widgets? Pls help.",
-		"class": "rubyElement",
-		"image": "",
-		"permalink": "https://sekter143.com/aboutMe",
-		"description": "If you know any good recomendations of chatrooms or forms or whatever...",
-		"content": "I am struggling to find good widgets for this site. I want to add a chatroom and a forum but cant figure out where at all. All the resource lists i found dont give what i need or link to items that are down now :(.<br/>If you know any good recomendations of chatrooms or forms or whatever fun (especially just lists), i would love to know about them! let me know either by the email button or the guest room :3<br/>But for now, no more delay, time to get the site out there!",
-		"date": "2026-09-26",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "This will be worked on again soon. Will be usefull for university, but i need to know what life is doing and how i can better implement. Likely npm fixing with home deployment only.",
+		"content": "This will be worked on again soon. Will be usefull for university, but i need to know what life is doing and how i can better implement. Likely npm fixing with home deployment only.",
+		"date": "2026-08-10",
 		"links": ""
 	},
 	{
-		"category": "blog",
-		"title": "Do I retreive the past?",
-		"class": "rubyElement",
+		"category": "kataIdeas_onHold",
+		"title": "Kata-Bot",
+		"class": "",
 		"image": "",
-		"permalink": "https://sekter143.com/aboutMe",
-		"description": "Not in a metaphorical way for once. But of course, the rebuild and stuff.",
-		"content": "Not in a metaphorical way for once. But of course, the rebuild and stuff and... Well, anyway let's catch up first.<br/><br />First, what happened, where was I? Simple, therapy and breakdowns got bad. That's as much as i need to say because there is not much more truth than that.<br />Growth and healing are the only reasons I'm back. Maybe I'll talk more, but for now, that's enough.<br /><br />Why the rebuild? Because the site was fine, but I've learnt a lot. More build, more context, strip the DB, setup dynamic JS.<br/>It's nice to rebuild and use improvement.<br/><br/>So, what is the plan? Rebuild, explore, and upgrade. So, I want to add in Math education, Programing Education, Art will be upgraded, Crochet to be added, and CosmikHysteria will be rebuilt once I am able to go back to it.<br/><br/>That's it really. A rebuild has happened and I'm slowly getting better. Very Slowly.<br/>As for retrieve the past? Nah, I think it's better off dead.",
-		"date": "2026-08-13",
-		"links": ""
-	},
-	{
-		"category": "sekter",
-		"title": "Where should they start? - EKCO",
-		"class": "purpleElement",
-		"image": "",
-		"permalink": "https://sekter143.com/sekter143",
-		"description": "Does it make sense to even ask?",
-		"content": "<div class='verticalTabs minRows'>Does it make sense to even ask? I mean how many points make sense? Does it even make sense again to ask about is it worth starting from a point that makes sense?<br /><br />Ok let's see where would work:<br /><ol><li>How about the literal beginning. Before Dawn?<br/>No, that's not a great choice, too esoteric with context best explained after some time with the regular events.</li><li>What about just after Dawn?<br/>No, the beginning of Aelveyris requires Dawn context.</li><li>Then start in Dawn?<br/>No, too many characters are better shown later on.</li><li>Skip it all and start with Dusk?<br/>No, starting with the end just doesn't feel right. Plus, Dusk holds too much.</li><li>TLS was kind of the beginning to them, why not there?<br/>If they did, we would still need to narrow further, and it does also feel more disconnected now.</li><li>Would anywhere be satisfying for everyone?<br/>Of course not, everyone is different.</li><li>Then why does it matter?<br/>It truly didn't matter; all that mattered was some start.</li></ol>Even if the start was from a character, no one will hear from for a long time. Even if this won't make sense for a long time. Even if no one cares.<br />It's at least started now.</div>",
-		"date": "2026-08-13",
-		"links": ""
-	},
-	{
-		"category": "sekter",
-		"title": "How could i ever explain?",
-		"class": "greyElement",
-		"image": "",
-		"permalink": "https://sekter143.com/sekter143",
-		"description": "To tell it in a way im capeable of, it will feel very scattered.",
-		"content": "The sun rises, we try again. Darkest before the Dawn. How do I eplain this creation I myself derive from. They were my parts, My Exiles, My Managers, My Firefighters.<br/>That wasent the plan, i didnt know what i was doing purely by accident. Whilst helpful now... the story exists and i must tell it.<br/>I know the story, but to tell it in a way im capeable of, it will feel very scattered.",
-		"date": "2026-08-13",
+		"permalink": "https://sekter143.com/kataIdeas",
+		"description": "Permanent Hold. Fun project and i will revisit, but for now and likely until I own a private API server, it will be kept on hold.",
+		"content": "Permanent Hold. Fun project and i will revisit, but for now and likely until I own a private API server, it will be kept on hold.",
+		"date": "2026-08-10",
 		"links": ""
 	}
 ]

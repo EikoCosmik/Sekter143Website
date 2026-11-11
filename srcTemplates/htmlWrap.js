@@ -55,7 +55,7 @@ export function htmlWrap(siteHeader, rightColumn, leftColumn, pageContent, setti
 				<div id="mobileWarning">
 					<div class="mobileWarning">
 						<h1>Mobile View Unavailable</h1>
-						<div>Mobile View is under development, anything under 600px wide is currently dissabled.</div>
+						<div>Mobile View is under development, anything under 767px wide is currently dissabled.</div>
 						<h1>Please Rotate To Continue</h1>
 						<div class="asIcon"><div>󰢅</div></div>
 					</div>

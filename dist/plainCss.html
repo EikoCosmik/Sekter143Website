@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>plainTestPage</title>
+	<style>
+		.codeBlock
+		{
+			background-color: #222222;
+			border: 2px solid #000000;
+			border-radius: 6px;
+			padding: 16px;
+			overflow-x: auto;
+		}
+	
+		code
+		{
+			font-family: 'Fira Code', 'Courier New', Courier, monospace;
+			font-size: 14px;
+			color: white;
+		}
+
+		section
+		{
+			border-top: 2px solid black;
+			border-bottom: 2px solid black;
+			padding: 5px;
+		}
+
+		.returnButton
+		{
+			background: darkred;
+			border: 2px solid red;
+			padding: 5px;
+			color: white;
+			font-weight: bold;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Hello! Welcome to the plain test page!</h1>
+	<p>Whilst i have been working on the main Sekter143.com site, a lot of css defaults have been... overridden. Look I dont like the default css stuff, I wish i could vibe in div land with no default styles which is why the first file included in the compiled.css file is a way to strip the defaults.<br/>This page does not include that compiled.css nor of course any of the .less files used to build it. It does have some css to help layout, code blocks, and general aesthetics but they should be seperated enough.<br/>I built this because i wanted to 'help' in a way. I see a lot of plain text items that i think some people would like alternate options to, like some webring widgets.<br/>None of this is to say that "this is the best way that everyone should do things by", just more options if they are wanted. Keep the originals if you want, its your site afterall 🩵</p>
+	<a class="returnButton" href="/siteNav">Return to main site</a>
+	<br/><br />
+	<section>
+		<h2>Text to block webring styles:</h2>
+		<p>This is for webring widgets that come in 3 parts; the left arrow, center, right arrow layout which looks pretty common. gradientring and ØɄ₮₴łĐɆ on my website both use a similar style tree.</p>
+		<div class="codeBlock">
+			<code>
+				&lt;style&gt;<br />
+				&emsp;.textToBlockWebring<br />
+				&emsp;{<br />
+				&emsp;&emsp;/* Safe To Change */<br />
+				&emsp;&emsp;border-radius: 5px;<br />
+				&emsp;&emsp;border: 2px solid black;<br />
+				&emsp;&emsp;background: linear-gradient(45deg, #222222 -10%, #fefefe 50%, #222222 110%);<br />
+				&emsp;<br />
+				&emsp;&emsp;/* Essential */<br />
+				&emsp;&emsp;display: grid;<br />
+				&emsp;&emsp;width: min-content;<br />
+				&emsp;&emsp;grid-template-columns: 1fr auto 1fr;<br />
+				&emsp;}<br />
+				&emsp;<br />
+				&emsp;.textToBlockWebring a<br />
+				&emsp;{<br />
+				&emsp;&emsp;/* Safe To Change */<br />
+				&emsp;&emsp;padding: 5px;<br />
+				&emsp;&emsp;background-color: #000000aa;<br />
+				&emsp;}<br />
+				&emsp;<br />
+				&emsp;.textToBlockWebring a:nth-child(2)<br />
+				&emsp;{<br />
+				&emsp;&emsp;/* Safe To Change */<br />
+				&emsp;&emsp;padding: 5px;<br />
+				&emsp;&emsp;border-left: 2px solid black;<br />
+				&emsp;&emsp;border-right: 2px solid black;<br />
+				&emsp;&emsp;background-color: transparent;<br />
+				&emsp;}<br />
+				&lt;/style&gt;<br/><br />
+				&lt;div&gt;<br/>
+				&emsp;&lt;a&gt;←&lt;/a&gt;<br />
+				&emsp;&lt;a&gt;Webring&lt;/a&gt;<br />
+				&emsp;&lt;a&gt;→&lt;/a&gt;<br />
+				&lt;/div&gt;
+			</code>
+		</div>
+		<br/>
+		<style>
+			.textToBlockWebring
+			{
+				/* Safe To Change */
+				border-radius: 5px;
+				border: 2px solid black;
+				background: linear-gradient(45deg, #222222 -10%, #fefefe 50%, #222222 110%);
+
+				/* Essential */
+				display: grid;
+				width: min-content;
+				grid-template-columns: 1fr auto 1fr;
+			}
+
+			.textToBlockWebring a
+			{
+				/* Safe To Change */
+				padding: 5px;
+				background-color: #000000aa;
+			}
+
+			.textToBlockWebring a:nth-child(2)
+			{
+				/* Safe To Change */
+				padding: 5px;
+				border-left: 2px solid black;
+				border-right: 2px solid black;
+				background-color: transparent;
+			}
+		</style>
+		<div class="textToBlockWebring">
+			<a href="">←</a>
+			<a href="">Webring</a>
+			<a href="">→</a>
+		</div>
+	</section>	
+</body>
+
+</html>

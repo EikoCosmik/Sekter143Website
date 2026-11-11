@@ -667,8 +667,8 @@
 				
 				@container page
 				{
-					height: 90cqb;
-					width: 90cqb;
+					height: 90dvb;
+					width: 90dvb;
 				}
 			}
 
@@ -806,38 +806,27 @@
 	&.badChaosGame
 	{
 		
-
-		#page
-		{
-			container-name: page;
-			container-type: size;
-		}
-		
 		#siteBody #page #pageContent 
 		{
 			.tabs;
 			border: none;
 			grid-gap: var(--halfGap);
 
-			@container page
-			{
-				//grid-template-columns: 1fr 100cqh 1fr;
-				grid-template-columns: 1fr 1fr auto 1fr;
-				grid-template-rows: min-content 1fr;
-				grid-template-areas: "desc i1 canvas i2" "desc i1 canvas i2";
+			grid-template-columns: 1fr 1fr auto 1fr;
+			grid-template-rows: min-content 1fr;
+			grid-template-areas: "desc i1 canvas i2" "desc i1 canvas i2";
 
-				#myCanvas
-				{
-					.block;
-					.darkElement;
-					grid-area: canvas;
-					aspect-ratio: 1;
-					height: 90cqh;
-					width: auto;
-					margin: auto
-				}
+			#myCanvas
+			{
+				.block;
+				.darkElement;
+				grid-area: canvas;
+				aspect-ratio: 1;
+				height: 70dvh;
+				width: auto;
+				margin: auto
 			}
-			
+
 			#inputs
 			{
 				grid-area: i1;
@@ -900,26 +889,14 @@
 
 	&.badWaves
 	{
-		
-
-		#page
-		{
-			container-name: page;
-			container-type: size;
-		}
-
 		#siteBody #page #pageContent
 		{
 			.tabs;
 			border: none;
 			grid-template-areas: "desc canvas""controls controls";
-				grid-gap: var(--quarterGap);
-
-			@container page
-			{
-				grid-template-columns: 15cqw 1fr;
-				grid-template-rows: 65cqh auto;
-			}
+			grid-gap: var(--quarterGap);
+			grid-template-columns: 15dvw 1fr;
+			grid-template-rows: 50dvh auto;
 
 			#mainCanvas
 			{

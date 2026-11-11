@@ -42,6 +42,7 @@ async function rebuild()
 	await generateAllPosts();
 
 	await copyF("./favicon.ico", distPath +"/favicon.ico");
+	await copyF("./plainCss.html", distPath +"/plainCss.html");
 
     console.log(`Site Built!`);
 }
@@ -187,6 +188,7 @@ function generatePostItem(post)
 		 	<a class="u-url" href="https://sekter143.com ${post.permalink} ${post.id}" style="display:none">permalink</a>
 		 	<a class="p-category" style="display:none">${post.category}</a>
 		 	<a class="p-author h-card" rel="author" style="display:none">EikoCosmik</a>
+			${post.otherContent ?? ``}
 		</article>`)
 }
 

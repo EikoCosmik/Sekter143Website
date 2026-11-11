@@ -1,64 +1,58 @@
 //main: "./compiled.less"
 
-
-@container body
+#siteBody
 {
-	#siteBody
+	#siteContainer,
+	#staticBlock,
+	#siteHeader
 	{
-		#siteContainer,
-		#staticBlock,
-		#siteHeader
-		{
-			grid-template-columns: 1fr var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth) 1fr;
-		}
+		grid-template-columns: 1fr var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth) 1fr;
+	}
 
-		#siteHeader .headerInternal
-		{
-			grid-template-columns: var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth);
-		}
+	#siteHeader .headerInternal
+	{
+		grid-template-columns: var(--sidebarWidth) var(--pageWidth) var(--sidebarWidth);
+	}
 
-		#siteContainer,
-		#staticBlock,
-		#mobileWarning
-		{
-			color: var(--bcol_textLite);
-			font-size: var(--baseFontSize);
-		}
+	#siteContainer,
+	#staticBlock,
+	#mobileWarning
+	{
+		color: var(--bcol_textLite);
+		font-size: var(--baseFontSize);
+	}
 
-		#siteContainer,
-		#staticBlock
-		{
-			grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage sitePage ." "news news news news news";
-			display: grid;
-			grid-template-rows: var(--headerHeight) var(--sidebarHeight) var(--newsHeight);
-			grid-gap: var(--baseGap);
-			justify-content: center;
-		}
+	#siteContainer,
+	#staticBlock
+	{
+		grid-template-areas: "siteHeader siteHeader siteHeader siteHeader siteHeader" ". sitePage sitePage sitePage ." "news news news news news";
+		display: grid;
+		grid-template-rows: var(--headerHeight) var(--sidebarHeight) var(--newsHeight);
+		grid-gap: var(--baseGap);
+		justify-content: center;
+	}
 
-		#page
-		{
-			grid-area: sitePage;
-			position: relative;
-			z-index: 1000;
+	#page
+	{
+		grid-area: sitePage;
+		position: relative;
+		z-index: 1000;
 
-			#pageContent
-			{
-				.verticalTabs;
-				min-height: 100%;
-				height: fit-content;
-				grid-auto-rows: min-content;
-				border-bottom: calc(var(--baseGap) + var(--newsHeight)) solid transparent;
-			}
+		#pageContent
+		{
+			.verticalTabs;
+			min-height: 100%;
+			height: fit-content;
+			grid-auto-rows: min-content;
+			border-bottom: calc(var(--baseGap) + var(--newsHeight)) solid transparent;
 		}
 	}
 }
 
 body
 {
-	container-type: size;
-	container-name: body;
-		max-width: 1500px;
-		margin: auto;
+	max-width: 1500px;
+	margin: auto;
 }
 
 html

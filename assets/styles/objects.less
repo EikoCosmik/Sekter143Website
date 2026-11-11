@@ -119,13 +119,17 @@
 		.useGradient;
 		display: grid;
 		grid-gap: var(--halfGap);
+		grid-template-columns: 1fr;
+		grid-auto-rows: min-content;
 		overflow: hidden;
 		overflow-y: auto;
 		height: fit-content;
 		max-height: 100%;
-		
-		//padding-right: var(--scrollbarGutterHalfFix);
-		//scrollbar-gutter: stable;
+
+		> div.image:first-child
+		{
+			aspect-ratio: 1;
+		}
 
 		.links
 		{
@@ -186,9 +190,9 @@
 
 /* #endregion */
 
-/* #region guestbookForm */
+/* #region guestbookForm privateMessageForm */
 
-#guestbookForm
+#guestbookForm, #privateMessageForm
 {
 	grid-template-columns: 1fr 2fr 1fr;
 	grid-template-areas: "name message err" "website message cf" "color message button";
@@ -675,8 +679,20 @@
 
 /* #endregion */
 
+/* #region buttonBlock */
 
+.buttonBlock
+{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 88px);
+	grid-gap: var(--halfGap);
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
 
+/* #endregion */
 
 
 

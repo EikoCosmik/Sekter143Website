@@ -35,6 +35,32 @@
 		"image links . date";
 	}
 
+	&.mediaPost
+	{
+		grid-template-areas: 
+		"title title awards"
+		"text text text"
+		"links . date";
+
+		&:has(> .image)
+		{
+			grid-template-columns: minmax(min-content, 20%) auto 1fr min-content;
+			grid-template-areas: 
+			"image title title awards"
+			"image text text text"
+			"image links . date";
+		}
+
+		> .awards
+		{
+			.block;
+			.useGradient;
+			display: grid;
+			grid-area: awards;
+			justify-content: center;
+		}
+	}
+
 	> .image
 	{
 		grid-area: image;
@@ -92,7 +118,7 @@
 {
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-auto-rows: 1fr;
+	grid-auto-rows: min-content;
 	grid-auto-flow: row;
 	gap: var(--halfGap);
 
@@ -100,6 +126,18 @@
 	{
 		grid-auto-rows: min-content;
 	}
+}
+
+.centerTabs
+{
+	display: grid;
+	grid-auto-columns: auto;
+	grid-auto-rows: 1fr;
+	gap: var(--halfGap);
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
 }
 
 /* #endregion */
@@ -385,7 +423,6 @@ label
 .image
 {
 	.block;
-	scrollbar-gutter: auto;
 }
 
 .image, .icon
@@ -507,7 +544,7 @@ a[href]
 	border-radius: var(--baseBorderRadius);
 	background-color: var(--bcol_primaryDkst);
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: auto 1fr;
 	overflow: hidden;
 	
 	.gtRow
@@ -537,7 +574,7 @@ a[href]
 			display: grid;
 			align-content: center;
 			align-items: center;
-			padding: var(--quarterGap);
+			padding: var(--halfGap);
 			
 			&:last-child
 			{

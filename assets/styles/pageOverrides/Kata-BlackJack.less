@@ -16,7 +16,7 @@
 			#pageContent
 			{
 				height: 100%;
-				max-height: 35cqw;
+				max-height: 35dvw;
 				align-content: center;
        			align-items: center;
 				border-bottom: none;
@@ -26,12 +26,12 @@
 			#plaingCardGameContainer
 			{
 				.verticalTabs;
-				grid-template-columns: 10cqw 1fr;
+				grid-template-columns: 10dvw 1fr;
 				grid-template-rows: 1fr 1fr;
 				grid-template-areas: "dataCenter dealer" "dataCenter player";
 				height: 100%;
 				min-height: auto;
-				max-height: 50cqw;
+				max-height: 50dvw;
 				grid-row-gap: var(--doubleGap);
 				padding: var(--baseGap);
 				row-rule: var(--baseBorderWidth) var(--baseBorderStyle) #005b08;
@@ -64,6 +64,11 @@
 					{
 						.centerInDiv;
 					}
+				}
+
+				.controls
+				{
+					grid-auto-rows: 1fr;
 				}
 
 				#gameStateMsg
